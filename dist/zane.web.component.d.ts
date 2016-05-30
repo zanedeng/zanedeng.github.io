@@ -1,0 +1,31 @@
+declare module zane.web.component {
+    class Component {
+        private static __uid;
+        private static __instances;
+        static addInstance(item: Component): void;
+        static removeInstance(item: any): boolean;
+        static getInstance(id: string): Component;
+        static getAllInstance(): Array<Component>;
+        static generateId(prev?: string): string;
+        id: string;
+        element: HTMLElement;
+        events: any;
+        options: any;
+        children: any;
+        constructor(element?: HTMLElement, options?: any);
+        trigger(arg: string, data?: any): boolean;
+        bind(arg: any, handler: Function, context?: any): void;
+        unbind(arg: string, handler: Function): void;
+        hasBind(arg: string): boolean;
+        destroy(): void;
+        protected _init(): void;
+        protected _preRender(): void;
+        protected _render(): void;
+        protected _rendered(): void;
+    }
+}
+declare module zane.web.component {
+    class Layout extends Component {
+        constructor(element?: HTMLElement, options?: any);
+    }
+}
