@@ -5,6 +5,164 @@ module zane.web.component
 {
     export class Layout extends Component
     {
+
+        // +----------------------------------------------------------------------
+        // | public property
+        // +----------------------------------------------------------------------
+        
+        /**
+         * 顶部内容高度
+         * @type {number}
+         */
+        public topHeight:number = 50;
+
+        /**
+         * 底部内容高度
+         * @type {number}
+         */
+        public bottomHeight:number = 50;
+
+        /**
+         * 左侧内容高度
+         * @type {number}
+         */
+        public leftWidth:number = 110;
+
+        /**
+         * 中部内容高度
+         * @type {number}
+         */
+        public centerWidth:number = 300;
+
+        /**
+         * 右侧内容高度
+         * @type {number}
+         */
+        public rightWidth:number = 170;
+
+        /**
+         * 中底部内容高度
+         * @type {number}
+         */
+        public centerBottomHeight:number = 100;
+
+        /**
+         *
+         * @type {boolean}
+         */
+        public allowCenterBottomResize:boolean = true;
+
+        /**
+         * 是否以窗口的高度为准 height设置为百分比时可用
+         * @type {boolean}
+         */
+        public inWindow:boolean = true;
+
+        /**
+         * 高度补差
+         * @type {number}
+         */
+        public heightDiff:number = 0;
+
+        /**
+         * 高度
+         * @type {string}
+         */
+        public height:string = '100%';
+
+        /**
+         * 是否允许 左边可以隐藏
+         * @type {boolean}
+         */
+        public allowLeftCollapse:boolean = true;
+
+        /**
+         * 初始化时 左边是否隐藏
+         * @type {boolean}
+         */
+        public isLeftCollapse:boolean = false;
+
+        /**
+         * 是否允许 左边可以调整大小
+         * @type {boolean}
+         */
+        public allowLeftResize:boolean = true;
+
+        /**
+         * 是否允许 右边可以隐藏
+         * @type {boolean}
+         */
+        public allowRightCollapse:boolean = true;
+
+        /**
+         * 初始化时 右边是否隐藏
+         * @type {boolean}
+         */
+        public isRightCollapse:boolean = false;
+
+        /**
+         * 是否允许 右边可以调整大小
+         * @type {boolean}
+         */
+        public allowRightResize:boolean = true;
+
+        /**
+         * 是否允许 头部可以调整大小
+         * @type {boolean}
+         */
+        public allowTopResize:boolean = true;
+
+        /**
+         * 是否允许 底部可以调整大小
+         * @type {boolean}
+         */
+        public allowBottomResize:boolean = true;
+
+        /**
+         * 间隔
+         * @type {number}
+         */
+        public space:number = 3;
+
+        /**
+         * 调整左侧宽度时的最小允许宽度
+         * @type {number}
+         */
+        public minLeftWidth:number = 80;
+
+        /**
+         * 调整右侧宽度时的最小允许宽度
+         * @type {number}
+         */
+        public minRightWidth:number = 80;
+
+        /**
+         * 调整大小结束事件
+         * @type {Function}
+         */
+        public onEndResize:Function = null;
+
+        /**
+         * 左边收缩/展开事件
+         * @type {Function}
+         */
+        public onLeftToggle:Function = null;
+
+        /**
+         * 右边收缩/展开事件
+         * @type {null}
+         */
+        public onRightToggle:Function = null;
+
+        /**
+         * 高度发生改变的事件
+         * @type {Function}
+         */
+        public onHeightChanged:Function = null;
+
+        // +----------------------------------------------------------------------
+        // | constructor
+        // +----------------------------------------------------------------------
         /**
          * 构造函数
          * @param element
@@ -14,5 +172,7 @@ module zane.web.component
         {
             super(element, options);
         }
+
+
     }
 }

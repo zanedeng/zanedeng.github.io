@@ -147,6 +147,31 @@ var zane;
                     if (element === void 0) { element = null; }
                     if (options === void 0) { options = {}; }
                     _super.call(this, element, options);
+                    this.topHeight = 50;
+                    this.bottomHeight = 50;
+                    this.leftWidth = 110;
+                    this.centerWidth = 300;
+                    this.rightWidth = 170;
+                    this.centerBottomHeight = 100;
+                    this.allowCenterBottomResize = true;
+                    this.inWindow = true;
+                    this.heightDiff = 0;
+                    this.height = '100%';
+                    this.allowLeftCollapse = true;
+                    this.isLeftCollapse = false;
+                    this.allowLeftResize = true;
+                    this.allowRightCollapse = true;
+                    this.isRightCollapse = false;
+                    this.allowRightResize = true;
+                    this.allowTopResize = true;
+                    this.allowBottomResize = true;
+                    this.space = 3;
+                    this.minLeftWidth = 80;
+                    this.minRightWidth = 80;
+                    this.onEndResize = null;
+                    this.onLeftToggle = null;
+                    this.onRightToggle = null;
+                    this.onHeightChanged = null;
                 }
                 return Layout;
             }(component.Component));
