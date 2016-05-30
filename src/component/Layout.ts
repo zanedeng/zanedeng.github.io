@@ -1,20 +1,37 @@
+///<reference path="./Component.ts" />
 /**
  * @module zane.web.component
  */
 module zane.web.component
 {
+    /**
+     * 布局类
+     * @class Layout
+     */
     export class Layout extends Component
     {
 
         // +----------------------------------------------------------------------
         // | public property
         // +----------------------------------------------------------------------
-        
+
+        /**
+         * 顶部 HTMLElement 对象
+         * @type {HTMLElement}
+         */
+        public topElement:HTMLElement = null;
+
         /**
          * 顶部内容高度
          * @type {number}
          */
         public topHeight:number = 50;
+
+        /**
+         * 底部 HTMLElement 对象
+         * @type {HTMLElement}
+         */
+        public bottomElement:HTMLElement = null;
 
         /**
          * 底部内容高度
@@ -23,10 +40,22 @@ module zane.web.component
         public bottomHeight:number = 50;
 
         /**
+         * 左侧 HTMLElement 对象
+         * @type {null}
+         */
+        public leftElement:HTMLElement = null;
+
+        /**
          * 左侧内容高度
          * @type {number}
          */
         public leftWidth:number = 110;
+
+        /**
+         * 中间 HTMLElement 对象
+         * @type {HTMLElement}
+         */
+        public centerElement:HTMLElement = null;
 
         /**
          * 中部内容高度
@@ -35,11 +64,22 @@ module zane.web.component
         public centerWidth:number = 300;
 
         /**
+         * 右侧 HTMLElement 对象
+         * @type {HTMLElement}
+         */
+        public rightElement:HTMLElement = null;
+
+        /**
          * 右侧内容高度
          * @type {number}
          */
         public rightWidth:number = 170;
 
+        /**
+         * 中下部 HTMLElement 对象
+         * @type {HTMLElement}
+         */
+        public centerBottomElement:HTMLElement = null;
         /**
          * 中底部内容高度
          * @type {number}
@@ -173,6 +213,20 @@ module zane.web.component
             super(element, options);
         }
 
+        // +----------------------------------------------------------------------
+        // | protected method
+        // +----------------------------------------------------------------------
 
+        /**
+         * 初始化
+         * @private
+         */
+        protected _init():void
+        {
+            if (this.element.querySelector("> div[position=top]"))
+            {
+
+            }
+        }
     }
 }

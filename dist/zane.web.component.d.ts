@@ -26,11 +26,17 @@ declare module zane.web.component {
 }
 declare module zane.web.component {
     class Layout extends Component {
+        topElement: HTMLElement;
         topHeight: number;
+        bottomElement: HTMLElement;
         bottomHeight: number;
+        leftElement: HTMLElement;
         leftWidth: number;
+        centerElement: HTMLElement;
         centerWidth: number;
+        rightElement: HTMLElement;
         rightWidth: number;
+        centerBottomElement: HTMLElement;
         centerBottomHeight: number;
         allowCenterBottomResize: boolean;
         inWindow: boolean;
@@ -52,5 +58,6 @@ declare module zane.web.component {
         onRightToggle: Function;
         onHeightChanged: Function;
         constructor(element?: HTMLElement, options?: any);
+        protected _init(): void;
     }
 }

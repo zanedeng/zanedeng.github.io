@@ -147,11 +147,17 @@ var zane;
                     if (element === void 0) { element = null; }
                     if (options === void 0) { options = {}; }
                     _super.call(this, element, options);
+                    this.topElement = null;
                     this.topHeight = 50;
+                    this.bottomElement = null;
                     this.bottomHeight = 50;
+                    this.leftElement = null;
                     this.leftWidth = 110;
+                    this.centerElement = null;
                     this.centerWidth = 300;
+                    this.rightElement = null;
                     this.rightWidth = 170;
+                    this.centerBottomElement = null;
                     this.centerBottomHeight = 100;
                     this.allowCenterBottomResize = true;
                     this.inWindow = true;
@@ -173,6 +179,10 @@ var zane;
                     this.onRightToggle = null;
                     this.onHeightChanged = null;
                 }
+                Layout.prototype._init = function () {
+                    if (this.element.querySelector("> div[position=top]")) {
+                    }
+                };
                 return Layout;
             }(component.Component));
             component.Layout = Layout;
