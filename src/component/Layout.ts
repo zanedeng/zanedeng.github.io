@@ -233,7 +233,17 @@ module zane.web.component
             zane.HtmlUtl.addClass(this.element, "layout");
             var i,l;
             var topElements = zane.HtmlUtl.find(this.element, 'div[position="top"]');
-            console.log("topElements:" + topElements);
+            if (topElements.length > 0)
+            {
+                for (i = 0, l = topElements.length; i < l; ++i)
+                {
+                    this.topContentElement = topElements[i];
+                    this.topElement = document.createElement("div");
+                    this.topElement.className = "layout-top";
+                    this.topElement.style.top = "0";
+                    this.topElement.insertBefore(this.topContentElement);
+                }
+            }
         }
     }
 }
