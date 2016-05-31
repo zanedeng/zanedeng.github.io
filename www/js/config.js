@@ -1,5 +1,5 @@
 // 预加载的文件列表
-var preloadFile = ["jsx/zane.mvc.jsx", "jsx/zane.web.component.jsx", "jsx/zane.web.gt.jsx"];
+var preloadFile = ["jsx/zane.utils.jsx", "jsx/zane.mvc.jsx", "jsx/zane.web.component.jsx", "jsx/zane.web.gt.jsx"];
 
 // 预加载文件开始加载
 var onPreloadFileStart = function ()
