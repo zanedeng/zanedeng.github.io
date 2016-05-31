@@ -364,6 +364,35 @@ var zane;
         HtmlUtl.getAll = function (selector) {
             return document.querySelectorAll(selector) || {};
         };
+        HtmlUtl.find = function (el, selector) {
+            var found, maybeID = selector[0] == '#', maybeClass = !maybeID && selector[0] == '.', nameOnly = maybeID || maybeClass ? selector.slice(1) : selector, isSimple = HtmlUtl.simpleSelectorRE.test(nameOnly);
+            if (zane.isDocument(el) && isSimple && maybeID) {
+                if (found = el.getElementById(nameOnly)) {
+                    return [found];
+                }
+                else {
+                    return [];
+                }
+            }
+            else if (el.nodeType !== 1 && el.nodeType !== 9) {
+                return [];
+            }
+            else {
+                var result;
+                if (isSimple && !maybeID) {
+                    if (maybeClass) {
+                        result = el.getElementsByClassName(nameOnly);
+                    }
+                    else {
+                        result = el.getElementsByTagName(selector);
+                    }
+                }
+                else {
+                    result = el.querySelectorAll(selector);
+                }
+                return [].slice.call(result);
+            }
+        };
         HtmlUtl._showHide = function (el, show) {
             if (typeof el === 'string')
                 el = document.querySelectorAll(el);
@@ -432,6 +461,7 @@ var zane;
             return height - borderBottomWidth - borderTopWidth - paddingTop - paddingBottom;
         };
         HtmlUtl.reUnit = /width|height|top|left|right|bottom|margin|padding/i;
+        HtmlUtl.simpleSelectorRE = /^[\w-]*$/;
         return HtmlUtl;
     }());
     zane.HtmlUtl = HtmlUtl;
@@ -2206,6 +2236,13 @@ var zane;
         return instance;
     }
     zane.createInstance = createInstance;
+})(zane || (zane = {}));
+var zane;
+(function (zane) {
+    function isDocument(obj) {
+        return obj != null && obj.nodeType == obj.DOCUMENT_NODE;
+    }
+    zane.isDocument = isDocument;
 })(zane || (zane = {}));
 var zane;
 (function (zane) {

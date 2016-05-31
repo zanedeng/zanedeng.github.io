@@ -60,6 +60,8 @@ declare module zane {
         static getAll(selector: string): NodeListOf<Element> | {
             [x: number]: any;
         };
+        private static simpleSelectorRE;
+        static find(el: any, selector: any): any;
         private static _showHide(el, show);
         static show(elements: string | HTMLElement | NodeList): void;
         static hide(elements: string | HTMLElement | NodeList): void;
@@ -262,6 +264,9 @@ declare module zane {
 }
 declare module zane {
     function createInstance(cls: any, properties?: any, parameters?: Array<any>): any;
+}
+declare module zane {
+    function isDocument(obj: any): boolean;
 }
 declare module zane {
     function cleanURL(url: string): string;
