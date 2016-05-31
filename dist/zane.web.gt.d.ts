@@ -1,4 +1,4 @@
-/// <reference path="../libs/zane.mvc.d.ts" />
+/// <reference path="../libs/ts/zane.mvc.d.ts" />
 declare module zane.web.gt {
     class Command {
         static LOAD_ASSET: string;

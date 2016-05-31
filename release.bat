@@ -28,7 +28,7 @@ echo.
 
 REM 拷贝 dist 目录下的合并文件到发布的 libs 目录
 set src_js="dist\*.js"
-set dst_js="www\libs"
+set dst_js="libs\js"
 echo F|XCOPY /y %src_js%  %dst_js%
 
 REM 加密代码
@@ -37,7 +37,7 @@ for /R "%dst_js%" %%s in (*) do (
 )
 
 REM 拷贝 libs 目录下的加密文件到发布的 jsx 目录
-set src_jsx="www\libs\*.jsx"
+set src_jsx="libs\js\*.jsx"
 set dst_jsx="www\jsx"
 if not exist %dst_jsx% md %dst_jsx%
 echo F|MOVE /y %src_jsx%  %dst_jsx%
