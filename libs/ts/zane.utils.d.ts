@@ -261,5 +261,8 @@ declare module zane {
     function combine(defaultVars: any, additionalVars: any): any;
 }
 declare module zane {
+    function createInstance(cls: any, properties?: any, parameters?: Array<any>): any;
+}
+declare module zane {
     function cleanURL(url: string): string;
 }

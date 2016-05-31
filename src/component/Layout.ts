@@ -225,7 +225,7 @@ module zane.web.component
         {
             if (this.element.querySelector("> div[position=top]"))
             {
-
+                
             }
         }
     }

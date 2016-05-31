@@ -1,4 +1,6 @@
+///<reference path="../../libs/ts/zane.utils.d.ts" />
 ///<reference path="../../libs/ts/zane.mvc.d.ts" />
+///<reference path="../../libs/ts/zane.web.component.d.ts" />
 ///<reference path="constants/Command.ts" />
 ///<reference path="constants/ModelName.ts" />
 ///<reference path="constants/ViewName.ts" />

@@ -4,9 +4,9 @@
 module zane.web.gt
 {
     /**
-     * @class zane.web.gt.MainView
+     * @class zane.web.gt.LayoutView
      */
-    export class MainView extends mvc.View
+    export class LayoutView extends mvc.View
     {
         /**
          *
@@ -18,13 +18,16 @@ module zane.web.gt
             super(name, viewComponent);
         }
 
+        /**
+         * 获取视图组件
+         * @returns {LayoutVc}
+         */
+        public vc():LayoutVc { return <LayoutVc>this.viewComponent; }
+
+
         public onRegister():void
         {
-            this.sendEvent(Command.REGISTER_VIEW, new RegisterViewData().setData(
-                ViewName.LAYOUT,
-                LayoutView,
-                LayoutVc
-            ));
+            
         }
 
         public onRemove():void

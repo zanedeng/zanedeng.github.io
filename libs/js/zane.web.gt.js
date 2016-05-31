@@ -47,6 +47,7 @@ var zane;
                 function ViewName() {
                 }
                 ViewName.MAIN = "main_view";
+                ViewName.LAYOUT = "layout_view";
                 return ViewName;
             }());
             gt.ViewName = ViewName;
@@ -88,6 +89,24 @@ var zane;
                 RegisterViewController.prototype.execute = function (data, sponsor) {
                     if (data === void 0) { data = null; }
                     if (sponsor === void 0) { sponsor = null; }
+                    var viewClass = data.getViewClass();
+                    var viewName = data.getViewName();
+                    var vcClass = data.getVcClass();
+                    var vcProperties = data.getVcProperties();
+                    var vcParameters = data.getVcParameters();
+                    var modelName = data.getModelName();
+                    var modelClass = data.getModelClass();
+                    var modelData = data.getModelData();
+                    if (!viewClass)
+                        throw new Error("注册视图管理类不能为空！");
+                    if (!vcClass)
+                        throw new Error("注册视图类不能为空！");
+                    if (viewName && this.retrieveView(viewName))
+                        this.removeView(viewName);
+                    if (modelName && modelClass)
+                        this.registerModel(modelName, modelClass, modelData);
+                    var vc = zane.createInstance(vcClass, vcProperties, vcParameters);
+                    this.registerView(viewName, viewClass, vc);
                 };
                 return RegisterViewController;
             }(zane.mvc.Controller));
@@ -109,6 +128,12 @@ var zane;
                 RemoveViewController.prototype.execute = function (data, sponsor) {
                     if (data === void 0) { data = null; }
                     if (sponsor === void 0) { sponsor = null; }
+                    if (data.getVid() && this.retrieveView(data.getVid())) {
+                        this.removeView(data.getVid());
+                        if (data.getMid() && this.retrieveModel(data.getMid())) {
+                            this.removeModel(data.getMid());
+                        }
+                    }
                 };
                 return RemoveViewController;
             }(zane.mvc.Controller));
@@ -146,6 +171,7 @@ var zane;
                     _super.call(this, name, viewComponent);
                 }
                 MainView.prototype.onRegister = function () {
+                    this.sendEvent(gt.Command.REGISTER_VIEW, new gt.RegisterViewData().setData(gt.ViewName.LAYOUT, gt.LayoutView, gt.LayoutVc));
                 };
                 MainView.prototype.onRemove = function () {
                 };
@@ -177,6 +203,110 @@ var zane;
                 return Main;
             }(zane.mvc.MVCApp));
             gt.Main = Main;
+        })(gt = web.gt || (web.gt = {}));
+    })(web = zane.web || (zane.web = {}));
+})(zane || (zane = {}));
+var zane;
+(function (zane) {
+    var web;
+    (function (web) {
+        var gt;
+        (function (gt) {
+            var RegisterViewData = (function () {
+                function RegisterViewData() {
+                }
+                RegisterViewData.prototype.setData = function (name, cls, vcCls, vcProperties, vcParameters, modelName, modelCls) {
+                    if (vcProperties === void 0) { vcProperties = null; }
+                    if (vcParameters === void 0) { vcParameters = null; }
+                    if (modelName === void 0) { modelName = null; }
+                    if (modelCls === void 0) { modelCls = null; }
+                    this._viewName = name;
+                    this._viewClass = cls;
+                    this._vcClass = vcCls;
+                    this._vcProperties = vcProperties;
+                    this._vcParameters = vcParameters;
+                    this._modelName = modelName;
+                    this._modelClass = modelCls;
+                    return this;
+                };
+                RegisterViewData.prototype.getViewName = function () { return this._viewName; };
+                RegisterViewData.prototype.getViewClass = function () { return this._viewClass; };
+                RegisterViewData.prototype.getVcClass = function () { return this._vcClass; };
+                RegisterViewData.prototype.getVcProperties = function () { return this._vcProperties; };
+                RegisterViewData.prototype.getVcParameters = function () { return this._vcParameters; };
+                RegisterViewData.prototype.getModelName = function () { return this._modelName; };
+                RegisterViewData.prototype.getModelClass = function () { return this._modelClass; };
+                RegisterViewData.prototype.getModelData = function () { return this._modelData; };
+                return RegisterViewData;
+            }());
+            gt.RegisterViewData = RegisterViewData;
+        })(gt = web.gt || (web.gt = {}));
+    })(web = zane.web || (zane.web = {}));
+})(zane || (zane = {}));
+var zane;
+(function (zane) {
+    var web;
+    (function (web) {
+        var gt;
+        (function (gt) {
+            var RemoveViewData = (function () {
+                function RemoveViewData() {
+                }
+                RemoveViewData.prototype.setVid = function (value) { this._vid = value; return this; };
+                RemoveViewData.prototype.getVid = function () { return this._vid; };
+                RemoveViewData.prototype.setMid = function (value) { this._mid = value; return this; };
+                RemoveViewData.prototype.getMid = function () { return this._mid; };
+                return RemoveViewData;
+            }());
+            gt.RemoveViewData = RemoveViewData;
+        })(gt = web.gt || (web.gt = {}));
+    })(web = zane.web || (zane.web = {}));
+})(zane || (zane = {}));
+var zane;
+(function (zane) {
+    var web;
+    (function (web) {
+        var gt;
+        (function (gt) {
+            var LayoutView = (function (_super) {
+                __extends(LayoutView, _super);
+                function LayoutView(name, viewComponent) {
+                    _super.call(this, name, viewComponent);
+                }
+                LayoutView.prototype.vc = function () { return this.viewComponent; };
+                LayoutView.prototype.onRegister = function () {
+                };
+                LayoutView.prototype.onRemove = function () {
+                };
+                return LayoutView;
+            }(zane.mvc.View));
+            gt.LayoutView = LayoutView;
+        })(gt = web.gt || (web.gt = {}));
+    })(web = zane.web || (zane.web = {}));
+})(zane || (zane = {}));
+var zane;
+(function (zane) {
+    var web;
+    (function (web) {
+        var gt;
+        (function (gt) {
+            var Layout = zane.web.component.Layout;
+            var LayoutVc = (function () {
+                function LayoutVc() {
+                    var layoutElement = document.createElement("div");
+                    layoutElement.className = "layout";
+                    layoutElement.innerHTML = "" +
+                        "<div position=\"left\"></div>" +
+                        "<div position=\"center\" title=\"标题\"></div>" +
+                        "<div position=\"right\"></div>" +
+                        "<div position=\"top\"></div>" +
+                        "<div position=\"bottom\"></div>";
+                    document.body.appendChild(layoutElement);
+                    this.layoutComp = new Layout(layoutElement);
+                }
+                return LayoutVc;
+            }());
+            gt.LayoutVc = LayoutVc;
         })(gt = web.gt || (web.gt = {}));
     })(web = zane.web || (zane.web = {}));
 })(zane || (zane = {}));
