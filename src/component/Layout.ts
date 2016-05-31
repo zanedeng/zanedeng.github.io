@@ -241,7 +241,7 @@ module zane.web.component
                     this.topElement = document.createElement("div");
                     this.topElement.className = "layout-top";
                     this.topElement.style.top = "0";
-                    this.topElement.insertBefore(this.topContentElement);
+                    this.element.insertBefore(this.topElement, this.topContentElement);
                 }
             }
         }
