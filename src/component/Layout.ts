@@ -232,7 +232,7 @@ module zane.web.component
         {
             zane.HtmlUtl.addClass(this.element, "layout");
             var i,l;
-            var topElements = zane.HtmlUtl.find(this.element, "> div[position=top]");
+            var topElements = zane.HtmlUtl.find(this.element, 'div[position="top"]');
             console.log("topElements:" + topElements);
         }
     }
