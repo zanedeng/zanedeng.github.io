@@ -1,3 +1,4 @@
+///<reference path="../../libs/ts/zane.utils.d.ts" />
 ///<reference path="./Component.ts" />
 /**
  * @module zane.web.component
@@ -20,6 +21,12 @@ module zane.web.component
          * @type {HTMLElement}
          */
         public topElement:HTMLElement = null;
+
+        /**
+         *
+         * @type {null}
+         */
+        public topContentElement:HTMLElement = null;
 
         /**
          * 顶部内容高度
@@ -223,9 +230,19 @@ module zane.web.component
          */
         protected _init():void
         {
-            if (this.element.querySelector("> div[position=top]"))
+            zane.HtmlUtl.addClass(this.element, "layout");
+            var i,l;
+            var topElements:NodeListOf<Element> = document.querySelectorAll("> div[position=top]");
+            if (topElements.length > 0)
             {
-                
+                for (i = 0, l = topElements.length; i < l; ++i)
+                {
+                    this.topContentElement = <HTMLElement>topElements[i];
+                    this.topElement = document.createElement("div");
+                    this.topElement.className = "layout-top";
+                    this.topElement.style.top = "0px";
+                    this.topElement.insertBefore(this.topContentElement)
+                }
             }
         }
     }

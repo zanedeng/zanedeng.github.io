@@ -18,7 +18,6 @@ module zane.web.gt
         constructor()
         {
             var layoutElement:HTMLElement = document.createElement("div");
-            layoutElement.className = "layout";
             layoutElement.innerHTML = "" +
                 "<div position=\"left\"></div>" +
                 "<div position=\"center\" title=\"标题\"></div>" +

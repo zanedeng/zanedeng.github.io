@@ -1,3 +1,4 @@
+/// <reference path="../libs/ts/zane.utils.d.ts" />
 declare module zane.web.component {
     class Component {
         private static __uid;
@@ -27,6 +28,7 @@ declare module zane.web.component {
 declare module zane.web.component {
     class Layout extends Component {
         topElement: HTMLElement;
+        topContentElement: HTMLElement;
         topHeight: number;
         bottomElement: HTMLElement;
         bottomHeight: number;

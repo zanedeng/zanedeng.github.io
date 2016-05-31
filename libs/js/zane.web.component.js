@@ -148,6 +148,7 @@ var zane;
                     if (options === void 0) { options = {}; }
                     _super.call(this, element, options);
                     this.topElement = null;
+                    this.topContentElement = null;
                     this.topHeight = 50;
                     this.bottomElement = null;
                     this.bottomHeight = 50;
@@ -180,7 +181,17 @@ var zane;
                     this.onHeightChanged = null;
                 }
                 Layout.prototype._init = function () {
-                    if (this.element.querySelector("> div[position=top]")) {
+                    zane.HtmlUtl.addClass(this.element, "layout");
+                    var i, l;
+                    var topElements = document.querySelectorAll("> div[position=top]");
+                    if (topElements.length > 0) {
+                        for (i = 0, l = topElements.length; i < l; ++i) {
+                            this.topContentElement = topElements[i];
+                            this.topElement = document.createElement("div");
+                            this.topElement.className = "layout-top";
+                            this.topElement.style.top = "0px";
+                            this.topElement.insertBefore(this.topContentElement);
+                        }
                     }
                 };
                 return Layout;
