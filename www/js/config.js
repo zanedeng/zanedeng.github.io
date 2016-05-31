@@ -4,7 +4,7 @@ var preloadFile = ["jsx/zane.mvc.jsx", "jsx/zane.web.component.jsx", "jsx/zane.w
 // 预加载文件开始加载
 var onPreloadFileStart = function ()
 {
-
+    
 };
 
 var onPreloadFileProgress = function (progress)
@@ -18,4 +18,5 @@ var onPreloadFileComplete = function()
 {
     var progressbar = document.getElementById("progressbar");
     progressbar.parentNode.removeChild(progressbar);
+    new zane.web.gt.Main();
 };
