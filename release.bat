@@ -1,4 +1,4 @@
-@mode con cols=50 lines=20
+@mode con cols=50 lines=100
 @title 一键发布工具 
 @color 0a
 @echo off
@@ -27,12 +27,20 @@ echo 正在发布，请耐心等待...
 echo.
 
 REM 拷贝 dist 目录下的合并文件到发布的 libs 目录
-set src_js=".\dist\*.js"
-set dst_table=".\www\libs"
-echo F|XCOPY /y %src_table%  %dst_table%
+set src_js="dist\*.js"
+set dst_js="www\libs"
+echo F|XCOPY /y %src_js%  %dst_js%
 
 REM 加密代码
-node build/encryption.js
+for /R "%dst_js%" %%s in (*) do ( 
+  node build/encrypt.js "%%s" "%%sx"
+)
+
+REM 拷贝 libs 目录下的加密文件到发布的 jsx 目录
+set src_jsx="www\libs\*.jsx"
+set dst_jsx="www\jsx"
+if not exist %dst_jsx% md %dst_jsx%
+echo F|MOVE /y %src_jsx%  %dst_jsx%
 
 REM 自动调出SVN提交窗口
 %SVN%/command:commit /path:"%DIR1%" /closeonend:2

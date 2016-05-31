@@ -783,4 +783,6 @@
     exports.uint16ToUint8 = uint16ToUint8;
     exports.uint8ToStr = uint8ToStr;
     exports.toBuffer = toBuffer;
+    exports.compress = compress;
+    exports.decompress = decompress;
 }());
