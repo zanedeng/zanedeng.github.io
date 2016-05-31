@@ -191,6 +191,10 @@ var zane;
                             this.topElement.className = "layout-top";
                             this.topElement.style.top = "0";
                             this.element.insertBefore(this.topElement, this.topContentElement);
+                            this.topElement.appendChild(this.topContentElement);
+                            if (!zane.HtmlUtl.hasClass(this.topContentElement, "layout-content")) {
+                                zane.HtmlUtl.addClass(this.topContentElement, "layout-content");
+                            }
                         }
                     }
                 };
