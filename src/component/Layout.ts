@@ -630,22 +630,19 @@ module zane.web.component
             var parentHeight = null;
             if (typeof(this.options.height) == "string" && this.options.height.indexOf('%') > 0)
             {
-                if (this.parent)
+                if (this.options.inWindow || this.parent.tagName.toLowerCase() == "body")
                 {
-                    if (this.options.inWindow || this.parent.tagName.toLowerCase() == "body")
-                    {
-                        parentHeight = windowHeight;
-                        parentHeight -= parseInt(document.body.style.paddingTop);
-                        parentHeight -= parseInt(document.body.style.paddingBottom);
-                    }
-                    else
-                    {
-                        parentHeight = zane.HtmlUtl.height(this.parent);
-                    }
-                    h = parentHeight * parseFloat(this.options.height) * 0.01;
-                    if (this.options.inWindow || this.parent.tagName.toLowerCase() == "body")
-                        h -= ((zane.HtmlUtl.getOffset(this.element).y - parseInt(document.body.style.paddingTop)));
+                    parentHeight = windowHeight;
+                    parentHeight -= parseInt(document.body.style.paddingTop);
+                    parentHeight -= parseInt(document.body.style.paddingBottom);
                 }
+                else
+                {
+                    parentHeight = zane.HtmlUtl.height(this.parent);
+                }
+                h = parentHeight * parseFloat(this.options.height) * 0.01;
+                if (this.options.inWindow || this.parent.tagName.toLowerCase() == "body")
+                    h -= ((zane.HtmlUtl.getOffset(this.element).y - parseInt(document.body.style.paddingTop)));
             }
             else
             {
