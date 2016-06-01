@@ -560,9 +560,10 @@ var zane;
                     var h = 0;
                     var oldHeight = zane.HtmlUtl.height(this.element);
                     var windowHeight = zane.BrowserUtil.innerHeight();
-                    var parentHeight = null;
+                    var parentHeight = 0;
                     if (typeof (this.options.height) == "string" && this.options.height.indexOf('%') > 0) {
                         if (this.options.inWindow || this.parent.tagName.toLowerCase() == "body") {
+                            console.log("windowHeight:" + windowHeight);
                             parentHeight = windowHeight;
                             parentHeight -= parseInt(document.body.style.paddingTop);
                             parentHeight -= parseInt(document.body.style.paddingBottom);
@@ -571,6 +572,7 @@ var zane;
                             parentHeight = zane.HtmlUtl.height(this.parent);
                         }
                         h = parentHeight * parseFloat(this.options.height) * 0.01;
+                        console.log("----> " + h);
                         if (this.options.inWindow || this.parent.tagName.toLowerCase() == "body")
                             h -= ((zane.HtmlUtl.getOffset(this.element).y - parseInt(document.body.style.paddingTop)));
                     }
