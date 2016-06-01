@@ -13,7 +13,7 @@ declare module zane.web.component {
         events: any;
         options: any;
         children: any;
-        constructor(element?: HTMLElement, options?: any);
+        constructor(options?: any);
         trigger(arg: string, data?: any): boolean;
         bind(arg: any, handler: Function, context?: any): void;
         unbind(arg: string, handler: Function): void;
@@ -27,18 +27,38 @@ declare module zane.web.component {
 }
 declare module zane.web.component {
     class Layout extends Component {
+        static CONTENT_NONE: number;
+        static CONTENT_TOP: number;
+        static CONTENT_LEFT: number;
+        static CONTENT_RIGHT: number;
+        static CONTENT_BOTTOM: number;
+        static CONTENT_CENTER: number;
+        static CONTENT_CENTER_BOTTOM: number;
         topElement: HTMLElement;
         topContentElement: HTMLElement;
-        topHeight: number;
         bottomElement: HTMLElement;
-        bottomHeight: number;
+        bottomContentElement: HTMLElement;
         leftElement: HTMLElement;
-        leftWidth: number;
-        centerElement: HTMLElement;
-        centerWidth: number;
+        leftContentElement: HTMLElement;
         rightElement: HTMLElement;
-        rightWidth: number;
+        rightContentElement: HTMLElement;
+        centerElement: HTMLElement;
+        centerContentElement: HTMLElement;
         centerBottomElement: HTMLElement;
+        centerBottomContentElement: HTMLElement;
+        constructor(options?: any);
+        protected _init(): void;
+        protected _render(): void;
+    }
+}
+declare module zane.web.component {
+    class LayoutOptions {
+        id: string;
+        topHeight: number;
+        bottomHeight: number;
+        leftWidth: number;
+        centerWidth: number;
+        rightWidth: number;
         centerBottomHeight: number;
         allowCenterBottomResize: boolean;
         inWindow: boolean;
@@ -59,7 +79,6 @@ declare module zane.web.component {
         onLeftToggle: Function;
         onRightToggle: Function;
         onHeightChanged: Function;
-        constructor(element?: HTMLElement, options?: any);
-        protected _init(): void;
+        content: number;
     }
 }

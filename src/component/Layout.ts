@@ -13,6 +13,51 @@ module zane.web.component
     {
 
         // +----------------------------------------------------------------------
+        // | public static property
+        // +----------------------------------------------------------------------
+        /**
+         *
+         * @type {number}
+         */
+        public static CONTENT_NONE:number = 0x000000;
+
+        /**
+         *
+         * @type {number}
+         */
+        public static CONTENT_TOP:number = 0x100000;
+
+        /**
+         *
+         * @type {number}
+         */
+        public static CONTENT_LEFT:number = 0x010000;
+
+        /**
+         *
+         * @type {number}
+         */
+        public static CONTENT_RIGHT:number = 0x001000;
+
+        /**
+         * 
+         * @type {number}
+         */
+        public static CONTENT_BOTTOM:number = 0x000100;
+
+        /**
+         *
+         * @type {number}
+         */
+        public static CONTENT_CENTER:number = 0x000010;
+
+        /**
+         * 
+         * @type {number}
+         */
+        public static CONTENT_CENTER_BOTTOM:number = 0x000001;
+
+        // +----------------------------------------------------------------------
         // | public property
         // +----------------------------------------------------------------------
 
@@ -21,232 +66,141 @@ module zane.web.component
          * @type {HTMLElement}
          */
         public topElement:HTMLElement = null;
-
-        /**
-         *
-         * @type {null}
-         */
         public topContentElement:HTMLElement = null;
-
-        /**
-         * 顶部内容高度
-         * @type {number}
-         */
-        public topHeight:number = 50;
 
         /**
          * 底部 HTMLElement 对象
          * @type {HTMLElement}
          */
         public bottomElement:HTMLElement = null;
-
-        /**
-         * 底部内容高度
-         * @type {number}
-         */
-        public bottomHeight:number = 50;
+        public bottomContentElement:HTMLElement = null;
 
         /**
          * 左侧 HTMLElement 对象
          * @type {null}
          */
         public leftElement:HTMLElement = null;
-
-        /**
-         * 左侧内容高度
-         * @type {number}
-         */
-        public leftWidth:number = 110;
-
-        /**
-         * 中间 HTMLElement 对象
-         * @type {HTMLElement}
-         */
-        public centerElement:HTMLElement = null;
-
-        /**
-         * 中部内容高度
-         * @type {number}
-         */
-        public centerWidth:number = 300;
+        public leftContentElement:HTMLElement = null;
 
         /**
          * 右侧 HTMLElement 对象
          * @type {HTMLElement}
          */
         public rightElement:HTMLElement = null;
+        public rightContentElement:HTMLElement = null;
 
         /**
-         * 右侧内容高度
-         * @type {number}
-         */
-        public rightWidth:number = 170;
-
-        /**
-         * 中下部 HTMLElement 对象
+         * 中间 HTMLElement 对象
          * @type {HTMLElement}
          */
+        public centerElement:HTMLElement = null;
+        public centerContentElement:HTMLElement = null;
+
         public centerBottomElement:HTMLElement = null;
-        /**
-         * 中底部内容高度
-         * @type {number}
-         */
-        public centerBottomHeight:number = 100;
-
-        /**
-         *
-         * @type {boolean}
-         */
-        public allowCenterBottomResize:boolean = true;
-
-        /**
-         * 是否以窗口的高度为准 height设置为百分比时可用
-         * @type {boolean}
-         */
-        public inWindow:boolean = true;
-
-        /**
-         * 高度补差
-         * @type {number}
-         */
-        public heightDiff:number = 0;
-
-        /**
-         * 高度
-         * @type {string}
-         */
-        public height:string = '100%';
-
-        /**
-         * 是否允许 左边可以隐藏
-         * @type {boolean}
-         */
-        public allowLeftCollapse:boolean = true;
-
-        /**
-         * 初始化时 左边是否隐藏
-         * @type {boolean}
-         */
-        public isLeftCollapse:boolean = false;
-
-        /**
-         * 是否允许 左边可以调整大小
-         * @type {boolean}
-         */
-        public allowLeftResize:boolean = true;
-
-        /**
-         * 是否允许 右边可以隐藏
-         * @type {boolean}
-         */
-        public allowRightCollapse:boolean = true;
-
-        /**
-         * 初始化时 右边是否隐藏
-         * @type {boolean}
-         */
-        public isRightCollapse:boolean = false;
-
-        /**
-         * 是否允许 右边可以调整大小
-         * @type {boolean}
-         */
-        public allowRightResize:boolean = true;
-
-        /**
-         * 是否允许 头部可以调整大小
-         * @type {boolean}
-         */
-        public allowTopResize:boolean = true;
-
-        /**
-         * 是否允许 底部可以调整大小
-         * @type {boolean}
-         */
-        public allowBottomResize:boolean = true;
-
-        /**
-         * 间隔
-         * @type {number}
-         */
-        public space:number = 3;
-
-        /**
-         * 调整左侧宽度时的最小允许宽度
-         * @type {number}
-         */
-        public minLeftWidth:number = 80;
-
-        /**
-         * 调整右侧宽度时的最小允许宽度
-         * @type {number}
-         */
-        public minRightWidth:number = 80;
-
-        /**
-         * 调整大小结束事件
-         * @type {Function}
-         */
-        public onEndResize:Function = null;
-
-        /**
-         * 左边收缩/展开事件
-         * @type {Function}
-         */
-        public onLeftToggle:Function = null;
-
-        /**
-         * 右边收缩/展开事件
-         * @type {null}
-         */
-        public onRightToggle:Function = null;
-
-        /**
-         * 高度发生改变的事件
-         * @type {Function}
-         */
-        public onHeightChanged:Function = null;
+        public centerBottomContentElement:HTMLElement = null;
 
         // +----------------------------------------------------------------------
         // | constructor
         // +----------------------------------------------------------------------
         /**
          * 构造函数
-         * @param element
          * @param options
          */
-        constructor(element:HTMLElement = null, options:any = {})
+        constructor(options:any = null)
         {
-            super(element, options);
+            super(options);
         }
 
         // +----------------------------------------------------------------------
         // | protected method
         // +----------------------------------------------------------------------
 
+        protected _init():void
+        {
+            if (!this.options) this.options = new LayoutOptions();
+            this.id = this.options.id || Component.generateId();
+        }
+
         /**
          * 初始化
          * @private
          */
-        protected _init():void
+        protected _render():void
         {
-            zane.HtmlUtl.addClass(this.element, "layout");
-            var i,l;
-            var topElements = zane.HtmlUtl.find(this.element, 'div[position="top"]');
-            if (topElements.length > 0)
+            this.element = document.createElement("div");
+            this.element.className = "layout";
+            this.element.id = this.id;
+
+            var content:string = this.options.content.toString(16);
+            // top
+            if (content.substr(0, 1) == "1")
             {
-                for (i = 0, l = topElements.length; i < l; ++i)
+                this.topElement = document.createElement("div");
+                this.topElement.className = "layout-top";
+                this.topElement.style.top = "0";
+                this.topElement.style.height = this.options.topHeight + "px";
+                this.element.appendChild(this.topElement);
+
+                this.topContentElement = document.createElement("div");
+                this.topContentElement.className = "layout-content";
+                this.topElement.appendChild(this.topContentElement);
+            }
+            // left
+            if (content.substr(1, 1) == "1")
+            {
+                this.leftElement = document.createElement("div");
+                this.leftElement.className = "layout-left";
+                this.leftElement.style.left = "0";
+                this.leftElement.style.width = this.options.leftWidth + "px";
+                this.leftElement.style.minWidth = this.options.minLeftWidth + "px";
+
+                this.leftContentElement = document.createElement("div");
+                this.leftContentElement.className = "layout-content";
+                this.leftElement.appendChild(this.leftContentElement);
+            }
+            // right
+            if (content.substr(2, 1) == "1")
+            {
+                this.rightElement = document.createElement("div");
+                this.rightElement.className = "layout-right";
+                this.rightElement.style.width = this.options.rightWidth + "px";
+                this.rightElement.style.minWidth = this.options.minRightWidth + "px";
+
+                this.rightContentElement = document.createElement("div");
+                this.rightContentElement.className = "layout-content";
+                this.rightElement.appendChild(this.rightContentElement);
+            }
+            // bottom
+            if (content.substr(3, 1) == "1")
+            {
+                this.bottomElement = document.createElement("div");
+                this.bottomElement.className = "layout-bottom";
+                this.bottomElement.style.height = this.options.bottomHeight + "px";
+
+                this.bottomContentElement = document.createElement("div");
+                this.bottomContentElement.className = "layout-content";
+                this.bottomElement.appendChild(this.bottomContentElement);
+            }
+            // center
+            if (content.substr(4, 1) == "1")
+            {
+                this.centerElement = document.createElement("div");
+                this.centerElement.className = "layout-center";
+                this.centerElement.style.width = this.options.centerWidth;
+
+                this.centerContentElement = document.createElement("div");
+                this.centerContentElement.className = "layout-content";
+                this.centerElement.appendChild(this.centerContentElement);
+
+                if (content.substr(5, 1) == "1")
                 {
-                    this.topContentElement = topElements[i];
-                    this.topElement = document.createElement("div");
-                    this.topElement.className = "layout-top";
-                    this.topElement.style.top = "0";
-                    this.element.insertBefore(this.topElement, this.topContentElement);
-                    this.topElement.appendChild(this.topContentElement);
-                    if (!zane.HtmlUtl.hasClass(this.topContentElement, "layout-content"))
-                    {
-                        zane.HtmlUtl.addClass(this.topContentElement, "layout-content")
-                    }
+                    this.centerBottomElement = document.createElement("div");
+                    this.centerBottomElement.className = "layout-center-bottom";
+                    this.centerBottomElement.style.width = this.options.centerWidth;
+
+                    this.centerBottomContentElement = document.createElement("div");
+                    this.centerBottomContentElement.className = "layout-content";
+                    this.centerBottomElement.appendChild(this.centerBottomContentElement);
                 }
             }
         }

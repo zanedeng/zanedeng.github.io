@@ -10,20 +10,19 @@ var zane;
         var component;
         (function (component) {
             var Component = (function () {
-                function Component(element, options) {
-                    if (element === void 0) { element = null; }
-                    if (options === void 0) { options = {}; }
+                function Component(options) {
+                    if (options === void 0) { options = null; }
                     this.events = {};
                     this.options = {};
                     this.children = {};
-                    this.options = options || {};
-                    this.element = element;
+                    this.options = options;
                     this._init();
                     this._preRender();
                     this.trigger('render');
                     this._render();
                     this.trigger('rendered');
                     this._rendered();
+                    Component.addInstance(this);
                 }
                 Component.addInstance = function (item) {
                     if (!item.id)
@@ -118,6 +117,7 @@ var zane;
                     return false;
                 };
                 Component.prototype.destroy = function () {
+                    Component.removeInstance(this);
                 };
                 Component.prototype._init = function () {
                 };
@@ -143,22 +143,112 @@ var zane;
         (function (component) {
             var Layout = (function (_super) {
                 __extends(Layout, _super);
-                function Layout(element, options) {
-                    if (element === void 0) { element = null; }
-                    if (options === void 0) { options = {}; }
-                    _super.call(this, element, options);
+                function Layout(options) {
+                    if (options === void 0) { options = null; }
+                    _super.call(this, options);
                     this.topElement = null;
                     this.topContentElement = null;
-                    this.topHeight = 50;
                     this.bottomElement = null;
-                    this.bottomHeight = 50;
+                    this.bottomContentElement = null;
                     this.leftElement = null;
-                    this.leftWidth = 110;
-                    this.centerElement = null;
-                    this.centerWidth = 300;
+                    this.leftContentElement = null;
                     this.rightElement = null;
-                    this.rightWidth = 170;
+                    this.rightContentElement = null;
+                    this.centerElement = null;
+                    this.centerContentElement = null;
                     this.centerBottomElement = null;
+                    this.centerBottomContentElement = null;
+                }
+                Layout.prototype._init = function () {
+                    if (!this.options)
+                        this.options = new component.LayoutOptions();
+                    this.id = this.options.id || component.Component.generateId();
+                };
+                Layout.prototype._render = function () {
+                    this.element = document.createElement("div");
+                    this.element.className = "layout";
+                    this.element.id = this.id;
+                    var content = this.options.content.toString(16);
+                    if (content.substr(0, 1) == "1") {
+                        this.topElement = document.createElement("div");
+                        this.topElement.className = "layout-top";
+                        this.topElement.style.top = "0";
+                        this.topElement.style.height = this.options.topHeight + "px";
+                        this.element.appendChild(this.topElement);
+                        this.topContentElement = document.createElement("div");
+                        this.topContentElement.className = "layout-content";
+                        this.topElement.appendChild(this.topContentElement);
+                    }
+                    if (content.substr(1, 1) == "1") {
+                        this.leftElement = document.createElement("div");
+                        this.leftElement.className = "layout-left";
+                        this.leftElement.style.left = "0";
+                        this.leftElement.style.width = this.options.leftWidth + "px";
+                        this.leftElement.style.minWidth = this.options.minLeftWidth + "px";
+                        this.leftContentElement = document.createElement("div");
+                        this.leftContentElement.className = "layout-content";
+                        this.leftElement.appendChild(this.leftContentElement);
+                    }
+                    if (content.substr(2, 1) == "1") {
+                        this.rightElement = document.createElement("div");
+                        this.rightElement.className = "layout-right";
+                        this.rightElement.style.width = this.options.rightWidth + "px";
+                        this.rightElement.style.minWidth = this.options.minRightWidth + "px";
+                        this.rightContentElement = document.createElement("div");
+                        this.rightContentElement.className = "layout-content";
+                        this.rightElement.appendChild(this.rightContentElement);
+                    }
+                    if (content.substr(3, 1) == "1") {
+                        this.bottomElement = document.createElement("div");
+                        this.bottomElement.className = "layout-bottom";
+                        this.bottomElement.style.height = this.options.bottomHeight + "px";
+                        this.bottomContentElement = document.createElement("div");
+                        this.bottomContentElement.className = "layout-content";
+                        this.bottomElement.appendChild(this.bottomContentElement);
+                    }
+                    if (content.substr(4, 1) == "1") {
+                        this.centerElement = document.createElement("div");
+                        this.centerElement.className = "layout-center";
+                        this.centerElement.style.width = this.options.centerWidth;
+                        this.centerContentElement = document.createElement("div");
+                        this.centerContentElement.className = "layout-content";
+                        this.centerElement.appendChild(this.centerContentElement);
+                        if (content.substr(5, 1) == "1") {
+                            this.centerBottomElement = document.createElement("div");
+                            this.centerBottomElement.className = "layout-center-bottom";
+                            this.centerBottomElement.style.width = this.options.centerWidth;
+                            this.centerBottomContentElement = document.createElement("div");
+                            this.centerBottomContentElement.className = "layout-content";
+                            this.centerBottomElement.appendChild(this.centerBottomContentElement);
+                        }
+                    }
+                };
+                Layout.CONTENT_NONE = 0x000000;
+                Layout.CONTENT_TOP = 0x100000;
+                Layout.CONTENT_LEFT = 0x010000;
+                Layout.CONTENT_RIGHT = 0x001000;
+                Layout.CONTENT_BOTTOM = 0x000100;
+                Layout.CONTENT_CENTER = 0x000010;
+                Layout.CONTENT_CENTER_BOTTOM = 0x000001;
+                return Layout;
+            }(component.Component));
+            component.Layout = Layout;
+        })(component = web.component || (web.component = {}));
+    })(web = zane.web || (zane.web = {}));
+})(zane || (zane = {}));
+var zane;
+(function (zane) {
+    var web;
+    (function (web) {
+        var component;
+        (function (component) {
+            var LayoutOptions = (function () {
+                function LayoutOptions() {
+                    this.topHeight = 50;
+                    this.bottomHeight = 50;
+                    this.leftWidth = 110;
+                    this.centerWidth = 300;
+                    this.rightWidth = 170;
                     this.centerBottomHeight = 100;
                     this.allowCenterBottomResize = true;
                     this.inWindow = true;
@@ -179,28 +269,11 @@ var zane;
                     this.onLeftToggle = null;
                     this.onRightToggle = null;
                     this.onHeightChanged = null;
+                    this.content = component.Layout.CONTENT_CENTER;
                 }
-                Layout.prototype._init = function () {
-                    zane.HtmlUtl.addClass(this.element, "layout");
-                    var i, l;
-                    var topElements = zane.HtmlUtl.find(this.element, 'div[position="top"]');
-                    if (topElements.length > 0) {
-                        for (i = 0, l = topElements.length; i < l; ++i) {
-                            this.topContentElement = topElements[i];
-                            this.topElement = document.createElement("div");
-                            this.topElement.className = "layout-top";
-                            this.topElement.style.top = "0";
-                            this.element.insertBefore(this.topElement, this.topContentElement);
-                            this.topElement.appendChild(this.topContentElement);
-                            if (!zane.HtmlUtl.hasClass(this.topContentElement, "layout-content")) {
-                                zane.HtmlUtl.addClass(this.topContentElement, "layout-content");
-                            }
-                        }
-                    }
-                };
-                return Layout;
-            }(component.Component));
-            component.Layout = Layout;
+                return LayoutOptions;
+            }());
+            component.LayoutOptions = LayoutOptions;
         })(component = web.component || (web.component = {}));
     })(web = zane.web || (zane.web = {}));
 })(zane || (zane = {}));

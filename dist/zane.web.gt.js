@@ -291,17 +291,13 @@ var zane;
         var gt;
         (function (gt) {
             var Layout = zane.web.component.Layout;
+            var LayoutOptions = zane.web.component.LayoutOptions;
             var LayoutVc = (function () {
                 function LayoutVc() {
-                    var layoutElement = document.createElement("div");
-                    layoutElement.innerHTML = "" +
-                        "<div position=\"left\"></div>" +
-                        "<div position=\"center\" title=\"标题\"></div>" +
-                        "<div position=\"right\"></div>" +
-                        "<div position=\"top\"></div>" +
-                        "<div position=\"bottom\"></div>";
-                    document.body.appendChild(layoutElement);
-                    this.layoutComp = new Layout(layoutElement);
+                    var layoutOptions = new LayoutOptions();
+                    layoutOptions.content = Layout.CONTENT_TOP | Layout.CONTENT_LEFT |
+                        Layout.CONTENT_RIGHT | Layout.CONTENT_CENTER | Layout.CONTENT_CENTER_BOTTOM | Layout.CONTENT_BOTTOM;
+                    this.layoutComp = new Layout(layoutOptions);
                 }
                 return LayoutVc;
             }());

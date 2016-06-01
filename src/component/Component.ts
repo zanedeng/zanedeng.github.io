@@ -128,19 +128,18 @@ module zane.web.component
         // +----------------------------------------------------------------------
         /**
          * 构造函数
-         * @param element
          * @param options
          */
-        constructor(element:HTMLElement = null, options:any = {})
+        constructor(options:any = null)
         {
-            this.options = options || {};
-            this.element = element;
+            this.options = options;
             this._init();
             this._preRender();
             this.trigger('render');
             this._render();
             this.trigger('rendered');
             this._rendered();
+            Component.addInstance(this);
         }
 
         // +----------------------------------------------------------------------
@@ -246,7 +245,7 @@ module zane.web.component
          */
         public destroy():void
         {
-
+            Component.removeInstance(this);
         }
 
         // +----------------------------------------------------------------------

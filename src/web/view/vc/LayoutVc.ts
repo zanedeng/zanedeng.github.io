@@ -4,6 +4,7 @@
 module zane.web.gt
 {
     import Layout = zane.web.component.Layout;
+    import LayoutOptions = zane.web.component.LayoutOptions;
     /**
      * @class zane.web.gt.LayoutVc
      */
@@ -17,16 +18,10 @@ module zane.web.gt
 
         constructor()
         {
-            var layoutElement:HTMLElement = document.createElement("div");
-            layoutElement.innerHTML = "" +
-                "<div position=\"left\"></div>" +
-                "<div position=\"center\" title=\"标题\"></div>" +
-                "<div position=\"right\"></div>" +
-                "<div position=\"top\"></div>" +
-                "<div position=\"bottom\"></div>";
-            document.body.appendChild(layoutElement);
-
-            this.layoutComp = new Layout(layoutElement);
+            var layoutOptions = new LayoutOptions();
+            layoutOptions.content = Layout.CONTENT_TOP|Layout.CONTENT_LEFT|
+                Layout.CONTENT_RIGHT|Layout.CONTENT_CENTER|Layout.CONTENT_CENTER_BOTTOM|Layout.CONTENT_BOTTOM;
+            this.layoutComp = new Layout(layoutOptions);
         }
     }
 }
