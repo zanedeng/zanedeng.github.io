@@ -130,6 +130,8 @@ module zane.web.component
             this.element = document.createElement("div");
             this.element.className = "layout";
             this.element.id = this.id;
+            this.element.style.width = this.options.width;
+            this.element.style.height = this.options.height;
 
             var content:string = this.options.content.toString(16);
             // top

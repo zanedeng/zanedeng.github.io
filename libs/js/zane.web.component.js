@@ -168,6 +168,8 @@ var zane;
                     this.element = document.createElement("div");
                     this.element.className = "layout";
                     this.element.id = this.id;
+                    this.element.style.width = this.options.width;
+                    this.element.style.height = this.options.height;
                     var content = this.options.content.toString(16);
                     if (content.substr(0, 1) == "1") {
                         this.topElement = document.createElement("div");
@@ -248,6 +250,9 @@ var zane;
         (function (component) {
             var LayoutOptions = (function () {
                 function LayoutOptions() {
+                    this.width = "100%";
+                    this.height = '100%';
+                    this.heightDiff = 0;
                     this.topHeight = 50;
                     this.bottomHeight = 50;
                     this.leftWidth = 110;
@@ -256,8 +261,6 @@ var zane;
                     this.centerBottomHeight = 100;
                     this.allowCenterBottomResize = true;
                     this.inWindow = true;
-                    this.heightDiff = 0;
-                    this.height = '100%';
                     this.allowLeftCollapse = true;
                     this.isLeftCollapse = false;
                     this.allowLeftResize = true;

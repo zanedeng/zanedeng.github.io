@@ -54,6 +54,9 @@ declare module zane.web.component {
 declare module zane.web.component {
     class LayoutOptions {
         id: string;
+        width: string;
+        height: string;
+        heightDiff: number;
         topHeight: number;
         bottomHeight: number;
         leftWidth: number;
@@ -62,8 +65,6 @@ declare module zane.web.component {
         centerBottomHeight: number;
         allowCenterBottomResize: boolean;
         inWindow: boolean;
-        heightDiff: number;
-        height: string;
         allowLeftCollapse: boolean;
         isLeftCollapse: boolean;
         allowLeftResize: boolean;

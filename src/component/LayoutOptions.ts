@@ -14,6 +14,25 @@ module zane.web.component
          * @type {string}
          */
         public id:string;
+
+        /**
+         * 宽度
+         * @type {string}
+         */
+        public width:string = "100%";
+
+        /**
+         * 高度
+         * @type {string}
+         */
+        public height:string = '100%';
+
+        /**
+         * 高度补差
+         * @type {number}
+         */
+        public heightDiff:number = 0;
+
         /**
          * 顶部内容高度
          * @type {number}
@@ -60,18 +79,6 @@ module zane.web.component
          * @type {boolean}
          */
         public inWindow:boolean = true;
-
-        /**
-         * 高度补差
-         * @type {number}
-         */
-        public heightDiff:number = 0;
-
-        /**
-         * 高度
-         * @type {string}
-         */
-        public height:string = '100%';
 
         /**
          * 是否允许 左边可以隐藏
