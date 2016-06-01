@@ -13,4 +13,8 @@ input {
     user-select: text;
 }
 
-body{background:#333;}
+body {
+    background:#333;
+    margin: 0;
+    padding: 0;
+}

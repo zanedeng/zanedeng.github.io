@@ -1,5 +1,33 @@
 declare module zane {
     class BrowserUtil {
+        static ua: string;
+        private static _isIOS();
+        static isIOS: boolean;
+        private static _iOSVersion();
+        static iOSVersion: any[];
+        private static _isAndroid();
+        static isAndroid: boolean;
+        private static _isIE();
+        static isIE: boolean;
+        private static _isChrome();
+        static isChrome: boolean;
+        private static _isWebkit();
+        static isWebkit: boolean;
+        private static _isSafari();
+        static isSafari: boolean;
+        private static _isWeiXin();
+        static isWeiXin: boolean;
+        private static _isQQBrowser();
+        static isQQBrowser: boolean;
+        private static _isOpera();
+        static isOpera: boolean;
+        private static _mobileHTML5();
+        static mobileHTML5: boolean;
+        private static _network();
+        static network: string;
+        static touchSupported(): boolean;
+        static getParams(): {};
+        static getUrlParams(url: any): {};
         static innerHeight(): number;
         static innerWidth(): number;
     }

@@ -3,6 +3,85 @@ var zane;
     var BrowserUtil = (function () {
         function BrowserUtil() {
         }
+        BrowserUtil._isIOS = function () {
+            return BrowserUtil.ua.match(/(ipad|iphone|ipod)/i) != null;
+        };
+        BrowserUtil._iOSVersion = function () {
+            if (/iP(hone|od|ad)/.test(navigator.platform)) {
+                var v = (navigator.appVersion).match(/OS (\d+)_(\d+)_?(\d+)?/);
+                return [parseInt(v[1], 10), parseInt(v[2], 10), parseInt(v[3] || 0, 10)];
+            }
+            return [0, 0, 0];
+        };
+        BrowserUtil._isAndroid = function () {
+            return BrowserUtil.ua.match(/android/i) != null;
+        };
+        BrowserUtil._isIE = function () {
+            return BrowserUtil.ua.match(/msie/i) != null;
+        };
+        BrowserUtil._isChrome = function () {
+            return BrowserUtil.ua.match(/chrome/i) != null;
+        };
+        BrowserUtil._isWebkit = function () {
+            return BrowserUtil.ua.match(/webkit/i) != null;
+        };
+        BrowserUtil._isSafari = function () {
+            return (BrowserUtil.ua.toLowerCase().indexOf("safari") !== -1);
+        };
+        BrowserUtil._isWeiXin = function () {
+            return BrowserUtil.ua.match(/MicroMessenger/i) != null;
+        };
+        BrowserUtil._isQQBrowser = function () {
+            return BrowserUtil.ua.match(/MQQBrowser/i) != null;
+        };
+        BrowserUtil._isOpera = function () {
+            return BrowserUtil.ua.match(/opera/i) != null;
+        };
+        BrowserUtil._mobileHTML5 = function () {
+            return (BrowserUtil.ua.match(/(mobile|pre\/|xoom)/i) != null || BrowserUtil._isIOS() || BrowserUtil._isAndroid());
+        };
+        BrowserUtil._network = function () {
+            var connection = navigator['connection'] || navigator['mozConnection'] || navigator['webkitConnection'] || { type: 'unknown' };
+            var type_text = ['unknown', 'ethernet', 'wifi', '2g', '3g', '4g', 'none'];
+            if (typeof (connection.type) == "number") {
+                return type_text[connection.type];
+            }
+            else if (typeof (connection['bandwidth']) == "number") {
+                if (connection['bandwidth'] > 10) {
+                    return 'wifi';
+                }
+                else if (connection['bandwidth'] > 2) {
+                    return '3g';
+                }
+                else if (connection['bandwidth'] > 0) {
+                    return '2g';
+                }
+                else if (connection['bandwidth'] == 0) {
+                    return 'none';
+                }
+            }
+            return 'unknown';
+        };
+        BrowserUtil.touchSupported = function () {
+            return (('ontouchstart' in window) ||
+                ('undefined' != typeof window["TouchEvent"]) ||
+                ('undefined' != typeof document["createTouch"]));
+        };
+        BrowserUtil.getParams = function () {
+            return BrowserUtil.getUrlParams(document.location.href);
+        };
+        BrowserUtil.getUrlParams = function (url) {
+            url = url.split("?")[1];
+            var pl = /\+/g;
+            var search = /([^&=]+)=?([^&]*)/g;
+            var decode = function (s) { return decodeURIComponent(s.replace(pl, ' ')); };
+            var urlParams = {};
+            var match;
+            while (match = search.exec(url)) {
+                urlParams[decode(match[1])] = decode(match[2]);
+            }
+            return urlParams;
+        };
         BrowserUtil.innerHeight = function () {
             var _height;
             if (window.innerHeight)
@@ -29,6 +108,19 @@ var zane;
             }
             return _width;
         };
+        BrowserUtil.ua = navigator.userAgent;
+        BrowserUtil.isIOS = BrowserUtil._isIOS();
+        BrowserUtil.iOSVersion = BrowserUtil._iOSVersion();
+        BrowserUtil.isAndroid = BrowserUtil._isAndroid();
+        BrowserUtil.isIE = BrowserUtil._isIE();
+        BrowserUtil.isChrome = BrowserUtil._isChrome();
+        BrowserUtil.isWebkit = BrowserUtil._isWebkit();
+        BrowserUtil.isSafari = BrowserUtil._isSafari();
+        BrowserUtil.isWeiXin = BrowserUtil._isWeiXin();
+        BrowserUtil.isQQBrowser = BrowserUtil._isQQBrowser();
+        BrowserUtil.isOpera = BrowserUtil._isOpera();
+        BrowserUtil.mobileHTML5 = BrowserUtil._mobileHTML5();
+        BrowserUtil.network = BrowserUtil._network();
         return BrowserUtil;
     }());
     zane.BrowserUtil = BrowserUtil;

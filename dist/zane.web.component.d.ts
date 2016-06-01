@@ -36,19 +36,46 @@ declare module zane.web.component {
         static CONTENT_CENTER_BOTTOM: number;
         topElement: HTMLElement;
         topContentElement: HTMLElement;
+        topDropElement: HTMLElement;
         bottomElement: HTMLElement;
         bottomContentElement: HTMLElement;
+        bottomDropElement: HTMLElement;
         leftElement: HTMLElement;
         leftContentElement: HTMLElement;
+        leftDropElement: HTMLElement;
         rightElement: HTMLElement;
         rightContentElement: HTMLElement;
+        rightDropElement: HTMLElement;
         centerElement: HTMLElement;
         centerContentElement: HTMLElement;
         centerBottomElement: HTMLElement;
         centerBottomContentElement: HTMLElement;
+        centerBottomDropElement: HTMLElement;
+        lockElement: HTMLElement;
+        draggingXLineElement: HTMLElement;
+        draggingYLineElement: HTMLElement;
+        draggingMaskElement: HTMLElement;
+        private dragType;
+        private xResize;
+        private yResize;
+        private middleHeight;
+        private middleTop;
+        private leftWidth;
+        private rightWidth;
+        private bottomTop;
+        private centerLeft;
+        private centerWidth;
+        private centerBottomHeight;
         constructor(options?: any);
         protected _init(): void;
         protected _render(): void;
+        private _addDropHandle();
+        private _startDrag(dragType, e?);
+        private _stopDrag(e?);
+        private _drag(e?);
+        private _updateCenterBottom(isHeightResize?);
+        private _setDropHandlePosition();
+        private _onResize();
     }
 }
 declare module zane.web.component {
