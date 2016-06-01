@@ -1,0 +1,11 @@
+.layout {
+    position:relative;
+}
+
+.layout-left,.layout-right,.layout-center,.layout-top,.layout-bottom {
+    position:absolute;
+    border:1px solid #000;
+    background:#252525;
+    z-index:10;
+    overflow:hidden;
+}
