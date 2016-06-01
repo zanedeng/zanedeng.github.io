@@ -165,7 +165,6 @@ module zane.web.component
             this.element.className = "layout";
             this.element.id = this.id;
             this.element.style.width = this.options.width;
-            this.element.style.height = this.options.height;
             this.parent.appendChild(this.element);
 
             var content:string = this.options.content.toString(16);
@@ -650,6 +649,7 @@ module zane.web.component
             }
 
             h += this.options.heightDiff;
+            console.log("layout height:" + h);
             this.element.style.height = h + "px";
             this.layoutHeight = zane.HtmlUtl.height(this.element);
             this.middleWidth = zane.HtmlUtl.width(this.element);
