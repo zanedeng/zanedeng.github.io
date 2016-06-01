@@ -22,8 +22,7 @@ module zane.web.gt
             layoutOptions.content = Layout.CONTENT_TOP|Layout.CONTENT_LEFT|
                 Layout.CONTENT_RIGHT|Layout.CONTENT_CENTER|Layout.CONTENT_CENTER_BOTTOM|Layout.CONTENT_BOTTOM;
             console.log(layoutOptions.content.toString(16));
-            this.layoutComp = new Layout(layoutOptions);
-            document.body.appendChild(this.layoutComp.element);
+            this.layoutComp = new Layout(document.body, layoutOptions);
         }
     }
 }

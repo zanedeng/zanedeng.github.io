@@ -99,6 +99,8 @@ module zane.web.component
          */
         public id:string;
 
+        public parent:HTMLElement;
+
         /**
          * HTMLElement 对象
          */
@@ -128,10 +130,12 @@ module zane.web.component
         // +----------------------------------------------------------------------
         /**
          * 构造函数
+         * @param parent
          * @param options
          */
-        constructor(options:any = null)
+        constructor(parent:HTMLElement, options:any = null)
         {
+            this.parent = parent;
             this.options = options;
             this._init();
             this._preRender();

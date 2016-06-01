@@ -9,11 +9,12 @@ declare module zane.web.component {
         static getAllInstance(): Array<Component>;
         static generateId(prev?: string): string;
         id: string;
+        parent: HTMLElement;
         element: HTMLElement;
         events: any;
         options: any;
         children: any;
-        constructor(options?: any);
+        constructor(parent: HTMLElement, options?: any);
         trigger(arg: string, data?: any): boolean;
         bind(arg: any, handler: Function, context?: any): void;
         unbind(arg: string, handler: Function): void;
@@ -71,7 +72,7 @@ declare module zane.web.component {
         private centerBottomHeight;
         private layoutHeight;
         private rightLeft;
-        constructor(options?: any);
+        constructor(parent: HTMLElement, options?: any);
         protected _init(): void;
         protected _render(): void;
         private _addDropHandle();

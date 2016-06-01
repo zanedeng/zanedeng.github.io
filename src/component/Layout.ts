@@ -136,11 +136,12 @@ module zane.web.component
         // +----------------------------------------------------------------------
         /**
          * 构造函数
+         * @param parent
          * @param options
          */
-        constructor(options:any = null)
+        constructor(parent:HTMLElement, options:any = null)
         {
-            super(options);
+            super(parent, options);
         }
 
         // +----------------------------------------------------------------------
@@ -165,6 +166,7 @@ module zane.web.component
             this.element.id = this.id;
             this.element.style.width = this.options.width;
             this.element.style.height = this.options.height;
+            this.parent.appendChild(this.element);
 
             var content:string = this.options.content.toString(16);
             // top
@@ -628,10 +630,9 @@ module zane.web.component
             var parentHeight = null;
             if (typeof(this.options.height) == "string" && this.options.height.indexOf('%') > 0)
             {
-                var layoutParent = this.element.parentElement;
-                if (layoutParent)
+                if (this.parent)
                 {
-                    if (this.options.inWindow || layoutParent.tagName.toLowerCase() == "body")
+                    if (this.options.inWindow || this.parent.tagName.toLowerCase() == "body")
                     {
                         parentHeight = windowHeight;
                         parentHeight -= parseInt(document.body.style.paddingTop);
@@ -639,10 +640,10 @@ module zane.web.component
                     }
                     else
                     {
-                        parentHeight = zane.HtmlUtl.height(layoutParent);
+                        parentHeight = zane.HtmlUtl.height(this.parent);
                     }
                     h = parentHeight * parseFloat(this.options.height) * 0.01;
-                    if (this.options.inWindow || layoutParent.tagName.toLowerCase() == "body")
+                    if (this.options.inWindow || this.parent.tagName.toLowerCase() == "body")
                         h -= ((zane.HtmlUtl.getOffset(this.element).y - parseInt(document.body.style.paddingTop)));
                 }
             }

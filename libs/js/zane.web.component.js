@@ -10,11 +10,12 @@ var zane;
         var component;
         (function (component) {
             var Component = (function () {
-                function Component(options) {
+                function Component(parent, options) {
                     if (options === void 0) { options = null; }
                     this.events = {};
                     this.options = {};
                     this.children = {};
+                    this.parent = parent;
                     this.options = options;
                     this._init();
                     this._preRender();
@@ -143,9 +144,9 @@ var zane;
         (function (component) {
             var Layout = (function (_super) {
                 __extends(Layout, _super);
-                function Layout(options) {
+                function Layout(parent, options) {
                     if (options === void 0) { options = null; }
-                    _super.call(this, options);
+                    _super.call(this, parent, options);
                     this.topElement = null;
                     this.topContentElement = null;
                     this.topDropElement = null;
@@ -195,6 +196,7 @@ var zane;
                     this.element.id = this.id;
                     this.element.style.width = this.options.width;
                     this.element.style.height = this.options.height;
+                    this.parent.appendChild(this.element);
                     var content = this.options.content.toString(16);
                     if (content.substr(0, 1) == "1") {
                         this.topElement = document.createElement("div");
@@ -561,18 +563,17 @@ var zane;
                     var windowHeight = zane.BrowserUtil.innerHeight();
                     var parentHeight = null;
                     if (typeof (this.options.height) == "string" && this.options.height.indexOf('%') > 0) {
-                        var layoutParent = this.element.parentElement;
-                        if (layoutParent) {
-                            if (this.options.inWindow || layoutParent.tagName.toLowerCase() == "body") {
+                        if (this.parent) {
+                            if (this.options.inWindow || this.parent.tagName.toLowerCase() == "body") {
                                 parentHeight = windowHeight;
                                 parentHeight -= parseInt(document.body.style.paddingTop);
                                 parentHeight -= parseInt(document.body.style.paddingBottom);
                             }
                             else {
-                                parentHeight = zane.HtmlUtl.height(layoutParent);
+                                parentHeight = zane.HtmlUtl.height(this.parent);
                             }
                             h = parentHeight * parseFloat(this.options.height) * 0.01;
-                            if (this.options.inWindow || layoutParent.tagName.toLowerCase() == "body")
+                            if (this.options.inWindow || this.parent.tagName.toLowerCase() == "body")
                                 h -= ((zane.HtmlUtl.getOffset(this.element).y - parseInt(document.body.style.paddingTop)));
                         }
                     }
