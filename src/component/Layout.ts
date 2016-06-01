@@ -243,6 +243,16 @@ module zane.web.component
                 }
             }
 
+            this.leftCollapseElement = document.createElement("div");
+            this.leftCollapseElement.className = "layout-collapse-left";
+            this.leftCollapseElement.style.display = "none";
+            this.element.appendChild(this.leftCollapseElement);
+
+            this.rightCollapseElement = document.createElement("div");
+            this.rightCollapseElement.className = "layout-collapse-right";
+            this.rightCollapseElement.style.display = "none";
+            this.element.appendChild(this.rightCollapseElement);
+
             this.lockElement = document.createElement("div");
             this.lockElement.className = "layout-lock";
             this.element.appendChild(this.lockElement);
