@@ -155,9 +155,11 @@ var zane;
                     this.leftElement = null;
                     this.leftContentElement = null;
                     this.leftDropElement = null;
+                    this.leftCollapseElement = null;
                     this.rightElement = null;
                     this.rightContentElement = null;
                     this.rightDropElement = null;
+                    this.rightCollapseElement = null;
                     this.centerElement = null;
                     this.centerContentElement = null;
                     this.centerBottomElement = null;
@@ -169,6 +171,7 @@ var zane;
                     this.draggingMaskElement = null;
                     this.xResize = null;
                     this.yResize = null;
+                    this.middleWidth = 0;
                     this.middleHeight = 0;
                     this.middleTop = 0;
                     this.leftWidth = 0;
@@ -177,6 +180,8 @@ var zane;
                     this.centerLeft = 0;
                     this.centerWidth = 0;
                     this.centerBottomHeight = 0;
+                    this.layoutHeight = 0;
+                    this.rightLeft = 0;
                 }
                 Layout.prototype._init = function () {
                     if (!this.options)
@@ -184,6 +189,7 @@ var zane;
                     this.id = this.options.id || component.Component.generateId();
                 };
                 Layout.prototype._render = function () {
+                    var self = this;
                     this.element = document.createElement("div");
                     this.element.className = "layout";
                     this.element.id = this.id;
@@ -251,6 +257,11 @@ var zane;
                     this.lockElement.className = "layout-lock";
                     this.element.appendChild(this.lockElement);
                     this._addDropHandle();
+                    this._build();
+                    window.onresize = function (e) {
+                        self._onResize();
+                    };
+                    this.draggingMaskElement.style.height = zane.HtmlUtl.height(this.element) + "px";
                 };
                 Layout.prototype._addDropHandle = function () {
                     var self = this;
@@ -362,6 +373,28 @@ var zane;
                         self._drag(e);
                     };
                 };
+                Layout.prototype._build = function () {
+                    this.middleTop = 0;
+                    if (this.topElement) {
+                        this.middleTop += zane.HtmlUtl.height(this.topElement);
+                        this.middleTop += parseInt(this.topElement.style.borderTopWidth);
+                        this.middleTop += parseInt(this.topElement.style.borderBottomWidth);
+                        this.middleTop += this.options.space;
+                    }
+                    if (this.leftElement) {
+                        this.leftElement.style.top = this.middleTop + "px";
+                    }
+                    if (this.centerElement) {
+                        this.centerElement.style.top = this.middleTop + "px";
+                    }
+                    if (this.rightElement) {
+                        this.rightElement.style.top = this.middleTop + "px";
+                    }
+                    if (this.leftElement)
+                        this.leftElement.style.left = "0";
+                    this._onResize();
+                    this._onResize();
+                };
                 Layout.prototype._stopDrag = function (e) {
                     if (e === void 0) { e = null; }
                     var diff;
@@ -441,7 +474,7 @@ var zane;
                         }
                     }
                     this.trigger('endResize', [{
-                            direction: this.dragType ? this.dragType.replace(/resize/, '') : '',
+                            direction: this.dragType ? this.dragType.toLowerCase().replace(/resize/, '') : '',
                             diff: diff
                         }, e]);
                     this._setDropHandlePosition();
@@ -515,6 +548,129 @@ var zane;
                     }
                 };
                 Layout.prototype._onResize = function () {
+                    var h = 0;
+                    var oldHeight = zane.HtmlUtl.height(this.element);
+                    var windowHeight = zane.BrowserUtil.innerHeight();
+                    var parentHeight = null;
+                    if (typeof (this.options.height) == "string" && this.options.height.indexOf('%') > 0) {
+                        var layoutParent = this.element.parentElement;
+                        if (layoutParent) {
+                            if (this.options.inWindow || layoutParent.tagName.toLowerCase() == "body") {
+                                parentHeight = windowHeight;
+                                parentHeight -= parseInt(document.body.style.paddingTop);
+                                parentHeight -= parseInt(document.body.style.paddingBottom);
+                            }
+                            else {
+                                parentHeight = zane.HtmlUtl.height(layoutParent);
+                            }
+                            h = parentHeight * parseFloat(this.options.height) * 0.01;
+                            if (this.options.inWindow || layoutParent.tagName.toLowerCase() == "body")
+                                h -= ((zane.HtmlUtl.getOffset(this.element).y - parseInt(document.body.style.paddingTop)));
+                        }
+                    }
+                    else {
+                        h = parseInt(this.options.height);
+                    }
+                    h += this.options.heightDiff;
+                    this.element.style.height = h + "px";
+                    this.layoutHeight = zane.HtmlUtl.height(this.element);
+                    this.middleWidth = zane.HtmlUtl.width(this.element);
+                    this.middleHeight = zane.HtmlUtl.height(this.element);
+                    if (this.topElement) {
+                        this.middleHeight -= zane.HtmlUtl.height(this.topElement);
+                        this.middleHeight -= parseInt(this.topElement.style.borderTopWidth);
+                        this.middleHeight -= parseInt(this.topElement.style.borderBottomWidth);
+                        this.middleHeight -= this.options.space;
+                    }
+                    if (this.bottomElement) {
+                        this.middleHeight -= zane.HtmlUtl.height(this.bottomElement);
+                        this.middleHeight -= parseInt(this.bottomElement.style.borderTopWidth);
+                        this.middleHeight -= parseInt(this.bottomElement.style.borderBottomWidth);
+                        this.middleHeight -= this.options.space;
+                    }
+                    this.middleHeight -= 2;
+                    if (this.hasBind('heightChanged') && this.layoutHeight != oldHeight) {
+                        this.trigger('heightChanged', [{ layoutHeight: this.layoutHeight, diff: this.layoutHeight - oldHeight, middleHeight: this.middleHeight }]);
+                    }
+                    if (this.centerElement) {
+                        this.centerWidth = this.middleWidth;
+                        this.centerLeft = 0;
+                        if (this.leftElement) {
+                            if (this.options.isLeftCollapse) {
+                                var cw = zane.HtmlUtl.width(this.leftCollapseElement);
+                                this.centerWidth -= cw;
+                                this.centerLeft += cw;
+                            }
+                            else {
+                                this.centerWidth -= this.leftWidth;
+                                this.centerLeft += this.leftWidth;
+                            }
+                            var borderLeftWidth = parseInt(this.leftCollapseElement.style.borderLeftWidth);
+                            this.centerWidth -= borderLeftWidth;
+                            this.centerLeft += borderLeftWidth;
+                            var borderRightWidth = parseInt(this.leftCollapseElement.style.borderRightWidth);
+                            this.centerWidth -= borderRightWidth;
+                            this.centerLeft += borderRightWidth;
+                            var left = parseInt(this.leftCollapseElement.style.left);
+                            this.centerWidth -= left;
+                            this.centerLeft += left;
+                            this.centerWidth -= this.options.space;
+                            this.centerLeft += this.options.space;
+                        }
+                        if (this.rightElement) {
+                            if (this.options.isRightCollapse) {
+                                this.centerWidth -= zane.HtmlUtl.width(this.rightCollapseElement);
+                            }
+                            else {
+                                this.centerWidth -= this.rightWidth;
+                            }
+                            this.centerWidth -= parseInt(this.rightCollapseElement.style.borderLeftWidth);
+                            this.centerWidth -= parseInt(this.rightCollapseElement.style.borderRightWidth);
+                            this.centerWidth -= parseInt(this.rightCollapseElement.style.left);
+                            this.centerWidth -= this.options.space;
+                        }
+                        this.centerElement.style.left = this.centerLeft + "px";
+                        if (this.centerWidth >= 0)
+                            this.centerElement.style.width = this.centerWidth + "px";
+                        if (this.middleHeight >= 0) {
+                            this.centerElement.style.height = this.middleHeight + "px";
+                            this.centerContentElement.style.height = this.middleHeight + "px";
+                        }
+                        this._updateCenterBottom(true);
+                    }
+                    if (this.leftElement) {
+                        this.leftCollapseElement.style.height = this.middleHeight + "px";
+                        this.leftElement.style.height = this.middleHeight + "px";
+                    }
+                    if (this.rightElement) {
+                        this.rightCollapseElement.style.height = this.middleHeight + "px";
+                        this.rightElement.style.height = this.middleHeight + "px";
+                        this.rightLeft = 0;
+                        if (this.leftElement) {
+                            if (this.options.isLeftCollapse) {
+                                this.rightLeft += zane.HtmlUtl.width(this.leftCollapseElement);
+                            }
+                            else {
+                                this.rightLeft += zane.HtmlUtl.width(this.leftElement);
+                            }
+                            this.rightLeft += parseInt(this.leftCollapseElement.style.borderLeftWidth);
+                            this.rightLeft += parseInt(this.leftCollapseElement.style.borderRightWidth);
+                            this.rightLeft += parseInt(this.leftCollapseElement.style.left);
+                            this.rightLeft += this.options.space;
+                        }
+                        if (this.centerElement) {
+                            this.rightLeft += zane.HtmlUtl.width(this.centerElement);
+                            this.rightLeft += parseInt(this.centerElement.style.borderLeftWidth);
+                            this.rightLeft += parseInt(this.centerElement.style.borderRightWidth);
+                            this.rightLeft += this.options.space;
+                        }
+                        this.rightElement.style.left = this.rightLeft + "px";
+                    }
+                    if (this.bottomElement) {
+                        this.bottomTop = this.layoutHeight - zane.HtmlUtl.height(this.bottomElement) - 2;
+                        this.bottomElement.style.top = this.bottomTop + "px";
+                    }
+                    this._setDropHandlePosition();
                 };
                 Layout.CONTENT_NONE = 0x000000;
                 Layout.CONTENT_TOP = 0x100000;

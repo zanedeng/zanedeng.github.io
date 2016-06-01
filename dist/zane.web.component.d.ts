@@ -43,9 +43,11 @@ declare module zane.web.component {
         leftElement: HTMLElement;
         leftContentElement: HTMLElement;
         leftDropElement: HTMLElement;
+        leftCollapseElement: HTMLElement;
         rightElement: HTMLElement;
         rightContentElement: HTMLElement;
         rightDropElement: HTMLElement;
+        rightCollapseElement: HTMLElement;
         centerElement: HTMLElement;
         centerContentElement: HTMLElement;
         centerBottomElement: HTMLElement;
@@ -58,6 +60,7 @@ declare module zane.web.component {
         private dragType;
         private xResize;
         private yResize;
+        private middleWidth;
         private middleHeight;
         private middleTop;
         private leftWidth;
@@ -66,11 +69,14 @@ declare module zane.web.component {
         private centerLeft;
         private centerWidth;
         private centerBottomHeight;
+        private layoutHeight;
+        private rightLeft;
         constructor(options?: any);
         protected _init(): void;
         protected _render(): void;
         private _addDropHandle();
         private _startDrag(dragType, e?);
+        private _build();
         private _stopDrag(e?);
         private _drag(e?);
         private _updateCenterBottom(isHeightResize?);
