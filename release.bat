@@ -1,4 +1,4 @@
-@mode con cols=50 lines=30
+@mode con cols=60 lines=30
 @title 一键发布工具 
 @color 0a
 @echo off
