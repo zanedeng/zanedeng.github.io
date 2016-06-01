@@ -153,6 +153,7 @@ module zane.web.component
                 this.leftElement.style.left = "0";
                 this.leftElement.style.width = this.options.leftWidth + "px";
                 this.leftElement.style.minWidth = this.options.minLeftWidth + "px";
+                this.element.appendChild(this.leftElement);
 
                 this.leftContentElement = document.createElement("div");
                 this.leftContentElement.className = "layout-content";
@@ -165,6 +166,7 @@ module zane.web.component
                 this.rightElement.className = "layout-right";
                 this.rightElement.style.width = this.options.rightWidth + "px";
                 this.rightElement.style.minWidth = this.options.minRightWidth + "px";
+                this.element.appendChild(this.rightElement);
 
                 this.rightContentElement = document.createElement("div");
                 this.rightContentElement.className = "layout-content";
@@ -176,6 +178,7 @@ module zane.web.component
                 this.bottomElement = document.createElement("div");
                 this.bottomElement.className = "layout-bottom";
                 this.bottomElement.style.height = this.options.bottomHeight + "px";
+                this.element.appendChild(this.bottomElement);
 
                 this.bottomContentElement = document.createElement("div");
                 this.bottomContentElement.className = "layout-content";
@@ -187,6 +190,7 @@ module zane.web.component
                 this.centerElement = document.createElement("div");
                 this.centerElement.className = "layout-center";
                 this.centerElement.style.width = this.options.centerWidth;
+                this.element.appendChild(this.centerElement);
 
                 this.centerContentElement = document.createElement("div");
                 this.centerContentElement.className = "layout-content";
