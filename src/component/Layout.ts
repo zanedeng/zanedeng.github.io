@@ -266,8 +266,8 @@ module zane.web.component
             this.lockElement.className = "layout-lock";
             this.element.appendChild(this.lockElement);
 
-            this._addDropHandle();
             this._build();
+            this._addDropHandle();
             this.draggingMaskElement.style.height = parseInt(this.element.style.height) + "px";
             window.addEventListener("resize", this.resizeBindFun, false);
         }
