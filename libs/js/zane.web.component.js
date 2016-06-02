@@ -647,7 +647,7 @@ var zane;
                             tempNum = parseInt(this.rightCollapseElement.style.left) || 0;
                             this.centerWidth -= tempNum;
                             this.centerWidth -= this.options.space;
-                            this.centerWidth -= 1;
+                            this.centerWidth -= 3;
                         }
                         this.centerElement.style.left = this.centerLeft + "px";
                         if (this.centerWidth >= 0) {
