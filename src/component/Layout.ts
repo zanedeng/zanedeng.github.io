@@ -440,7 +440,6 @@ module zane.web.component
             //set left
             if (this.leftElement) this.leftElement.style.left = "0";
             this._onResize();
-            this._onResize();
         }
         
         private _stopDrag(e:any = null):void
@@ -828,6 +827,8 @@ module zane.web.component
                 this.bottomElement.style.top = this.bottomTop + "px";
             }
             this._setDropHandlePosition();
+
+            console.log("-------------------------");
         }
     }
 }

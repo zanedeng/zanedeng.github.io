@@ -380,7 +380,6 @@ var zane;
                     if (this.leftElement)
                         this.leftElement.style.left = "0";
                     this._onResize();
-                    this._onResize();
                 };
                 Layout.prototype._stopDrag = function (e) {
                     if (e === void 0) { e = null; }
@@ -699,6 +698,7 @@ var zane;
                         this.bottomElement.style.top = this.bottomTop + "px";
                     }
                     this._setDropHandlePosition();
+                    console.log("-------------------------");
                 };
                 Layout.CONTENT_NONE = 0x000000;
                 Layout.CONTENT_TOP = 0x100000;
