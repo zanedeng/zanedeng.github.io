@@ -715,6 +715,7 @@ var zane;
                             this.centerWidth -= this.options.space;
                         }
                         this.centerElement.style.left = this.centerLeft + "px";
+                        console.log("centerWidth:" + this.centerWidth);
                         if (this.centerWidth >= 0) {
                             this.centerElement.style.width = this.centerWidth + "px";
                         }
