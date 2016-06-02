@@ -600,7 +600,6 @@ var zane;
                         this.middleHeight -= tempNum;
                         this.middleHeight -= this.options.space;
                     }
-                    this.middleHeight -= 2;
                     if (this.hasBind('heightChanged') && this.layoutHeight != oldHeight) {
                         this.trigger('heightChanged', [{
                                 layoutHeight: this.layoutHeight,
