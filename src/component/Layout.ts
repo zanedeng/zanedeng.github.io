@@ -266,15 +266,14 @@ module zane.web.component
 
         private _addDropHandle():void
         {
+            var self = this;
             // left drop element
             if (this.leftElement && this.options.allowLeftResize)
             {
                 this.leftDropElement = document.createElement("div");
                 this.leftDropElement.className = "layout-drop-left";
-                this.leftDropElement.style.display = "";
-                this.leftDropElement.onmousedown = function (e) {
-                    self._startDrag("leftResize", e);
-                };
+                this.leftDropElement.style.display = "block";
+                this.leftDropElement.addEventListener("mousedown", this._startDrag.bind(this, ["leftResize"]), false);
                 this.element.appendChild(this.leftDropElement);
             }
             // right drop element
@@ -282,44 +281,36 @@ module zane.web.component
             {
                 this.rightDropElement = document.createElement("div");
                 this.rightDropElement.className = "layout-drop-right";
-                this.rightDropElement.onmousedown = function (e) {
-                    self._startDrag("rightResize", e);
-                };
+                this.rightDropElement.style.display = "block";
+                this.rightDropElement.addEventListener("mousedown", this._startDrag.bind(this, ["rightResize"]), false);
                 this.element.appendChild(this.rightDropElement);
-                zane.HtmlUtl.show(this.rightDropElement);
             }
             // top drop element
             if (this.topElement && this.options.allowTopResize)
             {
                 this.topDropElement = document.createElement("div");
                 this.topDropElement.className = "layout-drop-top";
-                this.topDropElement.onmousedown = function (e) {
-                    self._startDrag("topResize", e);
-                };
+                this.topDropElement.style.display = "block";
+                this.topDropElement.addEventListener("mousedown", this._startDrag.bind(this, ["topResize"]), false);
                 this.element.appendChild(this.topDropElement);
-                zane.HtmlUtl.show(this.topDropElement);
             }
             // bottom drop element
             if (this.bottomElement && this.options.allowBottomResize)
             {
                 this.bottomDropElement = document.createElement("div");
                 this.bottomDropElement.className = "layout-drop-bottom";
-                this.bottomDropElement.onmousedown = function (e) {
-                    self._startDrag("bottomResize", e);
-                };
+                this.bottomDropElement.style.display = "block";
+                this.bottomDropElement.addEventListener("mousedown", this._startDrag.bind(this, ["bottomResize"]), false);
                 this.element.appendChild(this.bottomDropElement);
-                zane.HtmlUtl.show(this.bottomDropElement);
             }
             // centerBottom drop element
             if (this.centerBottomElement && this.options.allowCenterBottomResize)
             {
                 this.centerBottomDropElement = document.createElement("div");
                 this.centerBottomDropElement.className = "layout-drop-center-bottom";
-                this.centerBottomDropElement.onmousedown = function (e) {
-                    self._startDrag("centerBottomResize", e);
-                };
+                this.centerBottomDropElement.style.display = "block";
+                this.centerBottomDropElement.addEventListener("mousedown", this._startDrag.bind(this, ["centerBottomResize"]), false);
                 this.element.appendChild(this.centerBottomDropElement);
-                zane.HtmlUtl.show(this.centerBottomDropElement);
             }
             this.draggingXLineElement = document.createElement("div");
             this.draggingXLineElement.className = "layout-dragging-xline";
@@ -334,7 +325,7 @@ module zane.web.component
             this.element.appendChild(this.draggingMaskElement);
         }
 
-        private _startDrag(dragType:string, e:any = null):void
+        private _startDrag(e:any, dragType:string):void
         {
             this.dragType = dragType;
             if (dragType == 'leftResize' || dragType == 'rightResize')
