@@ -360,9 +360,9 @@ var zane;
                     this.middleTop = 0;
                     if (this.topElement) {
                         this.middleTop += zane.HtmlUtl.height(this.topElement);
-                        tempNum = parseInt(this.topElement.style.borderTopWidth) || 1;
+                        tempNum = parseInt(this.topElement.style.borderTopWidth) || 0;
                         this.middleTop += tempNum;
-                        tempNum = parseInt(this.topElement.style.borderBottomWidth) || 1;
+                        tempNum = parseInt(this.topElement.style.borderBottomWidth) || 0;
                         this.middleTop += tempNum;
                         this.middleTop += this.options.space;
                     }
