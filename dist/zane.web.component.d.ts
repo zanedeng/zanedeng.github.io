@@ -74,6 +74,7 @@ declare module zane.web.component {
         private rightLeft;
         private isLeftCollapse;
         private isRightCollapse;
+        private isResize;
         private stopDragBindFun;
         private dragBindFun;
         private resizeBindFun;

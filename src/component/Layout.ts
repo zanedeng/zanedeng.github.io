@@ -132,6 +132,7 @@ module zane.web.component
         private rightLeft:number;
         private isLeftCollapse:boolean;
         private isRightCollapse:boolean;
+        private isResize:boolean;
 
         private stopDragBindFun:any;
         private dragBindFun:any;
@@ -737,6 +738,12 @@ module zane.web.component
 
         private _onResize()
         {
+            if (this.isResize)
+            {
+                setTimeout(this.resizeBindFun, 200);
+                return;
+            }
+            this.isResize = true;
             var h = 0;
             var oldHeight = zane.HtmlUtl.height(this.element);
             var windowHeight = zane.BrowserUtil.innerHeight();
@@ -933,6 +940,7 @@ module zane.web.component
                 this.bottomElement.style.top = this.bottomTop + "px";
             }
             this._setDropHandlePosition();
+            this.isResize = false;
         }
     }
 }

@@ -604,6 +604,11 @@ var zane;
                     }
                 };
                 Layout.prototype._onResize = function () {
+                    if (this.isResize) {
+                        setTimeout(this.resizeBindFun, 200);
+                        return;
+                    }
+                    this.isResize = true;
                     var h = 0;
                     var oldHeight = zane.HtmlUtl.height(this.element);
                     var windowHeight = zane.BrowserUtil.innerHeight();
@@ -766,6 +771,7 @@ var zane;
                         this.bottomElement.style.top = this.bottomTop + "px";
                     }
                     this._setDropHandlePosition();
+                    this.isResize = false;
                 };
                 Layout.CONTENT_NONE = 0x000000;
                 Layout.CONTENT_TOP = 0x100000;
