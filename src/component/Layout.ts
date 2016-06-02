@@ -325,11 +325,10 @@ module zane.web.component
             this.element.appendChild(this.draggingMaskElement);
         }
 
-        private _startDrag(e:any, dragType:string):void
+        private _startDrag(args:Array<any>, e:any = null):void
         {
-            console.log(arguments);
-            this.dragType = dragType;
-            if (dragType == 'leftResize' || dragType == 'rightResize')
+            this.dragType = args[0];
+            if (this.dragType == 'leftResize' || this.dragType == 'rightResize')
             {
                 this.xResize = {startX:e.pageX, diff:0};
                 this.draggingYLineElement.style.left = (e.pageX - zane.HtmlUtl.getOffset(this.element).x) + "px";
@@ -343,7 +342,7 @@ module zane.web.component
                 this.draggingMaskElement.style.height = zane.HtmlUtl.height(this.element) + "px";
                 zane.HtmlUtl.show(this.draggingMaskElement);
             }
-            else if (dragType == 'topResize' || dragType == 'bottomResize')
+            else if (this.dragType == 'topResize' || this.dragType == 'bottomResize')
             {
                 this.yResize = {startY:e.pageY, diff:0};
                 this.draggingXLineElement.style.top = (e.pageY - zane.HtmlUtl.getOffset(this.element).y) + "px";
@@ -356,7 +355,7 @@ module zane.web.component
                 this.draggingMaskElement.style.height = zane.HtmlUtl.height(this.element) + "px";
                 zane.HtmlUtl.show(this.draggingMaskElement);
             }
-            else if (dragType == 'centerBottomResize')
+            else if (this.dragType == 'centerBottomResize')
             {
                 this.yResize = {startY:e.pageY, diff:0};
                 this.draggingXLineElement.style.top = (e.pageY - zane.HtmlUtl.getOffset(this.element).y) + "px";

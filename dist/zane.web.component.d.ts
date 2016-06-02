@@ -76,7 +76,7 @@ declare module zane.web.component {
         protected _init(): void;
         protected _render(): void;
         private _addDropHandle();
-        private _startDrag(e, dragType);
+        private _startDrag(args, e?);
         private _build();
         private _stopDrag(e?);
         private _drag(e?);

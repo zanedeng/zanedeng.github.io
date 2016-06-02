@@ -292,10 +292,10 @@ var zane;
                     this.draggingMaskElement.className = "dragging-mask";
                     this.element.appendChild(this.draggingMaskElement);
                 };
-                Layout.prototype._startDrag = function (e, dragType) {
-                    console.log(arguments);
-                    this.dragType = dragType;
-                    if (dragType == 'leftResize' || dragType == 'rightResize') {
+                Layout.prototype._startDrag = function (args, e) {
+                    if (e === void 0) { e = null; }
+                    this.dragType = args[0];
+                    if (this.dragType == 'leftResize' || this.dragType == 'rightResize') {
                         this.xResize = { startX: e.pageX, diff: 0 };
                         this.draggingYLineElement.style.left = (e.pageX - zane.HtmlUtl.getOffset(this.element).x) + "px";
                         this.draggingYLineElement.style.top = this.middleTop + "px";
@@ -306,7 +306,7 @@ var zane;
                         this.draggingMaskElement.style.height = zane.HtmlUtl.height(this.element) + "px";
                         zane.HtmlUtl.show(this.draggingMaskElement);
                     }
-                    else if (dragType == 'topResize' || dragType == 'bottomResize') {
+                    else if (this.dragType == 'topResize' || this.dragType == 'bottomResize') {
                         this.yResize = { startY: e.pageY, diff: 0 };
                         this.draggingXLineElement.style.top = (e.pageY - zane.HtmlUtl.getOffset(this.element).y) + "px";
                         this.draggingXLineElement.style.width = zane.HtmlUtl.width(this.element) + "px";
@@ -316,7 +316,7 @@ var zane;
                         this.draggingMaskElement.style.height = zane.HtmlUtl.height(this.element) + "px";
                         zane.HtmlUtl.show(this.draggingMaskElement);
                     }
-                    else if (dragType == 'centerBottomResize') {
+                    else if (this.dragType == 'centerBottomResize') {
                         this.yResize = { startY: e.pageY, diff: 0 };
                         this.draggingXLineElement.style.top = (e.pageY - zane.HtmlUtl.getOffset(this.element).y) + "px";
                         this.draggingXLineElement.style.width = zane.HtmlUtl.width(this.element) + "px";
