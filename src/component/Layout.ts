@@ -261,7 +261,7 @@ module zane.web.component
             this._addDropHandle();
             this._build();
             this.draggingMaskElement.style.height = zane.HtmlUtl.height(this.element) + "px";
-            window.addEventListener("resize", this._render.bind(this), false);
+            window.addEventListener("resize", this._onResize.bind(this), false);
         }
 
         private _addDropHandle():void
@@ -641,7 +641,6 @@ module zane.web.component
 
         private _onResize()
         {
-            console.log(this);
             var h = 0;
             var oldHeight = zane.HtmlUtl.height(this.element);
             var windowHeight = zane.BrowserUtil.innerHeight();
@@ -672,7 +671,6 @@ module zane.web.component
             {
                 h = parseInt(this.options.height);
             }
-            console.log(this.topElement);
             h += this.options.heightDiff;
             this.element.style.height = h + "px";
             this.layoutHeight = zane.HtmlUtl.height(this.element);

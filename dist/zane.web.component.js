@@ -268,7 +268,7 @@ var zane;
                     this._addDropHandle();
                     this._build();
                     this.draggingMaskElement.style.height = zane.HtmlUtl.height(this.element) + "px";
-                    window.addEventListener("resize", this._render.bind(this), false);
+                    window.addEventListener("resize", this._onResize.bind(this), false);
                 };
                 Layout.prototype._addDropHandle = function () {
                     var self = this;
@@ -575,7 +575,6 @@ var zane;
                     }
                 };
                 Layout.prototype._onResize = function () {
-                    console.log(this);
                     var h = 0;
                     var oldHeight = zane.HtmlUtl.height(this.element);
                     var windowHeight = zane.BrowserUtil.innerHeight();
@@ -601,7 +600,6 @@ var zane;
                     else {
                         h = parseInt(this.options.height);
                     }
-                    console.log(this.topElement);
                     h += this.options.heightDiff;
                     this.element.style.height = h + "px";
                     this.layoutHeight = zane.HtmlUtl.height(this.element);
