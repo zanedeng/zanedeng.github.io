@@ -9,7 +9,7 @@ var zane;
         BrowserUtil._iOSVersion = function () {
             if (/iP(hone|od|ad)/.test(navigator.platform)) {
                 var v = (navigator.appVersion).match(/OS (\d+)_(\d+)_?(\d+)?/);
-                return [parseInt(v[1], 10), parseInt(v[2], 10), parseInt(v[3] || 0, 10)];
+                return [parseInt(v[1], 10), parseInt(v[2], 10), parseInt(v[3] || "0", 10)];
             }
             return [0, 0, 0];
         };
@@ -498,7 +498,7 @@ var zane;
                     display = e.style.display;
                     if (show) {
                         if (display === 'none') {
-                            values[index] = '';
+                            values[index] = 'block';
                         }
                     }
                     else {
