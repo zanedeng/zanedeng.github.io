@@ -581,12 +581,12 @@ module zane.web.component
 
                     var centerBottomHeight = this.centerBottomHeight || this.options.centerBottomHeight;
                     var centerHeight = zane.HtmlUtl.height(this.centerElement);
-                    var centerTop = parseInt(this.centerElement.style.top);
+                    var centerTop = parseInt(this.centerElement.style.top) || 0;
                     this.centerBottomElement.style.height = centerBottomHeight + "px";
                     this.centerBottomElement.style.top = (centerTop + centerHeight - centerBottomHeight + 2) + "px";
                     this.centerElement.style.height = (centerHeight - centerBottomHeight - 2) + "px";
                 }
-                var centerLeft = parseInt(this.centerElement.style.left);
+                var centerLeft = parseInt(this.centerElement.style.left) || 0;
                 this.centerBottomElement.style.width = zane.HtmlUtl.width(this.centerElement) + "px";
                 this.centerBottomElement.style.left = centerLeft + "px";
             }
@@ -594,32 +594,39 @@ module zane.web.component
 
         private _setDropHandlePosition()
         {
+            var tempNum = 0;
             if (this.leftDropElement)
             {
-                this.leftDropElement.style.left = (zane.HtmlUtl.width(this.leftElement) + parseInt(this.leftElement.style.left)) + "px";
+                tempNum = parseInt(this.leftElement.style.left) || 0;
+                this.leftDropElement.style.left = (zane.HtmlUtl.width(this.leftElement) + tempNum) + "px";
                 this.leftDropElement.style.top = this.middleTop + "px";
                 this.leftDropElement.style.height = this.middleHeight + "px";
             }
             if (this.rightDropElement)
             {
-                this.rightDropElement.style.left = (parseInt(this.rightElement.style.left) - this.options.space) + "px";
+                tempNum = parseInt(this.rightElement.style.left) || 0;
+                this.rightDropElement.style.left = (tempNum - this.options.space) + "px";
                 this.rightDropElement.style.top = this.middleTop + "px";
                 this.rightDropElement.style.left = this.middleHeight + "px";
             }
             if (this.topDropElement)
             {
-                this.topDropElement.style.top = (zane.HtmlUtl.height(this.topElement) + parseInt(this.topElement.style.top)) + "px";
+                tempNum = parseInt(this.topElement.style.top) || 0;
+                this.topDropElement.style.top = (zane.HtmlUtl.height(this.topElement) + tempNum) + "px";
                 this.topDropElement.style.width = zane.HtmlUtl.width(this.topElement) + "px";
             }
             if (this.bottomDropElement)
             {
-                this.bottomDropElement.style.top = (parseInt(this.bottomElement.style.top) - this.options.space) + "px";
+                tempNum = parseInt(this.bottomElement.style.top) || 0;
+                this.bottomDropElement.style.top = (tempNum - this.options.space) + "px";
                 this.bottomDropElement.style.width = zane.HtmlUtl.width(this.bottomElement) + "px";
             }
             if (this.centerBottomDropElement)
             {
-                this.centerBottomDropElement.style.top = (parseInt(this.centerBottomElement.style.top) - this.options.space) + "px";
-                this.centerBottomDropElement.style.left = parseInt(this.centerElement.style.left) + "px";
+                tempNum = parseInt(this.centerBottomElement.style.top) || 0;
+                this.centerBottomDropElement.style.top = (tempNum - this.options.space) + "px";
+                tempNum = parseInt(this.centerElement.style.left) || 0;
+                this.centerBottomDropElement.style.left = tempNum + "px";
                 this.centerBottomDropElement.style.width = zane.HtmlUtl.width(this.centerElement) + "px";
             }
         }
