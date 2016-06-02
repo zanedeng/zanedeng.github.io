@@ -72,10 +72,14 @@ declare module zane.web.component {
         private centerBottomHeight;
         private layoutHeight;
         private rightLeft;
+        private isLeftCollapse;
+        private isRightCollapse;
         private stopDragBindFun;
         private dragBindFun;
         private resizeBindFun;
         constructor(parent: HTMLElement, options?: any);
+        setLeftCollapse(isCollapse: boolean): boolean;
+        setRightCollapse(isCollapse: boolean): boolean;
         protected _init(): void;
         protected _render(): void;
         private _addDropHandle();

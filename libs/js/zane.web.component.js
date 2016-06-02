@@ -148,6 +148,50 @@ var zane;
                     if (options === void 0) { options = null; }
                     _super.call(this, parent, options);
                 }
+                Layout.prototype.setLeftCollapse = function (isCollapse) {
+                    if (!this.leftElement)
+                        return false;
+                    this.isLeftCollapse = isCollapse;
+                    var show = zane.HtmlUtl.show;
+                    var hide = zane.HtmlUtl.hide;
+                    if (this.isLeftCollapse) {
+                        show(this.leftCollapseElement);
+                        if (this.leftDropElement)
+                            hide(this.leftDropElement);
+                        hide(this.leftElement);
+                    }
+                    else {
+                        hide(this.leftCollapseElement);
+                        if (this.leftDropElement)
+                            show(this.leftDropElement);
+                        show(this.leftElement);
+                    }
+                    this._onResize();
+                    this.trigger('leftToggle', [isCollapse]);
+                    return true;
+                };
+                Layout.prototype.setRightCollapse = function (isCollapse) {
+                    if (!this.rightElement)
+                        return false;
+                    this.isRightCollapse = isCollapse;
+                    var show = zane.HtmlUtl.show;
+                    var hide = zane.HtmlUtl.hide;
+                    if (this.isRightCollapse) {
+                        show(this.rightCollapseElement);
+                        if (this.rightDropElement)
+                            hide(this.rightDropElement);
+                        hide(this.rightElement);
+                    }
+                    else {
+                        hide(this.rightCollapseElement);
+                        if (this.rightDropElement)
+                            show(this.rightDropElement);
+                        show(this.rightElement);
+                    }
+                    this._onResize();
+                    this.trigger('rightToggle', [isCollapse]);
+                    return true;
+                };
                 Layout.prototype._init = function () {
                     if (!this.options)
                         this.options = new component.LayoutOptions();

@@ -130,6 +130,8 @@ module zane.web.component
         private centerBottomHeight:number;
         private layoutHeight:number;
         private rightLeft:number;
+        private isLeftCollapse:boolean;
+        private isRightCollapse:boolean;
 
         private stopDragBindFun:any;
         private dragBindFun:any;
@@ -146,6 +148,66 @@ module zane.web.component
         constructor(parent:HTMLElement, options:any = null)
         {
             super(parent, options);
+        }
+
+        // +----------------------------------------------------------------------
+        // | public method
+        // +----------------------------------------------------------------------
+
+        /**
+         *
+         * @param isCollapse
+         * @returns {boolean}
+         */
+        public setLeftCollapse(isCollapse:boolean):boolean
+        {
+            if (!this.leftElement) return false;
+            this.isLeftCollapse = isCollapse;
+            var show = zane.HtmlUtl.show;
+            var hide = zane.HtmlUtl.hide;
+            if (this.isLeftCollapse)
+            {
+                show(this.leftCollapseElement);
+                if (this.leftDropElement) hide(this.leftDropElement);
+                hide(this.leftElement);
+            }
+            else
+            {
+                hide(this.leftCollapseElement);
+                if (this.leftDropElement) show(this.leftDropElement);
+                show(this.leftElement);
+            }
+            this._onResize();
+            this.trigger('leftToggle', [isCollapse]);
+            return true;
+        }
+
+        /**
+         *
+         * @param isCollapse
+         * @returns {boolean}
+         */
+        public setRightCollapse(isCollapse:boolean):boolean
+        {
+            if (!this.rightElement) return false;
+            this.isRightCollapse = isCollapse;
+            var show = zane.HtmlUtl.show;
+            var hide = zane.HtmlUtl.hide;
+            if (this.isRightCollapse)
+            {
+                show(this.rightCollapseElement);
+                if (this.rightDropElement) hide(this.rightDropElement);
+                hide(this.rightElement);
+            }
+            else
+            {
+                hide(this.rightCollapseElement);
+                if (this.rightDropElement) show(this.rightDropElement);
+                show(this.rightElement);
+            }
+            this._onResize();
+            this.trigger('rightToggle', [isCollapse]);
+            return true;
         }
 
         // +----------------------------------------------------------------------
