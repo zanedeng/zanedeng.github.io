@@ -409,7 +409,7 @@ var zane;
                 };
                 Layout.prototype._stopDrag = function (e) {
                     if (e === void 0) { e = null; }
-                    var diff;
+                    var diff, tempNum;
                     if (this.xResize && this.xResize.diff > 0) {
                         diff = this.xResize.diff;
                         if (this.dragType == "leftResize") {
@@ -418,12 +418,16 @@ var zane;
                             }
                             this.leftElement.style.width = this.leftWidth + "px";
                             if (this.centerElement) {
-                                this.centerElement.style.width = (zane.HtmlUtl.width(this.centerElement) - this.xResize.diff) + "px";
-                                this.centerElement.style.left = (parseInt(this.centerElement.style.left) + this.xResize.diff) + "px";
+                                tempNum = zane.HtmlUtl.width(this.centerElement);
+                                this.centerElement.style.width = (tempNum - this.xResize.diff) + "px";
+                                tempNum = parseInt(this.centerElement.style.left) || 0;
+                                this.centerElement.style.left = (tempNum + this.xResize.diff) + "px";
                             }
                             else if (this.rightElement) {
-                                this.rightElement.style.width = (zane.HtmlUtl.width(this.leftElement) - this.xResize.diff) + "px";
-                                this.rightElement.style.left = (parseInt(this.centerElement.style.left) + this.xResize.diff) + "px";
+                                tempNum = zane.HtmlUtl.width(this.leftElement);
+                                this.rightElement.style.width = (tempNum - this.xResize.diff) + "px";
+                                tempNum = parseInt(this.centerElement.style.left) || 0;
+                                this.rightElement.style.left = (tempNum + this.xResize.diff) + "px";
                             }
                         }
                         else if (this.dragType == "rightResize") {
@@ -431,12 +435,15 @@ var zane;
                                 this.rightWidth -= this.xResize.diff;
                             }
                             this.rightElement.style.width = this.rightWidth + "px";
-                            this.rightElement.style.left = (parseInt(this.rightElement.style.left) + this.xResize.diff) + "px";
+                            tempNum = parseInt(this.rightElement.style.left) || 0;
+                            this.rightElement.style.left = (tempNum + this.xResize.diff) + "px";
                             if (this.centerElement) {
-                                this.centerElement.style.width = (zane.HtmlUtl.width(this.centerElement) + this.xResize.diff) + "px";
+                                tempNum = zane.HtmlUtl.width(this.centerElement);
+                                this.centerElement.style.width = (tempNum + this.xResize.diff) + "px";
                             }
                             else if (this.leftElement) {
-                                this.leftElement.style.width = (zane.HtmlUtl.width(this.leftElement) + this.xResize.diff) + "px";
+                                tempNum = zane.HtmlUtl.width(this.leftElement);
+                                this.leftElement.style.width = (tempNum + this.xResize.diff) + "px";
                             }
                         }
                         this._updateCenterBottom();
@@ -444,7 +451,8 @@ var zane;
                     else if (this.yResize && this.yResize.diff > 0) {
                         diff = this.yResize.diff;
                         if (this.dragType == 'topResize') {
-                            this.topElement.style.height = (zane.HtmlUtl.height(this.topElement) + this.yResize.diff) + "px";
+                            tempNum = zane.HtmlUtl.height(this.topElement);
+                            this.topElement.style.height = (tempNum + this.yResize.diff) + "px";
                             this.middleTop += this.yResize.diff;
                             this.middleHeight -= this.yResize.diff;
                             if (this.leftElement) {
@@ -462,7 +470,8 @@ var zane;
                             this._updateCenterBottom(true);
                         }
                         else if (this.dragType == 'bottomResize') {
-                            this.bottomElement.style.height = (zane.HtmlUtl.height(this.bottomElement) - this.yResize.diff) + "px";
+                            tempNum = zane.HtmlUtl.height(this.bottomElement);
+                            this.bottomElement.style.height = (tempNum - this.yResize.diff) + "px";
                             this.middleHeight += this.yResize.diff;
                             this.bottomTop += this.yResize.diff;
                             this.bottomElement.style.top = this.bottomTop + "px";
@@ -480,7 +489,8 @@ var zane;
                         else if (this.dragType == 'centerBottomResize') {
                             this.centerBottomHeight = this.centerBottomHeight || this.options.centerBottomHeight;
                             this.centerBottomHeight -= this.yResize.diff;
-                            this.centerBottomElement.style.top = (parseInt(this.centerBottomElement.style.top) + this.yResize.diff) + "px";
+                            tempNum = parseInt(this.centerBottomElement.style.top) || 0;
+                            this.centerBottomElement.style.top = (tempNum + this.yResize.diff) + "px";
                             this.centerBottomElement.style.height = (zane.HtmlUtl.height(this.centerBottomElement) - this.yResize.diff) + "px";
                             this.centerElement.style.height = (zane.HtmlUtl.height(this.centerElement) + this.yResize.diff) + "px";
                         }
@@ -663,6 +673,7 @@ var zane;
                             this.centerWidth -= tempNum;
                             this.centerWidth -= this.options.space;
                         }
+                        console.log("centerLeft:" + this.centerLeft);
                         this.centerElement.style.left = this.centerLeft + "px";
                         if (this.centerWidth >= 0)
                             this.centerElement.style.width = this.centerWidth + "px";
