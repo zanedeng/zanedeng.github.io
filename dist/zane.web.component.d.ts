@@ -72,6 +72,9 @@ declare module zane.web.component {
         private centerBottomHeight;
         private layoutHeight;
         private rightLeft;
+        private stopDragBindFun;
+        private dragBindFun;
+        private resizeBindFun;
         constructor(parent: HTMLElement, options?: any);
         protected _init(): void;
         protected _render(): void;
