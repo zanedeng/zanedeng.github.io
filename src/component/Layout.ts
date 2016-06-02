@@ -411,9 +411,9 @@ module zane.web.component
             if (this.topElement)
             {
                 this.middleTop += zane.HtmlUtl.height(this.topElement);
-                tempNum = parseInt(this.topElement.style.borderTopWidth) || 0;
+                tempNum = parseInt(this.topElement.style.borderTopWidth) || 1;
                 this.middleTop += tempNum;
-                tempNum = parseInt(this.topElement.style.borderBottomWidth) || 0;
+                tempNum = parseInt(this.topElement.style.borderBottomWidth) || 1;
                 this.middleTop += tempNum;
                 this.middleTop += this.options.space;
             }
@@ -679,18 +679,18 @@ module zane.web.component
             if (this.topElement)
             {
                 this.middleHeight -= zane.HtmlUtl.height(this.topElement);
-                tempNum = parseInt(this.topElement.style.borderTopWidth) || 0;
+                tempNum = parseInt(this.topElement.style.borderTopWidth) || 1;
                 this.middleHeight -= tempNum;
-                tempNum = parseInt(this.topElement.style.borderBottomWidth) || 0;
+                tempNum = parseInt(this.topElement.style.borderBottomWidth) || 1;
                 this.middleHeight -= tempNum;
                 this.middleHeight -= this.options.space;
             }
             if (this.bottomElement)
             {
                 this.middleHeight -= zane.HtmlUtl.height(this.bottomElement);
-                tempNum = parseInt(this.bottomElement.style.borderTopWidth) || 0;
+                tempNum = parseInt(this.bottomElement.style.borderTopWidth) || 1;
                 this.middleHeight -= tempNum;
-                tempNum = parseInt(this.bottomElement.style.borderBottomWidth) || 0;
+                tempNum = parseInt(this.bottomElement.style.borderBottomWidth) || 1;
                 this.middleHeight -= tempNum;
                 this.middleHeight -= this.options.space;
             }
@@ -724,15 +724,15 @@ module zane.web.component
                         this.centerWidth -= tempNum;
                         this.centerLeft += tempNum;
                     }
-                    tempNum = parseInt(this.leftCollapseElement.style.borderLeftWidth) || 0;
+                    tempNum = parseInt(this.leftCollapseElement.style.borderLeftWidth) || 1;
                     this.centerWidth -= tempNum;
                     this.centerLeft += tempNum;
 
-                    tempNum = parseInt(this.leftCollapseElement.style.borderRightWidth) || 0;
+                    tempNum = parseInt(this.leftCollapseElement.style.borderRightWidth) || 1;
                     this.centerWidth -= tempNum;
                     this.centerLeft += tempNum;
 
-                    tempNum = parseInt(this.leftCollapseElement.style.left) || 0;
+                    tempNum = parseInt(this.leftCollapseElement.style.left) || 1;
                     this.centerWidth -= tempNum;
                     this.centerLeft += tempNum;
 
@@ -749,9 +749,9 @@ module zane.web.component
                     {
                         this.centerWidth -= zane.HtmlUtl.width(this.rightElement);
                     }
-                    tempNum = parseInt(this.rightCollapseElement.style.borderLeftWidth) || 0;
+                    tempNum = parseInt(this.rightCollapseElement.style.borderLeftWidth) || 1;
                     this.centerWidth -= tempNum;
-                    tempNum = parseInt(this.rightCollapseElement.style.borderRightWidth) || 0;
+                    tempNum = parseInt(this.rightCollapseElement.style.borderRightWidth) || 1;
                     this.centerWidth -= tempNum;
                     tempNum = parseInt(this.rightCollapseElement.style.left) || 0;
                     this.centerWidth -= tempNum;
