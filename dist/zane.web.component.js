@@ -605,6 +605,7 @@ var zane;
                         h = parseInt(this.options.height);
                     }
                     h += this.options.heightDiff;
+                    console.log("--------------------------");
                     this.element.style.height = h + "px";
                     this.layoutHeight = zane.HtmlUtl.height(this.element);
                     this.middleWidth = zane.HtmlUtl.width(this.element);
