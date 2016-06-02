@@ -225,7 +225,7 @@ module zane.web.component
             {
                 this.centerElement = document.createElement("div");
                 this.centerElement.className = "layout-center";
-                this.centerElement.style.width = this.options.centerWidth;
+                this.centerElement.style.width = this.options.centerWidth + "px";
                 this.element.appendChild(this.centerElement);
 
                 this.centerContentElement = document.createElement("div");
@@ -236,7 +236,7 @@ module zane.web.component
                 {
                     this.centerBottomElement = document.createElement("div");
                     this.centerBottomElement.className = "layout-center-bottom";
-                    this.centerBottomElement.style.width = this.options.centerWidth;
+                    this.centerBottomElement.style.width = this.options.centerWidth + "px";
 
                     this.centerBottomContentElement = document.createElement("div");
                     this.centerBottomContentElement.className = "layout-content";

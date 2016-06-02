@@ -240,7 +240,7 @@ var zane;
                     if (content.substr(4, 1) == "1") {
                         this.centerElement = document.createElement("div");
                         this.centerElement.className = "layout-center";
-                        this.centerElement.style.width = this.options.centerWidth;
+                        this.centerElement.style.width = this.options.centerWidth + "px";
                         this.element.appendChild(this.centerElement);
                         this.centerContentElement = document.createElement("div");
                         this.centerContentElement.className = "layout-content";
@@ -248,7 +248,7 @@ var zane;
                         if (content.substr(5, 1) == "1") {
                             this.centerBottomElement = document.createElement("div");
                             this.centerBottomElement.className = "layout-center-bottom";
-                            this.centerBottomElement.style.width = this.options.centerWidth;
+                            this.centerBottomElement.style.width = this.options.centerWidth + "px";
                             this.centerBottomContentElement = document.createElement("div");
                             this.centerBottomContentElement.className = "layout-content";
                             this.centerBottomElement.appendChild(this.centerBottomContentElement);
