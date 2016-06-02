@@ -653,13 +653,13 @@ module zane.web.component
             {
                 tempNum = parseInt(this.topElement.style.top) || 0;
                 this.topDropElement.style.top = (parseInt(this.topElement.style.height) + tempNum) + "px";
-                this.topDropElement.style.width = this.topElement.style.width;
+                this.topDropElement.style.width = zane.HtmlUtl.width(this.topElement) + "px";
             }
             if (this.bottomDropElement)
             {
                 tempNum = parseInt(this.bottomElement.style.top) || 0;
                 this.bottomDropElement.style.top = (tempNum - this.options.space) + "px";
-                this.bottomDropElement.style.width = this.bottomElement.style.width;
+                this.bottomDropElement.style.width = zane.HtmlUtl.width(this.bottomElement) + "px";
             }
             if (this.centerBottomDropElement)
             {
@@ -667,7 +667,7 @@ module zane.web.component
                 this.centerBottomDropElement.style.top = (tempNum - this.options.space) + "px";
                 tempNum = parseInt(this.centerElement.style.left) || 0;
                 this.centerBottomDropElement.style.left = tempNum + "px";
-                this.centerBottomDropElement.style.width = this.centerElement.style.width;
+                this.centerBottomDropElement.style.width = zane.HtmlUtl.width(this.centerElement) + "px";
             }
         }
 
