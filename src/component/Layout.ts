@@ -494,7 +494,7 @@ module zane.web.component
                     {
                         this.rightWidth -= this.xResize.diff;
                     }
-                    var rightDiff:number = this.rightWidth - parseInt(this.rightElement.style.width);
+                    var rightDiff:number =  parseInt(this.rightElement.style.width) - this.rightWidth;
                     this.rightElement.style.width = this.rightWidth + "px";
                     tempNum = parseInt(this.rightElement.style.left) || 0;
                     this.rightElement.style.left = (tempNum + rightDiff) + "px";

@@ -410,7 +410,7 @@ var zane;
                             else {
                                 this.rightWidth -= this.xResize.diff;
                             }
-                            var rightDiff = this.rightWidth - parseInt(this.rightElement.style.width);
+                            var rightDiff = parseInt(this.rightElement.style.width) - this.rightWidth;
                             this.rightElement.style.width = this.rightWidth + "px";
                             tempNum = parseInt(this.rightElement.style.left) || 0;
                             this.rightElement.style.left = (tempNum + rightDiff) + "px";
