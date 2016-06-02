@@ -641,6 +641,7 @@ module zane.web.component
                     parentHeight = zane.HtmlUtl.height(this.parent);
                 }
                 h = parentHeight * parseFloat(this.options.height) * 0.01;
+                console.log("----> " + parentHeight);
                 console.log("----> " + parseFloat(this.options.height));
                 console.log("----> " + h);
                 if (this.options.inWindow || this.parent.tagName.toLowerCase() == "body")
