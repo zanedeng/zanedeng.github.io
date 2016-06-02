@@ -20,7 +20,7 @@ module zane.web.gt
         {
             var layoutOptions = new LayoutOptions();
             layoutOptions.content = Layout.CONTENT_TOP|Layout.CONTENT_LEFT|
-                Layout.CONTENT_RIGHT|Layout.CONTENT_CENTER|Layout.CONTENT_CENTER_BOTTOM|Layout.CONTENT_BOTTOM;
+                Layout.CONTENT_RIGHT|Layout.CONTENT_CENTER_BOTTOM;
             console.log(layoutOptions.content.toString(16));
             this.layoutComp = new Layout(document.body, layoutOptions);
         }
