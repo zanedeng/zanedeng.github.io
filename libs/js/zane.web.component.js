@@ -254,35 +254,45 @@ var zane;
                         this.leftDropElement = document.createElement("div");
                         this.leftDropElement.className = "layout-drop-left";
                         this.leftDropElement.style.display = "block";
-                        this.leftDropElement.addEventListener("mousedown", this._startDrag.bind(this, ["leftResize"]), false);
+                        this.leftDropElement.addEventListener("mousedown", function (e) {
+                            self._startDrag("leftResize", e);
+                        }, false);
                         this.element.appendChild(this.leftDropElement);
                     }
                     if (this.rightElement && this.options.allowRightResize) {
                         this.rightDropElement = document.createElement("div");
                         this.rightDropElement.className = "layout-drop-right";
                         this.rightDropElement.style.display = "block";
-                        this.rightDropElement.addEventListener("mousedown", this._startDrag.bind(this, ["rightResize"]), false);
+                        this.rightDropElement.addEventListener("mousedown", function (e) {
+                            self._startDrag("rightResize", e);
+                        }, false);
                         this.element.appendChild(this.rightDropElement);
                     }
                     if (this.topElement && this.options.allowTopResize) {
                         this.topDropElement = document.createElement("div");
                         this.topDropElement.className = "layout-drop-top";
                         this.topDropElement.style.display = "block";
-                        this.topDropElement.addEventListener("mousedown", this._startDrag.bind(this, ["topResize"]), false);
+                        this.topDropElement.addEventListener("mousedown", function (e) {
+                            self._startDrag("topResize", e);
+                        }, false);
                         this.element.appendChild(this.topDropElement);
                     }
                     if (this.bottomElement && this.options.allowBottomResize) {
                         this.bottomDropElement = document.createElement("div");
                         this.bottomDropElement.className = "layout-drop-bottom";
                         this.bottomDropElement.style.display = "block";
-                        this.bottomDropElement.addEventListener("mousedown", this._startDrag.bind(this, ["bottomResize"]), false);
+                        this.bottomDropElement.addEventListener("mousedown", function (e) {
+                            self._startDrag("bottomResize", e);
+                        }, false);
                         this.element.appendChild(this.bottomDropElement);
                     }
                     if (this.centerBottomElement && this.options.allowCenterBottomResize) {
                         this.centerBottomDropElement = document.createElement("div");
                         this.centerBottomDropElement.className = "layout-drop-center-bottom";
                         this.centerBottomDropElement.style.display = "block";
-                        this.centerBottomDropElement.addEventListener("mousedown", this._startDrag.bind(this, ["centerBottomResize"]), false);
+                        this.centerBottomDropElement.addEventListener("mousedown", function (e) {
+                            self._startDrag("centerBottomResize", e);
+                        }, false);
                         this.element.appendChild(this.centerBottomDropElement);
                     }
                     this.draggingXLineElement = document.createElement("div");
@@ -295,9 +305,9 @@ var zane;
                     this.draggingMaskElement.className = "dragging-mask";
                     this.element.appendChild(this.draggingMaskElement);
                 };
-                Layout.prototype._startDrag = function (args, e) {
+                Layout.prototype._startDrag = function (dragType, e) {
                     if (e === void 0) { e = null; }
-                    this.dragType = args[0];
+                    this.dragType = dragType;
                     if (this.dragType == 'leftResize' || this.dragType == 'rightResize') {
                         this.xResize = { startX: e.pageX, diff: 0 };
                         this.draggingYLineElement.style.left = (e.pageX - zane.HtmlUtl.getOffset(this.element).x) + "px";
@@ -305,7 +315,7 @@ var zane;
                         this.draggingYLineElement.style.top = this.middleTop + "px";
                         this.draggingYLineElement.style.height = this.middleHeight + "px";
                         this.draggingYLineElement.style.display = "block";
-                        document.body.style.cursor = "ns-resize";
+                        document.body.style.cursor = "ew-resize";
                         this.draggingMaskElement.style.height = parseInt(this.element.style.height) + "px";
                         this.draggingMaskElement.style.display = "block";
                         zane.HtmlUtl.removeClass(this.draggingMaskElement, "layout-ymask");

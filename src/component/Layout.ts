@@ -281,7 +281,9 @@ module zane.web.component
                 this.leftDropElement = document.createElement("div");
                 this.leftDropElement.className = "layout-drop-left";
                 this.leftDropElement.style.display = "block";
-                this.leftDropElement.addEventListener("mousedown", this._startDrag.bind(this, ["leftResize"]), false);
+                this.leftDropElement.addEventListener("mousedown", function (e) {
+                    self._startDrag("leftResize", e);
+                }, false);
                 this.element.appendChild(this.leftDropElement);
             }
             // right drop element
@@ -290,7 +292,9 @@ module zane.web.component
                 this.rightDropElement = document.createElement("div");
                 this.rightDropElement.className = "layout-drop-right";
                 this.rightDropElement.style.display = "block";
-                this.rightDropElement.addEventListener("mousedown", this._startDrag.bind(this, ["rightResize"]), false);
+                this.rightDropElement.addEventListener("mousedown", function (e) {
+                    self._startDrag("rightResize", e);
+                }, false);
                 this.element.appendChild(this.rightDropElement);
             }
             // top drop element
@@ -299,7 +303,9 @@ module zane.web.component
                 this.topDropElement = document.createElement("div");
                 this.topDropElement.className = "layout-drop-top";
                 this.topDropElement.style.display = "block";
-                this.topDropElement.addEventListener("mousedown", this._startDrag.bind(this, ["topResize"]), false);
+                this.topDropElement.addEventListener("mousedown", function (e) {
+                    self._startDrag("topResize", e);
+                }, false);
                 this.element.appendChild(this.topDropElement);
             }
             // bottom drop element
@@ -308,7 +314,9 @@ module zane.web.component
                 this.bottomDropElement = document.createElement("div");
                 this.bottomDropElement.className = "layout-drop-bottom";
                 this.bottomDropElement.style.display = "block";
-                this.bottomDropElement.addEventListener("mousedown", this._startDrag.bind(this, ["bottomResize"]), false);
+                this.bottomDropElement.addEventListener("mousedown", function (e) {
+                    self._startDrag("bottomResize", e);
+                }, false);
                 this.element.appendChild(this.bottomDropElement);
             }
             // centerBottom drop element
@@ -317,7 +325,9 @@ module zane.web.component
                 this.centerBottomDropElement = document.createElement("div");
                 this.centerBottomDropElement.className = "layout-drop-center-bottom";
                 this.centerBottomDropElement.style.display = "block";
-                this.centerBottomDropElement.addEventListener("mousedown", this._startDrag.bind(this, ["centerBottomResize"]), false);
+                this.centerBottomDropElement.addEventListener("mousedown", function (e) {
+                    self._startDrag("centerBottomResize", e);
+                }, false);
                 this.element.appendChild(this.centerBottomDropElement);
             }
             this.draggingXLineElement = document.createElement("div");
@@ -333,9 +343,9 @@ module zane.web.component
             this.element.appendChild(this.draggingMaskElement);
         }
 
-        private _startDrag(args:Array<any>, e:any = null):void
+        private _startDrag(dragType:string, e:any = null):void
         {
-            this.dragType = args[0];
+            this.dragType = dragType;
             if (this.dragType == 'leftResize' || this.dragType == 'rightResize')
             {
                 this.xResize = {startX:e.pageX, diff:0};
@@ -345,7 +355,7 @@ module zane.web.component
                 this.draggingYLineElement.style.height = this.middleHeight + "px";
                 this.draggingYLineElement.style.display = "block";
 
-                document.body.style.cursor = "ns-resize";
+                document.body.style.cursor = "ew-resize";
 
                 this.draggingMaskElement.style.height = parseInt(this.element.style.height) + "px";
                 this.draggingMaskElement.style.display = "block";
