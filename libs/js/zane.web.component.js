@@ -305,9 +305,10 @@ var zane;
                         this.draggingYLineElement.style.height = this.middleHeight + "px";
                         this.draggingYLineElement.style.display = "block";
                         document.body.style.cursor = "ew-resize";
-                        this.draggingMaskElement.className = "layout-xmask";
                         this.draggingMaskElement.style.height = parseInt(this.element.style.height) + "px";
                         this.draggingMaskElement.style.display = "block";
+                        zane.HtmlUtl.removeClass(this.draggingMaskElement, "layout-ymask");
+                        zane.HtmlUtl.addClass(this.draggingMaskElement, "layout-xmask");
                     }
                     else if (this.dragType == 'topResize' || this.dragType == 'bottomResize') {
                         this.yResize = { startY: e.pageY, diff: 0 };
@@ -315,9 +316,10 @@ var zane;
                         this.draggingXLineElement.style.width = parseInt(this.element.style.width) + "px";
                         this.draggingXLineElement.style.display = "block";
                         document.body.style.cursor = "ns-resize";
-                        this.draggingMaskElement.className = "layout-ymask";
                         this.draggingMaskElement.style.height = parseInt(this.element.style.height) + "px";
                         this.draggingMaskElement.style.display = "block";
+                        zane.HtmlUtl.removeClass(this.draggingMaskElement, "layout-xmask");
+                        zane.HtmlUtl.addClass(this.draggingMaskElement, "layout-ymask");
                     }
                     else if (this.dragType == 'centerBottomResize') {
                         this.yResize = { startY: e.pageY, diff: 0 };
@@ -325,9 +327,10 @@ var zane;
                         this.draggingXLineElement.style.width = parseInt(this.element.style.width) + "px";
                         this.draggingXLineElement.style.display = "block";
                         document.body.style.cursor = "ns-resize";
-                        this.draggingMaskElement.className = "layout-ymask";
                         this.draggingMaskElement.style.height = parseInt(this.element.style.height) + "px";
                         this.draggingMaskElement.style.display = "block";
+                        zane.HtmlUtl.removeClass(this.draggingMaskElement, "layout-xmask");
+                        zane.HtmlUtl.addClass(this.draggingMaskElement, "layout-ymask");
                     }
                     else {
                         return;
