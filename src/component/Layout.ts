@@ -594,7 +594,7 @@ module zane.web.component
                     }
 
                     var centerBottomHeight = this.centerBottomHeight || this.options.centerBottomHeight;
-                    var centerHeight = zane.HtmlUtl.height(this.centerElement);
+                    var centerHeight = parseInt(this.centerElement.style.height);
                     var centerTop = parseInt(this.centerElement.style.top);
                     this.centerBottomElement.style.height = centerBottomHeight + "px";
                     this.centerBottomElement.style.top = (centerTop + centerHeight - centerBottomHeight) + "px";
@@ -602,7 +602,7 @@ module zane.web.component
                     this.centerContentElement.style.height = (centerHeight - centerBottomHeight) + "px";
                 }
                 var centerLeft = parseInt(this.centerElement.style.left);
-                this.centerBottomElement.style.width = (zane.HtmlUtl.width(this.centerElement)) + "px";
+                this.centerBottomElement.style.width = (parseInt(this.centerElement.style.width)) + "px";
                 this.centerBottomElement.style.left = centerLeft + "px";
             }
         }
