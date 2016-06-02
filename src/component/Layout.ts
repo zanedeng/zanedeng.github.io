@@ -612,7 +612,7 @@ module zane.web.component
             if (this.leftDropElement)
             {
                 tempNum = parseInt(this.leftElement.style.left) || 0;
-                this.leftDropElement.style.left = (zane.HtmlUtl.width(this.leftElement) + tempNum) + "px";
+                this.leftDropElement.style.left = (parseInt(this.leftElement.style.width) + tempNum) + "px";
                 this.leftDropElement.style.top = this.middleTop + "px";
                 this.leftDropElement.style.height = this.middleHeight + "px";
             }
@@ -626,14 +626,14 @@ module zane.web.component
             if (this.topDropElement)
             {
                 tempNum = parseInt(this.topElement.style.top) || 0;
-                this.topDropElement.style.top = (zane.HtmlUtl.height(this.topElement) + tempNum) + "px";
-                this.topDropElement.style.width = zane.HtmlUtl.width(this.topElement) + "px";
+                this.topDropElement.style.top = (parseInt(this.topElement.style.height) + tempNum) + "px";
+                this.topDropElement.style.width = parseInt(this.topElement.style.width) + "px";
             }
             if (this.bottomDropElement)
             {
                 tempNum = parseInt(this.bottomElement.style.top) || 0;
                 this.bottomDropElement.style.top = (tempNum - this.options.space) + "px";
-                this.bottomDropElement.style.width = zane.HtmlUtl.width(this.bottomElement) + "px";
+                this.bottomDropElement.style.width = parseInt(this.bottomElement.style.width) + "px";
             }
             if (this.centerBottomDropElement)
             {
@@ -641,7 +641,7 @@ module zane.web.component
                 this.centerBottomDropElement.style.top = (tempNum - this.options.space) + "px";
                 tempNum = parseInt(this.centerElement.style.left) || 0;
                 this.centerBottomDropElement.style.left = tempNum + "px";
-                this.centerBottomDropElement.style.width = zane.HtmlUtl.width(this.centerElement) + "px";
+                this.centerBottomDropElement.style.width = parseInt(this.centerElement.style.width) + "px";
             }
         }
 
