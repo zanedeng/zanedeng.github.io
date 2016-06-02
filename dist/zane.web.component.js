@@ -647,6 +647,7 @@ var zane;
                             tempNum = parseInt(this.rightCollapseElement.style.left) || 0;
                             this.centerWidth -= tempNum;
                             this.centerWidth -= this.options.space;
+                            this.centerWidth -= 1;
                         }
                         this.centerElement.style.left = this.centerLeft + "px";
                         if (this.centerWidth >= 0) {
@@ -680,6 +681,7 @@ var zane;
                             tempNum = parseInt(this.leftCollapseElement.style.left) || 0;
                             this.rightLeft += tempNum;
                             this.rightLeft += this.options.space;
+                            this.rightLeft += 1;
                         }
                         if (this.centerElement) {
                             this.rightLeft += zane.HtmlUtl.width(this.centerElement);
@@ -688,8 +690,8 @@ var zane;
                             tempNum = parseInt(this.centerElement.style.borderRightWidth) || 0;
                             this.rightLeft += tempNum;
                             this.rightLeft += this.options.space;
+                            this.rightLeft += 2;
                         }
-                        this.rightLeft += 5;
                         this.rightElement.style.left = this.rightLeft + "px";
                     }
                     if (this.bottomElement) {
