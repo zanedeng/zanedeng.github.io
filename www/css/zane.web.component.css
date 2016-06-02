@@ -131,3 +131,54 @@
     cursor: ew-resize;
     z-index:9990;
 }
+
+.layout-collapse-left, .layout-collapse-right {
+    width: 24px;
+    background: #EFEFEF;
+    border: 1px solid #D0D0D0;
+    position: absolute;
+    top: 0px;
+    display: none;
+    height: 100%;
+    z-index: 10;
+}
+
+.layout-collapse-left-over, .layout-collapse-right-over {
+    background: #F5F5F5;
+}
+
+.layout-collapse-left-toggle, .layout-collapse-right-toggle {
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.layout-collapse-left {
+    left: 2px;
+}
+
+.layout-collapse-left-toggle {
+    top: 0px;
+    right: 2px;
+    background-position: -20px -40px;
+}
+
+.layout-collapse-left-toggle-over {
+    background-position: -20px -60px;
+}
+
+.layout-collapse-right {
+    right: 2px;
+}
+
+.layout-collapse-right-toggle {
+    top: 0px;
+    left: 2px;
+    background-position: -20px 0px;
+}
+
+.layout-collapse-right-toggle-over {
+    background-position: -20px -20px;
+}
