@@ -327,6 +327,7 @@ module zane.web.component
 
         private _startDrag(e:any, dragType:string):void
         {
+            console.log(arguments);
             this.dragType = dragType;
             if (dragType == 'leftResize' || dragType == 'rightResize')
             {

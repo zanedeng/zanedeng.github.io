@@ -293,6 +293,7 @@ var zane;
                     this.element.appendChild(this.draggingMaskElement);
                 };
                 Layout.prototype._startDrag = function (e, dragType) {
+                    console.log(arguments);
                     this.dragType = dragType;
                     if (dragType == 'leftResize' || dragType == 'rightResize') {
                         this.xResize = { startX: e.pageX, diff: 0 };
