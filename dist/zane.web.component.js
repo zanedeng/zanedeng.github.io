@@ -733,7 +733,7 @@ var zane;
                     this.allowRightResize = true;
                     this.allowTopResize = true;
                     this.allowBottomResize = true;
-                    this.space = 2;
+                    this.space = 0;
                     this.minLeftWidth = 80;
                     this.minRightWidth = 80;
                     this.onEndResize = null;
