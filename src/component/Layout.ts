@@ -65,60 +65,60 @@ module zane.web.component
          * 顶部 HTMLElement 对象
          * @type {HTMLElement}
          */
-        public topElement:HTMLElement = null;
-        public topContentElement:HTMLElement = null;
-        public topDropElement:HTMLElement = null;
+        public topElement:HTMLElement;
+        public topContentElement:HTMLElement;
+        public topDropElement:HTMLElement;
 
         /**
          * 底部 HTMLElement 对象
          * @type {HTMLElement}
          */
-        public bottomElement:HTMLElement = null;
-        public bottomContentElement:HTMLElement = null;
-        public bottomDropElement:HTMLElement = null;
+        public bottomElement:HTMLElement;
+        public bottomContentElement:HTMLElement;
+        public bottomDropElement:HTMLElement;
 
         /**
          * 左侧 HTMLElement 对象
          * @type {null}
          */
-        public leftElement:HTMLElement = null;
-        public leftContentElement:HTMLElement = null;
-        public leftDropElement:HTMLElement = null;
-        public leftCollapseElement:HTMLElement = null;
+        public leftElement:HTMLElement;
+        public leftContentElement:HTMLElement;
+        public leftDropElement:HTMLElement;
+        public leftCollapseElement:HTMLElement;
 
         /**
          * 右侧 HTMLElement 对象
          * @type {HTMLElement}
          */
-        public rightElement:HTMLElement = null;
-        public rightContentElement:HTMLElement = null;
-        public rightDropElement:HTMLElement = null;
-        public rightCollapseElement:HTMLElement = null;
+        public rightElement:HTMLElement;
+        public rightContentElement:HTMLElement;
+        public rightDropElement:HTMLElement;
+        public rightCollapseElement:HTMLElement;
 
         /**
          * 中间 HTMLElement 对象
          * @type {HTMLElement}
          */
-        public centerElement:HTMLElement = null;
-        public centerContentElement:HTMLElement = null;
+        public centerElement:HTMLElement;
+        public centerContentElement:HTMLElement;
 
-        public centerBottomElement:HTMLElement = null;
-        public centerBottomContentElement:HTMLElement = null;
-        public centerBottomDropElement:HTMLElement = null;
+        public centerBottomElement:HTMLElement;
+        public centerBottomContentElement:HTMLElement;
+        public centerBottomDropElement:HTMLElement;
 
-        public lockElement:HTMLElement = null;
+        public lockElement:HTMLElement;
 
-        public draggingXLineElement:HTMLElement = null;
-        public draggingYLineElement:HTMLElement = null;
-        public draggingMaskElement:HTMLElement = null;
+        public draggingXLineElement:HTMLElement;
+        public draggingYLineElement:HTMLElement;
+        public draggingMaskElement:HTMLElement;
 
         // +----------------------------------------------------------------------
         // | public property
         // +----------------------------------------------------------------------
 
         private dragType:string;
-        private xResize:{startX:number,diff:number} = null;
-        private yResize:{startY:number,diff:number} = null;
+        private xResize:{startX:number,diff:number};
+        private yResize:{startY:number,diff:number};
         private middleWidth:number = 0;
         private middleHeight:number = 0;
         private middleTop:number = 0;
@@ -641,6 +641,7 @@ module zane.web.component
 
         private _onResize()
         {
+            console.log(this);
             var h = 0;
             var oldHeight = zane.HtmlUtl.height(this.element);
             var windowHeight = zane.BrowserUtil.innerHeight();

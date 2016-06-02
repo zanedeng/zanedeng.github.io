@@ -147,31 +147,6 @@ var zane;
                 function Layout(parent, options) {
                     if (options === void 0) { options = null; }
                     _super.call(this, parent, options);
-                    this.topElement = null;
-                    this.topContentElement = null;
-                    this.topDropElement = null;
-                    this.bottomElement = null;
-                    this.bottomContentElement = null;
-                    this.bottomDropElement = null;
-                    this.leftElement = null;
-                    this.leftContentElement = null;
-                    this.leftDropElement = null;
-                    this.leftCollapseElement = null;
-                    this.rightElement = null;
-                    this.rightContentElement = null;
-                    this.rightDropElement = null;
-                    this.rightCollapseElement = null;
-                    this.centerElement = null;
-                    this.centerContentElement = null;
-                    this.centerBottomElement = null;
-                    this.centerBottomContentElement = null;
-                    this.centerBottomDropElement = null;
-                    this.lockElement = null;
-                    this.draggingXLineElement = null;
-                    this.draggingYLineElement = null;
-                    this.draggingMaskElement = null;
-                    this.xResize = null;
-                    this.yResize = null;
                     this.middleWidth = 0;
                     this.middleHeight = 0;
                     this.middleTop = 0;
@@ -575,6 +550,7 @@ var zane;
                     }
                 };
                 Layout.prototype._onResize = function () {
+                    console.log(this);
                     var h = 0;
                     var oldHeight = zane.HtmlUtl.height(this.element);
                     var windowHeight = zane.BrowserUtil.innerHeight();
