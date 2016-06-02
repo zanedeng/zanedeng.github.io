@@ -862,7 +862,7 @@ module zane.web.component
                         this.centerWidth -= tempNum;
                         tempNum = parseInt(this.rightCollapseElement.style.borderRightWidth) || 1;
                         this.centerWidth -= tempNum;
-                        tempNum = parseInt(this.rightCollapseElement.style.left) || 0;
+                        tempNum = parseInt(this.rightCollapseElement.style.right) || 0;
                         this.centerWidth -= tempNum;
                     }
                     else
@@ -872,7 +872,7 @@ module zane.web.component
                         this.centerWidth -= tempNum;
                         tempNum = parseInt(this.rightElement.style.borderRightWidth) || 1;
                         this.centerWidth -= tempNum;
-                        tempNum = parseInt(this.rightElement.style.left) || 0;
+                        tempNum = parseInt(this.rightElement.style.right) || 0;
                         this.centerWidth -= tempNum;
                     }
                     this.centerWidth -= this.options.space;
