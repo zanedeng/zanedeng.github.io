@@ -901,7 +901,7 @@ module zane.web.component
                 this.rightLeft = 0;
                 if (this.leftElement)
                 {
-                    if (this.options.isLeftCollapse)
+                    if (this.isLeftCollapse)
                     {
                         this.rightLeft += zane.HtmlUtl.width(this.leftCollapseElement);
                         tempNum = parseInt(this.leftCollapseElement.style.borderLeftWidth) || 1;
