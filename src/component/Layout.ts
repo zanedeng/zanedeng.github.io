@@ -676,9 +676,9 @@ module zane.web.component
             }
             h += this.options.heightDiff;
             this.element.style.height = h + "px";
-            this.layoutHeight = parseInt(this.element.style.height);
-            this.middleWidth = parseInt(this.element.style.width);
-            this.middleHeight = parseInt(this.element.style.height);
+            this.layoutHeight = zane.HtmlUtl.height(this.element);
+            this.middleWidth = zane.HtmlUtl.width(this.element);
+            this.middleHeight = zane.HtmlUtl.height(this.element);
             if (this.topElement)
             {
                 this.middleHeight -= zane.HtmlUtl.height(this.topElement);
