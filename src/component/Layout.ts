@@ -810,27 +810,40 @@ module zane.web.component
                 {
                     if (this.isLeftCollapse)
                     {
-                        tempNum = parseInt(this.leftCollapseElement.style.width);
+                        tempNum = zane.HtmlUtl.width(this.leftCollapseElement);
+                        this.centerWidth -= tempNum;
+                        this.centerLeft += tempNum;
+
+                        tempNum = parseInt(this.leftCollapseElement.style.borderLeftWidth) || 1;
+                        this.centerWidth -= tempNum;
+                        this.centerLeft += tempNum;
+
+                        tempNum = parseInt(this.leftCollapseElement.style.borderRightWidth) || 1;
+                        this.centerWidth -= tempNum;
+                        this.centerLeft += tempNum;
+
+                        tempNum = parseInt(this.leftCollapseElement.style.left) || 0;
                         this.centerWidth -= tempNum;
                         this.centerLeft += tempNum;
                     }
                     else
                     {
-                        tempNum = parseInt(this.leftElement.style.width);
+                        tempNum = zane.HtmlUtl.width(this.leftElement);
+                        this.centerWidth -= tempNum;
+                        this.centerLeft += tempNum;
+
+                        tempNum = parseInt(this.leftElement.style.borderLeftWidth) || 1;
+                        this.centerWidth -= tempNum;
+                        this.centerLeft += tempNum;
+
+                        tempNum = parseInt(this.leftElement.style.borderRightWidth) || 1;
+                        this.centerWidth -= tempNum;
+                        this.centerLeft += tempNum;
+
+                        tempNum = parseInt(this.leftElement.style.left) || 0;
                         this.centerWidth -= tempNum;
                         this.centerLeft += tempNum;
                     }
-                    tempNum = parseInt(this.leftCollapseElement.style.borderLeftWidth) || 1;
-                    this.centerWidth -= tempNum;
-                    this.centerLeft += tempNum;
-
-                    tempNum = parseInt(this.leftCollapseElement.style.borderRightWidth) || 1;
-                    this.centerWidth -= tempNum;
-                    this.centerLeft += tempNum;
-
-                    tempNum = parseInt(this.leftCollapseElement.style.left) || 0;
-                    this.centerWidth -= tempNum;
-                    this.centerLeft += tempNum;
 
                     this.centerWidth -= this.options.space;
                     this.centerLeft += this.options.space;
