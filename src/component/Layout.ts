@@ -591,8 +591,8 @@ module zane.web.component
                     var centerHeight = zane.HtmlUtl.height(this.centerElement);
                     var centerTop = parseInt(this.centerElement.style.top) || 0;
                     this.centerBottomElement.style.height = centerBottomHeight + "px";
-                    this.centerBottomElement.style.top = (centerTop + centerHeight - centerBottomHeight + 2) + "px";
-                    this.centerElement.style.height = (centerHeight - centerBottomHeight - 2) + "px";
+                    this.centerBottomElement.style.top = (centerTop + centerHeight - centerBottomHeight) + "px";
+                    this.centerElement.style.height = (centerHeight - centerBottomHeight) + "px";
                 }
                 var centerLeft = parseInt(this.centerElement.style.left) || 0;
                 this.centerBottomElement.style.width = zane.HtmlUtl.width(this.centerElement) + "px";
