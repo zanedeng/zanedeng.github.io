@@ -383,11 +383,14 @@ var zane;
                     };
                 };
                 Layout.prototype._build = function () {
+                    var tempNum = 0;
                     this.middleTop = 0;
                     if (this.topElement) {
                         this.middleTop += zane.HtmlUtl.height(this.topElement);
-                        this.middleTop += parseInt(this.topElement.style.borderTopWidth);
-                        this.middleTop += parseInt(this.topElement.style.borderBottomWidth);
+                        tempNum = parseInt(this.topElement.style.borderTopWidth) || 0;
+                        this.middleTop += tempNum;
+                        tempNum = parseInt(this.topElement.style.borderBottomWidth) || 0;
+                        this.middleTop += tempNum;
                         this.middleTop += this.options.space;
                     }
                     if (this.leftElement) {

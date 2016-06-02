@@ -9,6 +9,13 @@
     z-index:10;
     overflow:hidden;
 }
+.layout-top {
+    width:100%;
+}
+
+.layout-bottom {
+    width:100%
+}
 
 .layout-content {
     position:relative;
