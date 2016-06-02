@@ -542,19 +542,19 @@ var zane;
                     if (this.topDropElement) {
                         tempNum = parseInt(this.topElement.style.top) || 0;
                         this.topDropElement.style.top = (parseInt(this.topElement.style.height) + tempNum) + "px";
-                        this.topDropElement.style.width = parseInt(this.topElement.style.width) + "px";
+                        this.topDropElement.style.width = this.topElement.style.width;
                     }
                     if (this.bottomDropElement) {
                         tempNum = parseInt(this.bottomElement.style.top) || 0;
                         this.bottomDropElement.style.top = (tempNum - this.options.space) + "px";
-                        this.bottomDropElement.style.width = parseInt(this.bottomElement.style.width) + "px";
+                        this.bottomDropElement.style.width = this.bottomElement.style.width;
                     }
                     if (this.centerBottomDropElement) {
                         tempNum = parseInt(this.centerBottomElement.style.top) || 0;
                         this.centerBottomDropElement.style.top = (tempNum - this.options.space) + "px";
                         tempNum = parseInt(this.centerElement.style.left) || 0;
                         this.centerBottomDropElement.style.left = tempNum + "px";
-                        this.centerBottomDropElement.style.width = parseInt(this.centerElement.style.width) + "px";
+                        this.centerBottomDropElement.style.width = this.centerElement.style.width;
                     }
                 };
                 Layout.prototype._onResize = function () {
