@@ -596,7 +596,6 @@ var zane;
                         this.middleHeight -= tempNum;
                         this.middleHeight -= this.options.space;
                     }
-                    this.middleHeight -= 2;
                     if (this.hasBind('heightChanged') && this.layoutHeight != oldHeight) {
                         this.trigger('heightChanged', [{
                                 layoutHeight: this.layoutHeight,
@@ -645,7 +644,6 @@ var zane;
                             this.centerWidth -= tempNum;
                             this.centerWidth -= this.options.space;
                         }
-                        console.log("centerLeft:" + this.centerLeft);
                         this.centerElement.style.left = this.centerLeft + "px";
                         if (this.centerWidth >= 0) {
                             this.centerElement.style.width = this.centerWidth + "px";
@@ -687,7 +685,6 @@ var zane;
                             this.rightLeft += tempNum;
                             this.rightLeft += this.options.space;
                         }
-                        console.log("rightLeft:" + this.rightLeft);
                         this.rightElement.style.left = this.rightLeft + "px";
                     }
                     if (this.bottomElement) {

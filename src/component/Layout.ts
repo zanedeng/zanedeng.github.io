@@ -695,7 +695,7 @@ module zane.web.component
                 this.middleHeight -= this.options.space;
             }
             //specific
-            this.middleHeight -= 2;
+            //this.middleHeight -= 2;
 
             if (this.hasBind('heightChanged') && this.layoutHeight != oldHeight)
             {
@@ -757,7 +757,6 @@ module zane.web.component
                     this.centerWidth -= tempNum;
                     this.centerWidth -= this.options.space;
                 }
-                console.log("centerLeft:" + this.centerLeft);
                 this.centerElement.style.left = this.centerLeft + "px";
                 if (this.centerWidth >= 0)
                 {
@@ -807,7 +806,6 @@ module zane.web.component
                     this.rightLeft += tempNum;
                     this.rightLeft += this.options.space;
                 }
-                console.log("rightLeft:" + this.rightLeft);
                 this.rightElement.style.left = this.rightLeft + "px";
             }
             if (this.bottomElement)
