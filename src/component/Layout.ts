@@ -719,26 +719,32 @@ module zane.web.component
                 {
                     if (this.options.isLeftCollapse)
                     {
-                        var cw:number = zane.HtmlUtl.width(this.leftCollapseElement);
-                        this.centerWidth -= cw;
-                        this.centerLeft += cw;
+                        tempNum = zane.HtmlUtl.width(this.leftCollapseElement);
+                        console.log("0 -> " + tempNum);
+                        this.centerWidth -= tempNum;
+                        this.centerLeft += tempNum;
                     }
                     else
                     {
-                        this.centerWidth -= this.leftWidth;
-                        this.centerLeft += this.leftWidth;
+                        tempNum = zane.HtmlUtl.width(this.leftElement);
+                        console.log("1 -> " + tempNum);
+                        this.centerWidth -= tempNum;
+                        this.centerLeft += tempNum;
                     }
-                    var borderLeftWidth:number = parseInt(this.leftCollapseElement.style.borderLeftWidth) || 0;
-                    this.centerWidth -= borderLeftWidth;
-                    this.centerLeft += borderLeftWidth;
+                    tempNum = parseInt(this.leftCollapseElement.style.borderLeftWidth) || 0;
+                    console.log("2 -> " + tempNum);
+                    this.centerWidth -= tempNum;
+                    this.centerLeft += tempNum;
 
-                    var borderRightWidth:number = parseInt(this.leftCollapseElement.style.borderRightWidth) || 0;
-                    this.centerWidth -= borderRightWidth;
-                    this.centerLeft += borderRightWidth;
+                    tempNum = parseInt(this.leftCollapseElement.style.borderRightWidth) || 0;
+                    console.log("3 -> " + tempNum);
+                    this.centerWidth -= tempNum;
+                    this.centerLeft += tempNum;
 
-                    var left:number = parseInt(this.leftCollapseElement.style.left) || 0;
-                    this.centerWidth -= left;
-                    this.centerLeft += left;
+                    tempNum = parseInt(this.leftCollapseElement.style.left) || 0;
+                    console.log("4 -> " + tempNum);
+                    this.centerWidth -= tempNum;
+                    this.centerLeft += tempNum;
 
                     this.centerWidth -= this.options.space;
                     this.centerLeft += this.options.space;
@@ -751,7 +757,7 @@ module zane.web.component
                     }
                     else
                     {
-                        this.centerWidth -= this.rightWidth;
+                        this.centerWidth -= zane.HtmlUtl.width(this.rightElement);
                     }
                     tempNum = parseInt(this.rightCollapseElement.style.borderLeftWidth) || 0;
                     this.centerWidth -= tempNum;
