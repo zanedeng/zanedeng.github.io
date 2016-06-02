@@ -190,7 +190,6 @@ var zane;
                     this.id = this.options.id || component.Component.generateId();
                 };
                 Layout.prototype._render = function () {
-                    var self = this;
                     this.element = document.createElement("div");
                     this.element.className = "layout";
                     this.element.id = this.id;
@@ -268,8 +267,8 @@ var zane;
                     this.element.appendChild(this.lockElement);
                     this._addDropHandle();
                     this._build();
+                    var self = this;
                     window.onresize = function (e) {
-                        console.log("resize");
                         self._onResize();
                     };
                     this.draggingMaskElement.style.height = zane.HtmlUtl.height(this.element) + "px";
@@ -333,7 +332,6 @@ var zane;
                 };
                 Layout.prototype._startDrag = function (dragType, e) {
                     if (e === void 0) { e = null; }
-                    var self = this;
                     this.dragType = dragType;
                     if (dragType == 'leftResize' || dragType == 'rightResize') {
                         this.xResize = { startX: e.pageX, diff: 0 };
@@ -377,6 +375,7 @@ var zane;
                             return false;
                         };
                     }
+                    var self = this;
                     document.onmouseup = function (e) {
                         self._stopDrag(e);
                     };
@@ -579,7 +578,6 @@ var zane;
                     }
                 };
                 Layout.prototype._onResize = function () {
-                    console.log(this);
                     var h = 0;
                     var oldHeight = zane.HtmlUtl.height(this.element);
                     var windowHeight = zane.BrowserUtil.innerHeight();

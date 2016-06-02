@@ -160,7 +160,6 @@ module zane.web.component
          */
         protected _render():void
         {
-            var self = this;
             this.element = document.createElement("div");
             this.element.className = "layout";
             this.element.id = this.id;
@@ -261,8 +260,8 @@ module zane.web.component
 
             this._addDropHandle();
             this._build();
+            var self = this;
             window.onresize = function (e) {
-                console.log("resize");
                 self._onResize();
             };
             this.draggingMaskElement.style.height = zane.HtmlUtl.height(this.element) + "px";
@@ -341,7 +340,6 @@ module zane.web.component
 
         private _startDrag(dragType:string, e:any = null):void
         {
-            var self = this;
             this.dragType = dragType;
             if (dragType == 'leftResize' || dragType == 'rightResize')
             {
@@ -399,6 +397,7 @@ module zane.web.component
                     return false;
                 }
             }
+            var self = this;
             document.onmouseup = function (e) {
                 self._stopDrag(e);
             };
@@ -645,7 +644,6 @@ module zane.web.component
 
         private _onResize()
         {
-            console.log(this);
             var h = 0;
             var oldHeight = zane.HtmlUtl.height(this.element);
             var windowHeight = zane.BrowserUtil.innerHeight();
