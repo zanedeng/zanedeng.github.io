@@ -246,15 +246,14 @@ var zane;
                     window.addEventListener("resize", this._onResize.bind(this), false);
                 };
                 Layout.prototype._addDropHandle = function () {
-                    var self = this;
                     if (this.leftElement && this.options.allowLeftResize) {
                         this.leftDropElement = document.createElement("div");
                         this.leftDropElement.className = "layout-drop-left";
                         this.leftDropElement.onmousedown = function (e) {
                             self._startDrag("leftResize", e);
                         };
-                        zane.HtmlUtl.show(this.leftDropElement);
                         this.element.appendChild(this.leftDropElement);
+                        zane.HtmlUtl.show(this.leftDropElement);
                     }
                     if (this.rightElement && this.options.allowRightResize) {
                         this.rightDropElement = document.createElement("div");
@@ -262,8 +261,8 @@ var zane;
                         this.rightDropElement.onmousedown = function (e) {
                             self._startDrag("rightResize", e);
                         };
-                        zane.HtmlUtl.show(this.rightDropElement);
                         this.element.appendChild(this.rightDropElement);
+                        zane.HtmlUtl.show(this.rightDropElement);
                     }
                     if (this.topElement && this.options.allowTopResize) {
                         this.topDropElement = document.createElement("div");
@@ -271,8 +270,8 @@ var zane;
                         this.topDropElement.onmousedown = function (e) {
                             self._startDrag("topResize", e);
                         };
-                        zane.HtmlUtl.show(this.topDropElement);
                         this.element.appendChild(this.topDropElement);
+                        zane.HtmlUtl.show(this.topDropElement);
                     }
                     if (this.bottomElement && this.options.allowBottomResize) {
                         this.bottomDropElement = document.createElement("div");
@@ -280,8 +279,8 @@ var zane;
                         this.bottomDropElement.onmousedown = function (e) {
                             self._startDrag("bottomResize", e);
                         };
-                        zane.HtmlUtl.show(this.bottomDropElement);
                         this.element.appendChild(this.bottomDropElement);
+                        zane.HtmlUtl.show(this.bottomDropElement);
                     }
                     if (this.centerBottomElement && this.options.allowCenterBottomResize) {
                         this.centerBottomDropElement = document.createElement("div");
@@ -289,8 +288,8 @@ var zane;
                         this.centerBottomDropElement.onmousedown = function (e) {
                             self._startDrag("centerBottomResize", e);
                         };
-                        zane.HtmlUtl.show(this.centerBottomDropElement);
                         this.element.appendChild(this.centerBottomDropElement);
+                        zane.HtmlUtl.show(this.centerBottomDropElement);
                     }
                     this.draggingXLineElement = document.createElement("div");
                     this.draggingXLineElement.className = "layout-dragging-xline";

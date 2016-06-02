@@ -266,7 +266,6 @@ module zane.web.component
 
         private _addDropHandle():void
         {
-            var self = this;
             // left drop element
             if (this.leftElement && this.options.allowLeftResize)
             {
@@ -275,8 +274,8 @@ module zane.web.component
                 this.leftDropElement.onmousedown = function (e) {
                     self._startDrag("leftResize", e);
                 };
-                zane.HtmlUtl.show(this.leftDropElement);
                 this.element.appendChild(this.leftDropElement);
+                zane.HtmlUtl.show(this.leftDropElement);
             }
             // right drop element
             if (this.rightElement && this.options.allowRightResize)
@@ -286,8 +285,8 @@ module zane.web.component
                 this.rightDropElement.onmousedown = function (e) {
                     self._startDrag("rightResize", e);
                 };
-                zane.HtmlUtl.show(this.rightDropElement);
                 this.element.appendChild(this.rightDropElement);
+                zane.HtmlUtl.show(this.rightDropElement);
             }
             // top drop element
             if (this.topElement && this.options.allowTopResize)
@@ -297,8 +296,8 @@ module zane.web.component
                 this.topDropElement.onmousedown = function (e) {
                     self._startDrag("topResize", e);
                 };
-                zane.HtmlUtl.show(this.topDropElement);
                 this.element.appendChild(this.topDropElement);
+                zane.HtmlUtl.show(this.topDropElement);
             }
             // bottom drop element
             if (this.bottomElement && this.options.allowBottomResize)
@@ -308,8 +307,8 @@ module zane.web.component
                 this.bottomDropElement.onmousedown = function (e) {
                     self._startDrag("bottomResize", e);
                 };
-                zane.HtmlUtl.show(this.bottomDropElement);
                 this.element.appendChild(this.bottomDropElement);
+                zane.HtmlUtl.show(this.bottomDropElement);
             }
             // centerBottom drop element
             if (this.centerBottomElement && this.options.allowCenterBottomResize)
@@ -319,8 +318,8 @@ module zane.web.component
                 this.centerBottomDropElement.onmousedown = function (e) {
                     self._startDrag("centerBottomResize", e);
                 };
-                zane.HtmlUtl.show(this.centerBottomDropElement);
                 this.element.appendChild(this.centerBottomDropElement);
+                zane.HtmlUtl.show(this.centerBottomDropElement);
             }
             this.draggingXLineElement = document.createElement("div");
             this.draggingXLineElement.className = "layout-dragging-xline";
