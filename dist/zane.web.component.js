@@ -767,7 +767,7 @@ var zane;
                         this.rightElement.style.left = this.rightLeft + "px";
                     }
                     if (this.bottomElement) {
-                        this.bottomTop = this.layoutHeight - parseInt(this.bottomElement.style.height);
+                        this.bottomTop = this.layoutHeight - zane.HtmlUtl.height(this.bottomElement) - 2;
                         this.bottomElement.style.top = this.bottomTop + "px";
                     }
                     this._setDropHandlePosition();
