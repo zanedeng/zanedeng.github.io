@@ -366,7 +366,6 @@ var zane;
                         this.middleTop += tempNum;
                         this.middleTop += this.options.space;
                     }
-                    this.middleTop += 2;
                     if (this.leftElement) {
                         this.leftElement.style.top = this.middleTop + "px";
                     }
