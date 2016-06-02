@@ -610,7 +610,7 @@ var zane;
                     }
                     this.isResize = true;
                     var h = 0;
-                    var oldHeight = zane.HtmlUtl.height(this.element) + 2;
+                    var oldHeight = zane.HtmlUtl.height(this.element);
                     var windowHeight = zane.BrowserUtil.innerHeight();
                     var parentHeight = 0;
                     var tempNum = 0;
@@ -636,11 +636,11 @@ var zane;
                     }
                     h += this.options.heightDiff;
                     this.element.style.height = h + "px";
-                    this.layoutHeight = zane.HtmlUtl.height(this.element) + 2;
+                    this.layoutHeight = zane.HtmlUtl.height(this.element);
                     this.middleWidth = zane.HtmlUtl.width(this.element) + 2;
-                    this.middleHeight = zane.HtmlUtl.height(this.element) + 2;
+                    this.middleHeight = zane.HtmlUtl.height(this.element);
                     if (this.topElement) {
-                        this.middleHeight -= zane.HtmlUtl.height(this.topElement) + 2;
+                        this.middleHeight -= zane.HtmlUtl.height(this.topElement);
                         tempNum = parseInt(this.topElement.style.borderTopWidth) || 1;
                         this.middleHeight -= tempNum;
                         tempNum = parseInt(this.topElement.style.borderBottomWidth) || 1;
@@ -648,7 +648,7 @@ var zane;
                         this.middleHeight -= this.options.space;
                     }
                     if (this.bottomElement) {
-                        this.middleHeight -= zane.HtmlUtl.height(this.bottomElement) + 2;
+                        this.middleHeight -= zane.HtmlUtl.height(this.bottomElement);
                         tempNum = parseInt(this.bottomElement.style.borderTopWidth) || 1;
                         this.middleHeight -= tempNum;
                         tempNum = parseInt(this.bottomElement.style.borderBottomWidth) || 1;
