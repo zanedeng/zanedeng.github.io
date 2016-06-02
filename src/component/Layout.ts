@@ -701,7 +701,7 @@ module zane.web.component
                 this.middleHeight -= this.options.space;
             }
             //specific
-            //this.middleHeight -= 2;
+            this.middleHeight -= 4;
 
             if (this.hasBind('heightChanged') && this.layoutHeight != oldHeight)
             {
