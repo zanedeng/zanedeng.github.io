@@ -721,13 +721,13 @@ module zane.web.component
                 {
                     if (this.options.isLeftCollapse)
                     {
-                        tempNum = zane.HtmlUtl.width(this.leftCollapseElement);
+                        tempNum = parseInt(this.leftCollapseElement.style.width) || 0;
                         this.centerWidth -= tempNum;
                         this.centerLeft += tempNum;
                     }
                     else
                     {
-                        tempNum = zane.HtmlUtl.width(this.leftElement);
+                        tempNum = parseInt(this.leftElement.style.width) || 0;
                         this.centerWidth -= tempNum;
                         this.centerLeft += tempNum;
                     }
