@@ -801,7 +801,7 @@ module zane.web.component
                     tempNum = parseInt(this.leftCollapseElement.style.left) || 0;
                     this.rightLeft += tempNum;
                     this.rightLeft += this.options.space;
-                    this.rightLeft += 1;
+                    this.rightLeft += 2;
                 }
                 if (this.centerElement)
                 {
@@ -811,7 +811,7 @@ module zane.web.component
                     tempNum = parseInt(this.centerElement.style.borderRightWidth) || 0;
                     this.rightLeft += tempNum;
                     this.rightLeft += this.options.space;
-                    this.rightLeft += 2;
+                    this.rightLeft += 4;
                 }
                 this.rightElement.style.left = this.rightLeft + "px";
             }
