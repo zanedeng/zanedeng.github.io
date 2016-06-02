@@ -378,7 +378,6 @@ var zane;
                 Layout.prototype._stopDrag = function (e) {
                     if (e === void 0) { e = null; }
                     var diff, tempNum;
-                    console.log(this.xResize);
                     if (this.xResize) {
                         diff = this.xResize.diff;
                         if (this.dragType == "leftResize") {
@@ -410,16 +409,17 @@ var zane;
                             else {
                                 this.rightWidth -= this.xResize.diff;
                             }
+                            var rightDiff = this.rightWidth - parseInt(this.rightElement.style.width);
                             this.rightElement.style.width = this.rightWidth + "px";
                             tempNum = parseInt(this.rightElement.style.left) || 0;
-                            this.rightElement.style.left = (tempNum + this.xResize.diff) + "px";
+                            this.rightElement.style.left = (tempNum + rightDiff) + "px";
                             if (this.centerElement) {
                                 tempNum = parseInt(this.centerElement.style.width);
-                                this.centerElement.style.width = (tempNum + this.xResize.diff) + "px";
+                                this.centerElement.style.width = (tempNum + rightDiff) + "px";
                             }
                             else if (this.leftElement) {
                                 tempNum = parseInt(this.leftElement.style.width);
-                                this.leftElement.style.width = (tempNum + this.xResize.diff) + "px";
+                                this.leftElement.style.width = (tempNum + rightDiff) + "px";
                             }
                         }
                         this._updateCenterBottom();
@@ -536,7 +536,7 @@ var zane;
                         tempNum = parseInt(this.rightElement.style.left) || 0;
                         this.rightDropElement.style.left = (tempNum - this.options.space) + "px";
                         this.rightDropElement.style.top = this.middleTop + "px";
-                        this.rightDropElement.style.left = this.middleHeight + "px";
+                        this.rightDropElement.style.height = this.middleHeight + "px";
                     }
                     if (this.topDropElement) {
                         tempNum = parseInt(this.topElement.style.top) || 0;
