@@ -183,7 +183,7 @@ module zane.web.component
         }
 
         /**
-         *
+         * 
          * @param isCollapse
          * @returns {boolean}
          */
@@ -220,6 +220,8 @@ module zane.web.component
             this.id = this.options.id || Component.generateId();
             this.leftWidth = this.options.leftWidth;
             this.rightWidth = this.options.rightWidth;
+            this.isLeftCollapse = this.options.isLeftCollapse;
+            this.isRightCollapse = this.options.isRightCollapse;
             this.stopDragBindFun = this._stopDrag.bind(this);
             this.dragBindFun = this._drag.bind(this);
             this.resizeBindFun = this._onResize.bind(this);
@@ -806,7 +808,7 @@ module zane.web.component
                 this.centerLeft = 0;
                 if (this.leftElement)
                 {
-                    if (this.options.isLeftCollapse)
+                    if (this.isLeftCollapse)
                     {
                         tempNum = parseInt(this.leftCollapseElement.style.width);
                         this.centerWidth -= tempNum;
@@ -835,7 +837,7 @@ module zane.web.component
                 }
                 if (this.rightElement)
                 {
-                    if (this.options.isRightCollapse)
+                    if (this.isRightCollapse)
                     {
                         this.centerWidth -= parseInt(this.rightCollapseElement.style.width);
                     }
