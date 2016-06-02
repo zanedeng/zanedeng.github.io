@@ -801,7 +801,7 @@ module zane.web.component
                     tempNum = parseInt(this.leftCollapseElement.style.left) || 0;
                     this.rightLeft += tempNum;
                     this.rightLeft += this.options.space;
-                    this.rightLeft += 2;
+                    this.rightLeft += 4;
                 }
                 if (this.centerElement)
                 {
