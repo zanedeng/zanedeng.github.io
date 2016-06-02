@@ -630,8 +630,8 @@ var zane;
                             this.centerLeft += tempNum;
                             this.centerWidth -= this.options.space;
                             this.centerLeft += this.options.space;
-                            this.centerWidth -= 2;
-                            this.centerLeft += 2;
+                            this.centerWidth -= 1;
+                            this.centerLeft += 1;
                         }
                         if (this.rightElement) {
                             if (this.options.isRightCollapse) {
