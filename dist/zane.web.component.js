@@ -565,8 +565,8 @@ var zane;
                         if (this.options.inWindow || this.parent.tagName.toLowerCase() == "body") {
                             console.log("windowHeight:" + windowHeight);
                             parentHeight = windowHeight;
-                            parentHeight -= parseInt(document.body.style.paddingTop);
-                            parentHeight -= parseInt(document.body.style.paddingBottom);
+                            parentHeight -= (parseInt(document.body.style.paddingTop) || 0);
+                            parentHeight -= (parseInt(document.body.style.paddingBottom) || 0);
                         }
                         else {
                             parentHeight = zane.HtmlUtl.height(this.parent);
