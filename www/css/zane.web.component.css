@@ -74,6 +74,17 @@
     overflow: hidden;
 }
 
+.layout-drop-center-bottom {
+    position: absolute;
+    height: 5px;
+    cursor: row-resize;
+    z-index: 10;
+    display: none;
+    line-height: 1px;
+    overflow: hidden;
+}
+
+
 .layout-dragging-xline {
     background: #E0E4E2;
     height: 4px;
