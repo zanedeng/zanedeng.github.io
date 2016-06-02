@@ -756,9 +756,9 @@ module zane.web.component
                     {
                         this.centerWidth -= zane.HtmlUtl.width(this.rightElement);
                     }
-                    tempNum = parseInt(this.rightCollapseElement.style.borderLeftWidth) || 0;
+                    tempNum = parseInt(this.rightCollapseElement.style.borderLeftWidth) || 1;
                     this.centerWidth -= tempNum;
-                    tempNum = parseInt(this.rightCollapseElement.style.borderRightWidth) || 0;
+                    tempNum = parseInt(this.rightCollapseElement.style.borderRightWidth) || 1;
                     this.centerWidth -= tempNum;
                     tempNum = parseInt(this.rightCollapseElement.style.left) || 0;
                     this.centerWidth -= tempNum;
