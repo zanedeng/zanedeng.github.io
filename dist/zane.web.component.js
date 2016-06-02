@@ -359,10 +359,10 @@ var zane;
                     var tempNum = 0;
                     this.middleTop = 0;
                     if (this.topElement) {
-                        this.middleTop += zane.HtmlUtl.height(this.topElement);
-                        tempNum = parseInt(this.topElement.style.borderTopWidth) || 0;
+                        this.middleTop += parseInt(this.topElement.style.height);
+                        tempNum = parseInt(this.topElement.style.borderTopWidth) || 1;
                         this.middleTop += tempNum;
-                        tempNum = parseInt(this.topElement.style.borderBottomWidth) || 0;
+                        tempNum = parseInt(this.topElement.style.borderBottomWidth) || 1;
                         this.middleTop += tempNum;
                         this.middleTop += this.options.space;
                     }
