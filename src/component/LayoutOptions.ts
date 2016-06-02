@@ -132,7 +132,7 @@ module zane.web.component
          * 间隔
          * @type {number}
          */
-        public space:number = 1;
+        public space:number = 2;
 
         /**
          * 调整左侧宽度时的最小允许宽度
