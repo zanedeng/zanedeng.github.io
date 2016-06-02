@@ -699,6 +699,7 @@ var zane;
                     }
                     this._setDropHandlePosition();
                     console.log("-------------------------");
+                    console.log("middleTop:" + this.middleTop);
                 };
                 Layout.CONTENT_NONE = 0x000000;
                 Layout.CONTENT_TOP = 0x100000;

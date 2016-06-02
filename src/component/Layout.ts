@@ -829,6 +829,7 @@ module zane.web.component
             this._setDropHandlePosition();
 
             console.log("-------------------------");
+            console.log("middleTop:" + this.middleTop);
         }
     }
 }
