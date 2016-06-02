@@ -709,12 +709,10 @@ var zane;
                                 this.centerWidth -= tempNum;
                             }
                             else {
-                                this.centerWidth -= zane.HtmlUtl.width(this.rightElement);
+                                this.centerWidth -= this.rightWidth;
                                 tempNum = parseInt(this.rightElement.style.borderLeftWidth) || 1;
                                 this.centerWidth -= tempNum;
                                 tempNum = parseInt(this.rightElement.style.borderRightWidth) || 1;
-                                this.centerWidth -= tempNum;
-                                tempNum = parseInt(this.rightElement.style.right) || 0;
                                 this.centerWidth -= tempNum;
                             }
                             this.centerWidth -= this.options.space;
