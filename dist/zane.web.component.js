@@ -610,7 +610,7 @@ var zane;
                     }
                     this.isResize = true;
                     var h = 0;
-                    var oldHeight = zane.HtmlUtl.height(this.element);
+                    var oldHeight = zane.HtmlUtl.height(this.element) + 2;
                     var windowHeight = zane.BrowserUtil.innerHeight();
                     var parentHeight = 0;
                     var tempNum = 0;
@@ -636,11 +636,11 @@ var zane;
                     }
                     h += this.options.heightDiff;
                     this.element.style.height = h + "px";
-                    this.layoutHeight = zane.HtmlUtl.height(this.element);
-                    this.middleWidth = zane.HtmlUtl.width(this.element);
-                    this.middleHeight = zane.HtmlUtl.height(this.element);
+                    this.layoutHeight = zane.HtmlUtl.height(this.element) + 2;
+                    this.middleWidth = zane.HtmlUtl.width(this.element) + 2;
+                    this.middleHeight = zane.HtmlUtl.height(this.element) + 2;
                     if (this.topElement) {
-                        this.middleHeight -= zane.HtmlUtl.height(this.topElement);
+                        this.middleHeight -= zane.HtmlUtl.height(this.topElement) + 2;
                         tempNum = parseInt(this.topElement.style.borderTopWidth) || 1;
                         this.middleHeight -= tempNum;
                         tempNum = parseInt(this.topElement.style.borderBottomWidth) || 1;
@@ -648,7 +648,7 @@ var zane;
                         this.middleHeight -= this.options.space;
                     }
                     if (this.bottomElement) {
-                        this.middleHeight -= zane.HtmlUtl.height(this.bottomElement);
+                        this.middleHeight -= zane.HtmlUtl.height(this.bottomElement) + 2;
                         tempNum = parseInt(this.bottomElement.style.borderTopWidth) || 1;
                         this.middleHeight -= tempNum;
                         tempNum = parseInt(this.bottomElement.style.borderBottomWidth) || 1;
@@ -668,7 +668,7 @@ var zane;
                         this.centerLeft = 0;
                         if (this.leftElement) {
                             if (this.isLeftCollapse) {
-                                tempNum = zane.HtmlUtl.width(this.leftCollapseElement);
+                                tempNum = zane.HtmlUtl.width(this.leftCollapseElement) + 2;
                                 this.centerWidth -= tempNum;
                                 this.centerLeft += tempNum;
                                 tempNum = parseInt(this.leftCollapseElement.style.borderLeftWidth) || 1;
@@ -682,7 +682,7 @@ var zane;
                                 this.centerLeft += tempNum;
                             }
                             else {
-                                tempNum = zane.HtmlUtl.width(this.leftElement);
+                                tempNum = zane.HtmlUtl.width(this.leftElement) + 2;
                                 this.centerWidth -= tempNum;
                                 this.centerLeft += tempNum;
                                 tempNum = parseInt(this.leftElement.style.borderLeftWidth) || 1;
@@ -700,7 +700,7 @@ var zane;
                         }
                         if (this.rightElement) {
                             if (this.isRightCollapse) {
-                                this.centerWidth -= zane.HtmlUtl.width(this.rightCollapseElement);
+                                this.centerWidth -= zane.HtmlUtl.width(this.rightCollapseElement) + 2;
                                 tempNum = parseInt(this.rightCollapseElement.style.borderLeftWidth) || 1;
                                 this.centerWidth -= tempNum;
                                 tempNum = parseInt(this.rightCollapseElement.style.borderRightWidth) || 1;
@@ -737,7 +737,7 @@ var zane;
                         this.rightLeft = 0;
                         if (this.leftElement) {
                             if (this.isLeftCollapse) {
-                                this.rightLeft += zane.HtmlUtl.width(this.leftCollapseElement);
+                                this.rightLeft += zane.HtmlUtl.width(this.leftCollapseElement) + 2;
                                 tempNum = parseInt(this.leftCollapseElement.style.borderLeftWidth) || 1;
                                 this.rightLeft += tempNum;
                                 tempNum = parseInt(this.leftCollapseElement.style.borderRightWidth) || 1;
@@ -746,7 +746,7 @@ var zane;
                                 this.rightLeft += tempNum;
                             }
                             else {
-                                this.rightLeft += zane.HtmlUtl.width(this.leftElement);
+                                this.rightLeft += zane.HtmlUtl.width(this.leftElement) + 2;
                                 tempNum = parseInt(this.leftElement.style.borderLeftWidth) || 1;
                                 this.rightLeft += tempNum;
                                 tempNum = parseInt(this.leftElement.style.borderRightWidth) || 1;
@@ -757,7 +757,7 @@ var zane;
                             this.rightLeft += this.options.space;
                         }
                         if (this.centerElement) {
-                            this.rightLeft += zane.HtmlUtl.width(this.centerElement);
+                            this.rightLeft += zane.HtmlUtl.width(this.centerElement) + 2;
                             tempNum = parseInt(this.centerElement.style.borderLeftWidth) || 1;
                             this.rightLeft += tempNum;
                             tempNum = parseInt(this.centerElement.style.borderRightWidth) || 1;
