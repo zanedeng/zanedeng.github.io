@@ -811,6 +811,7 @@ module zane.web.component
                     if (this.isLeftCollapse)
                     {
                         tempNum = zane.HtmlUtl.width(this.leftCollapseElement);
+                        console.log(tempNum);
                         this.centerWidth -= tempNum;
                         this.centerLeft += tempNum;
 
