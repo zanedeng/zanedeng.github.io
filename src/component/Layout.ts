@@ -505,6 +505,7 @@ module zane.web.component
                     {
                         this.centerElement.style.top = this.middleTop + "px";
                         this.centerElement.style.height = this.middleHeight + "px";
+                        this.centerContentElement.style.height = this.middleHeight + "px";
                     }
                     if (this.rightElement)
                     {
@@ -527,6 +528,7 @@ module zane.web.component
                     if (this.centerElement)
                     {
                         this.centerElement.style.height = this.middleHeight + "px";
+                        this.centerContentElement.style.height = this.middleHeight + "px";
                     }
                     if (this.rightElement)
                     {
@@ -542,6 +544,7 @@ module zane.web.component
                     this.centerBottomElement.style.top = (tempNum + this.yResize.diff) + "px";
                     this.centerBottomElement.style.height = (zane.HtmlUtl.height(this.centerBottomElement) - this.yResize.diff) + "px";
                     this.centerElement.style.height = (zane.HtmlUtl.height(this.centerElement) + this.yResize.diff) + "px";
+                    this.centerContentElement.style.height = (zane.HtmlUtl.height(this.centerElement) + this.yResize.diff) + "px";
                 }
             }
             this.trigger('endResize', [{
@@ -597,6 +600,7 @@ module zane.web.component
                     this.centerBottomElement.style.height = centerBottomHeight + "px";
                     this.centerBottomElement.style.top = (centerTop + centerHeight - centerBottomHeight + 2) + "px";
                     this.centerElement.style.height = (centerHeight - centerBottomHeight) + "px";
+                    this.centerContentElement.style.height = (centerHeight - centerBottomHeight) + "px";
                 }
                 var centerLeft = parseInt(this.centerElement.style.left);
                 this.centerBottomElement.style.width = (zane.HtmlUtl.width(this.centerElement) + 2) + "px";
