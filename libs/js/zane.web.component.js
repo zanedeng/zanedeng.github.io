@@ -301,6 +301,7 @@ var zane;
                     if (this.dragType == 'leftResize' || this.dragType == 'rightResize') {
                         this.xResize = { startX: e.pageX, diff: 0 };
                         this.draggingYLineElement.style.left = (e.pageX - zane.HtmlUtl.getOffset(this.element).x) + "px";
+                        console.log("middleTop:" + this.middleTop);
                         this.draggingYLineElement.style.top = this.middleTop + "px";
                         this.draggingYLineElement.style.height = this.middleHeight + "px";
                         this.draggingYLineElement.style.display = "block";
