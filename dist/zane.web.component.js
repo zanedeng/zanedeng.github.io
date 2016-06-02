@@ -379,7 +379,7 @@ var zane;
                     if (e === void 0) { e = null; }
                     var diff, tempNum;
                     console.log(this.xResize);
-                    if (this.xResize && this.xResize.diff > 0) {
+                    if (this.xResize) {
                         diff = this.xResize.diff;
                         if (this.dragType == "leftResize") {
                             if (this.leftWidth + this.xResize.diff < this.options.minLeftWidth) {
@@ -424,7 +424,7 @@ var zane;
                         }
                         this._updateCenterBottom();
                     }
-                    else if (this.yResize && this.yResize.diff > 0) {
+                    else if (this.yResize) {
                         diff = this.yResize.diff;
                         if (this.dragType == 'topResize') {
                             tempNum = parseInt(this.topElement.style.height);
