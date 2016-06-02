@@ -513,12 +513,12 @@ var zane;
                             var centerHeight = zane.HtmlUtl.height(this.centerElement);
                             var centerTop = parseInt(this.centerElement.style.top);
                             this.centerBottomElement.style.height = centerBottomHeight + "px";
-                            this.centerBottomElement.style.top = (centerTop + centerHeight - centerBottomHeight + 2) + "px";
+                            this.centerBottomElement.style.top = (centerTop + centerHeight - centerBottomHeight) + "px";
                             this.centerElement.style.height = (centerHeight - centerBottomHeight) + "px";
                             this.centerContentElement.style.height = (centerHeight - centerBottomHeight) + "px";
                         }
                         var centerLeft = parseInt(this.centerElement.style.left);
-                        this.centerBottomElement.style.width = (zane.HtmlUtl.width(this.centerElement) + 2) + "px";
+                        this.centerBottomElement.style.width = (zane.HtmlUtl.width(this.centerElement)) + "px";
                         this.centerBottomElement.style.left = centerLeft + "px";
                     }
                 };
@@ -587,17 +587,17 @@ var zane;
                     this.middleHeight = zane.HtmlUtl.height(this.element);
                     if (this.topElement) {
                         this.middleHeight -= zane.HtmlUtl.height(this.topElement);
-                        tempNum = parseInt(this.topElement.style.borderTopWidth) || 1;
+                        tempNum = parseInt(this.topElement.style.borderTopWidth) || 0;
                         this.middleHeight -= tempNum;
-                        tempNum = parseInt(this.topElement.style.borderBottomWidth) || 1;
+                        tempNum = parseInt(this.topElement.style.borderBottomWidth) || 0;
                         this.middleHeight -= tempNum;
                         this.middleHeight -= this.options.space;
                     }
                     if (this.bottomElement) {
                         this.middleHeight -= zane.HtmlUtl.height(this.bottomElement);
-                        tempNum = parseInt(this.bottomElement.style.borderTopWidth) || 1;
+                        tempNum = parseInt(this.bottomElement.style.borderTopWidth) || 0;
                         this.middleHeight -= tempNum;
-                        tempNum = parseInt(this.bottomElement.style.borderBottomWidth) || 1;
+                        tempNum = parseInt(this.bottomElement.style.borderBottomWidth) || 0;
                         this.middleHeight -= tempNum;
                         this.middleHeight -= this.options.space;
                     }
@@ -623,19 +623,17 @@ var zane;
                                 this.centerWidth -= tempNum;
                                 this.centerLeft += tempNum;
                             }
-                            tempNum = parseInt(this.leftCollapseElement.style.borderLeftWidth) || 1;
+                            tempNum = parseInt(this.leftCollapseElement.style.borderLeftWidth) || 0;
                             this.centerWidth -= tempNum;
                             this.centerLeft += tempNum;
-                            tempNum = parseInt(this.leftCollapseElement.style.borderRightWidth) || 1;
+                            tempNum = parseInt(this.leftCollapseElement.style.borderRightWidth) || 0;
                             this.centerWidth -= tempNum;
                             this.centerLeft += tempNum;
-                            tempNum = parseInt(this.leftCollapseElement.style.left) || 1;
+                            tempNum = parseInt(this.leftCollapseElement.style.left) || 0;
                             this.centerWidth -= tempNum;
                             this.centerLeft += tempNum;
                             this.centerWidth -= this.options.space;
                             this.centerLeft += this.options.space;
-                            this.centerWidth -= 1;
-                            this.centerLeft += 1;
                         }
                         if (this.rightElement) {
                             if (this.options.isRightCollapse) {
@@ -644,14 +642,13 @@ var zane;
                             else {
                                 this.centerWidth -= zane.HtmlUtl.width(this.rightElement);
                             }
-                            tempNum = parseInt(this.rightCollapseElement.style.borderLeftWidth) || 1;
+                            tempNum = parseInt(this.rightCollapseElement.style.borderLeftWidth) || 0;
                             this.centerWidth -= tempNum;
-                            tempNum = parseInt(this.rightCollapseElement.style.borderRightWidth) || 1;
+                            tempNum = parseInt(this.rightCollapseElement.style.borderRightWidth) || 0;
                             this.centerWidth -= tempNum;
                             tempNum = parseInt(this.rightCollapseElement.style.left) || 0;
                             this.centerWidth -= tempNum;
                             this.centerWidth -= this.options.space;
-                            this.centerWidth -= 3;
                         }
                         this.centerElement.style.left = this.centerLeft + "px";
                         if (this.centerWidth >= 0) {
@@ -685,7 +682,6 @@ var zane;
                             tempNum = parseInt(this.leftCollapseElement.style.left) || 0;
                             this.rightLeft += tempNum;
                             this.rightLeft += this.options.space;
-                            this.rightLeft += 4;
                         }
                         if (this.centerElement) {
                             this.rightLeft += zane.HtmlUtl.width(this.centerElement);
@@ -694,7 +690,6 @@ var zane;
                             tempNum = parseInt(this.centerElement.style.borderRightWidth) || 0;
                             this.rightLeft += tempNum;
                             this.rightLeft += this.options.space;
-                            this.rightLeft += 4;
                         }
                         this.rightElement.style.left = this.rightLeft + "px";
                     }
