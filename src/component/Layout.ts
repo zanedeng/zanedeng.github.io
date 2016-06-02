@@ -599,7 +599,7 @@ module zane.web.component
                     this.centerElement.style.height = (centerHeight - centerBottomHeight) + "px";
                 }
                 var centerLeft = parseInt(this.centerElement.style.left);
-                this.centerBottomElement.style.width = zane.HtmlUtl.width(this.centerElement) + "px";
+                this.centerBottomElement.style.width = (zane.HtmlUtl.width(this.centerElement) + 2) + "px";
                 this.centerBottomElement.style.left = centerLeft + "px";
             }
         }
