@@ -80,6 +80,7 @@ declare module zane.web.component {
         protected _render(): void;
         private _addDropHandle();
         private _startDrag(dragType, e?);
+        private _setCollapse();
         private _build();
         private _stopDrag(e?);
         private _drag(e?);

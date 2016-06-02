@@ -147,17 +147,6 @@ var zane;
                 function Layout(parent, options) {
                     if (options === void 0) { options = null; }
                     _super.call(this, parent, options);
-                    this.middleWidth = 0;
-                    this.middleHeight = 0;
-                    this.middleTop = 0;
-                    this.leftWidth = 0;
-                    this.rightWidth = 0;
-                    this.bottomTop = 0;
-                    this.centerLeft = 0;
-                    this.centerWidth = 0;
-                    this.centerBottomHeight = 0;
-                    this.layoutHeight = 0;
-                    this.rightLeft = 0;
                 }
                 Layout.prototype._init = function () {
                     if (!this.options)
@@ -232,6 +221,10 @@ var zane;
                             this.centerBottomElement.appendChild(this.centerBottomContentElement);
                         }
                     }
+                    this.lockElement = document.createElement("div");
+                    this.lockElement.className = "layout-lock";
+                    this.element.appendChild(this.lockElement);
+                    this._addDropHandle();
                     this.leftCollapseElement = document.createElement("div");
                     this.leftCollapseElement.className = "layout-collapse-left";
                     this.leftCollapseElement.style.display = "none";
@@ -240,11 +233,8 @@ var zane;
                     this.rightCollapseElement.className = "layout-collapse-right";
                     this.rightCollapseElement.style.display = "none";
                     this.element.appendChild(this.rightCollapseElement);
-                    this.lockElement = document.createElement("div");
-                    this.lockElement.className = "layout-lock";
-                    this.element.appendChild(this.lockElement);
+                    this._setCollapse();
                     this._build();
-                    this._addDropHandle();
                     this.draggingMaskElement.style.height = parseInt(this.element.style.height) + "px";
                     window.addEventListener("resize", this.resizeBindFun, false);
                 };
@@ -357,6 +347,8 @@ var zane;
                     document.addEventListener("mouseup", this.stopDragBindFun, false);
                     document.addEventListener("mousemove", this.dragBindFun, false);
                 };
+                Layout.prototype._setCollapse = function () {
+                };
                 Layout.prototype._build = function () {
                     var tempNum = 0;
                     this.middleTop = 0;
@@ -370,12 +362,14 @@ var zane;
                     }
                     if (this.leftElement) {
                         this.leftElement.style.top = this.middleTop + "px";
+                        this.leftCollapseElement.style.top = this.middleTop + "px";
                     }
                     if (this.centerElement) {
                         this.centerElement.style.top = this.middleTop + "px";
                     }
                     if (this.rightElement) {
                         this.rightElement.style.top = this.middleTop + "px";
+                        this.rightCollapseElement.style.top = this.middleTop + "px";
                     }
                     if (this.leftElement)
                         this.leftElement.style.left = "0";
@@ -698,8 +692,6 @@ var zane;
                         this.bottomElement.style.top = this.bottomTop + "px";
                     }
                     this._setDropHandlePosition();
-                    console.log("-------------------------");
-                    console.log("middleTop:" + this.middleTop);
                 };
                 Layout.CONTENT_NONE = 0x000000;
                 Layout.CONTENT_TOP = 0x100000;

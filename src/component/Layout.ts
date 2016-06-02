@@ -119,17 +119,17 @@ module zane.web.component
         private dragType:string;
         private xResize:{startX:number,diff:number};
         private yResize:{startY:number,diff:number};
-        private middleWidth:number = 0;
-        private middleHeight:number = 0;
-        private middleTop:number = 0;
-        private leftWidth:number = 0;
-        private rightWidth:number = 0;
-        private bottomTop:number = 0;
-        private centerLeft:number = 0;
-        private centerWidth:number = 0;
-        private centerBottomHeight:number = 0;
-        private layoutHeight:number = 0;
-        private rightLeft:number = 0;
+        private middleWidth:number;
+        private middleHeight:number;
+        private middleTop:number;
+        private leftWidth:number;
+        private rightWidth:number;
+        private bottomTop:number;
+        private centerLeft:number;
+        private centerWidth:number;
+        private centerBottomHeight:number;
+        private layoutHeight:number;
+        private rightLeft:number;
 
         private stopDragBindFun:any;
         private dragBindFun:any;
@@ -252,6 +252,12 @@ module zane.web.component
                 }
             }
 
+            this.lockElement = document.createElement("div");
+            this.lockElement.className = "layout-lock";
+            this.element.appendChild(this.lockElement);
+
+            this._addDropHandle();
+
             this.leftCollapseElement = document.createElement("div");
             this.leftCollapseElement.className = "layout-collapse-left";
             this.leftCollapseElement.style.display = "none";
@@ -262,12 +268,8 @@ module zane.web.component
             this.rightCollapseElement.style.display = "none";
             this.element.appendChild(this.rightCollapseElement);
 
-            this.lockElement = document.createElement("div");
-            this.lockElement.className = "layout-lock";
-            this.element.appendChild(this.lockElement);
-
+            this._setCollapse();
             this._build();
-            this._addDropHandle();
             this.draggingMaskElement.style.height = parseInt(this.element.style.height) + "px";
             window.addEventListener("resize", this.resizeBindFun, false);
         }
@@ -411,6 +413,11 @@ module zane.web.component
             document.addEventListener("mousemove", this.dragBindFun, false);
         }
 
+        private _setCollapse():void
+        {
+
+        }
+
         private _build():void
         {
             var tempNum:number = 0;
@@ -428,6 +435,7 @@ module zane.web.component
             if (this.leftElement)
             {
                 this.leftElement.style.top = this.middleTop + "px";
+                this.leftCollapseElement.style.top = this.middleTop + "px";
             }
             if (this.centerElement)
             {
@@ -436,6 +444,7 @@ module zane.web.component
             if (this.rightElement)
             {
                 this.rightElement.style.top = this.middleTop + "px";
+                this.rightCollapseElement.style.top = this.middleTop + "px";
             }
             //set left
             if (this.leftElement) this.leftElement.style.left = "0";
@@ -827,9 +836,6 @@ module zane.web.component
                 this.bottomElement.style.top = this.bottomTop + "px";
             }
             this._setDropHandlePosition();
-
-            console.log("-------------------------");
-            console.log("middleTop:" + this.middleTop);
         }
     }
 }
