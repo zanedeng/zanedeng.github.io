@@ -598,7 +598,7 @@ module zane.web.component
                     var centerTop = parseInt(this.centerElement.style.top);
                     this.centerBottomElement.style.height = centerBottomHeight + "px";
                     this.centerBottomElement.style.top = (centerTop + centerHeight - centerBottomHeight) + "px";
-                    this.centerElement.style.height = (centerHeight - centerBottomHeight) + "px";
+                    this.centerElement.style.height = (centerHeight - centerBottomHeight - 2) + "px";
                 }
                 var centerLeft = parseInt(this.centerElement.style.left);
                 this.centerBottomElement.style.width = (parseInt(this.centerElement.style.width)) + "px";
