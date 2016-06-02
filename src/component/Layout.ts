@@ -345,7 +345,7 @@ module zane.web.component
                 this.draggingYLineElement.style.height = this.middleHeight + "px";
                 this.draggingYLineElement.style.display = "block";
 
-                document.body.style.cursor = "ew-resize";
+                document.body.style.cursor = "ns-resize";
 
                 this.draggingMaskElement.style.height = parseInt(this.element.style.height) + "px";
                 this.draggingMaskElement.style.display = "block";
