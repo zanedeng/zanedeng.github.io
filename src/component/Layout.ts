@@ -810,6 +810,7 @@ module zane.web.component
                     this.rightLeft += tempNum;
                     this.rightLeft += this.options.space;
                 }
+                this.rightLeft += 5;
                 this.rightElement.style.left = this.rightLeft + "px";
             }
             if (this.bottomElement)
