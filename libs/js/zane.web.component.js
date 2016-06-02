@@ -388,19 +388,19 @@ var zane;
                             else {
                                 this.leftWidth += this.xResize.diff;
                             }
-                            console.log("leftWidth:" + this.leftWidth);
+                            var leftDiff = this.leftWidth - parseInt(this.leftElement.style.width);
                             this.leftElement.style.width = this.leftWidth + "px";
                             if (this.centerElement) {
                                 tempNum = parseInt(this.centerElement.style.width);
-                                this.centerElement.style.width = (tempNum - this.xResize.diff) + "px";
+                                this.centerElement.style.width = (tempNum - leftDiff) + "px";
                                 tempNum = parseInt(this.centerElement.style.left) || 0;
-                                this.centerElement.style.left = (tempNum + this.xResize.diff) + "px";
+                                this.centerElement.style.left = (tempNum + leftDiff) + "px";
                             }
                             else if (this.rightElement) {
                                 tempNum = parseInt(this.leftElement.style.width);
-                                this.rightElement.style.width = (tempNum - this.xResize.diff) + "px";
+                                this.rightElement.style.width = (tempNum - leftDiff) + "px";
                                 tempNum = parseInt(this.centerElement.style.left) || 0;
-                                this.rightElement.style.left = (tempNum + this.xResize.diff) + "px";
+                                this.rightElement.style.left = (tempNum + leftDiff) + "px";
                             }
                         }
                         else if (this.dragType == "rightResize") {
