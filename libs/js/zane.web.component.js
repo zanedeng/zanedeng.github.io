@@ -757,7 +757,7 @@ var zane;
                             this.rightLeft += this.options.space;
                         }
                         if (this.centerElement) {
-                            this.rightLeft += parseInt(this.centerElement.style.width);
+                            this.rightLeft += zane.HtmlUtl.width(this.centerElement);
                             tempNum = parseInt(this.centerElement.style.borderLeftWidth) || 1;
                             this.rightLeft += tempNum;
                             tempNum = parseInt(this.centerElement.style.borderRightWidth) || 1;
