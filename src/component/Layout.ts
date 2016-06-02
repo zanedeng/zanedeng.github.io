@@ -369,12 +369,12 @@ module zane.web.component
             {
                 this.yResize = {startY:e.pageY, diff:0};
                 this.draggingXLineElement.style.top = (e.pageY - zane.HtmlUtl.getOffset(this.element).y) + "px";
-                this.draggingXLineElement.style.width = parseInt(this.element.style.width) + "px";
+                this.draggingXLineElement.style.width = zane.HtmlUtl.width(this.element) + "px";
                 this.draggingXLineElement.style.display = "block";
 
                 document.body.style.cursor = "ns-resize";
 
-                this.draggingMaskElement.style.height = parseInt(this.element.style.height) + "px";
+                this.draggingMaskElement.style.height = zane.HtmlUtl.height(this.element) + "px";
                 this.draggingMaskElement.style.display = "block";
                 zane.HtmlUtl.removeClass(this.draggingMaskElement, "layout-xmask");
                 zane.HtmlUtl.addClass(this.draggingMaskElement, "layout-ymask");
@@ -383,12 +383,12 @@ module zane.web.component
             {
                 this.yResize = {startY:e.pageY, diff:0};
                 this.draggingXLineElement.style.top = (e.pageY - zane.HtmlUtl.getOffset(this.element).y) + "px";
-                this.draggingXLineElement.style.width = parseInt(this.element.style.width) + "px";
+                this.draggingXLineElement.style.width = zane.HtmlUtl.width(this.element) + "px";
                 this.draggingXLineElement.style.display = "block";
 
                 document.body.style.cursor = "ns-resize";
 
-                this.draggingMaskElement.style.height = parseInt(this.element.style.height) + "px";
+                this.draggingMaskElement.style.height = zane.HtmlUtl.height(this.element) + "px";
                 this.draggingMaskElement.style.display = "block";
                 zane.HtmlUtl.removeClass(this.draggingMaskElement, "layout-xmask");
                 zane.HtmlUtl.addClass(this.draggingMaskElement, "layout-ymask");
@@ -398,8 +398,8 @@ module zane.web.component
                 return;
             }
 
-            this.lockElement.style.width = parseInt(this.element.style.width) + "px";
-            this.lockElement.style.height = parseInt(this.element.style.height) + "px";
+            this.lockElement.style.width = zane.HtmlUtl.width(this.element) + "px";
+            this.lockElement.style.height = zane.HtmlUtl.height(this.element) + "px";
             this.lockElement.style.display = "block";
 
             if (zane.BrowserUtil.isIE || zane.BrowserUtil.isSafari)
