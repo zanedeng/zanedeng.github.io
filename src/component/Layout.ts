@@ -810,7 +810,7 @@ module zane.web.component
             }
             if (this.bottomElement)
             {
-                this.bottomTop = this.layoutHeight - zane.HtmlUtl.height(this.bottomElement) - 2;
+                this.bottomTop = this.layoutHeight - zane.HtmlUtl.height(this.bottomElement);
                 this.bottomElement.style.top = this.bottomTop + "px";
             }
             this._setDropHandlePosition();
