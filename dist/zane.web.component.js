@@ -561,22 +561,24 @@ var zane;
                     var oldHeight = zane.HtmlUtl.height(this.element);
                     var windowHeight = zane.BrowserUtil.innerHeight();
                     var parentHeight = 0;
+                    var tempNum = 0;
                     if (typeof (this.options.height) == "string" && this.options.height.indexOf('%') > 0) {
                         if (this.options.inWindow || this.parent.tagName.toLowerCase() == "body") {
                             console.log("windowHeight:" + windowHeight);
                             parentHeight = windowHeight;
-                            parentHeight -= (parseInt(document.body.style.paddingTop) || 0);
-                            parentHeight -= (parseInt(document.body.style.paddingBottom) || 0);
+                            tempNum = parseInt(document.body.style.paddingTop) || 0;
+                            parentHeight -= tempNum;
+                            tempNum = parseInt(document.body.style.paddingBottom) || 0;
+                            parentHeight -= tempNum;
                         }
                         else {
                             parentHeight = zane.HtmlUtl.height(this.parent);
                         }
                         h = parentHeight * parseFloat(this.options.height) * 0.01;
-                        console.log("----> " + parentHeight);
-                        console.log("----> " + parseFloat(this.options.height));
-                        console.log("----> " + h);
-                        if (this.options.inWindow || this.parent.tagName.toLowerCase() == "body")
-                            h -= ((zane.HtmlUtl.getOffset(this.element).y - parseInt(document.body.style.paddingTop)));
+                        if (this.options.inWindow || this.parent.tagName.toLowerCase() == "body") {
+                            tempNum = parseInt(document.body.style.paddingTop) || 0;
+                            h -= ((zane.HtmlUtl.getOffset(this.element).y - tempNum));
+                        }
                     }
                     else {
                         h = parseInt(this.options.height);
@@ -589,19 +591,27 @@ var zane;
                     this.middleHeight = zane.HtmlUtl.height(this.element);
                     if (this.topElement) {
                         this.middleHeight -= zane.HtmlUtl.height(this.topElement);
-                        this.middleHeight -= parseInt(this.topElement.style.borderTopWidth);
-                        this.middleHeight -= parseInt(this.topElement.style.borderBottomWidth);
+                        tempNum = parseInt(this.topElement.style.borderTopWidth) || 0;
+                        this.middleHeight -= tempNum;
+                        tempNum = parseInt(this.topElement.style.borderBottomWidth) || 0;
+                        this.middleHeight -= tempNum;
                         this.middleHeight -= this.options.space;
                     }
                     if (this.bottomElement) {
                         this.middleHeight -= zane.HtmlUtl.height(this.bottomElement);
-                        this.middleHeight -= parseInt(this.bottomElement.style.borderTopWidth);
-                        this.middleHeight -= parseInt(this.bottomElement.style.borderBottomWidth);
+                        tempNum = parseInt(this.bottomElement.style.borderTopWidth) || 0;
+                        this.middleHeight -= tempNum;
+                        tempNum = parseInt(this.bottomElement.style.borderBottomWidth) || 0;
+                        this.middleHeight -= tempNum;
                         this.middleHeight -= this.options.space;
                     }
                     this.middleHeight -= 2;
                     if (this.hasBind('heightChanged') && this.layoutHeight != oldHeight) {
-                        this.trigger('heightChanged', [{ layoutHeight: this.layoutHeight, diff: this.layoutHeight - oldHeight, middleHeight: this.middleHeight }]);
+                        this.trigger('heightChanged', [{
+                                layoutHeight: this.layoutHeight,
+                                diff: this.layoutHeight - oldHeight,
+                                middleHeight: this.middleHeight
+                            }]);
                     }
                     if (this.centerElement) {
                         this.centerWidth = this.middleWidth;
@@ -616,13 +626,13 @@ var zane;
                                 this.centerWidth -= this.leftWidth;
                                 this.centerLeft += this.leftWidth;
                             }
-                            var borderLeftWidth = parseInt(this.leftCollapseElement.style.borderLeftWidth);
+                            var borderLeftWidth = parseInt(this.leftCollapseElement.style.borderLeftWidth) || 0;
                             this.centerWidth -= borderLeftWidth;
                             this.centerLeft += borderLeftWidth;
-                            var borderRightWidth = parseInt(this.leftCollapseElement.style.borderRightWidth);
+                            var borderRightWidth = parseInt(this.leftCollapseElement.style.borderRightWidth) || 0;
                             this.centerWidth -= borderRightWidth;
                             this.centerLeft += borderRightWidth;
-                            var left = parseInt(this.leftCollapseElement.style.left);
+                            var left = parseInt(this.leftCollapseElement.style.left) || 0;
                             this.centerWidth -= left;
                             this.centerLeft += left;
                             this.centerWidth -= this.options.space;
@@ -635,9 +645,12 @@ var zane;
                             else {
                                 this.centerWidth -= this.rightWidth;
                             }
-                            this.centerWidth -= parseInt(this.rightCollapseElement.style.borderLeftWidth);
-                            this.centerWidth -= parseInt(this.rightCollapseElement.style.borderRightWidth);
-                            this.centerWidth -= parseInt(this.rightCollapseElement.style.left);
+                            tempNum = parseInt(this.rightCollapseElement.style.borderLeftWidth) || 0;
+                            this.centerWidth -= tempNum;
+                            tempNum = parseInt(this.rightCollapseElement.style.borderRightWidth) || 0;
+                            this.centerWidth -= tempNum;
+                            tempNum = parseInt(this.rightCollapseElement.style.left) || 0;
+                            this.centerWidth -= tempNum;
                             this.centerWidth -= this.options.space;
                         }
                         this.centerElement.style.left = this.centerLeft + "px";
@@ -664,15 +677,20 @@ var zane;
                             else {
                                 this.rightLeft += zane.HtmlUtl.width(this.leftElement);
                             }
-                            this.rightLeft += parseInt(this.leftCollapseElement.style.borderLeftWidth);
-                            this.rightLeft += parseInt(this.leftCollapseElement.style.borderRightWidth);
-                            this.rightLeft += parseInt(this.leftCollapseElement.style.left);
+                            tempNum = parseInt(this.leftCollapseElement.style.borderLeftWidth) || 0;
+                            this.rightLeft += tempNum;
+                            tempNum = parseInt(this.leftCollapseElement.style.borderRightWidth) || 0;
+                            this.rightLeft += tempNum;
+                            tempNum = parseInt(this.leftCollapseElement.style.left) || 0;
+                            this.rightLeft += tempNum;
                             this.rightLeft += this.options.space;
                         }
                         if (this.centerElement) {
                             this.rightLeft += zane.HtmlUtl.width(this.centerElement);
-                            this.rightLeft += parseInt(this.centerElement.style.borderLeftWidth);
-                            this.rightLeft += parseInt(this.centerElement.style.borderRightWidth);
+                            tempNum = parseInt(this.centerElement.style.borderLeftWidth) || 0;
+                            this.rightLeft += tempNum;
+                            tempNum = parseInt(this.centerElement.style.borderRightWidth) || 0;
+                            this.rightLeft += tempNum;
                             this.rightLeft += this.options.space;
                         }
                         this.rightElement.style.left = this.rightLeft + "px";
