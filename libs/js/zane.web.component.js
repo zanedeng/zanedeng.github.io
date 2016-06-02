@@ -660,20 +660,24 @@ var zane;
                     }
                     if (this.centerElement) {
                         this.centerWidth = this.middleWidth;
-                        console.log("centerWidth:" + this.centerWidth);
+                        console.log("-> -> centerWidth:" + this.centerWidth);
                         this.centerLeft = 0;
                         if (this.leftElement) {
                             if (this.isLeftCollapse) {
                                 tempNum = zane.HtmlUtl.width(this.leftCollapseElement);
+                                console.log(tempNum);
                                 this.centerWidth -= tempNum;
                                 this.centerLeft += tempNum;
                                 tempNum = parseInt(this.leftCollapseElement.style.borderLeftWidth) || 1;
+                                console.log(tempNum);
                                 this.centerWidth -= tempNum;
                                 this.centerLeft += tempNum;
                                 tempNum = parseInt(this.leftCollapseElement.style.borderRightWidth) || 1;
+                                console.log(tempNum);
                                 this.centerWidth -= tempNum;
                                 this.centerLeft += tempNum;
                                 tempNum = parseInt(this.leftCollapseElement.style.left) || 0;
+                                console.log(tempNum);
                                 this.centerWidth -= tempNum;
                                 this.centerLeft += tempNum;
                             }
