@@ -660,11 +660,11 @@ var zane;
                     }
                     if (this.centerElement) {
                         this.centerWidth = this.middleWidth;
+                        console.log("centerWidth:" + this.centerWidth);
                         this.centerLeft = 0;
                         if (this.leftElement) {
                             if (this.isLeftCollapse) {
                                 tempNum = zane.HtmlUtl.width(this.leftCollapseElement);
-                                console.log(tempNum);
                                 this.centerWidth -= tempNum;
                                 this.centerLeft += tempNum;
                                 tempNum = parseInt(this.leftCollapseElement.style.borderLeftWidth) || 1;
