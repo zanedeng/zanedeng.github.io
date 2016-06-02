@@ -95,3 +95,12 @@
     background: #252525;
     overflow: hidden;
 }
+
+.layout-xmask {
+    cursor: ns-resize;
+    z-index:9990;
+}
+.layout-ymask {
+    cursor: ew-resize;
+    z-index:9990;
+}
