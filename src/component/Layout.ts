@@ -156,7 +156,7 @@ module zane.web.component
         {
             if (!this.options) this.options = new LayoutOptions();
             this.id = this.options.id || Component.generateId();
-
+            this.leftWidth = this.options.leftWidth;
             this.stopDragBindFun = this._stopDrag.bind(this);
             this.dragBindFun = this._drag.bind(this);
             this.resizeBindFun = this._onResize.bind(this);

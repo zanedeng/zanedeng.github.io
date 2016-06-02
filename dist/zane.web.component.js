@@ -152,6 +152,7 @@ var zane;
                     if (!this.options)
                         this.options = new component.LayoutOptions();
                     this.id = this.options.id || component.Component.generateId();
+                    this.leftWidth = this.options.leftWidth;
                     this.stopDragBindFun = this._stopDrag.bind(this);
                     this.dragBindFun = this._drag.bind(this);
                     this.resizeBindFun = this._onResize.bind(this);
