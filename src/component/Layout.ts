@@ -352,7 +352,6 @@ module zane.web.component
             {
                 this.xResize = {startX:e.pageX, diff:0};
                 this.draggingYLineElement.style.left = (e.pageX - zane.HtmlUtl.getOffset(this.element).x) + "px";
-                console.log("middleTop:" + this.middleTop);
                 this.draggingYLineElement.style.top = this.middleTop + "px";
                 this.draggingYLineElement.style.height = this.middleHeight + "px";
                 this.draggingYLineElement.style.display = "block";
@@ -454,12 +453,17 @@ module zane.web.component
         private _stopDrag(e:any = null):void
         {
             var diff, tempNum;
+            console.log(this.xResize);
             if (this.xResize && this.xResize.diff > 0)
             {
                 diff = this.xResize.diff;
                 if (this.dragType == "leftResize")
                 {
-                    if (this.leftWidth + this.xResize.diff > this.options.minLeftWidth)
+                    if (this.leftWidth + this.xResize.diff < this.options.minLeftWidth)
+                    {
+                        this.leftWidth = this.options.minLeftWidth
+                    }
+                    else
                     {
                         this.leftWidth += this.xResize.diff;
                     }
@@ -481,7 +485,11 @@ module zane.web.component
                 }
                 else if(this.dragType == "rightResize")
                 {
-                    if (this.rightWidth - this.xResize.diff > this.options.minRightWidth)
+                    if (this.rightWidth - this.xResize.diff < this.options.minRightWidth)
+                    {
+                        this.rightWidth = this.options.minRightWidth;
+                    }
+                    else
                     {
                         this.rightWidth -= this.xResize.diff;
                     }
