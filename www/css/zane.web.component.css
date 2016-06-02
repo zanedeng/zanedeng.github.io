@@ -77,7 +77,7 @@
 .layout-drop-center-bottom {
     position: absolute;
     height: 5px;
-    cursor: row-resize;
+    cursor: ns-resize;
     z-index: 10;
     display: none;
     line-height: 1px;
