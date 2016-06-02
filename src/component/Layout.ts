@@ -467,6 +467,7 @@ module zane.web.component
                     {
                         this.leftWidth += this.xResize.diff;
                     }
+                    console.log("leftWidth:" + this.leftWidth);
                     this.leftElement.style.width = this.leftWidth + "px";
                     if (this.centerElement)
                     {

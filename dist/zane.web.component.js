@@ -387,6 +387,7 @@ var zane;
                             else {
                                 this.leftWidth += this.xResize.diff;
                             }
+                            console.log("leftWidth:" + this.leftWidth);
                             this.leftElement.style.width = this.leftWidth + "px";
                             if (this.centerElement) {
                                 tempNum = parseInt(this.centerElement.style.width);
