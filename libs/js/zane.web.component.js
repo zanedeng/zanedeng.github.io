@@ -504,16 +504,17 @@ var zane;
                     if (this.centerBottomElement) {
                         if (isHeightResize) {
                             this.centerBottomElement.style.left = this.centerLeft + "px";
-                            if (this.centerWidth >= 0)
+                            if (this.centerWidth >= 0) {
                                 this.centerBottomElement.style.width = this.centerWidth + "px";
+                            }
                             var centerBottomHeight = this.centerBottomHeight || this.options.centerBottomHeight;
                             var centerHeight = zane.HtmlUtl.height(this.centerElement);
-                            var centerTop = parseInt(this.centerElement.style.top) || 0;
+                            var centerTop = parseInt(this.centerElement.style.top);
                             this.centerBottomElement.style.height = centerBottomHeight + "px";
-                            this.centerBottomElement.style.top = (centerTop + centerHeight - centerBottomHeight) + "px";
+                            this.centerBottomElement.style.top = (centerTop + centerHeight - centerBottomHeight + 2) + "px";
                             this.centerElement.style.height = (centerHeight - centerBottomHeight) + "px";
                         }
-                        var centerLeft = parseInt(this.centerElement.style.left) || 0;
+                        var centerLeft = parseInt(this.centerElement.style.left);
                         this.centerBottomElement.style.width = zane.HtmlUtl.width(this.centerElement) + "px";
                         this.centerBottomElement.style.left = centerLeft + "px";
                     }
