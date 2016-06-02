@@ -249,11 +249,11 @@ var zane;
                     if (this.leftElement && this.options.allowLeftResize) {
                         this.leftDropElement = document.createElement("div");
                         this.leftDropElement.className = "layout-drop-left";
+                        this.leftDropElement.style.display = "";
                         this.leftDropElement.onmousedown = function (e) {
                             self._startDrag("leftResize", e);
                         };
                         this.element.appendChild(this.leftDropElement);
-                        zane.HtmlUtl.show(this.leftDropElement);
                     }
                     if (this.rightElement && this.options.allowRightResize) {
                         this.rightDropElement = document.createElement("div");
