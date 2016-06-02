@@ -874,10 +874,13 @@ module zane.web.component
                     }
                     else
                     {
+                        console.log(this.rightWidth);
                         this.centerWidth -= this.rightWidth;
                         tempNum = parseInt(this.rightElement.style.borderLeftWidth) || 1;
+                        console.log(tempNum);
                         this.centerWidth -= tempNum;
                         tempNum = parseInt(this.rightElement.style.borderRightWidth) || 1;
+                        console.log(tempNum);
                         this.centerWidth -= tempNum;
                     }
                     this.centerWidth -= this.options.space;
