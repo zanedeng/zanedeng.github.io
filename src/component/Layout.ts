@@ -696,7 +696,7 @@ module zane.web.component
                 this.middleHeight -= this.options.space;
             }
             //specific
-            //this.middleHeight -= 2;
+            this.middleHeight -= 2;
 
             if (this.hasBind('heightChanged') && this.layoutHeight != oldHeight)
             {
@@ -739,6 +739,9 @@ module zane.web.component
 
                     this.centerWidth -= this.options.space;
                     this.centerLeft += this.options.space;
+
+                    this.centerWidth -= 2;
+                    this.centerLeft += 2;
                 }
                 if (this.rightElement)
                 {
