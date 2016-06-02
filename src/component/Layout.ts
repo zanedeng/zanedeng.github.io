@@ -731,15 +731,19 @@ module zane.web.component
                         this.centerWidth -= tempNum;
                         this.centerLeft += tempNum;
                     }
-                    tempNum = parseInt(this.leftCollapseElement.style.borderLeftWidth) || 0;
+                    console.log(tempNum);
+                    tempNum = parseInt(this.leftCollapseElement.style.borderLeftWidth) || 1;
+                    console.log(tempNum);
                     this.centerWidth -= tempNum;
                     this.centerLeft += tempNum;
 
-                    tempNum = parseInt(this.leftCollapseElement.style.borderRightWidth) || 0;
+                    tempNum = parseInt(this.leftCollapseElement.style.borderRightWidth) || 1;
+                    console.log(tempNum);
                     this.centerWidth -= tempNum;
                     this.centerLeft += tempNum;
 
                     tempNum = parseInt(this.leftCollapseElement.style.left) || 0;
+                    console.log(tempNum);
                     this.centerWidth -= tempNum;
                     this.centerLeft += tempNum;
 
