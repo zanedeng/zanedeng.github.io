@@ -267,11 +267,8 @@ var zane;
                     this.element.appendChild(this.lockElement);
                     this._addDropHandle();
                     this._build();
-                    var self = this;
-                    window.onresize = function (e) {
-                        self._onResize();
-                    };
                     this.draggingMaskElement.style.height = zane.HtmlUtl.height(this.element) + "px";
+                    window.addEventListener("resize", this._render.bind(this), false);
                 };
                 Layout.prototype._addDropHandle = function () {
                     var self = this;
