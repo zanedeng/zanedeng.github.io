@@ -578,6 +578,7 @@ var zane;
                     }
                 };
                 Layout.prototype._onResize = function () {
+                    console.log(this);
                     var h = 0;
                     var oldHeight = zane.HtmlUtl.height(this.element);
                     var windowHeight = zane.BrowserUtil.innerHeight();
