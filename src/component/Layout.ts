@@ -817,19 +817,24 @@ module zane.web.component
                 {
                     if (this.isLeftCollapse)
                     {
+                        console.log("--------- leftCollapseElement --------------");
                         tempNum = zane.HtmlUtl.width(this.leftCollapseElement) + 2;
+                        console.log(tempNum);
                         this.centerWidth -= tempNum;
                         this.centerLeft += tempNum;
 
                         tempNum = parseInt(this.leftCollapseElement.style.borderLeftWidth) || 1;
+                        console.log(tempNum);
                         this.centerWidth -= tempNum;
                         this.centerLeft += tempNum;
 
                         tempNum = parseInt(this.leftCollapseElement.style.borderRightWidth) || 1;
+                        console.log(tempNum);
                         this.centerWidth -= tempNum;
                         this.centerLeft += tempNum;
 
                         tempNum = parseInt(this.leftCollapseElement.style.left) || 0;
+                        console.log(tempNum);
                         this.centerWidth -= tempNum;
                         this.centerLeft += tempNum;
                     }
@@ -859,6 +864,7 @@ module zane.web.component
                 {
                     if (this.isRightCollapse)
                     {
+                        console.log("--------- rightCollapseElement --------------");
                         tempNum = zane.HtmlUtl.width(this.rightCollapseElement) + 2;
                         console.log(tempNum);
                         this.centerWidth -= tempNum;
@@ -885,6 +891,7 @@ module zane.web.component
                 this.centerElement.style.left = this.centerLeft + "px";
                 if (this.centerWidth >= 0)
                 {
+                    this.centerWidth -= 2;
                     this.centerElement.style.width = this.centerWidth + "px";
                 }
                 if (this.middleHeight >= 0)
