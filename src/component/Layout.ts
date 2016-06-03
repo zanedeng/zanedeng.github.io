@@ -817,24 +817,19 @@ module zane.web.component
                 {
                     if (this.isLeftCollapse)
                     {
-                        console.log("--------- leftCollapseElement --------------");
                         tempNum = zane.HtmlUtl.width(this.leftCollapseElement) + 2;
-                        console.log(tempNum);
                         this.centerWidth -= tempNum;
                         this.centerLeft += tempNum;
 
                         tempNum = parseInt(this.leftCollapseElement.style.borderLeftWidth) || 1;
-                        console.log(tempNum);
                         this.centerWidth -= tempNum;
                         this.centerLeft += tempNum;
 
                         tempNum = parseInt(this.leftCollapseElement.style.borderRightWidth) || 1;
-                        console.log(tempNum);
                         this.centerWidth -= tempNum;
                         this.centerLeft += tempNum;
 
                         tempNum = parseInt(this.leftCollapseElement.style.left) || 0;
-                        console.log(tempNum);
                         this.centerWidth -= tempNum;
                         this.centerLeft += tempNum;
                     }
@@ -864,18 +859,13 @@ module zane.web.component
                 {
                     if (this.isRightCollapse)
                     {
-                        console.log("--------- rightCollapseElement --------------");
                         tempNum = zane.HtmlUtl.width(this.rightCollapseElement) + 2;
-                        console.log(tempNum);
                         this.centerWidth -= tempNum;
                         tempNum = parseInt(this.rightCollapseElement.style.borderLeftWidth) || 1;
-                        console.log(tempNum);
                         this.centerWidth -= tempNum;
                         tempNum = parseInt(this.rightCollapseElement.style.borderRightWidth) || 1;
-                        console.log(tempNum);
                         this.centerWidth -= tempNum;
                         tempNum = parseInt(this.rightCollapseElement.style.right) || 0;
-                        console.log(tempNum);
                         this.centerWidth -= tempNum;
                     }
                     else
