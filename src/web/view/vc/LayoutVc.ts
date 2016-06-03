@@ -27,6 +27,7 @@ module zane.web.gt
             this.layoutComp = new Layout(document.body, layoutOptions);
 
             this.layoutComp.setLeftCollapse(true);
+            this.layoutComp.setRightCollapse(true);
         }
     }
 }
