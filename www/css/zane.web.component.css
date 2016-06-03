@@ -158,7 +158,7 @@
 }
 
 .layout-collapse-left {
-    
+    left: 0;
 }
 
 .layout-collapse-left-toggle {
@@ -172,7 +172,7 @@
 }
 
 .layout-collapse-right {
-    
+    right: 0;
 }
 
 .layout-collapse-right-toggle {
