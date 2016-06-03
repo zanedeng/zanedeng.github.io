@@ -135,7 +135,9 @@
 .layout-collapse-left, .layout-collapse-right {
     width: 24px;
     background: #EFEFEF;
-    border: 1px solid #D0D0D0;
+    border-width: 1px;
+    border-color: rgba(255,255,255,0.05) rgba(0,0,0,0.6) rgba(0,0,0,0.6) rgba(255,255,255,0.05) ;
+    border-style: solid;
     position: absolute;
     top: 0px;
     display: none;
