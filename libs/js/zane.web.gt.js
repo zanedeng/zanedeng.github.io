@@ -302,6 +302,7 @@ var zane;
                         Layout.CONTENT_RIGHT | Layout.CONTENT_CENTER | Layout.CONTENT_CENTER_BOTTOM | Layout.CONTENT_BOTTOM;
                     this.layoutComp = new Layout(document.body, layoutOptions);
                     this.layoutComp.setLeftCollapse(true);
+                    this.layoutComp.setRightCollapse(true);
                 }
                 return LayoutVc;
             }());

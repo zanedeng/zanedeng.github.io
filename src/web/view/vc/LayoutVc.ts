@@ -28,6 +28,7 @@ module zane.web.gt
 
             this.layoutComp.setLeftCollapse(true);
             this.layoutComp.setRightCollapse(true);
+            
         }
     }
 }
