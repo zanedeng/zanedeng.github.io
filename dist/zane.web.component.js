@@ -700,12 +700,17 @@ var zane;
                         }
                         if (this.rightElement) {
                             if (this.isRightCollapse) {
-                                this.centerWidth -= zane.HtmlUtl.width(this.rightCollapseElement) + 2;
+                                tempNum = zane.HtmlUtl.width(this.rightCollapseElement) + 2;
+                                console.log(tempNum);
+                                this.centerWidth -= tempNum;
                                 tempNum = parseInt(this.rightCollapseElement.style.borderLeftWidth) || 1;
+                                console.log(tempNum);
                                 this.centerWidth -= tempNum;
                                 tempNum = parseInt(this.rightCollapseElement.style.borderRightWidth) || 1;
+                                console.log(tempNum);
                                 this.centerWidth -= tempNum;
                                 tempNum = parseInt(this.rightCollapseElement.style.right) || 0;
+                                console.log(tempNum);
                                 this.centerWidth -= tempNum;
                             }
                             else {
