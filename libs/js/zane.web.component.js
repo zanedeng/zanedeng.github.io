@@ -955,6 +955,7 @@ var zane;
                         return;
                     var itemTop = zane.HtmlUtl.getOffset(item).y;
                     var menuTop = zane.HtmlUtl.getOffset(this.element).y;
+                    console.log(itemTop);
                     this.menuOverElement.style.top = (itemTop - menuTop + 2) + "px";
                     this.hideAllSubMenu();
                     var itemSubMenu = this.subMenuDict[item.getAttribute("menuItemID")];
