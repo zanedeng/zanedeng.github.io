@@ -949,12 +949,21 @@ var zane;
                     if (zane.HtmlUtl.hasClass(item, "menu-item-disable"))
                         return;
                     var itemTop = zane.HtmlUtl.getOffset(item).y;
-                    console.log(this.element);
+                    var menuTop = zane.HtmlUtl.getOffset(this.element).y;
+                    this.menuOverElement.style.top = (itemTop - menuTop) + "px";
+                    var itemSubMenu = this.subMenuDict[item.getAttribute("menuItemID")];
+                    if (itemSubMenu) {
+                        itemSubMenu.show({ top: itemTop, left: zane.HtmlUtl.getOffset(this.element).x + zane.HtmlUtl.width(this.element) - 5 });
+                        this.showedSubMenu = true;
+                    }
                 };
                 Menu.prototype.onItemMouseLeave = function (e) {
                     var item = e.currentTarget;
                     if (zane.HtmlUtl.hasClass(item, "menu-item-disable"))
                         return;
+                    var itemSubMenu = this.subMenuDict[item.getAttribute("menuItemID")];
+                    if (itemSubMenu) {
+                    }
                 };
                 return Menu;
             }(component.Component));
