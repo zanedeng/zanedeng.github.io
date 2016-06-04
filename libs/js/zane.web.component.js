@@ -956,7 +956,6 @@ var zane;
                         return;
                     var itemTop = zane.HtmlUtl.getOffset(item).y;
                     var menuTop = zane.HtmlUtl.getOffset(this.element).y;
-                    console.log(item);
                     this.menuOverElement.style.top = (itemTop - menuTop + 2) + "px";
                     this.hideAllSubMenu();
                     var itemSubMenu = this.subMenuDict[item.getAttribute("menuItemID")];
@@ -1051,7 +1050,7 @@ var zane;
                     this.x = 0;
                     this.y = 0;
                     this.customClass = null;
-                    this.shadow = false;
+                    this.shadow = true;
                     this.menuData = null;
                 }
                 return MenuOptions;

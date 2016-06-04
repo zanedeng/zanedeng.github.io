@@ -330,7 +330,6 @@ module zane.web.component
             if (zane.HtmlUtl.hasClass(item, "menu-item-disable")) return;
             var itemTop:number = zane.HtmlUtl.getOffset(item).y;
             var menuTop:number = zane.HtmlUtl.getOffset(this.element).y;
-            console.log(item);
             this.menuOverElement.style.top = (itemTop - menuTop + 2) + "px";
             this.hideAllSubMenu();
             var itemSubMenu:Menu = this.subMenuDict[item.getAttribute("menuItemID")];

@@ -36,7 +36,7 @@ module zane.web.component
          * 是否添加阴影
          * @type {boolean}
          */
-        public shadow:boolean = false;
+        public shadow:boolean = true;
 
         /**
          * 菜单数据
