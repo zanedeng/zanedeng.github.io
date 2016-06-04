@@ -189,8 +189,12 @@ module zane.web.component
                     menuItemArrow.className = "menu-item-arrow";
                     menuItem.appendChild(menuItemArrow);
                     // 子菜单
-                    var subMenu:Menu = new Menu(this.parent, data.children);
-                    this.subMenuDict[menuItem.getAttribute("menuItemID")] = subMenu;
+                    var subMenuOptions = new MenuOptions();
+                    subMenuOptions.width = this.options.width;
+                    subMenuOptions.customClass = this.options.customClass;
+                    subMenuOptions.shadow = this.options.shadow;
+                    subMenuOptions.menuData = data.children;
+                    this.subMenuDict[menuItem.getAttribute("menuItemID")] = new Menu(this.parent, subMenuOptions);
                 }
 
             }
