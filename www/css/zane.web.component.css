@@ -14,6 +14,142 @@
 }
 
 
+/* +----------------------------------------------------------------------*/
+/* | menu
+/* +----------------------------------------------------------------------*/
+
+.menu {
+    position: absolute;
+    margin: -1px 0 0 0;
+    padding: 3px 0 3px 0;
+    z-index: 10000;
+    overflow: visible;
+    font-family: Tahoma, Arial;
+    font-size: 11px;
+    line-height: 14px;
+    color: #f1f1f1;
+    cursor: default;
+    border: 1px solid #00040a;
+    background-color: #494949;
+    text-shadow: 0px 1px 0px #2c2c2c;
+    border-radius: 0;
+}
+
+.menu-shadow{z-index:1000;
+    FILTER: progid:DXImageTransform.Microsoft.Blur(pixelRadius=2,MakeShadow=false,ShadowOpacity=0.2);
+    BACKGROUND: #ddd;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.2);
+    position: absolute;
+}
+
+.menu-inner {
+    position: relative;
+    width: 100%;
+    z-index: 103;
+}
+
+.menu-over {
+    position: absolute;
+    top: -24px;
+    left: 2px;
+    z-index: 102;
+    height: 22px;
+    overflow: hidden;
+    width: 97%;
+}
+
+.menu-yline {
+    width: 2px;
+    height: 2000px;
+    position: absolute;
+    left: 28px;
+    top: 1px;
+    z-index: 101;
+}
+
+.menu-over-l {
+    width: 28px;
+    height: 22px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.menu-over-r {
+    width: 3px;
+    height: 22px;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.menu-item {
+    position: relative;
+    height: 23px;
+    line-height: 23px;
+    width: 100%;
+    cursor: pointer;
+}
+
+.menu-item-line {
+    height: 2px;
+    width: 100%;
+    margin-top: 1px;
+    margin-bottom: 1px;
+    margin-left: 30px;
+    line-height: 2px;
+    overflow: hidden;
+}
+
+.menu-item-arrow {
+    position: absolute;
+    top: 8px;
+    right: 9px;
+    width: 4px;
+    height: 7px;
+}
+
+.menu-item-text {
+    color: #000000;
+    left: 33px;
+    position: absolute;
+    top: 0;
+}
+
+.menu-item-icon {
+    left: 3px;
+    top: 0;
+    position: absolute;
+    width: 25px;
+    height: 22px;
+    overflow: hidden;
+}
+
+.menu-item-color {
+    border: 1px solid #cccccc;
+    left: 6px;
+    top: 3px;
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    overflow: hidden;
+}
+
+.menu-item-disable {
+    cursor: default;
+}
+
+.menu-item-disable .menu-item-text {
+    color: #A1A1A1;
+}
+
+/* +----------------------------------------------------------------------*/
+/* | layout
+/* +----------------------------------------------------------------------*/
+
 .layout {
     position:relative;
 }
