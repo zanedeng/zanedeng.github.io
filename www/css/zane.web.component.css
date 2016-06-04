@@ -59,7 +59,7 @@
     z-index: 102;
     height: 22px;
     overflow: hidden;
-    background: url('../images/menu/menu-item-over-m.gif') repeat-x;
+    background: rgba(0, 0, 0, 0.3);
     width: 97%;
 }
 
