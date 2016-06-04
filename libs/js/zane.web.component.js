@@ -949,7 +949,8 @@ var zane;
                     if (zane.HtmlUtl.hasClass(item, "menu-item-disable"))
                         return;
                     var itemTop = zane.HtmlUtl.getOffset(item).y;
-                    console.log(itemTop);
+                    var menuTop = zane.HtmlUtl.getOffset(this.element).y;
+                    console.log(menuTop);
                 };
                 Menu.prototype.onItemMouseLeave = function (e) {
                     var item = e.currentTarget;
