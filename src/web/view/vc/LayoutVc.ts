@@ -30,7 +30,7 @@ module zane.web.gt
                 Layout.CONTENT_RIGHT|Layout.CONTENT_CENTER|Layout.CONTENT_CENTER_BOTTOM|Layout.CONTENT_BOTTOM;
             this.layoutComp = new Layout(document.body, layoutOptions);
 
-            var menuOptions = new menuOptions();
+            var menuOptions = new MenuOptions();
             menuOptions.menuData = [
                 { text: '增加', icon:'add' },
                 { text: '修改'},
@@ -44,7 +44,7 @@ module zane.web.gt
                 { text: '关闭'}
             ];
 
-            this.menu = new Menu(document.body, new MenuOptions());
+            this.menu = new Menu(document.body, menuOptions);
             this.menu.show();
         }
     }
