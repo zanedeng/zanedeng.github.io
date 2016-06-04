@@ -310,8 +310,8 @@ module zane.web.component
                 this.shadowElement.style.left = this.element.style.left;
                 this.shadowElement.style.top = this.element.style.top;
                 this.shadowElement.style.display = this.element.style.display;
-                this.shadowElement.style.width = zane.HtmlUtl.outerWidth(this.element) + "px";
-                this.shadowElement.style.height = zane.HtmlUtl.outerHeight(this.element) + "px";
+                this.shadowElement.style.width = zane.HtmlUtl.width(this.element) + "px";
+                this.shadowElement.style.height = zane.HtmlUtl.height(this.element) + "px";
             }
         }
 
