@@ -144,8 +144,8 @@ module zane.web.component
                 var menuItem = document.createElement("div");
                 menuItem.className = "menu-item";
                 menuItem.setAttribute("menuItemID", (this.menuItemCount++).toString());
-                menuItem.addEventListener("mouseenter", this.onItemMouseEnter, false);
-                menuItem.addEventListener("mouseleave", this.onItemMouseLeave, false);
+                menuItem.addEventListener("mouseenter", this.itemMouseEnterBindFun, false);
+                menuItem.addEventListener("mouseleave", this.itemMouseLeaveBindFun, false);
                 if (data.id)
                 {
                     menuItem.id = data.id;
