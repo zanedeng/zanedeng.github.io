@@ -373,12 +373,26 @@ var zane;
             return att ? computed[att] : computed;
         };
         HtmlUtl.getOffset = function (el) {
-            var left = el.offsetLeft, top = el.offsetTop;
-            while ((el = el.offsetParent) && el != document.body && el != document)
-            {
-                left += el.offsetLeft;
-                top += el.offsetTop;
-            }
+            var node = el, left = node.offsetLeft, top = node.offsetTop;
+            node = node.parentNode;
+            do {
+                var styles = getComputedStyle(node);
+                if (styles) {
+                    var position = styles.getPropertyValue('position');
+                    left -= node.scrollLeft;
+                    top -= node.scrollTop;
+                    if (/relative|absolute|fixed/.test(position)) {
+                        left += parseInt(styles.getPropertyValue('border-left-width'), 10);
+                        top += parseInt(styles.getPropertyValue('border-top-width'), 10);
+                        left += node.offsetLeft;
+                        top += node.offsetTop;
+                    }
+                    node = position === 'fixed' ? null : node.parentNode;
+                }
+                else {
+                    node = node.parentNode;
+                }
+            } while (node);
             return new zane.Point(left, top);
         };
         HtmlUtl.getPosition = function (el) {
