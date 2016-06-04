@@ -320,7 +320,7 @@ module zane.web.component
             var item:HTMLElement = e.currentTarget;
             if (zane.HtmlUtl.hasClass(item, "menu-item-disable")) return;
             var itemTop:number = zane.HtmlUtl.getOffset(item).y;
-            var menuTop:number = zane.HtmlUtl.getOffset(this.element).y;
+            //var menuTop:number = zane.HtmlUtl.getOffset(this.element).y;
             console.log(this.element);
             /*
             this.menuOverElement.style.top = (itemTop - menuTop) + "px";
