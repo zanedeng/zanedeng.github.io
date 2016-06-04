@@ -45,7 +45,10 @@ module zane.web.gt
             ];
 
             this.menu = new Menu(document.body, menuOptions);
-            this.menu.show();
+            document.addEventListener("contextmenu", function (e) {
+                this.menu.show({ top: e.pageY, left: e.pageX });
+            });
+
         }
     }
 }
