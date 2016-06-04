@@ -303,6 +303,18 @@ var zane;
                     layoutOptions.content = Layout.CONTENT_TOP | Layout.CONTENT_LEFT |
                         Layout.CONTENT_RIGHT | Layout.CONTENT_CENTER | Layout.CONTENT_CENTER_BOTTOM | Layout.CONTENT_BOTTOM;
                     this.layoutComp = new Layout(document.body, layoutOptions);
+                    var menuOptions = new menuOptions();
+                    menuOptions.menuData = [
+                        { text: '增加', icon: 'add' },
+                        { text: '修改' },
+                        { line: true },
+                        { text: '查看', children: [
+                                { text: '报表' },
+                                { text: '导出', children: [{ text: 'Excel' }, { text: 'Word' }]
+                                }
+                            ] },
+                        { text: '关闭' }
+                    ];
                     this.menu = new Menu(document.body, new MenuOptions());
                     this.menu.show();
                 }
