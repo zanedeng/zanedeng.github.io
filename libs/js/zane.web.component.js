@@ -887,9 +887,40 @@ var zane;
                             subMenuOptions.menuData = data.children;
                             this.subMenuDict[menuItem.getAttribute("menuItemID")] = new Menu(this.parent, subMenuOptions);
                         }
+                        this.menuItemDict[menuItem.getAttribute("menuItemID")] = menuItem;
+                        if (data.id) {
+                            this.menuItemDictByCfgId[data.id + ""] = menuItem;
+                        }
                     }
                 };
-                Menu.prototype.removeItem = function () {
+                Menu.prototype.getMenuItem = function (itemId) {
+                    var id = itemId + "";
+                    return this.menuItemDict[id] || this.menuItemDictByCfgId[id] || null;
+                };
+                Menu.prototype.removeItem = function (itemId) {
+                    var menuItem = this.getMenuItem(itemId);
+                    if (menuItem) {
+                        menuItem.parentElement.removeChild(menuItem);
+                    }
+                };
+                Menu.prototype.setEnabled = function (itemId) {
+                    var menuItem = this.getMenuItem(itemId);
+                    if (menuItem) {
+                        zane.HtmlUtl.removeClass(menuItem, "menu-item-disable");
+                    }
+                };
+                Menu.prototype.isEnable = function (itemId) {
+                    var menuItem = this.getMenuItem(itemId);
+                    if (menuItem) {
+                        return !zane.HtmlUtl.hasClass(menuItem, "menu-item-disable");
+                    }
+                    return false;
+                };
+                Menu.prototype.setDisabled = function (itemId) {
+                    var menuItem = this.getMenuItem(itemId);
+                    if (menuItem) {
+                        zane.HtmlUtl.addClass(menuItem, "menu-item-disable");
+                    }
                 };
                 Menu.prototype.hideAllSubMenu = function () {
                     for (var id in this.subMenuDict) {
@@ -903,11 +934,12 @@ var zane;
                         this.options = new component.MenuOptions();
                     this.menuItemCount = 0;
                     this.subMenuDict = {};
+                    this.menuItemDict = {};
+                    this.menuItemDictByCfgId = {};
                     this.showedSubMenu = false;
                     this.mouseleaveBindFun = this.onMouseLeave.bind(this);
                     this.itemMouseEnterBindFun = this.onItemMouseEnter.bind(this);
                     this.itemMouseLeaveBindFun = this.onItemMouseLeave.bind(this);
-                    this.itemMouseClickBindFun = this.onMouseClick.bind(this);
                 };
                 Menu.prototype._render = function () {
                     this.element = document.createElement("div");

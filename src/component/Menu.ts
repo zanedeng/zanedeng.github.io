@@ -18,11 +18,6 @@ module zane.web.component
         public menuItemCount:number;
 
         /**
-         * 子菜单缓存池
-         */
-        public subMenuDict:any;
-
-        /**
          * 分割线
          * @type {HTMLElement}
          */
@@ -61,7 +56,28 @@ module zane.web.component
         // | private property
         // +----------------------------------------------------------------------
 
+
+        /**
+         * 子菜单缓存池
+         */
+        private subMenuDict:any;
+
+        /**
+         * 菜单项缓存池
+         */
+        private menuItemDict:any;
+
+        /**
+         * 通过配置ID设置的菜单项缓存池
+         */
+        private menuItemDictByCfgId:any;
+
+        /**
+         * 是否显示了子菜单
+         */
         private showedSubMenu:boolean;
+
+
         private mouseleaveBindFun:any;
         private itemMouseEnterBindFun:any;
         private itemMouseLeaveBindFun:any;
@@ -121,6 +137,8 @@ module zane.web.component
             this.updateShadow();
         }
 
+
+
         /**
          * 添加菜单项
          * @param data
@@ -165,7 +183,7 @@ module zane.web.component
                     }
                 }, false);
 
-                
+
                 if (data.id)
                 {
                     menuItem.id = data.id;
@@ -220,12 +238,76 @@ module zane.web.component
                     this.subMenuDict[menuItem.getAttribute("menuItemID")] = new Menu(this.parent, subMenuOptions);
                 }
 
+                this.menuItemDict[menuItem.getAttribute("menuItemID")] = menuItem;
+                if (data.id)
+                {
+                    this.menuItemDictByCfgId[data.id + ""] = menuItem;
+                }
             }
         }
 
-        public removeItem():void
+        /**
+         * 获取菜单项
+         * @param itemId
+         * @returns {HTMLElement}
+         */
+        public getMenuItem(itemId:string):HTMLElement
         {
+            var id:string = itemId + "";
+            return this.menuItemDict[id] || this.menuItemDictByCfgId[id] || null;
+        }
 
+        /**
+         * 通过菜单项ID移除菜单项
+         * @param itemId
+         */
+        public removeItem(itemId:string):void
+        {
+            var menuItem = this.getMenuItem(itemId);
+            if (menuItem)
+            {
+                menuItem.parentElement.removeChild(menuItem);
+            }
+        }
+
+        /**
+         * 设置菜单项可用
+         * @param itemId
+         */
+        public setEnabled(itemId:string):void
+        {
+            var menuItem = this.getMenuItem(itemId);
+            if (menuItem)
+            {
+                zane.HtmlUtl.removeClass(menuItem, "menu-item-disable");
+            }
+        }
+
+        /**
+         *
+         * @param itemId
+         */
+        public isEnable(itemId:string):boolean
+        {
+            var menuItem = this.getMenuItem(itemId);
+            if (menuItem)
+            {
+                return !zane.HtmlUtl.hasClass(menuItem, "menu-item-disable");
+            }
+            return false;
+        }
+
+        /**
+         * 设置菜单项不可用
+         * @param itemId
+         */
+        public setDisabled(itemId:string):void
+        {
+            var menuItem = this.getMenuItem(itemId);
+            if (menuItem)
+            {
+                zane.HtmlUtl.addClass(menuItem, "menu-item-disable");
+            }
         }
 
         /**
@@ -254,11 +336,12 @@ module zane.web.component
             if (!this.options) this.options = new MenuOptions();
             this.menuItemCount = 0;
             this.subMenuDict = {};
+            this.menuItemDict = {};
+            this.menuItemDictByCfgId = {};
             this.showedSubMenu = false;
             this.mouseleaveBindFun = this.onMouseLeave.bind(this);
             this.itemMouseEnterBindFun = this.onItemMouseEnter.bind(this);
             this.itemMouseLeaveBindFun = this.onItemMouseLeave.bind(this);
-            this.itemMouseClickBindFun = this.onMouseClick.bind(this);
         }
 
         /**

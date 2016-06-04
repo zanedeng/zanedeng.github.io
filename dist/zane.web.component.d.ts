@@ -97,13 +97,15 @@ declare module zane.web.component {
 declare module zane.web.component {
     class Menu extends Component {
         menuItemCount: number;
-        subMenuDict: any;
         menuYLineElement: HTMLElement;
         menuOverElement: HTMLElement;
         menuOverLElement: HTMLElement;
         menuOverRElement: HTMLElement;
         menuInnerElement: HTMLElement;
         shadowElement: HTMLElement;
+        private subMenuDict;
+        private menuItemDict;
+        private menuItemDictByCfgId;
         private showedSubMenu;
         private mouseleaveBindFun;
         private itemMouseEnterBindFun;
@@ -113,7 +115,11 @@ declare module zane.web.component {
         hide(): void;
         toggle(): void;
         addItem(data: any, target?: HTMLElement): void;
-        removeItem(): void;
+        getMenuItem(itemId: string): HTMLElement;
+        removeItem(itemId: string): void;
+        setEnabled(itemId: string): void;
+        isEnable(itemId: string): boolean;
+        setDisabled(itemId: string): void;
         hideAllSubMenu(): void;
         protected _init(): void;
         protected _render(): void;
