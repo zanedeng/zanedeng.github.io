@@ -112,7 +112,7 @@
 }
 
 .menu-item-arrow {
-    background: url('../img/submenu_arrow.gif') no-repeat;
+    background: url('../img/submenu_arrow.gif') no-repeat right -15px;
     position: absolute;
     top: 8px;
     right: 9px;
