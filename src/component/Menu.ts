@@ -318,6 +318,8 @@ module zane.web.component
         private onItemMouseEnter(e)
         {
             var item:HTMLElement = e.currentTarget;
+            console.log(item);
+            /*
             if (zane.HtmlUtl.hasClass(item, "menu-item-disable")) return;
             var itemTop:number = zane.HtmlUtl.getOffset(item).y;
             var menuTop:number = zane.HtmlUtl.getOffset(this.element).y;
@@ -327,7 +329,7 @@ module zane.web.component
             {
                 itemSubMenu.show({ top: itemTop, left: zane.HtmlUtl.getOffset(this.element).x + zane.HtmlUtl.width(this.element) - 5 });
                 this.showedSubMenu = true;
-            }
+            }*/
         }
 
         private onItemMouseLeave(e)
