@@ -61,6 +61,7 @@ module zane.web.component
         // | private property
         // +----------------------------------------------------------------------
 
+        private showedSubMenu:boolean;
         private mouseleaveBinFun:any;
 
         // +----------------------------------------------------------------------
@@ -218,6 +219,7 @@ module zane.web.component
             if (!this.options) this.options = new MenuOptions();
             this.menuItemCount = 0;
             this.subMenuDict = {};
+            this.showedSubMenu = false;
             this.mouseleaveBinFun = this.onMouseLeave.bind(this);
         }
 
@@ -301,7 +303,10 @@ module zane.web.component
 
         private onMouseLeave(e)
         {
-            this.element.style.top = "-24px";
+            if (!this.showedSubMenu)
+            {
+                this.menuOverElement.style.top = "-24px";
+            }
         }
     }
 }

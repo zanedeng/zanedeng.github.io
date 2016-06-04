@@ -883,6 +883,7 @@ var zane;
                         this.options = new component.MenuOptions();
                     this.menuItemCount = 0;
                     this.subMenuDict = {};
+                    this.showedSubMenu = false;
                     this.mouseleaveBinFun = this.onMouseLeave.bind(this);
                 };
                 Menu.prototype._render = function () {
@@ -936,7 +937,9 @@ var zane;
                     }
                 };
                 Menu.prototype.onMouseLeave = function (e) {
-                    this.element.style.top = "-24px";
+                    if (!this.showedSubMenu) {
+                        this.menuOverElement.style.top = "-24px";
+                    }
                 };
                 return Menu;
             }(component.Component));

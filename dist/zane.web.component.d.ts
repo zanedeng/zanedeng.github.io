@@ -104,6 +104,7 @@ declare module zane.web.component {
         menuOverRElement: HTMLElement;
         menuInnerElement: HTMLElement;
         shadowElement: HTMLElement;
+        private showedSubMenu;
         private mouseleaveBinFun;
         constructor(parent: HTMLElement, options?: any);
         show(options?: any, menu?: HTMLElement): void;
