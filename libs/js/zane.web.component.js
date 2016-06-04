@@ -946,7 +946,13 @@ var zane;
                 };
                 Menu.prototype.onItemMouseEnter = function (e) {
                     var item = e.currentTarget;
-                    console.log(item);
+                    if (zane.HtmlUtl.hasClass(item, "menu-item-disable"))
+                        return;
+                    var itemTop = zane.HtmlUtl.getOffset(item).y;
+                    var menuTop = zane.HtmlUtl.getOffset(this.element).y;
+                    this.menuOverElement.style.top = (itemTop - menuTop) + "px";
+                    var itemSubMenu = this.subMenuDict[item.getAttribute("menuItemID")];
+                    console.log(this.subMenuDict);
                 };
                 Menu.prototype.onItemMouseLeave = function (e) {
                     var item = e.currentTarget;
