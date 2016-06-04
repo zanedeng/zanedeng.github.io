@@ -950,7 +950,7 @@ var zane;
                         return;
                     var itemTop = zane.HtmlUtl.getOffset(item).y;
                     var menuTop = zane.HtmlUtl.getOffset(this.element).y;
-                    console.log(menuTop);
+                    console.log(this.element);
                 };
                 Menu.prototype.onItemMouseLeave = function (e) {
                     var item = e.currentTarget;
