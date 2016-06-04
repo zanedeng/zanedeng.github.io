@@ -104,13 +104,11 @@ module zane.web.component
 
         /**
          * 隐藏
-         * @param menu
          */
-        public hide(menu:HTMLElement = null):void
+        public hide():void
         {
-            if (!menu) menu = this.element;
             this.hideAllSubMenu();
-            zane.HtmlUtl.hide(menu);
+            zane.HtmlUtl.hide(this.element);
             this.updateShadow();
         }
 
@@ -203,10 +201,16 @@ module zane.web.component
 
         }
 
-
+        /**
+         * 隐藏所有子菜单
+         */
         public hideAllSubMenu():void
         {
-
+            for (var id in this.subMenuDict)
+            {
+                var subMenu:Menu = this.subMenuDict[id];
+                subMenu.hide();
+            }
         }
 
         // +----------------------------------------------------------------------
@@ -322,6 +326,7 @@ module zane.web.component
             var itemTop:number = zane.HtmlUtl.getOffset(item).y;
             var menuTop:number = zane.HtmlUtl.getOffset(this.element).y;
             this.menuOverElement.style.top = (itemTop - menuTop) + "px";
+            this.hideAllSubMenu();
             var itemSubMenu:Menu = this.subMenuDict[item.getAttribute("menuItemID")];
             if (itemSubMenu)
             {
@@ -337,7 +342,7 @@ module zane.web.component
             var itemSubMenu:Menu = this.subMenuDict[item.getAttribute("menuItemID")];
             if (itemSubMenu)
             {
-                
+
             }
         }
     }

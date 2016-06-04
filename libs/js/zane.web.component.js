@@ -811,12 +811,9 @@ var zane;
                     zane.HtmlUtl.show(this.element);
                     this.updateShadow();
                 };
-                Menu.prototype.hide = function (menu) {
-                    if (menu === void 0) { menu = null; }
-                    if (!menu)
-                        menu = this.element;
+                Menu.prototype.hide = function () {
                     this.hideAllSubMenu();
-                    zane.HtmlUtl.hide(menu);
+                    zane.HtmlUtl.hide(this.element);
                     this.updateShadow();
                 };
                 Menu.prototype.toggle = function () {
@@ -877,6 +874,10 @@ var zane;
                 Menu.prototype.removeItem = function () {
                 };
                 Menu.prototype.hideAllSubMenu = function () {
+                    for (var id in this.subMenuDict) {
+                        var subMenu = this.subMenuDict[id];
+                        subMenu.hide();
+                    }
                 };
                 Menu.prototype._init = function () {
                     if (!this.options)
@@ -951,6 +952,7 @@ var zane;
                     var itemTop = zane.HtmlUtl.getOffset(item).y;
                     var menuTop = zane.HtmlUtl.getOffset(this.element).y;
                     this.menuOverElement.style.top = (itemTop - menuTop) + "px";
+                    this.hideAllSubMenu();
                     var itemSubMenu = this.subMenuDict[item.getAttribute("menuItemID")];
                     if (itemSubMenu) {
                         itemSubMenu.show({ top: itemTop, left: zane.HtmlUtl.getOffset(this.element).x + zane.HtmlUtl.width(this.element) - 5 });
