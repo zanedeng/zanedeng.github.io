@@ -374,7 +374,7 @@ var zane;
         };
         HtmlUtl.getOffset = function (el) {
             var node = el, left = node.offsetLeft, top = node.offsetTop;
-            node = node.parentNode;
+            node = node.parentElement;
             do {
                 var styles = getComputedStyle(node);
                 if (styles) {
@@ -387,10 +387,10 @@ var zane;
                         left += node.offsetLeft;
                         top += node.offsetTop;
                     }
-                    node = position === 'fixed' ? null : node.parentNode;
+                    node = position === 'fixed' ? null : node.parentElement;
                 }
                 else {
-                    node = node.parentNode;
+                    node = node.parentElement;
                 }
             } while (node);
             return new zane.Point(left, top);

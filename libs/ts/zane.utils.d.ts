@@ -78,7 +78,7 @@ declare module zane {
         static outerWidthWithMargin(el: HTMLElement): number;
         static getComputedStyles(el: HTMLElement): CSSStyleDeclaration;
         static getComputedStyle(el: any, att: any): any;
-        static getOffset(el: any): Point;
+        static getOffset(el: HTMLElement): Point;
         static getPosition(el: HTMLElement): Point;
         private static reUnit;
         static setStyle(node: any, att: any, val: any, style: any): void;
