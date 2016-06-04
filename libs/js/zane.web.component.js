@@ -882,6 +882,7 @@ var zane;
                         var subMenu = this.subMenuDict[id];
                         subMenu.hide();
                     }
+                    this.showedSubMenu = false;
                 };
                 Menu.prototype._init = function () {
                     if (!this.options)

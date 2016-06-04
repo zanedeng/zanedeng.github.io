@@ -215,6 +215,7 @@ module zane.web.component
                 var subMenu:Menu = this.subMenuDict[id];
                 subMenu.hide();
             }
+            this.showedSubMenu = false;
         }
 
         // +----------------------------------------------------------------------
