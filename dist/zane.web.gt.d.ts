@@ -98,8 +98,10 @@ declare module zane.web.gt {
 }
 declare module zane.web.gt {
     import Layout = zane.web.component.Layout;
+    import Menu = zane.web.component.Menu;
     class LayoutVc {
         layoutComp: Layout;
+        menu: Menu;
         constructor();
     }
 }

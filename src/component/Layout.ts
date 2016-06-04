@@ -215,21 +215,25 @@ module zane.web.component
         // | protected method
         // +----------------------------------------------------------------------
 
+        /**
+         * 初始化
+         * @private
+         */
         protected _init():void
         {
             if (!this.options) this.options = new LayoutOptions();
-            this.id = this.options.id || Component.generateId();
-            this.leftWidth = this.options.leftWidth;
-            this.rightWidth = this.options.rightWidth;
-            this.isLeftCollapse = this.options.isLeftCollapse;
+            this.id              = this.options.id || Component.generateId();
+            this.leftWidth       = this.options.leftWidth;
+            this.rightWidth      = this.options.rightWidth;
+            this.isLeftCollapse  = this.options.isLeftCollapse;
             this.isRightCollapse = this.options.isRightCollapse;
             this.stopDragBindFun = this._stopDrag.bind(this);
-            this.dragBindFun = this._drag.bind(this);
-            this.resizeBindFun = this._onResize.bind(this);
+            this.dragBindFun     = this._drag.bind(this);
+            this.resizeBindFun   = this._onResize.bind(this);
         }
 
         /**
-         * 初始化
+         * 渲染视图组件
          * @private
          */
         protected _render():void

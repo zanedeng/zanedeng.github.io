@@ -74,6 +74,7 @@ declare module zane.web.component {
         private rightLeft;
         private isLeftCollapse;
         private isRightCollapse;
+        private isResize;
         private stopDragBindFun;
         private dragBindFun;
         private resizeBindFun;
@@ -94,6 +95,37 @@ declare module zane.web.component {
     }
 }
 declare module zane.web.component {
+    class Menu extends Component {
+        menuItemCount: number;
+        subMenuDict: any;
+        menuYLineElement: HTMLElement;
+        menuOverElement: HTMLElement;
+        menuOverLElement: HTMLElement;
+        menuOverRElement: HTMLElement;
+        menuInnerElement: HTMLElement;
+        shadowElement: HTMLElement;
+        private mouseleaveBinFun;
+        constructor(parent: HTMLElement, options?: any);
+        show(options?: any, menu?: HTMLElement): void;
+        hide(menu?: HTMLElement): void;
+        toggle(): void;
+        addItem(data: any, target?: HTMLElement): void;
+        removeItem(): void;
+        hideAllSubMenu(): void;
+        protected _init(): void;
+        protected _render(): void;
+        private updateShadow();
+        private onMouseLeave(e);
+    }
+}
+declare module zane.web.component {
+    class MenuBar extends Component {
+        constructor(parent: HTMLElement, options?: any);
+        protected _init(): void;
+        protected _render(): void;
+    }
+}
+declare module zane.web.component {
     class LayoutOptions {
         id: string;
         width: string;
@@ -102,26 +134,31 @@ declare module zane.web.component {
         topHeight: number;
         bottomHeight: number;
         leftWidth: number;
+        minLeftWidth: number;
         centerWidth: number;
         rightWidth: number;
+        minRightWidth: number;
         centerBottomHeight: number;
-        allowCenterBottomResize: boolean;
         inWindow: boolean;
-        allowLeftCollapse: boolean;
         isLeftCollapse: boolean;
-        allowLeftResize: boolean;
-        allowRightCollapse: boolean;
         isRightCollapse: boolean;
+        allowCenterBottomResize: boolean;
+        allowLeftResize: boolean;
         allowRightResize: boolean;
         allowTopResize: boolean;
         allowBottomResize: boolean;
         space: number;
-        minLeftWidth: number;
-        minRightWidth: number;
-        onEndResize: Function;
-        onLeftToggle: Function;
-        onRightToggle: Function;
-        onHeightChanged: Function;
         content: number;
+    }
+}
+declare module zane.web.component {
+    class MenuOptions {
+        id: string;
+        width: number;
+        x: number;
+        y: number;
+        customClass: string;
+        shadow: boolean;
+        menuData: Array<any>;
     }
 }

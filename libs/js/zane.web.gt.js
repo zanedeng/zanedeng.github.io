@@ -292,6 +292,8 @@ var zane;
         (function (gt) {
             var Layout = zane.web.component.Layout;
             var LayoutOptions = zane.web.component.LayoutOptions;
+            var Menu = zane.web.component.Menu;
+            var MenuOptions = zane.web.component.MenuOptions;
             var LayoutVc = (function () {
                 function LayoutVc() {
                     var layoutOptions = new LayoutOptions();
@@ -301,6 +303,8 @@ var zane;
                     layoutOptions.content = Layout.CONTENT_TOP | Layout.CONTENT_LEFT |
                         Layout.CONTENT_RIGHT | Layout.CONTENT_CENTER | Layout.CONTENT_CENTER_BOTTOM | Layout.CONTENT_BOTTOM;
                     this.layoutComp = new Layout(document.body, layoutOptions);
+                    this.menu = new Menu(document.body, new MenuOptions());
+                    this.menu.show();
                 }
                 return LayoutVc;
             }());

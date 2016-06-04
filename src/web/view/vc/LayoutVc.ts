@@ -5,6 +5,8 @@ module zane.web.gt
 {
     import Layout = zane.web.component.Layout;
     import LayoutOptions = zane.web.component.LayoutOptions;
+    import Menu = zane.web.component.Menu;
+    import MenuOptions = zane.web.component.MenuOptions;
     /**
      * @class zane.web.gt.LayoutVc
      */
@@ -16,6 +18,8 @@ module zane.web.gt
          */
         public layoutComp:Layout;
 
+        public menu:Menu;
+
         constructor()
         {
             var layoutOptions = new LayoutOptions();
@@ -26,6 +30,8 @@ module zane.web.gt
                 Layout.CONTENT_RIGHT|Layout.CONTENT_CENTER|Layout.CONTENT_CENTER_BOTTOM|Layout.CONTENT_BOTTOM;
             this.layoutComp = new Layout(document.body, layoutOptions);
 
+            this.menu = new Menu(document.body, new MenuOptions());
+            this.menu.show();
         }
     }
 }

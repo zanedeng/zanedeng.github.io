@@ -95,10 +95,13 @@ module zane.web.component
         // +----------------------------------------------------------------------
 
         /**
-         *
+         * 唯一标识ID
          */
         public id:string;
 
+        /**
+         * 组件的父级 HTMLElement 对象
+         */
         public parent:HTMLElement;
 
         /**

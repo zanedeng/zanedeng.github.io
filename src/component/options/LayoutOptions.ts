@@ -52,6 +52,12 @@ module zane.web.component
         public leftWidth:number = 110;
 
         /**
+         * 调整左侧宽度时的最小允许宽度
+         * @type {number}
+         */
+        public minLeftWidth:number = 80;
+
+        /**
          * 中部内容高度
          * @type {number}
          */
@@ -62,17 +68,17 @@ module zane.web.component
          * @type {number}
          */
         public rightWidth:number = 170;
+
+        /**
+         * 调整右侧宽度时的最小允许宽度
+         * @type {number}
+         */
+        public minRightWidth:number = 80;
         /**
          * 中底部内容高度
          * @type {number}
          */
         public centerBottomHeight:number = 100;
-
-        /**
-         *
-         * @type {boolean}
-         */
-        public allowCenterBottomResize:boolean = true;
 
         /**
          * 是否以窗口的高度为准 height设置为百分比时可用
@@ -81,34 +87,28 @@ module zane.web.component
         public inWindow:boolean = true;
 
         /**
-         * 是否允许 左边可以隐藏
-         * @type {boolean}
-         */
-        public allowLeftCollapse:boolean = true;
-
-        /**
          * 初始化时 左边是否隐藏
          * @type {boolean}
          */
         public isLeftCollapse:boolean = false;
 
         /**
-         * 是否允许 左边可以调整大小
-         * @type {boolean}
-         */
-        public allowLeftResize:boolean = true;
-
-        /**
-         * 是否允许 右边可以隐藏
-         * @type {boolean}
-         */
-        public allowRightCollapse:boolean = true;
-
-        /**
          * 初始化时 右边是否隐藏
          * @type {boolean}
          */
         public isRightCollapse:boolean = false;
+
+        /**
+         *
+         * @type {boolean}
+         */
+        public allowCenterBottomResize:boolean = true;
+
+        /**
+         * 是否允许 左边可以调整大小
+         * @type {boolean}
+         */
+        public allowLeftResize:boolean = true;
 
         /**
          * 是否允许 右边可以调整大小
@@ -133,42 +133,6 @@ module zane.web.component
          * @type {number}
          */
         public space:number = 0;
-
-        /**
-         * 调整左侧宽度时的最小允许宽度
-         * @type {number}
-         */
-        public minLeftWidth:number = 80;
-
-        /**
-         * 调整右侧宽度时的最小允许宽度
-         * @type {number}
-         */
-        public minRightWidth:number = 80;
-
-        /**
-         * 调整大小结束事件
-         * @type {Function}
-         */
-        public onEndResize:Function = null;
-
-        /**
-         * 左边收缩/展开事件
-         * @type {Function}
-         */
-        public onLeftToggle:Function = null;
-
-        /**
-         * 右边收缩/展开事件
-         * @type {null}
-         */
-        public onRightToggle:Function = null;
-
-        /**
-         * 高度发生改变的事件
-         * @type {Function}
-         */
-        public onHeightChanged:Function = null;
 
         /**
          * 布局内容

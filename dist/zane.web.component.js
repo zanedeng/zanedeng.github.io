@@ -794,6 +794,186 @@ var zane;
     (function (web) {
         var component;
         (function (component) {
+            var Menu = (function (_super) {
+                __extends(Menu, _super);
+                function Menu(parent, options) {
+                    if (options === void 0) { options = null; }
+                    _super.call(this, parent, options);
+                }
+                Menu.prototype.show = function (options, menu) {
+                    if (options === void 0) { options = null; }
+                    if (menu === void 0) { menu = null; }
+                    if (!menu)
+                        menu = this.element;
+                    if (options && options.left != undefined) {
+                        menu.style.left = options.left + "px";
+                    }
+                    if (options && options.top != undefined) {
+                        menu.style.top = options.top + "px";
+                    }
+                    zane.HtmlUtl.show(menu);
+                    this.updateShadow();
+                };
+                Menu.prototype.hide = function (menu) {
+                    if (menu === void 0) { menu = null; }
+                    if (!menu)
+                        menu = this.element;
+                    this.hideAllSubMenu();
+                    zane.HtmlUtl.hide(menu);
+                    this.updateShadow();
+                };
+                Menu.prototype.toggle = function () {
+                    zane.HtmlUtl.toggle(this.element);
+                    this.updateShadow();
+                };
+                Menu.prototype.addItem = function (data, target) {
+                    if (target === void 0) { target = null; }
+                    if (!data)
+                        return;
+                    if (target == null)
+                        target = this.element;
+                    if (data.line) {
+                        var menuItemLine = document.createElement("div");
+                        menuItemLine.className = "menu-item-line";
+                        target.appendChild(menuItemLine);
+                    }
+                    else {
+                        var menuItem = document.createElement("div");
+                        menuItem.className = "menu-item";
+                        menuItem.setAttribute("menuItemID", (this.menuItemCount++).toString());
+                        if (data.id) {
+                            menuItem.id = data.id;
+                        }
+                        target.appendChild(menuItem);
+                        var menuItemText = document.createElement("div");
+                        menuItemText.className = "menu-item-text";
+                        if (data.text) {
+                            menuItemText.innerText = data.text;
+                        }
+                        menuItem.appendChild(menuItemText);
+                        var menuItemIcon;
+                        if (data.icon) {
+                            menuItemIcon = document.createElement("div");
+                            menuItemIcon.className = "menu-item-icon icon-" + data.icon;
+                            menuItem.appendChild(menuItemIcon);
+                        }
+                        if (data.img) {
+                            menuItemIcon = document.createElement("div");
+                            menuItemIcon.className = "menu-item-ico";
+                            menuItemIcon.innerHTML = "<img style=\"width:16px;height:16px;margin:2px;\" src=\"" + data.img + "\" />";
+                            menuItem.appendChild(menuItemIcon);
+                        }
+                        if (data.disable || data.disabled) {
+                            zane.HtmlUtl.addClass(menuItem, "menu-item-disable");
+                        }
+                        if (data.children) {
+                            var menuItemArrow = document.createElement("div");
+                            menuItemArrow.className = "menu-item-arrow";
+                            menuItem.appendChild(menuItemArrow);
+                            this.subMenuDict[menuItem.getAttribute("menuItemID")] = new Menu(this.parent, data.children);
+                        }
+                    }
+                };
+                Menu.prototype.removeItem = function () {
+                };
+                Menu.prototype.hideAllSubMenu = function () {
+                };
+                Menu.prototype._init = function () {
+                    if (!this.options)
+                        this.options = new component.MenuOptions();
+                    this.menuItemCount = 0;
+                    this.subMenuDict = {};
+                    this.mouseleaveBinFun = this.onMouseLeave.bind(this);
+                };
+                Menu.prototype._render = function () {
+                    this.element = document.createElement("div");
+                    this.element.className = "menu";
+                    this.element.style.display = "none";
+                    this.element.style.left = this.options.x + "px";
+                    this.element.style.top = this.options.y + "px";
+                    this.element.style.width = this.options.width + "px";
+                    this.element.addEventListener("mouseleave", this.mouseleaveBinFun, false);
+                    if (this.parent) {
+                        this.parent.appendChild(this.element);
+                    }
+                    this.menuYLineElement = document.createElement("div");
+                    this.menuYLineElement.className = "menu-yline";
+                    this.element.appendChild(this.menuYLineElement);
+                    this.menuOverElement = document.createElement("div");
+                    this.menuOverElement.className = "menu-over";
+                    this.element.appendChild(this.menuOverElement);
+                    this.menuOverLElement = document.createElement("div");
+                    this.menuOverLElement.className = "menu-over-l";
+                    this.menuOverElement.appendChild(this.menuOverLElement);
+                    this.menuOverRElement = document.createElement("div");
+                    this.menuOverRElement.className = "menu-over-r";
+                    this.menuOverElement.appendChild(this.menuOverRElement);
+                    this.menuInnerElement = document.createElement("div");
+                    this.menuInnerElement.className = "menu-inner";
+                    this.element.appendChild(this.menuInnerElement);
+                    if (this.options.shadow) {
+                        this.shadowElement = document.createElement("div");
+                        this.shadowElement.className = "menu-shadow";
+                        this.parent.appendChild(this.shadowElement);
+                        this.updateShadow();
+                    }
+                    if (this.options.customClass) {
+                        this.element.className = this.options.customClass;
+                    }
+                    if (this.options.menuData) {
+                        for (var i = 0, l = this.options.menuData.length; i < l; ++i) {
+                            this.addItem(this.options.menuData[i]);
+                        }
+                    }
+                };
+                Menu.prototype.updateShadow = function () {
+                    if (this.shadowElement) {
+                        this.shadowElement.style.left = this.element.style.left;
+                        this.shadowElement.style.top = this.element.style.top;
+                        this.shadowElement.style.display = this.element.style.display;
+                        this.shadowElement.style.width = zane.HtmlUtl.outerWidth(this.shadowElement) + "px";
+                        this.shadowElement.style.height = zane.HtmlUtl.outerHeight(this.shadowElement) + "px";
+                    }
+                };
+                Menu.prototype.onMouseLeave = function (e) {
+                    this.element.style.top = "-24px";
+                };
+                return Menu;
+            }(component.Component));
+            component.Menu = Menu;
+        })(component = web.component || (web.component = {}));
+    })(web = zane.web || (zane.web = {}));
+})(zane || (zane = {}));
+var zane;
+(function (zane) {
+    var web;
+    (function (web) {
+        var component;
+        (function (component) {
+            var MenuBar = (function (_super) {
+                __extends(MenuBar, _super);
+                function MenuBar(parent, options) {
+                    if (options === void 0) { options = null; }
+                    _super.call(this, parent, options);
+                }
+                MenuBar.prototype._init = function () {
+                    if (!this.options)
+                        this.options = new component.LayoutOptions();
+                };
+                MenuBar.prototype._render = function () {
+                };
+                return MenuBar;
+            }(component.Component));
+            component.MenuBar = MenuBar;
+        })(component = web.component || (web.component = {}));
+    })(web = zane.web || (zane.web = {}));
+})(zane || (zane = {}));
+var zane;
+(function (zane) {
+    var web;
+    (function (web) {
+        var component;
+        (function (component) {
             var LayoutOptions = (function () {
                 function LayoutOptions() {
                     this.width = "100%";
@@ -802,31 +982,46 @@ var zane;
                     this.topHeight = 50;
                     this.bottomHeight = 50;
                     this.leftWidth = 110;
+                    this.minLeftWidth = 80;
                     this.centerWidth = 300;
                     this.rightWidth = 170;
+                    this.minRightWidth = 80;
                     this.centerBottomHeight = 100;
-                    this.allowCenterBottomResize = true;
                     this.inWindow = true;
-                    this.allowLeftCollapse = true;
                     this.isLeftCollapse = false;
-                    this.allowLeftResize = true;
-                    this.allowRightCollapse = true;
                     this.isRightCollapse = false;
+                    this.allowCenterBottomResize = true;
+                    this.allowLeftResize = true;
                     this.allowRightResize = true;
                     this.allowTopResize = true;
                     this.allowBottomResize = true;
                     this.space = 0;
-                    this.minLeftWidth = 80;
-                    this.minRightWidth = 80;
-                    this.onEndResize = null;
-                    this.onLeftToggle = null;
-                    this.onRightToggle = null;
-                    this.onHeightChanged = null;
                     this.content = component.Layout.CONTENT_CENTER;
                 }
                 return LayoutOptions;
             }());
             component.LayoutOptions = LayoutOptions;
+        })(component = web.component || (web.component = {}));
+    })(web = zane.web || (zane.web = {}));
+})(zane || (zane = {}));
+var zane;
+(function (zane) {
+    var web;
+    (function (web) {
+        var component;
+        (function (component) {
+            var MenuOptions = (function () {
+                function MenuOptions() {
+                    this.width = 150;
+                    this.x = 0;
+                    this.y = 0;
+                    this.customClass = null;
+                    this.shadow = false;
+                    this.menuData = null;
+                }
+                return MenuOptions;
+            }());
+            component.MenuOptions = MenuOptions;
         })(component = web.component || (web.component = {}));
     })(web = zane.web || (zane.web = {}));
 })(zane || (zane = {}));
