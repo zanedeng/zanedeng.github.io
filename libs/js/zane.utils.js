@@ -373,12 +373,13 @@ var zane;
             return att ? computed[att] : computed;
         };
         HtmlUtl.getOffset = function (el) {
-            var html = el.ownerDocument.documentElement;
-            var box = { top: 0, left: 0 };
-            if (typeof el.getBoundingClientRect !== 'undefined') {
-                box = el.getBoundingClientRect();
+            var left = el.offsetLeft, top = el.offsetTop;
+            while ((el = el.offsetParent) && el != document.body && el != document)
+            {
+                left += el.offsetLeft;
+                top += el.offsetTop;
             }
-            return new zane.Point(box.top + window.pageYOffset - html.clientTop, box.left + window.pageXOffset - html.clientLeft);
+            return new zane.Point(left, top);
         };
         HtmlUtl.getPosition = function (el) {
             var p = new zane.Point();
