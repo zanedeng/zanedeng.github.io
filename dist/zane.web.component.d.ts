@@ -121,6 +121,7 @@ declare module zane.web.component {
         private onMouseLeave(e);
         private onItemMouseEnter(e);
         private onItemMouseLeave(e);
+        private onMouseClick(e);
     }
 }
 declare module zane.web.component {

@@ -837,6 +837,20 @@ var zane;
                         menuItem.setAttribute("menuItemID", (this.menuItemCount++).toString());
                         menuItem.addEventListener("mouseenter", this.itemMouseEnterBindFun, false);
                         menuItem.addEventListener("mouseleave", this.itemMouseLeaveBindFun, false);
+                        menuItem.addEventListener("click", function (e) {
+                            if (zane.HtmlUtl.hasClass(menuItem, "menu-item-disable"))
+                                return;
+                            if (data.click) {
+                                data.click(menuItem);
+                            }
+                        }, false);
+                        menuItem.addEventListener("dblclick", function (e) {
+                            if (zane.HtmlUtl.hasClass(menuItem, "menu-item-disable"))
+                                return;
+                            if (data.dblclick) {
+                                data.dblclick(menuItem);
+                            }
+                        }, false);
                         if (data.id) {
                             menuItem.id = data.id;
                         }
@@ -893,6 +907,7 @@ var zane;
                     this.mouseleaveBindFun = this.onMouseLeave.bind(this);
                     this.itemMouseEnterBindFun = this.onItemMouseEnter.bind(this);
                     this.itemMouseLeaveBindFun = this.onItemMouseLeave.bind(this);
+                    this.itemMouseClickBindFun = this.onMouseClick.bind(this);
                 };
                 Menu.prototype._render = function () {
                     this.element = document.createElement("div");
@@ -971,6 +986,8 @@ var zane;
                     var itemSubMenu = this.subMenuDict[item.getAttribute("menuItemID")];
                     if (itemSubMenu) {
                     }
+                };
+                Menu.prototype.onMouseClick = function (e) {
                 };
                 return Menu;
             }(component.Component));

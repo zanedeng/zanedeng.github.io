@@ -144,6 +144,28 @@ module zane.web.component
                 menuItem.setAttribute("menuItemID", (this.menuItemCount++).toString());
                 menuItem.addEventListener("mouseenter", this.itemMouseEnterBindFun, false);
                 menuItem.addEventListener("mouseleave", this.itemMouseLeaveBindFun, false);
+
+                // 点击事件
+                menuItem.addEventListener("click", function (e)
+                {
+                    if (zane.HtmlUtl.hasClass(menuItem, "menu-item-disable")) return;
+                    if (data.click)
+                    {
+                        data.click(menuItem);
+                    }
+                }, false);
+
+                // 双击事件
+                menuItem.addEventListener("dblclick", function (e)
+                {
+                    if (zane.HtmlUtl.hasClass(menuItem, "menu-item-disable")) return;
+                    if (data.dblclick)
+                    {
+                        data.dblclick(menuItem);
+                    }
+                }, false);
+
+                
                 if (data.id)
                 {
                     menuItem.id = data.id;
@@ -157,6 +179,7 @@ module zane.web.component
                 {
                     menuItemText.innerText = data.text;
                 }
+
                 menuItem.appendChild(menuItemText);
 
                 // 菜单项的ICON
@@ -235,6 +258,7 @@ module zane.web.component
             this.mouseleaveBindFun = this.onMouseLeave.bind(this);
             this.itemMouseEnterBindFun = this.onItemMouseEnter.bind(this);
             this.itemMouseLeaveBindFun = this.onItemMouseLeave.bind(this);
+            this.itemMouseClickBindFun = this.onMouseClick.bind(this);
         }
 
         /**
@@ -349,6 +373,11 @@ module zane.web.component
             {
 
             }
+        }
+
+        private onMouseClick(e)
+        {
+
         }
     }
 }
