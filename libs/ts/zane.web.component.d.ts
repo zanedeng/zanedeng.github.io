@@ -104,9 +104,12 @@ declare module zane.web.component {
         menuOverRElement: HTMLElement;
         menuInnerElement: HTMLElement;
         shadowElement: HTMLElement;
-        private mouseleaveBinFun;
+        private showedSubMenu;
+        private mouseleaveBindFun;
+        private itemMouseEnterBindFun;
+        private itemMouseLeaveBindFun;
         constructor(parent: HTMLElement, options?: any);
-        show(options?: any, menu?: HTMLElement): void;
+        show(options?: any): void;
         hide(menu?: HTMLElement): void;
         toggle(): void;
         addItem(data: any, target?: HTMLElement): void;
@@ -116,6 +119,8 @@ declare module zane.web.component {
         protected _render(): void;
         private updateShadow();
         private onMouseLeave(e);
+        private onItemMouseEnter(e);
+        private onItemMouseLeave(e);
     }
 }
 declare module zane.web.component {

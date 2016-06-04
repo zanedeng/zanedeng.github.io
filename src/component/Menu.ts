@@ -62,7 +62,9 @@ module zane.web.component
         // +----------------------------------------------------------------------
 
         private showedSubMenu:boolean;
-        private mouseleaveBinFun:any;
+        private mouseleaveBindFun:any;
+        private itemMouseEnterBindFun:any;
+        private itemMouseLeaveBindFun:any;
 
         // +----------------------------------------------------------------------
         // | constructor
@@ -85,20 +87,18 @@ module zane.web.component
         /**
          * 显示菜单
          * @param options
-         * @param menu
          */
-        public show(options:any = null, menu:HTMLElement = null):void
+        public show(options:any = null):void
         {
-            if (!menu) menu = this.element;
             if (options && options.left != undefined)
             {
-                menu.style.left = options.left + "px";
+                this.element.style.left = options.left + "px";
             }
             if (options && options.top != undefined)
             {
-                menu.style.top = options.top + "px";
+                this.element.style.top = options.top + "px";
             }
-            zane.HtmlUtl.show(menu);
+            zane.HtmlUtl.show(this.element);
             this.updateShadow();
         }
 
@@ -144,6 +144,8 @@ module zane.web.component
                 var menuItem = document.createElement("div");
                 menuItem.className = "menu-item";
                 menuItem.setAttribute("menuItemID", (this.menuItemCount++).toString());
+                menuItem.addEventListener("mouseenter", this.onItemMouseEnter, false);
+                menuItem.addEventListener("mouseleave", this.onItemMouseLeave, false);
                 if (data.id)
                 {
                     menuItem.id = data.id;
@@ -189,7 +191,8 @@ module zane.web.component
                     menuItemArrow.className = "menu-item-arrow";
                     menuItem.appendChild(menuItemArrow);
                     // 子菜单
-                    this.subMenuDict[menuItem.getAttribute("menuItemID")] = new Menu(this.parent, data.children);
+                    var subMenu:Menu = new Menu(this.parent, data.children);
+                    this.subMenuDict[menuItem.getAttribute("menuItemID")] = subMenu;
                 }
 
             }
@@ -220,7 +223,9 @@ module zane.web.component
             this.menuItemCount = 0;
             this.subMenuDict = {};
             this.showedSubMenu = false;
-            this.mouseleaveBinFun = this.onMouseLeave.bind(this);
+            this.mouseleaveBindFun = this.onMouseLeave.bind(this);
+            this.itemMouseEnterBindFun = this.onItemMouseEnter.bind(this);
+            this.itemMouseLeaveBindFun = this.onItemMouseLeave.bind(this);
         }
 
         /**
@@ -235,7 +240,7 @@ module zane.web.component
             this.element.style.left = this.options.x + "px";
             this.element.style.top = this.options.y + "px";
             this.element.style.width = this.options.width + "px";
-            this.element.addEventListener("mouseleave", this.mouseleaveBinFun, false);
+            this.element.addEventListener("mouseleave", this.mouseleaveBindFun, false);
             if (this.parent)
             {
                 this.parent.appendChild(this.element);
@@ -306,7 +311,29 @@ module zane.web.component
             if (!this.showedSubMenu)
             {
                 this.menuOverElement.style.top = "-24px";
+                this.hide();
             }
+        }
+
+        private onItemMouseEnter(e)
+        {
+            var item:HTMLElement = e.currentTarget;
+            if (zane.HtmlUtl.hasClass(item, "menu-item-disable")) return;
+            var itemTop:number = zane.HtmlUtl.getOffset(item).y;
+            var menuTop:number = zane.HtmlUtl.getOffset(this.element).y;
+            this.menuOverElement.style.top = (itemTop - menuTop) + "px";
+            var itemSubMenu:Menu = this.subMenuDict[item.getAttribute("menuItemID")];
+            if (itemSubMenu)
+            {
+                itemSubMenu.show({ top: itemTop, left: zane.HtmlUtl.getOffset(this.element).x + zane.HtmlUtl.width(this.element) - 5 });
+                this.showedSubMenu = true;
+            }
+        }
+
+        private onItemMouseLeave(e)
+        {
+            var item:HTMLElement = e.currentTarget;
+            if (zane.HtmlUtl.hasClass(item, "menu-item-disable")) return;
         }
     }
 }

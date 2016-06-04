@@ -800,18 +800,15 @@ var zane;
                     if (options === void 0) { options = null; }
                     _super.call(this, parent, options);
                 }
-                Menu.prototype.show = function (options, menu) {
+                Menu.prototype.show = function (options) {
                     if (options === void 0) { options = null; }
-                    if (menu === void 0) { menu = null; }
-                    if (!menu)
-                        menu = this.element;
                     if (options && options.left != undefined) {
-                        menu.style.left = options.left + "px";
+                        this.element.style.left = options.left + "px";
                     }
                     if (options && options.top != undefined) {
-                        menu.style.top = options.top + "px";
+                        this.element.style.top = options.top + "px";
                     }
-                    zane.HtmlUtl.show(menu);
+                    zane.HtmlUtl.show(this.element);
                     this.updateShadow();
                 };
                 Menu.prototype.hide = function (menu) {
@@ -841,6 +838,8 @@ var zane;
                         var menuItem = document.createElement("div");
                         menuItem.className = "menu-item";
                         menuItem.setAttribute("menuItemID", (this.menuItemCount++).toString());
+                        menuItem.addEventListener("mouseenter", this.onItemMouseEnter, false);
+                        menuItem.addEventListener("mouseleave", this.onItemMouseLeave, false);
                         if (data.id) {
                             menuItem.id = data.id;
                         }
@@ -870,7 +869,8 @@ var zane;
                             var menuItemArrow = document.createElement("div");
                             menuItemArrow.className = "menu-item-arrow";
                             menuItem.appendChild(menuItemArrow);
-                            this.subMenuDict[menuItem.getAttribute("menuItemID")] = new Menu(this.parent, data.children);
+                            var subMenu = new Menu(this.parent, data.children);
+                            this.subMenuDict[menuItem.getAttribute("menuItemID")] = subMenu;
                         }
                     }
                 };
@@ -884,7 +884,9 @@ var zane;
                     this.menuItemCount = 0;
                     this.subMenuDict = {};
                     this.showedSubMenu = false;
-                    this.mouseleaveBinFun = this.onMouseLeave.bind(this);
+                    this.mouseleaveBindFun = this.onMouseLeave.bind(this);
+                    this.itemMouseEnterBindFun = this.onItemMouseEnter.bind(this);
+                    this.itemMouseLeaveBindFun = this.onItemMouseLeave.bind(this);
                 };
                 Menu.prototype._render = function () {
                     this.element = document.createElement("div");
@@ -893,7 +895,7 @@ var zane;
                     this.element.style.left = this.options.x + "px";
                     this.element.style.top = this.options.y + "px";
                     this.element.style.width = this.options.width + "px";
-                    this.element.addEventListener("mouseleave", this.mouseleaveBinFun, false);
+                    this.element.addEventListener("mouseleave", this.mouseleaveBindFun, false);
                     if (this.parent) {
                         this.parent.appendChild(this.element);
                     }
@@ -939,7 +941,26 @@ var zane;
                 Menu.prototype.onMouseLeave = function (e) {
                     if (!this.showedSubMenu) {
                         this.menuOverElement.style.top = "-24px";
+                        this.hide();
                     }
+                };
+                Menu.prototype.onItemMouseEnter = function (e) {
+                    var item = e.currentTarget;
+                    if (zane.HtmlUtl.hasClass(item, "menu-item-disable"))
+                        return;
+                    var itemTop = zane.HtmlUtl.getOffset(item).y;
+                    var menuTop = zane.HtmlUtl.getOffset(this.element).y;
+                    this.menuOverElement.style.top = (itemTop - menuTop) + "px";
+                    var itemSubMenu = this.subMenuDict[item.getAttribute("menuItemID")];
+                    if (itemSubMenu) {
+                        itemSubMenu.show({ top: itemTop, left: zane.HtmlUtl.getOffset(this.element).x + zane.HtmlUtl.width(this.element) - 5 });
+                        this.showedSubMenu = true;
+                    }
+                };
+                Menu.prototype.onItemMouseLeave = function (e) {
+                    var item = e.currentTarget;
+                    if (zane.HtmlUtl.hasClass(item, "menu-item-disable"))
+                        return;
                 };
                 return Menu;
             }(component.Component));
