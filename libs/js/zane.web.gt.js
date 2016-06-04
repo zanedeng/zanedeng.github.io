@@ -316,8 +316,10 @@ var zane;
                         { text: '关闭' }
                     ];
                     this.menu = new Menu(document.body, menuOptions);
+                    var self = this;
                     document.addEventListener("contextmenu", function (e) {
-                        this.menu.show({ top: e.pageY, left: e.pageX });
+                        self.menu.show({ top: e.pageY, left: e.pageX });
+                        return false;
                     });
                 }
                 return LayoutVc;
