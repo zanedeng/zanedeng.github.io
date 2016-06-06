@@ -1095,6 +1095,7 @@ var zane;
                         menuBarItem.className = "menubar-item menu-btn";
                         menuBarItem.setAttribute("menuBarId", (this.menuCount++).toString());
                         this.element.appendChild(menuBarItem);
+                        this.menuBarItems.push(menuBarItem);
                         if (data.id) {
                             menuBarItem.id = data.id;
                         }
@@ -1133,6 +1134,7 @@ var zane;
                     if (!this.options)
                         this.options = new component.LayoutOptions();
                     this.menuDict = {};
+                    this.menuBarItems = [];
                     this.menuCount = 0;
                     this.showMenu = false;
                     this.mouseenterBindFun = this.onMouseEnter.bind(this);
@@ -1153,7 +1155,26 @@ var zane;
                     var self = this;
                     document.addEventListener("click", function (e) {
                         var clickElement = e.target;
-                        console.log(clickElement);
+                        var parent = clickElement.parentElement;
+                        while (parent) {
+                            for (var i = 0, l = this.menuBarItems.length; i < l; ++i) {
+                                if (parent == this.menuBarItems[i]) {
+                                    if (self.showMenu)
+                                        self.showMenu = false;
+                                    if (self.currentShowMenu)
+                                        self.currentShowMenu.hide();
+                                    var selectItems = zane.HtmlUtl.find(self.element, ".menu-btn-selected");
+                                    if (selectItems) {
+                                        for (var i = 0, l = selectItems.length; i < l; ++i) {
+                                            zane.HtmlUtl.removeClass(selectItems[i], "menu-btn-selected");
+                                        }
+                                    }
+                                    parent = null;
+                                    break;
+                                }
+                            }
+                            parent = parent.parentElement;
+                        }
                     }, false);
                 };
                 MenuBar.prototype.getMenu = function (menuBarItem) {

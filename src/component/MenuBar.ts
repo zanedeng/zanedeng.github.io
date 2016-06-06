@@ -29,6 +29,8 @@ module zane.web.component
          */
         private menuDict:any;
 
+        private menuBarItems:Array<HTMLElement>;
+
         /**
          *
          * @type {boolean}
@@ -72,6 +74,7 @@ module zane.web.component
                 menuBarItem.className = "menubar-item menu-btn";
                 menuBarItem.setAttribute("menuBarId", (this.menuCount++).toString());
                 this.element.appendChild(menuBarItem);
+                this.menuBarItems.push(menuBarItem);
 
                 if (data.id)
                 {
@@ -131,6 +134,7 @@ module zane.web.component
         {
             if (!this.options) this.options = new LayoutOptions();
             this.menuDict = {};
+            this.menuBarItems = [];
             this.menuCount = 0;
             this.showMenu = false;
             this.mouseenterBindFun = this.onMouseEnter.bind(this);
@@ -161,23 +165,30 @@ module zane.web.component
 
             var self = this;
             document.addEventListener("click", function(e){
-                var clickElement = e.target;
-                console.log(clickElement);
-                /*
-                if (self.showMenu) self.showMenu = false;
-                if (self.currentShowMenu)
+                var clickElement:HTMLElement = <HTMLElement>e.target;
+                var parent = clickElement.parentElement;
+                while (parent)
                 {
-                    self.currentShowMenu.hide();
-                }
-                var selectItems = zane.HtmlUtl.find(self.element, ".menu-btn-selected");
-                if (selectItems)
-                {
-                    for (var i = 0, l = selectItems.length; i < l; ++i)
+                    for (var i = 0, l = this.menuBarItems.length; i < l; ++i)
                     {
-                        zane.HtmlUtl.removeClass(selectItems[i], "menu-btn-selected");
+                        if (parent == this.menuBarItems[i])
+                        {
+                            if (self.showMenu) self.showMenu = false;
+                            if (self.currentShowMenu) self.currentShowMenu.hide();
+                            var selectItems = zane.HtmlUtl.find(self.element, ".menu-btn-selected");
+                            if (selectItems)
+                            {
+                                for (var i = 0, l = selectItems.length; i < l; ++i)
+                                {
+                                    zane.HtmlUtl.removeClass(selectItems[i], "menu-btn-selected");
+                                }
+                            }
+                            parent = null;
+                            break;
+                        }
                     }
+                    parent = parent.parentElement;
                 }
-                */
             }, false);
         }
 
