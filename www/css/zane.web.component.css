@@ -185,6 +185,8 @@
 
 .menu-btn-over, .menu-btn-selected {
     background: #333333;
+    box-shadow: 1px -1px 0 0 #000000, -1px 0 0 0 #000000, 0 1px 0 0 rgba(255, 255, 255, 0.15) inset;
+    color: #d4d4d4;
 }
 
 .menu-btn-over .menu-btn-l, .menu-btn-over .menu-btn-r, .menu-btn-selected .menu-btn-l, .menu-btn-selected .menu-btn-r {
@@ -192,21 +194,11 @@
 }
 
 .menu-btn-l {
-    position: absolute;
-    width: 3px;
-    left: 0;
-    top: 0;
-    height: 22px;
-    background: #E0EDFF;
+
 }
 
 .menu-btn-r {
-    position: absolute;
-    width: 3px;
-    right: 0;
-    top: 0;
-    height: 22px;
-    background: #E0EDFF;
+    
 }
 
 /* +----------------------------------------------------------------------*/
