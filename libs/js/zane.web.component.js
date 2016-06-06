@@ -1199,8 +1199,13 @@ var zane;
                     }
                 };
                 MenuBar.prototype.onMouseEnter = function (e) {
+                    if (this.currentSelectMenuBarItem) {
+                        zane.HtmlUtl.removeClass(this.currentSelectMenuBarItem, "menu-btn-over");
+                        zane.HtmlUtl.removeClass(this.currentSelectMenuBarItem, "menu-btn-selected");
+                    }
                     var menuBarItem = e.currentTarget;
                     zane.HtmlUtl.addClass(menuBarItem, "menu-btn-over");
+                    this.currentSelectMenuBarItem = menuBarItem;
                     if (this.showMenu) {
                         this.showMenuBarItemMenu(menuBarItem);
                     }

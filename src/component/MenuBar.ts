@@ -29,6 +29,10 @@ module zane.web.component
          */
         private menuDict:any;
 
+        /**
+         *
+         * @type {Array}
+         */
         private menuBarItems:Array<HTMLElement>;
 
         /**
@@ -42,6 +46,11 @@ module zane.web.component
          * @type {Menu}
          */
         private currentShowMenu:Menu;
+
+        /**
+         * @type {HTMLElement}
+         */
+        private currentSelectMenuBarItem:HTMLElement;
 
 
         private mouseenterBindFun:any;
@@ -241,8 +250,14 @@ module zane.web.component
          */
         private onMouseEnter(e):void
         {
+            if (this.currentSelectMenuBarItem)
+            {
+                zane.HtmlUtl.removeClass(this.currentSelectMenuBarItem, "menu-btn-over");
+                zane.HtmlUtl.removeClass(this.currentSelectMenuBarItem, "menu-btn-selected");
+            }
             var menuBarItem:HTMLElement = e.currentTarget;
             zane.HtmlUtl.addClass(menuBarItem, "menu-btn-over");
+            this.currentSelectMenuBarItem = menuBarItem;
             if (this.showMenu)
             {
                 this.showMenuBarItemMenu(menuBarItem);

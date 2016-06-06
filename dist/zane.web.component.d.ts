@@ -139,6 +139,7 @@ declare module zane.web.component {
         private menuBarItems;
         private showMenu;
         private currentShowMenu;
+        private currentSelectMenuBarItem;
         private mouseenterBindFun;
         private mousedownBindFun;
         private mouseleaveBindFun;
