@@ -225,7 +225,7 @@ module zane.web.component
                 zane.HtmlUtl.addClass(menuBarItem, "menu-btn-over");
                 zane.HtmlUtl.addClass(menuBarItem, "menu-btn-selected");
                 var offset = zane.HtmlUtl.getOffset(menuBarItem);
-                menu.show({ top: offset.y, left: offset.x + zane.HtmlUtl.outerHeight(menuBarItem)});
+                menu.show({ top: offset.y + zane.HtmlUtl.outerHeight(menuBarItem), left: offset.x});
                 this.currentShowMenu = menu;
             }
         }
