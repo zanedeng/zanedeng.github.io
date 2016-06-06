@@ -1173,6 +1173,7 @@ var zane;
                             if (self.currentShowMenu)
                                 self.currentShowMenu.hide();
                             var selectItems = zane.HtmlUtl.find(self.element, ".menu-btn-selected");
+                            console.log(selectItems);
                             if (selectItems) {
                                 for (var i = 0, l = selectItems.length; i < l; ++i) {
                                     zane.HtmlUtl.removeClass(selectItems[i], "menu-btn-selected");
