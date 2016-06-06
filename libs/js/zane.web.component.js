@@ -1142,7 +1142,7 @@ var zane;
                 };
                 MenuBar.prototype._init = function () {
                     if (!this.options)
-                        this.options = new component.LayoutOptions();
+                        this.options = new component.MenuBarOptions();
                     this.menuDict = {};
                     this.menuBarItems = [];
                     this.menuCount = 0;

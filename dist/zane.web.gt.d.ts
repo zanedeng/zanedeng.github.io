@@ -100,8 +100,10 @@ declare module zane.web.gt {
 declare module zane.web.gt {
     class TopMenuBarView extends mvc.View {
         constructor(name: string, viewComponent: any);
+        vc(): TopMenuBarVc;
         onRegister(): void;
         onRemove(): void;
+        private menuItemClick(menuItemData);
     }
 }
 declare module zane.web.gt {

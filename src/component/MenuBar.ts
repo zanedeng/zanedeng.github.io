@@ -141,7 +141,7 @@ module zane.web.component
          */
         protected _init():void
         {
-            if (!this.options) this.options = new LayoutOptions();
+            if (!this.options) this.options = new MenuBarOptions();
             this.menuDict = {};
             this.menuBarItems = [];
             this.menuCount = 0;

@@ -5,9 +5,6 @@ module zane.web.gt
 {
     import Layout = zane.web.component.Layout;
     import LayoutOptions = zane.web.component.LayoutOptions;
-    import MenuBar = zane.web.component.MenuBar;
-    import MenuBarOptions = zane.web.component.MenuBarOptions;
-    import MenuOptions = zane.web.component.MenuOptions;
     /**
      * @class zane.web.gt.LayoutVc
      */
