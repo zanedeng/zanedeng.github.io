@@ -161,6 +161,9 @@ module zane.web.component
 
             var self = this;
             document.addEventListener("click", function(e){
+                var clickElement = e.currentTarget;
+                console.log(clickElement);
+                /*
                 if (self.showMenu) self.showMenu = false;
                 if (self.currentShowMenu)
                 {
@@ -174,6 +177,7 @@ module zane.web.component
                         zane.HtmlUtl.removeClass(selectItems[i], "menu-btn-selected");
                     }
                 }
+                */
             }, false);
         }
 

@@ -1152,17 +1152,8 @@ var zane;
                     }
                     var self = this;
                     document.addEventListener("click", function (e) {
-                        if (self.showMenu)
-                            self.showMenu = false;
-                        if (self.currentShowMenu) {
-                            self.currentShowMenu.hide();
-                        }
-                        var selectItems = zane.HtmlUtl.find(self.element, ".menu-btn-selected");
-                        if (selectItems) {
-                            for (var i = 0, l = selectItems.length; i < l; ++i) {
-                                zane.HtmlUtl.removeClass(selectItems[i], "menu-btn-selected");
-                            }
-                        }
+                        var clickElement = e.currentTarget;
+                        console.log(clickElement);
                     }, false);
                 };
                 MenuBar.prototype.getMenu = function (menuBarItem) {
