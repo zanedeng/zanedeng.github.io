@@ -1176,7 +1176,8 @@ var zane;
                         this.currentShowMenu.hide();
                     var menu = this.getMenu(menuBarItem);
                     if (menu) {
-                        zane.HtmlUtl.addClass(menuBarItem, "menu-btn-over menu-btn-selected");
+                        zane.HtmlUtl.addClass(menuBarItem, "menu-btn-over");
+                        zane.HtmlUtl.addClass(menuBarItem, "menu-btn-selected");
                         var offset = zane.HtmlUtl.getOffset(menuBarItem);
                         menu.show({ top: offset.y, left: offset.y });
                         this.currentShowMenu = menu;
