@@ -98,6 +98,7 @@ module zane.web.component
                 if (data.click)
                 {
                     menuBarItem.addEventListener("mouseenter", function (e) {
+                        console.log(data);
                         data.click(data);
                     }, false);
                 }

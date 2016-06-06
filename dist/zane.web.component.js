@@ -1104,6 +1104,7 @@ var zane;
                         }
                         if (data.click) {
                             menuBarItem.addEventListener("mouseenter", function (e) {
+                                console.log(data);
                                 data.click(data);
                             }, false);
                         }
