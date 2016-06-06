@@ -1092,7 +1092,7 @@ var zane;
                     if (data === void 0) { data = null; }
                     if (data) {
                         var menuBarItem = document.createElement("div");
-                        menuBarItem.className = "menubar-item panel-btn";
+                        menuBarItem.className = "menubar-item menu-btn";
                         this.element.appendChild(menuBarItem);
                         if (data.id) {
                             menuBarItem.setAttribute("menuBarId", data.id);
@@ -1110,10 +1110,10 @@ var zane;
                             itemText.innerText = data.text;
                         menuBarItem.appendChild(itemText);
                         var itemBtnL = document.createElement("div");
-                        itemBtnL.className = "panel-btn-l";
+                        itemBtnL.className = "menu-btn-l";
                         menuBarItem.appendChild(itemBtnL);
                         var itemBtnR = document.createElement("div");
-                        itemBtnR.className = "panel-btn-r";
+                        itemBtnR.className = "menu-btn-r";
                         menuBarItem.appendChild(itemBtnR);
                         if (data.memu) {
                             this.menuDict[menuBarItem.getAttribute("menuBarId")] = new component.Menu(document.body, data.memu);
@@ -1150,14 +1150,14 @@ var zane;
                 };
                 MenuBar.prototype.onMouseEnter = function (e) {
                     var menuBarItem = e.currentTarget;
-                    zane.HtmlUtl.addClass(menuBarItem, "panel-btn-over");
+                    zane.HtmlUtl.addClass(menuBarItem, "menu-btn-over");
                 };
                 MenuBar.prototype.onMouseDown = function (e) {
                     var menuBarItem = e.currentTarget;
                 };
                 MenuBar.prototype.onMouseLeave = function (e) {
                     var menuBarItem = e.currentTarget;
-                    zane.HtmlUtl.removeClass(menuBarItem, "panel-btn-over");
+                    zane.HtmlUtl.removeClass(menuBarItem, "menu-btn-over");
                 };
                 return MenuBar;
             }(component.Component));

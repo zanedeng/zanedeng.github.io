@@ -154,6 +154,57 @@
     color: #A1A1A1;
 }
 
+
+
+.menu-btn {
+    height: 100%;
+    box-sizing: border-box;
+    overflow: visible;
+    cursor: default;
+    position: relative;
+    display: inline-block;
+    font-family: Tahoma, Arial;
+    font-size: 12px;
+    line-height: 14px;
+    color: #cecece;
+    padding: 4px 7px 0 7px;
+    text-shadow: #292a2b 0px 1px 0px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.menu-btn .menu-btn-l, .menu-btn .menu-btn-r {
+    display: none;
+}
+
+.menu-btn-over, .menu-btn-selected {
+    background: #333333;
+}
+
+.menu-btn-over .menu-btn-l, .menu-btn-over .menu-btn-r, .menu-btn-selected .menu-btn-l, .menu-btn-selected .menu-btn-r {
+    display: block;
+}
+
+.menu-btn-l {
+    position: absolute;
+    width: 3px;
+    left: 0px;
+    top: 0px;
+    height: 22px;
+    background: #E0EDFF;
+}
+
+.menu-btn-r {
+    position: absolute;
+    width: 3px;
+    right: 0px;
+    top: 0px;
+    height: 22px;
+    background: #E0EDFF;
+}
+
 /* +----------------------------------------------------------------------*/
 /* | menubar
 /* +----------------------------------------------------------------------*/
@@ -182,6 +233,7 @@
 .menubar-item-over {
 
 }
+
 
 /* +----------------------------------------------------------------------*/
 /* | layout
@@ -362,52 +414,3 @@
 /* +----------------------------------------------------------------------*/
 /* | layout
 /* +----------------------------------------------------------------------*/
-
-.panel-btn {
-    height: 100%;
-    box-sizing: border-box;
-    overflow: visible;
-    cursor: default;
-    position: relative;
-    display: inline-block;
-    font-family: Tahoma, Arial;
-    font-size: 12px;
-    line-height: 14px;
-    color: #cecece;
-    padding: 4px 7px 0 7px;
-    text-shadow: #292a2b 0px 1px 0px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-
-.panel-btn .panel-btn-l, .panel-btn .panel-btn-r {
-    display: none;
-}
-
-.panel-btn-over, .panel-btn-selected {
-    background: #E0EDFF;
-}
-
-.panel-btn-over .panel-btn-l, .panel-btn-over .panel-btn-r, .panel-btn-selected .panel-btn-l, .panel-btn-selected .panel-btn-r {
-    display: block;
-}
-
-.panel-btn-l {
-    position: absolute;
-    width: 3px;
-    left: 0px;
-    top: 0px;
-    height: 22px;
-    background: #E0EDFF;
-}
-
-.panel-btn-r {
-    position: absolute;
-    width: 3px;
-    right: 0px;
-    top: 0px;
-    height: 22px;
-    background: #E0EDFF;
-}

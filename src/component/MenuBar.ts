@@ -51,7 +51,7 @@ module zane.web.component
             if (data)
             {
                 var menuBarItem = document.createElement("div");
-                menuBarItem.className = "menubar-item panel-btn";
+                menuBarItem.className = "menubar-item menu-btn";
                 this.element.appendChild(menuBarItem);
 
                 if (data.id)
@@ -76,11 +76,11 @@ module zane.web.component
                 menuBarItem.appendChild(itemText);
 
                 var itemBtnL = document.createElement("div");
-                itemBtnL.className = "panel-btn-l";
+                itemBtnL.className = "menu-btn-l";
                 menuBarItem.appendChild(itemBtnL);
 
                 var itemBtnR = document.createElement("div");
-                itemBtnR.className = "panel-btn-r";
+                itemBtnR.className = "menu-btn-r";
                 menuBarItem.appendChild(itemBtnR);
 
                 if (data.memu)
@@ -146,7 +146,7 @@ module zane.web.component
         private onMouseEnter(e):void
         {
             var menuBarItem:HTMLElement = e.currentTarget;
-            zane.HtmlUtl.addClass(menuBarItem, "panel-btn-over");
+            zane.HtmlUtl.addClass(menuBarItem, "menu-btn-over");
         }
 
         private onMouseDown(e):void
@@ -157,7 +157,7 @@ module zane.web.component
         private onMouseLeave(e):void
         {
             var menuBarItem:HTMLElement = e.currentTarget;
-            zane.HtmlUtl.removeClass(menuBarItem, "panel-btn-over");
+            zane.HtmlUtl.removeClass(menuBarItem, "menu-btn-over");
         }
     }
 }
