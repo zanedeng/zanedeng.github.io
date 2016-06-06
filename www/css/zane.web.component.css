@@ -155,6 +155,28 @@
 }
 
 /* +----------------------------------------------------------------------*/
+/* | menubar
+/* +----------------------------------------------------------------------*/
+
+.menubar {
+    background: #000; height:24px; border:1px solid #ADBED6;border-top:1px solid #EFF7F7;
+
+}
+
+.menubar-item {
+    float:left; margin-left:6px;
+}
+
+.menubar-item-down {
+    width:7px; height:4px; line-height:4px;
+    background:#000; position:absolute; right:4px;  top:9px; top:9px\9;_top:4px;
+}
+
+.menubar-item-over {
+
+}
+
+/* +----------------------------------------------------------------------*/
 /* | layout
 /* +----------------------------------------------------------------------*/
 
@@ -327,4 +349,54 @@
 
 .layout-collapse-right-toggle-over {
     background-position: -20px -20px;
+}
+
+
+/* +----------------------------------------------------------------------*/
+/* | layout
+/* +----------------------------------------------------------------------*/
+
+.panel-btn {
+    display: block;
+    height: 22px;
+    overflow: hidden;
+    line-height: 22px;
+    position: relative;
+    padding-left: 15px;
+    padding-right: 15px;
+    cursor: pointer;
+    text-align: center;
+    color: #2C4D79;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.panel-btn .panel-btn-l, .panel-btn .panel-btn-r {
+    display: none;
+}
+
+.panel-btn-over, .panel-btn-selected {
+    background: #E0EDFF;
+}
+
+.panel-btn-over .panel-btn-l, .panel-btn-over .panel-btn-r, .panel-btn-selected .panel-btn-l, .panel-btn-selected .panel-btn-r {
+    display: block;
+}
+
+.panel-btn-l {
+    position: absolute;
+    width: 3px;
+    left: 0px;
+    top: 0px;
+    height: 22px;
+    background: #E0EDFF;
+}
+
+.panel-btn-r {
+    position: absolute;
+    width: 3px;
+    right: 0px;
+    top: 0px;
+    height: 22px;
+    background: #E0EDFF;
 }
