@@ -276,6 +276,7 @@ module zane.web.component
             this.element.className = "layout";
             this.element.id = this.id;
             this.element.style.width = this.options.width;
+            console.log(this.parent);
             if (this.parent)
             {
                 this.parent.appendChild(this.element);
