@@ -159,7 +159,7 @@ var zane;
                 function Layout(options, parent) {
                     if (options === void 0) { options = null; }
                     if (parent === void 0) { parent = null; }
-                    _super.call(this, parent, options);
+                    _super.call(this, options, parent);
                 }
                 Layout.prototype.setLeftCollapse = function (isCollapse) {
                     if (!this.leftElement)

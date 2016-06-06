@@ -147,7 +147,7 @@ module zane.web.component
          */
         constructor(options:any = null, parent:HTMLElement = null)
         {
-            super(parent, options);
+            super(options, parent);
         }
 
         // +----------------------------------------------------------------------
