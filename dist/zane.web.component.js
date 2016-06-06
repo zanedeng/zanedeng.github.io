@@ -1132,6 +1132,7 @@ var zane;
                     if (!this.options)
                         this.options = new component.LayoutOptions();
                     this.menuDict = {};
+                    this.showMenu = false;
                     this.mouseenterBindFun = this.onMouseEnter.bind(this);
                     this.mousedownBindFun = this.onMouseDown.bind(this);
                     this.mouseleaveBindFun = this.onMouseLeave.bind(this);
@@ -1147,17 +1148,49 @@ var zane;
                             this.addItem(this.options.menuBarData[i]);
                         }
                     }
+                    var self = this;
+                    document.addEventListener("click", function (e) {
+                        if (self.currentShowMenu) {
+                            self.currentShowMenu.hide();
+                        }
+                        var selectItems = zane.HtmlUtl.find(this.element, ".menu-btn-selected");
+                        for (var i = 0, l = selectItems.length; i < l; ++i) {
+                            zane.HtmlUtl.removeClass(selectItems[i], "menu-btn-selected");
+                        }
+                    }, false);
+                };
+                MenuBar.prototype.getMenu = function (menuBarItem) {
+                    var menuBarId = menuBarItem.getAttribute("menuBarId");
+                    return this.menuDict[menuBarId];
+                };
+                MenuBar.prototype.showMenuBarItemMenu = function (menuBarItem) {
+                    if (this.currentShowMenu)
+                        this.currentShowMenu.hide();
+                    var menu = this.getMenu(menuBarItem);
+                    if (menu) {
+                        zane.HtmlUtl.addClass(menuBarItem, "menu-btn-over menu-btn-selected");
+                        var offset = zane.HtmlUtl.getOffset(menuBarItem);
+                        menu.show({ top: offset.y, left: offset.y });
+                        this.currentShowMenu = menu;
+                    }
                 };
                 MenuBar.prototype.onMouseEnter = function (e) {
                     var menuBarItem = e.currentTarget;
                     zane.HtmlUtl.addClass(menuBarItem, "menu-btn-over");
+                    if (this.showMenu) {
+                        this.showMenuBarItemMenu(menuBarItem);
+                    }
                 };
                 MenuBar.prototype.onMouseDown = function (e) {
                     var menuBarItem = e.currentTarget;
+                    this.showMenu = true;
+                    this.showMenuBarItemMenu(menuBarItem);
                 };
                 MenuBar.prototype.onMouseLeave = function (e) {
                     var menuBarItem = e.currentTarget;
                     zane.HtmlUtl.removeClass(menuBarItem, "menu-btn-over");
+                    if (this.showMenu) {
+                    }
                 };
                 return MenuBar;
             }(component.Component));

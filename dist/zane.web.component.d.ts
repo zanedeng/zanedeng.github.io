@@ -135,6 +135,7 @@ declare module zane.web.component {
 declare module zane.web.component {
     class MenuBar extends Component {
         private menuDict;
+        private showMenu;
         private currentShowMenu;
         private mouseenterBindFun;
         private mousedownBindFun;
@@ -143,6 +144,8 @@ declare module zane.web.component {
         addItem(data?: any): void;
         protected _init(): void;
         protected _render(): void;
+        private getMenu(menuBarItem);
+        private showMenuBarItemMenu(menuBarItem);
         private onMouseEnter(e);
         private onMouseDown(e);
         private onMouseLeave(e);

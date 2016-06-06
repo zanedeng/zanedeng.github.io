@@ -19,10 +19,13 @@ module zane.web.component
          */
         private menuDict:any;
 
+        private showMenu:boolean;
+
         /**
          * 当前显示的菜单
          */
         private currentShowMenu:Menu;
+
 
         private mouseenterBindFun:any;
         private mousedownBindFun:any;
@@ -112,6 +115,7 @@ module zane.web.component
         {
             if (!this.options) this.options = new LayoutOptions();
             this.menuDict = {};
+            this.showMenu = false;
             this.mouseenterBindFun = this.onMouseEnter.bind(this);
             this.mousedownBindFun = this.onMouseDown.bind(this);
             this.mouseleaveBindFun = this.onMouseLeave.bind(this);
@@ -137,27 +141,95 @@ module zane.web.component
                     this.addItem(this.options.menuBarData[i]);
                 }
             }
+
+            var self = this;
+            document.addEventListener("click", function(e){
+                if (self.currentShowMenu)
+                {
+                    self.currentShowMenu.hide();
+                }
+                var selectItems = zane.HtmlUtl.find(this.element, ".menu-btn-selected");
+                for (var i = 0, l = selectItems.length; i < l; ++i)
+                {
+                    zane.HtmlUtl.removeClass(selectItems[i], "menu-btn-selected");
+                }
+            }, false);
         }
 
         // +----------------------------------------------------------------------
         // | private method
         // +----------------------------------------------------------------------
 
+        /**
+         *
+         * @param menuBarItem
+         * @returns {Menu}
+         */
+        private getMenu(menuBarItem:HTMLElement):Menu
+        {
+            var menuBarId = menuBarItem.getAttribute("menuBarId");
+            return this.menuDict[menuBarId];
+        }
+
+        /**
+         *
+         * @param menuBarItem
+         */
+        private showMenuBarItemMenu(menuBarItem:HTMLElement):void
+        {
+            if (this.currentShowMenu) this.currentShowMenu.hide();
+            var menu:Menu = this.getMenu(menuBarItem);
+            if (menu)
+            {
+                zane.HtmlUtl.addClass(menuBarItem, "menu-btn-over menu-btn-selected");
+                var offset = zane.HtmlUtl.getOffset(menuBarItem);
+                menu.show({ top: offset.y, left: offset.y });
+                this.currentShowMenu = menu;
+            }
+        }
+
+
+        // +----------------------------------------------------------------------
+        // | eventing
+        // +----------------------------------------------------------------------
+
+        /**
+         * 鼠标进入事件
+         * @param e
+         */
         private onMouseEnter(e):void
         {
             var menuBarItem:HTMLElement = e.currentTarget;
             zane.HtmlUtl.addClass(menuBarItem, "menu-btn-over");
+            if (this.showMenu)
+            {
+                this.showMenuBarItemMenu(menuBarItem);
+            }
         }
 
+        /**
+         * 鼠标点击事件
+         * @param e
+         */
         private onMouseDown(e):void
         {
             var menuBarItem:HTMLElement = e.currentTarget;
+            this.showMenu = true;
+            this.showMenuBarItemMenu(menuBarItem);
         }
 
+        /**
+         * 鼠标离开事件
+         * @param e
+         */
         private onMouseLeave(e):void
         {
             var menuBarItem:HTMLElement = e.currentTarget;
             zane.HtmlUtl.removeClass(menuBarItem, "menu-btn-over");
+            if (this.showMenu)
+            {
+
+            }
         }
     }
 }
