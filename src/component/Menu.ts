@@ -234,7 +234,7 @@ module zane.web.component
                     subMenuOptions.customClass = this.options.customClass;
                     subMenuOptions.shadow = this.options.shadow;
                     subMenuOptions.menuData = data.children;
-                    this.subMenuDict[menuItem.getAttribute("menuItemID")] = new Menu(this.parent, subMenuOptions);
+                    this.subMenuDict[menuItem.getAttribute("menuItemID")] = new Menu(subMenuOptions);
                 }
 
                 this.menuItemDict[menuItem.getAttribute("menuItemID")] = menuItem;
@@ -376,10 +376,7 @@ module zane.web.component
             this.element.style.top = this.options.y + "px";
             this.element.style.width = this.options.width + "px";
             this.element.addEventListener("mouseleave", this.mouseleaveBindFun, false);
-            if (this.parent)
-            {
-                this.parent.appendChild(this.element);
-            }
+            this.parent.appendChild(this.element);
 
             this.menuYLineElement = document.createElement("div");
             this.menuYLineElement.className = "menu-yline";
