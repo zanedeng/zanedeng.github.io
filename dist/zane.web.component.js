@@ -1165,7 +1165,8 @@ var zane;
                                     break;
                                 }
                             }
-                            parent = parent.parentElement;
+                            if (parent)
+                                parent = parent.parentElement;
                         }
                         if (!isMenuBarItem) {
                             if (self.showMenu)

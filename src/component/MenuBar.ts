@@ -179,7 +179,7 @@ module zane.web.component
                             break;
                         }
                     }
-                    parent = parent.parentElement;
+                    if (parent) parent = parent.parentElement;
                 }
                 if (!isMenuBarItem)
                 {
