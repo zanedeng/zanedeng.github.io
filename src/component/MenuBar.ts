@@ -185,8 +185,7 @@ module zane.web.component
                 {
                     if (self.showMenu) self.showMenu = false;
                     if (self.currentShowMenu) self.currentShowMenu.hide();
-                    var selectItems = zane.HtmlUtl.find(self.element, ".menu-btn-selected");
-                    console.log(selectItems);
+                    var selectItems:Array<HTMLElement> = zane.HtmlUtl.find(self.element, ".menu-btn-selected");
                     if (selectItems)
                     {
                         for (var i = 0, l = selectItems.length; i < l; ++i)
@@ -226,6 +225,7 @@ module zane.web.component
                 zane.HtmlUtl.addClass(menuBarItem, "menu-btn-over");
                 zane.HtmlUtl.addClass(menuBarItem, "menu-btn-selected");
                 var offset = zane.HtmlUtl.getOffset(menuBarItem);
+                console.log(offset);
                 menu.show({ top: offset.y, left: offset.x });
                 this.currentShowMenu = menu;
             }
