@@ -149,7 +149,7 @@ module zane.web.component
                 {
                     self.currentShowMenu.hide();
                 }
-                var selectItems = zane.HtmlUtl.find(this.element, ".menu-btn-selected");
+                var selectItems = zane.HtmlUtl.find(self.element, ".menu-btn-selected");
                 if (selectItems)
                 {
                     for (var i = 0, l = selectItems.length; i < l; ++i)
