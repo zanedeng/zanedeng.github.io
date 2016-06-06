@@ -1103,9 +1103,9 @@ var zane;
                             zane.HtmlUtl.addClass(menuBarItem, "menubar-item-disable");
                         }
                         if (data.click) {
-                            menuBarItem.onclick = function (e) {
+                            menuBarItem.addEventListener("mouseenter", function (e) {
                                 data.click(data);
-                            };
+                            }, false);
                         }
                         var itemText = document.createElement("span");
                         if (data.text)
@@ -1154,8 +1154,7 @@ var zane;
                     }
                     var self = this;
                     document.addEventListener("click", function (e) {
-                        var clickElement = e.target;
-                        var parent = clickElement.parentElement;
+                        var parent = e.target;
                         var isMenuBarItem = false;
                         while (parent) {
                             for (var i = 0, l = self.menuBarItems.length; i < l; ++i) {

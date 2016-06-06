@@ -97,9 +97,9 @@ module zane.web.component
 
                 if (data.click)
                 {
-                    menuBarItem.onclick = function (e) {
+                    menuBarItem.addEventListener("mouseenter", function (e) {
                         data.click(data);
-                    };
+                    }, false);
                 }
 
                 var itemText = document.createElement("span");
@@ -174,8 +174,7 @@ module zane.web.component
 
             var self = this;
             document.addEventListener("click", function(e){
-                var clickElement:HTMLElement = <HTMLElement>e.target;
-                var parent = clickElement.parentElement;
+                var parent = <HTMLElement>e.target;
                 var isMenuBarItem:boolean = false;
                 while (parent)
                 {
