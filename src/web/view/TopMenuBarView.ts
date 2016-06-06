@@ -56,7 +56,7 @@ module zane.web.gt
 
         public onRemove():void
         {
-
+            
         }
 
         private menuItemClick(menuItemData:any):void
