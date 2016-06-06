@@ -17,6 +17,7 @@ declare module zane.web.gt {
     class ViewName {
         static MAIN: string;
         static LAYOUT: string;
+        static TOP_MENU_BAR: string;
     }
 }
 declare module zane.web.gt {

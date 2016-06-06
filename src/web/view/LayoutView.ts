@@ -29,6 +29,12 @@ module zane.web.gt
         {
             var vc = this.vc();
             vc.layoutComp.setParent(document.body);
+
+            this.sendEvent(Command.REGISTER_VIEW, new RegisterViewData().setData(
+                ViewName.TOP_MENU_BAR,
+                TopMenuBarView,
+                TopMenuBarVc
+            ));
         }
 
         public onRemove():void

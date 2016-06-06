@@ -19,5 +19,11 @@ module zane.web.gt
          * @type {string}
          */
         public static LAYOUT:string = "layout_view";
+
+        /**
+         * 顶部菜单
+         * @type {string}
+         */
+        public static TOP_MENU_BAR:string = "top_menu_bar_view";
     }
 }

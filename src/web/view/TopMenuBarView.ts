@@ -20,11 +20,7 @@ module zane.web.gt
 
         public onRegister():void
         {
-            this.sendEvent(Command.REGISTER_VIEW, new RegisterViewData().setData(
-                ViewName.LAYOUT,
-                LayoutView,
-                LayoutVc
-            ));
+            
         }
 
         public onRemove():void

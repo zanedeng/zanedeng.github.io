@@ -48,6 +48,7 @@ var zane;
                 }
                 ViewName.MAIN = "main_view";
                 ViewName.LAYOUT = "layout_view";
+                ViewName.TOP_MENU_BAR = "top_menu_bar_view";
                 return ViewName;
             }());
             gt.ViewName = ViewName;
@@ -277,6 +278,7 @@ var zane;
                 LayoutView.prototype.onRegister = function () {
                     var vc = this.vc();
                     vc.layoutComp.setParent(document.body);
+                    this.sendEvent(gt.Command.REGISTER_VIEW, new gt.RegisterViewData().setData(gt.ViewName.TOP_MENU_BAR, gt.TopMenuBarView, gt.TopMenuBarVc));
                 };
                 LayoutView.prototype.onRemove = function () {
                 };
@@ -298,7 +300,6 @@ var zane;
                     _super.call(this, name, viewComponent);
                 }
                 TopMenuBarView.prototype.onRegister = function () {
-                    this.sendEvent(gt.Command.REGISTER_VIEW, new gt.RegisterViewData().setData(gt.ViewName.LAYOUT, gt.LayoutView, gt.LayoutVc));
                 };
                 TopMenuBarView.prototype.onRemove = function () {
                 };
