@@ -1104,7 +1104,7 @@ var zane;
                         }
                         if (data.click) {
                             menuBarItem.onclick = function (e) {
-                                data.click(menuBarItem);
+                                data.click(data);
                             };
                         }
                         var itemText = document.createElement("span");

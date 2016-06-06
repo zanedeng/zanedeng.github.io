@@ -98,7 +98,7 @@ module zane.web.component
                 if (data.click)
                 {
                     menuBarItem.onclick = function (e) {
-                        data.click(menuBarItem);
+                        data.click(data);
                     };
                 }
 
