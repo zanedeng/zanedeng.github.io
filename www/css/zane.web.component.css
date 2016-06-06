@@ -176,15 +176,7 @@
 }
 
 .menubar-item-down {
-    width: 7px;
-    height: 4px;
-    line-height: 4px;
-    background: #000;
-    position: absolute;
-    right: 4px;
-    top: 9px;
-    top: 9px \9;
-    _top: 4px;
+
 }
 
 .menubar-item-over {
@@ -372,18 +364,22 @@
 /* +----------------------------------------------------------------------*/
 
 .panel-btn {
-    display: block;
-    height: 22px;
-    overflow: hidden;
-    line-height: 22px;
+    height: 100%;
+    box-sizing: border-box;
+    overflow: visible;
+    cursor: default;
     position: relative;
-    padding-left: 15px;
-    padding-right: 15px;
-    cursor: pointer;
-    text-align: center;
-    color: #2C4D79;
-    text-decoration: none;
-    cursor: pointer;
+    display: inline-block;
+    font-family: Tahoma, Arial;
+    font-size: 12px;
+    line-height: 14px;
+    color: #cecece;
+    padding: 4px 7px 0 7px;
+    text-shadow: #292a2b 0px 1px 0px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .panel-btn .panel-btn-l, .panel-btn .panel-btn-r {
