@@ -301,8 +301,13 @@ var zane;
                     _super.call(this, name, viewComponent);
                 }
                 TopMenuBarView.prototype.vc = function () { return this.viewComponent; };
+                TopMenuBarView.prototype.layoutView = function () {
+                    return this.retrieveView(gt.ViewName.LAYOUT);
+                };
                 TopMenuBarView.prototype.onRegister = function () {
                     var vc = this.vc();
+                    var layoutVc = this.layoutView().vc();
+                    vc.menuBarComp.setParent(layoutVc.layoutComp.topContentElement);
                     var fileMenuOptions = new MenuOptions();
                     fileMenuOptions.width = 150;
                     fileMenuOptions.shadow = true;

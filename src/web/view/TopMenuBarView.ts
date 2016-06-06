@@ -25,10 +25,20 @@ module zane.web.gt
          */
         public vc():TopMenuBarVc { return <TopMenuBarVc>this.viewComponent; }
 
+        /**
+         * 获取布局视图管理器
+         * @returns {LayoutView}
+         */
+        public layoutView():LayoutView
+        {
+            return <LayoutView>this.retrieveView(ViewName.LAYOUT);
+        }
 
         public onRegister():void
         {
             var vc = this.vc();
+            var layoutVc = this.layoutView().vc();
+            vc.menuBarComp.setParent(layoutVc.layoutComp.topContentElement);
 
             var fileMenuOptions = new MenuOptions();
             fileMenuOptions.width = 150;
@@ -51,7 +61,7 @@ module zane.web.gt
 
         private menuItemClick(menuItemData:any):void
         {
-            
+
         }
     }
 }

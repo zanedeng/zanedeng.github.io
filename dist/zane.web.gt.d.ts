@@ -101,6 +101,7 @@ declare module zane.web.gt {
     class TopMenuBarView extends mvc.View {
         constructor(name: string, viewComponent: any);
         vc(): TopMenuBarVc;
+        layoutView(): LayoutView;
         onRegister(): void;
         onRemove(): void;
         private menuItemClick(menuItemData);
