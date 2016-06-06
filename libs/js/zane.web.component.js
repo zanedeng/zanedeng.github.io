@@ -1154,8 +1154,10 @@ var zane;
                             self.currentShowMenu.hide();
                         }
                         var selectItems = zane.HtmlUtl.find(this.element, ".menu-btn-selected");
-                        for (var i = 0, l = selectItems.length; i < l; ++i) {
-                            zane.HtmlUtl.removeClass(selectItems[i], "menu-btn-selected");
+                        if (selectItems) {
+                            for (var i = 0, l = selectItems.length; i < l; ++i) {
+                                zane.HtmlUtl.removeClass(selectItems[i], "menu-btn-selected");
+                            }
                         }
                     }, false);
                 };
