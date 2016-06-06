@@ -68,7 +68,7 @@ module zane.web.component
          */
         constructor(options:any = null, parent:HTMLElement = null)
         {
-            super(parent, options);
+            super(options, parent);
         }
 
         // +----------------------------------------------------------------------
@@ -116,7 +116,7 @@ module zane.web.component
 
                 if (data.menu)
                 {
-                    this.menuDict[menuBarItem.getAttribute("menuBarId")] = new Menu(document.body, data.menu);
+                    this.menuDict[menuBarItem.getAttribute("menuBarId")] = new Menu(data.menu);
                 }
                 else
                 {

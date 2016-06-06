@@ -114,7 +114,7 @@ declare module zane.web.component {
         private mouseleaveBindFun;
         private itemMouseEnterBindFun;
         private itemMouseLeaveBindFun;
-        constructor(options?: any, parent?: HTMLElement);
+        constructor(options?: any);
         show(options?: any): void;
         hide(): void;
         toggle(): void;

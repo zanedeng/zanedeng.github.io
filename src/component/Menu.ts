@@ -88,12 +88,11 @@ module zane.web.component
 
         /**
          * 构造函数
-         * @param parent
          * @param options
          */
-        constructor(options:any = null, parent:HTMLElement = null)
+        constructor(options:any = null)
         {
-            super(parent, options);
+            super(options, document.body);
         }
 
         // +----------------------------------------------------------------------

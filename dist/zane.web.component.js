@@ -839,10 +839,9 @@ var zane;
         (function (component) {
             var Menu = (function (_super) {
                 __extends(Menu, _super);
-                function Menu(options, parent) {
+                function Menu(options) {
                     if (options === void 0) { options = null; }
-                    if (parent === void 0) { parent = null; }
-                    _super.call(this, parent, options);
+                    _super.call(this, options, document.body);
                 }
                 Menu.prototype.show = function (options) {
                     if (options === void 0) { options = null; }
@@ -1099,7 +1098,7 @@ var zane;
                 function MenuBar(options, parent) {
                     if (options === void 0) { options = null; }
                     if (parent === void 0) { parent = null; }
-                    _super.call(this, parent, options);
+                    _super.call(this, options, parent);
                 }
                 MenuBar.prototype.addItem = function (data) {
                     if (data === void 0) { data = null; }
@@ -1131,7 +1130,7 @@ var zane;
                         itemBtnR.className = "menu-btn-r";
                         menuBarItem.appendChild(itemBtnR);
                         if (data.menu) {
-                            this.menuDict[menuBarItem.getAttribute("menuBarId")] = new component.Menu(document.body, data.menu);
+                            this.menuDict[menuBarItem.getAttribute("menuBarId")] = new component.Menu(data.menu);
                         }
                         else {
                             var itemDown = document.createElement("div");
