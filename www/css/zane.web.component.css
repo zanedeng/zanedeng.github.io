@@ -163,17 +163,21 @@
     cursor: default;
     position: relative;
     display: inline-block;
+    padding: 4px 7px 0 7px;
+}
+
+.menu-btn span {
     font-family: Tahoma, Arial;
     font-size: 12px;
     line-height: 14px;
     color: #cecece;
-    padding: 4px 7px 0 7px;
-    text-shadow: #292a2b 0px 1px 0px;
+    text-shadow: #292a2b 0 1px 0;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
 }
+
 
 .menu-btn .menu-btn-l, .menu-btn .menu-btn-r {
     display: none;
@@ -190,8 +194,8 @@
 .menu-btn-l {
     position: absolute;
     width: 3px;
-    left: 0px;
-    top: 0px;
+    left: 0;
+    top: 0;
     height: 22px;
     background: #E0EDFF;
 }
@@ -199,8 +203,8 @@
 .menu-btn-r {
     position: absolute;
     width: 3px;
-    right: 0px;
-    top: 0px;
+    right: 0;
+    top: 0;
     height: 22px;
     background: #E0EDFF;
 }
