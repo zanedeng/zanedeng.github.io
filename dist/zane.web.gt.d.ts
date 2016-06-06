@@ -97,11 +97,23 @@ declare module zane.web.gt {
     }
 }
 declare module zane.web.gt {
+    class TopMenuBarView extends mvc.View {
+        constructor(name: string, viewComponent: any);
+        onRegister(): void;
+        onRemove(): void;
+    }
+}
+declare module zane.web.gt {
     import Layout = zane.web.component.Layout;
-    import MenuBar = zane.web.component.MenuBar;
     class LayoutVc {
         layoutComp: Layout;
-        menuBar: MenuBar;
+        constructor();
+    }
+}
+declare module zane.web.gt {
+    import MenuBar = zane.web.component.MenuBar;
+    class TopMenuBarVc {
+        menuBarComp: MenuBar;
         constructor();
     }
 }

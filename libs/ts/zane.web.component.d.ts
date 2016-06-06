@@ -9,12 +9,15 @@ declare module zane.web.component {
         static getAllInstance(): Array<Component>;
         static generateId(prev?: string): string;
         id: string;
-        parent: HTMLElement;
-        element: HTMLElement;
         events: any;
         options: any;
         children: any;
-        constructor(parent: HTMLElement, options?: any);
+        protected parent: HTMLElement;
+        protected element: HTMLElement;
+        constructor(options?: any, parent?: HTMLElement);
+        getParent(): HTMLElement;
+        setParent(value: HTMLElement): void;
+        getElement(): HTMLElement;
         trigger(arg: string, data?: any): boolean;
         bind(arg: any, handler: Function, context?: any): void;
         unbind(arg: string, handler: Function): void;
@@ -24,6 +27,7 @@ declare module zane.web.component {
         protected _preRender(): void;
         protected _render(): void;
         protected _rendered(): void;
+        protected _onResize(): void;
     }
 }
 declare module zane.web.component {
@@ -74,16 +78,16 @@ declare module zane.web.component {
         private rightLeft;
         private isLeftCollapse;
         private isRightCollapse;
-        private isResize;
         private stopDragBindFun;
         private dragBindFun;
         private resizeBindFun;
-        constructor(parent: HTMLElement, options?: any);
+        constructor(options?: any, parent?: HTMLElement);
         setLeftCollapse(isCollapse: boolean): boolean;
         setRightCollapse(isCollapse: boolean): boolean;
         destroy(): void;
         protected _init(): void;
         protected _render(): void;
+        protected _onResize(): void;
         private _addDropHandle();
         private _startDrag(dragType, e?);
         private _setCollapse();
@@ -92,7 +96,6 @@ declare module zane.web.component {
         private _drag(e?);
         private _updateCenterBottom(isHeightResize?);
         private _setDropHandlePosition();
-        private _onResize();
     }
 }
 declare module zane.web.component {
@@ -111,7 +114,7 @@ declare module zane.web.component {
         private mouseleaveBindFun;
         private itemMouseEnterBindFun;
         private itemMouseLeaveBindFun;
-        constructor(parent: HTMLElement, options?: any);
+        constructor(options?: any, parent?: HTMLElement);
         show(options?: any): void;
         hide(): void;
         toggle(): void;
@@ -134,15 +137,21 @@ declare module zane.web.component {
 }
 declare module zane.web.component {
     class MenuBar extends Component {
+        menuCount: number;
         private menuDict;
+        private menuBarItems;
+        private showMenu;
         private currentShowMenu;
+        private currentSelectMenuBarItem;
         private mouseenterBindFun;
         private mousedownBindFun;
         private mouseleaveBindFun;
-        constructor(parent: HTMLElement, options?: any);
+        constructor(options?: any, parent?: HTMLElement);
         addItem(data?: any): void;
         protected _init(): void;
         protected _render(): void;
+        private getMenu(menuBarItem);
+        private showMenuBarItemMenu(menuBarItem);
         private onMouseEnter(e);
         private onMouseDown(e);
         private onMouseLeave(e);

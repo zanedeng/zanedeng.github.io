@@ -100,16 +100,6 @@ module zane.web.component
         public id:string;
 
         /**
-         * 组件的父级 HTMLElement 对象
-         */
-        public parent:HTMLElement;
-
-        /**
-         * HTMLElement 对象
-         */
-        public element:HTMLElement;
-
-        /**
          * 事件容器
          * @type {*}
          */
@@ -129,6 +119,20 @@ module zane.web.component
 
 
         // +----------------------------------------------------------------------
+        // | protected property
+        // +----------------------------------------------------------------------
+
+        /**
+         * 组件的父级 HTMLElement 对象
+         */
+        protected parent:HTMLElement;
+
+        /**
+         * HTMLElement 对象
+         */
+        protected element:HTMLElement;
+
+        // +----------------------------------------------------------------------
         // | constructor
         // +----------------------------------------------------------------------
         /**
@@ -136,7 +140,7 @@ module zane.web.component
          * @param parent
          * @param options
          */
-        constructor(parent:HTMLElement, options:any = null)
+        constructor(options:any = null, parent:HTMLElement = null)
         {
             this.parent = parent;
             this.options = options;
@@ -152,6 +156,33 @@ module zane.web.component
         // +----------------------------------------------------------------------
         // | public method
         // +----------------------------------------------------------------------
+
+        /**
+         * 获取组件父级 HTMLElement 对象
+         * @returns {HTMLElement}
+         */
+        public getParent():HTMLElement { return this.parent; }
+
+        /**
+         * 设置组件的父级 HTMLElement 对象
+         * @param value
+         */
+        public setParent(value:HTMLElement):void
+        {
+            if (this.parent != value)
+            {
+                this.parent = value;
+                this.parent.appendChild(this.element);
+                this._onResize();
+            }
+        }
+
+        /**
+         * 获取组件的 HTMLElement 容器对象
+         * @returns {HTMLElement}
+         */
+        public getElement():HTMLElement { return this.element; }
+
         /**
          * 触发事件
          * @param arg
@@ -291,6 +322,11 @@ module zane.web.component
          * @private
          */
         protected _rendered():void
+        {
+
+        }
+
+        protected _onResize():void
         {
 
         }

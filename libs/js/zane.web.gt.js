@@ -275,6 +275,8 @@ var zane;
                 }
                 LayoutView.prototype.vc = function () { return this.viewComponent; };
                 LayoutView.prototype.onRegister = function () {
+                    var vc = this.vc();
+                    vc.layoutComp.setParent(document.body);
                 };
                 LayoutView.prototype.onRemove = function () {
                 };
@@ -290,11 +292,30 @@ var zane;
     (function (web) {
         var gt;
         (function (gt) {
+            var TopMenuBarView = (function (_super) {
+                __extends(TopMenuBarView, _super);
+                function TopMenuBarView(name, viewComponent) {
+                    _super.call(this, name, viewComponent);
+                }
+                TopMenuBarView.prototype.onRegister = function () {
+                    this.sendEvent(gt.Command.REGISTER_VIEW, new gt.RegisterViewData().setData(gt.ViewName.LAYOUT, gt.LayoutView, gt.LayoutVc));
+                };
+                TopMenuBarView.prototype.onRemove = function () {
+                };
+                return TopMenuBarView;
+            }(zane.mvc.View));
+            gt.TopMenuBarView = TopMenuBarView;
+        })(gt = web.gt || (web.gt = {}));
+    })(web = zane.web || (zane.web = {}));
+})(zane || (zane = {}));
+var zane;
+(function (zane) {
+    var web;
+    (function (web) {
+        var gt;
+        (function (gt) {
             var Layout = zane.web.component.Layout;
             var LayoutOptions = zane.web.component.LayoutOptions;
-            var MenuBar = zane.web.component.MenuBar;
-            var MenuBarOptions = zane.web.component.MenuBarOptions;
-            var MenuOptions = zane.web.component.MenuOptions;
             var LayoutVc = (function () {
                 function LayoutVc() {
                     var layoutOptions = new LayoutOptions();
@@ -304,10 +325,23 @@ var zane;
                     layoutOptions.allowBottomResize = false;
                     layoutOptions.content = Layout.CONTENT_TOP | Layout.CONTENT_LEFT |
                         Layout.CONTENT_RIGHT | Layout.CONTENT_CENTER | Layout.CONTENT_CENTER_BOTTOM | Layout.CONTENT_BOTTOM;
-                    this.layoutComp = new Layout(document.body, layoutOptions);
-                    function itemclick(item) {
-                        alert(item.text);
-                    }
+                    this.layoutComp = new Layout(layoutOptions);
+                }
+                return LayoutVc;
+            }());
+            gt.LayoutVc = LayoutVc;
+        })(gt = web.gt || (web.gt = {}));
+    })(web = zane.web || (zane.web = {}));
+})(zane || (zane = {}));
+var zane;
+(function (zane) {
+    var web;
+    (function (web) {
+        var gt;
+        (function (gt) {
+            var MenuBar = zane.web.component.MenuBar;
+            var TopMenuBarVc = (function () {
+                function TopMenuBarVc() {
                     var menuOptions1 = new MenuOptions();
                     menuOptions1.width = 150;
                     menuOptions1.shadow = true;
@@ -337,11 +371,11 @@ var zane;
                         { text: '文件', menu: menuOptions1 },
                         { text: '导出', menu: menuOptions2 }
                     ];
-                    this.menuBar = new MenuBar(this.layoutComp.topContentElement, menuBarOptions);
+                    this.menuBarComp = new MenuBar();
                 }
-                return LayoutVc;
+                return TopMenuBarVc;
             }());
-            gt.LayoutVc = LayoutVc;
+            gt.TopMenuBarVc = TopMenuBarVc;
         })(gt = web.gt || (web.gt = {}));
     })(web = zane.web || (zane.web = {}));
 })(zane || (zane = {}));

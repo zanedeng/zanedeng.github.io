@@ -91,7 +91,7 @@ module zane.web.component
          * @param parent
          * @param options
          */
-        constructor(parent:HTMLElement, options:any = null)
+        constructor(options:any = null, parent:HTMLElement = null)
         {
             super(parent, options);
         }

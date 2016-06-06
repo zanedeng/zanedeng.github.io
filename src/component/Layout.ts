@@ -132,7 +132,6 @@ module zane.web.component
         private rightLeft:number;
         private isLeftCollapse:boolean;
         private isRightCollapse:boolean;
-        private isResize:boolean;
 
         private stopDragBindFun:any;
         private dragBindFun:any;
@@ -146,7 +145,7 @@ module zane.web.component
          * @param parent
          * @param options
          */
-        constructor(parent:HTMLElement, options:any = null)
+        constructor(options:any = null, parent:HTMLElement = null)
         {
             super(parent, options);
         }
@@ -277,7 +276,10 @@ module zane.web.component
             this.element.className = "layout";
             this.element.id = this.id;
             this.element.style.width = this.options.width;
-            this.parent.appendChild(this.element);
+            if (this.parent)
+            {
+                this.parent.appendChild(this.element);
+            }
 
             var content:string = this.options.content.toString(16);
             // top
@@ -377,6 +379,209 @@ module zane.web.component
             this._build();
             this.draggingMaskElement.style.height = parseInt(this.element.style.height) + "px";
             window.addEventListener("resize", this.resizeBindFun, false);
+        }
+
+        protected _onResize():void
+        {
+            if (!this.parent) return;
+            var h = 0;
+            var oldHeight = zane.HtmlUtl.height(this.element);
+            var windowHeight = zane.BrowserUtil.innerHeight();
+            var parentHeight = 0;
+            var tempNum = 0;
+            if (typeof(this.options.height) == "string" && this.options.height.indexOf('%') > 0)
+            {
+                if (this.options.inWindow || this.parent.tagName.toLowerCase() == "body")
+                {
+                    parentHeight = windowHeight;
+                    tempNum = parseInt(document.body.style.paddingTop) || 1;
+                    parentHeight -= tempNum;
+                    tempNum = parseInt(document.body.style.paddingBottom) || 1;
+                    parentHeight -= tempNum;
+                }
+                else
+                {
+                    parentHeight = zane.HtmlUtl.height(this.parent);
+                }
+                h = parentHeight * parseFloat(this.options.height) * 0.01;
+                if (this.options.inWindow || this.parent.tagName.toLowerCase() == "body")
+                {
+                    tempNum = parseInt(document.body.style.paddingTop) || 1;
+                    h -= ((zane.HtmlUtl.getOffset(this.element).y - tempNum));
+                }
+            }
+            else
+            {
+                h = parseInt(this.options.height);
+            }
+            h += this.options.heightDiff;
+            this.element.style.height = h + "px";
+            this.layoutHeight = zane.HtmlUtl.height(this.element);
+            this.middleWidth = zane.HtmlUtl.width(this.element);
+            this.middleHeight = zane.HtmlUtl.height(this.element);
+            if (this.topElement)
+            {
+                this.middleHeight -= zane.HtmlUtl.height(this.topElement);
+                tempNum = parseInt(this.topElement.style.borderTopWidth) || 1;
+                this.middleHeight -= tempNum;
+                tempNum = parseInt(this.topElement.style.borderBottomWidth) || 1;
+                this.middleHeight -= tempNum;
+                this.middleHeight -= this.options.space;
+            }
+            if (this.bottomElement)
+            {
+                this.middleHeight -= zane.HtmlUtl.height(this.bottomElement);
+                tempNum = parseInt(this.bottomElement.style.borderTopWidth) || 1;
+                this.middleHeight -= tempNum;
+                tempNum = parseInt(this.bottomElement.style.borderBottomWidth) || 1;
+                this.middleHeight -= tempNum;
+                this.middleHeight -= this.options.space;
+            }
+            //specific
+            this.middleHeight -= 4;
+
+            if (this.hasBind('heightChanged') && this.layoutHeight != oldHeight)
+            {
+                this.trigger('heightChanged', [{
+                    layoutHeight: this.layoutHeight,
+                    diff: this.layoutHeight - oldHeight,
+                    middleHeight: this.middleHeight
+                }]);
+            }
+
+            if (this.centerElement)
+            {
+                this.centerWidth = this.middleWidth;
+                this.centerLeft = 0;
+                if (this.leftElement)
+                {
+                    if (this.isLeftCollapse)
+                    {
+                        tempNum = zane.HtmlUtl.width(this.leftCollapseElement) + 2;
+                        this.centerWidth -= tempNum;
+                        this.centerLeft += tempNum;
+
+                        tempNum = parseInt(this.leftCollapseElement.style.borderLeftWidth) || 1;
+                        this.centerWidth -= tempNum;
+                        this.centerLeft += tempNum;
+
+                        tempNum = parseInt(this.leftCollapseElement.style.borderRightWidth) || 1;
+                        this.centerWidth -= tempNum;
+                        this.centerLeft += tempNum;
+
+                        tempNum = parseInt(this.leftCollapseElement.style.left) || 0;
+                        this.centerWidth -= tempNum;
+                        this.centerLeft += tempNum;
+                    }
+                    else
+                    {
+                        tempNum = zane.HtmlUtl.width(this.leftElement) + 2;
+                        this.centerWidth -= tempNum;
+                        this.centerLeft += tempNum;
+
+                        tempNum = parseInt(this.leftElement.style.borderLeftWidth) || 1;
+                        this.centerWidth -= tempNum;
+                        this.centerLeft += tempNum;
+
+                        tempNum = parseInt(this.leftElement.style.borderRightWidth) || 1;
+                        this.centerWidth -= tempNum;
+                        this.centerLeft += tempNum;
+
+                        tempNum = parseInt(this.leftElement.style.left) || 0;
+                        this.centerWidth -= tempNum;
+                        this.centerLeft += tempNum;
+                    }
+
+                    this.centerWidth -= this.options.space;
+                    this.centerLeft += this.options.space;
+                }
+                if (this.rightElement)
+                {
+                    if (this.isRightCollapse)
+                    {
+                        tempNum = zane.HtmlUtl.width(this.rightCollapseElement) + 2;
+                        this.centerWidth -= tempNum;
+                        tempNum = parseInt(this.rightCollapseElement.style.borderLeftWidth) || 1;
+                        this.centerWidth -= tempNum;
+                        tempNum = parseInt(this.rightCollapseElement.style.borderRightWidth) || 1;
+                        this.centerWidth -= tempNum;
+                        tempNum = parseInt(this.rightCollapseElement.style.right) || 0;
+                        this.centerWidth -= tempNum;
+                    }
+                    else
+                    {
+                        this.centerWidth -= this.rightWidth;
+                        tempNum = parseInt(this.rightElement.style.borderLeftWidth) || 1;
+                        this.centerWidth -= tempNum;
+                        tempNum = parseInt(this.rightElement.style.borderRightWidth) || 1;
+                        this.centerWidth -= tempNum;
+                    }
+                    this.centerWidth -= this.options.space;
+                }
+                this.centerElement.style.left = this.centerLeft + "px";
+                if (this.centerWidth >= 0)
+                {
+                    this.centerWidth -= 2;
+                    this.centerElement.style.width = this.centerWidth + "px";
+                }
+                if (this.middleHeight >= 0)
+                {
+                    this.centerElement.style.height = this.middleHeight + "px";
+                    this.centerContentElement.style.height = this.middleHeight + "px";
+                }
+                this._updateCenterBottom(true);
+            }
+            if (this.leftElement)
+            {
+                this.leftCollapseElement.style.height = this.middleHeight + "px";
+                this.leftElement.style.height = this.middleHeight + "px";
+            }
+            if (this.rightElement)
+            {
+                this.rightCollapseElement.style.height = this.middleHeight + "px";
+                this.rightElement.style.height = this.middleHeight + "px";
+                this.rightLeft = 0;
+                if (this.leftElement)
+                {
+                    if (this.isLeftCollapse)
+                    {
+                        this.rightLeft += zane.HtmlUtl.width(this.leftCollapseElement) + 2;
+                        tempNum = parseInt(this.leftCollapseElement.style.borderLeftWidth) || 1;
+                        this.rightLeft += tempNum;
+                        tempNum = parseInt(this.leftCollapseElement.style.borderRightWidth) || 1;
+                        this.rightLeft += tempNum;
+                        tempNum = parseInt(this.leftCollapseElement.style.left) || 0;
+                        this.rightLeft += tempNum;
+                    }
+                    else
+                    {
+                        this.rightLeft += zane.HtmlUtl.width(this.leftElement) + 2;
+                        tempNum = parseInt(this.leftElement.style.borderLeftWidth) || 1;
+                        this.rightLeft += tempNum;
+                        tempNum = parseInt(this.leftElement.style.borderRightWidth) || 1;
+                        this.rightLeft += tempNum;
+                        tempNum = parseInt(this.leftElement.style.left) || 0;
+                        this.rightLeft += tempNum;
+                    }
+                    this.rightLeft += this.options.space;
+                }
+                if (this.centerElement)
+                {
+                    this.rightLeft += zane.HtmlUtl.width(this.centerElement) + 2;
+                    tempNum = parseInt(this.centerElement.style.borderLeftWidth) || 1;
+                    this.rightLeft += tempNum;
+                    tempNum = parseInt(this.centerElement.style.borderRightWidth) || 1;
+                    this.rightLeft += tempNum;
+                    this.rightLeft += this.options.space;
+                }
+                this.rightElement.style.left = this.rightLeft + "px";
+            }
+            if (this.bottomElement)
+            {
+                this.bottomTop = this.layoutHeight - zane.HtmlUtl.height(this.bottomElement) - 2;
+                this.bottomElement.style.top = this.bottomTop + "px";
+            }
+            this._setDropHandlePosition();
         }
 
         private _addDropHandle():void
@@ -773,215 +978,6 @@ module zane.web.component
                 this.centerBottomDropElement.style.left = tempNum + "px";
                 this.centerBottomDropElement.style.width = zane.HtmlUtl.width(this.centerElement) + "px";
             }
-        }
-
-        private _onResize()
-        {
-            if (this.isResize)
-            {
-                setTimeout(this.resizeBindFun, 200);
-                return;
-            }
-            this.isResize = true;
-            var h = 0;
-            var oldHeight = zane.HtmlUtl.height(this.element);
-            var windowHeight = zane.BrowserUtil.innerHeight();
-            var parentHeight = 0;
-            var tempNum = 0;
-            if (typeof(this.options.height) == "string" && this.options.height.indexOf('%') > 0)
-            {
-                if (this.options.inWindow || this.parent.tagName.toLowerCase() == "body")
-                {
-                    parentHeight = windowHeight;
-                    tempNum = parseInt(document.body.style.paddingTop) || 1;
-                    parentHeight -= tempNum;
-                    tempNum = parseInt(document.body.style.paddingBottom) || 1;
-                    parentHeight -= tempNum;
-                }
-                else
-                {
-                    parentHeight = zane.HtmlUtl.height(this.parent);
-                }
-                h = parentHeight * parseFloat(this.options.height) * 0.01;
-                if (this.options.inWindow || this.parent.tagName.toLowerCase() == "body")
-                {
-                    tempNum = parseInt(document.body.style.paddingTop) || 1;
-                    h -= ((zane.HtmlUtl.getOffset(this.element).y - tempNum));
-                }
-            }
-            else
-            {
-                h = parseInt(this.options.height);
-            }
-            h += this.options.heightDiff;
-            this.element.style.height = h + "px";
-            this.layoutHeight = zane.HtmlUtl.height(this.element);
-            this.middleWidth = zane.HtmlUtl.width(this.element);
-            this.middleHeight = zane.HtmlUtl.height(this.element);
-            if (this.topElement)
-            {
-                this.middleHeight -= zane.HtmlUtl.height(this.topElement);
-                tempNum = parseInt(this.topElement.style.borderTopWidth) || 1;
-                this.middleHeight -= tempNum;
-                tempNum = parseInt(this.topElement.style.borderBottomWidth) || 1;
-                this.middleHeight -= tempNum;
-                this.middleHeight -= this.options.space;
-            }
-            if (this.bottomElement)
-            {
-                this.middleHeight -= zane.HtmlUtl.height(this.bottomElement);
-                tempNum = parseInt(this.bottomElement.style.borderTopWidth) || 1;
-                this.middleHeight -= tempNum;
-                tempNum = parseInt(this.bottomElement.style.borderBottomWidth) || 1;
-                this.middleHeight -= tempNum;
-                this.middleHeight -= this.options.space;
-            }
-            //specific
-            this.middleHeight -= 4;
-
-            if (this.hasBind('heightChanged') && this.layoutHeight != oldHeight)
-            {
-                this.trigger('heightChanged', [{
-                    layoutHeight: this.layoutHeight,
-                    diff: this.layoutHeight - oldHeight,
-                    middleHeight: this.middleHeight
-                }]);
-            }
-
-            if (this.centerElement)
-            {
-                this.centerWidth = this.middleWidth;
-                this.centerLeft = 0;
-                if (this.leftElement)
-                {
-                    if (this.isLeftCollapse)
-                    {
-                        tempNum = zane.HtmlUtl.width(this.leftCollapseElement) + 2;
-                        this.centerWidth -= tempNum;
-                        this.centerLeft += tempNum;
-
-                        tempNum = parseInt(this.leftCollapseElement.style.borderLeftWidth) || 1;
-                        this.centerWidth -= tempNum;
-                        this.centerLeft += tempNum;
-
-                        tempNum = parseInt(this.leftCollapseElement.style.borderRightWidth) || 1;
-                        this.centerWidth -= tempNum;
-                        this.centerLeft += tempNum;
-
-                        tempNum = parseInt(this.leftCollapseElement.style.left) || 0;
-                        this.centerWidth -= tempNum;
-                        this.centerLeft += tempNum;
-                    }
-                    else
-                    {
-                        tempNum = zane.HtmlUtl.width(this.leftElement) + 2;
-                        this.centerWidth -= tempNum;
-                        this.centerLeft += tempNum;
-
-                        tempNum = parseInt(this.leftElement.style.borderLeftWidth) || 1;
-                        this.centerWidth -= tempNum;
-                        this.centerLeft += tempNum;
-
-                        tempNum = parseInt(this.leftElement.style.borderRightWidth) || 1;
-                        this.centerWidth -= tempNum;
-                        this.centerLeft += tempNum;
-
-                        tempNum = parseInt(this.leftElement.style.left) || 0;
-                        this.centerWidth -= tempNum;
-                        this.centerLeft += tempNum;
-                    }
-
-                    this.centerWidth -= this.options.space;
-                    this.centerLeft += this.options.space;
-                }
-                if (this.rightElement)
-                {
-                    if (this.isRightCollapse)
-                    {
-                        tempNum = zane.HtmlUtl.width(this.rightCollapseElement) + 2;
-                        this.centerWidth -= tempNum;
-                        tempNum = parseInt(this.rightCollapseElement.style.borderLeftWidth) || 1;
-                        this.centerWidth -= tempNum;
-                        tempNum = parseInt(this.rightCollapseElement.style.borderRightWidth) || 1;
-                        this.centerWidth -= tempNum;
-                        tempNum = parseInt(this.rightCollapseElement.style.right) || 0;
-                        this.centerWidth -= tempNum;
-                    }
-                    else
-                    {
-                        this.centerWidth -= this.rightWidth;
-                        tempNum = parseInt(this.rightElement.style.borderLeftWidth) || 1;
-                        this.centerWidth -= tempNum;
-                        tempNum = parseInt(this.rightElement.style.borderRightWidth) || 1;
-                        this.centerWidth -= tempNum;
-                    }
-                    this.centerWidth -= this.options.space;
-                }
-                this.centerElement.style.left = this.centerLeft + "px";
-                if (this.centerWidth >= 0)
-                {
-                    this.centerWidth -= 2;
-                    this.centerElement.style.width = this.centerWidth + "px";
-                }
-                if (this.middleHeight >= 0)
-                {
-                    this.centerElement.style.height = this.middleHeight + "px";
-                    this.centerContentElement.style.height = this.middleHeight + "px";
-                }
-                this._updateCenterBottom(true);
-            }
-            if (this.leftElement)
-            {
-                this.leftCollapseElement.style.height = this.middleHeight + "px";
-                this.leftElement.style.height = this.middleHeight + "px";
-            }
-            if (this.rightElement)
-            {
-                this.rightCollapseElement.style.height = this.middleHeight + "px";
-                this.rightElement.style.height = this.middleHeight + "px";
-                this.rightLeft = 0;
-                if (this.leftElement)
-                {
-                    if (this.isLeftCollapse)
-                    {
-                        this.rightLeft += zane.HtmlUtl.width(this.leftCollapseElement) + 2;
-                        tempNum = parseInt(this.leftCollapseElement.style.borderLeftWidth) || 1;
-                        this.rightLeft += tempNum;
-                        tempNum = parseInt(this.leftCollapseElement.style.borderRightWidth) || 1;
-                        this.rightLeft += tempNum;
-                        tempNum = parseInt(this.leftCollapseElement.style.left) || 0;
-                        this.rightLeft += tempNum;
-                    }
-                    else
-                    {
-                        this.rightLeft += zane.HtmlUtl.width(this.leftElement) + 2;
-                        tempNum = parseInt(this.leftElement.style.borderLeftWidth) || 1;
-                        this.rightLeft += tempNum;
-                        tempNum = parseInt(this.leftElement.style.borderRightWidth) || 1;
-                        this.rightLeft += tempNum;
-                        tempNum = parseInt(this.leftElement.style.left) || 0;
-                        this.rightLeft += tempNum;
-                    }
-                    this.rightLeft += this.options.space;
-                }
-                if (this.centerElement)
-                {
-                    this.rightLeft += zane.HtmlUtl.width(this.centerElement) + 2;
-                    tempNum = parseInt(this.centerElement.style.borderLeftWidth) || 1;
-                    this.rightLeft += tempNum;
-                    tempNum = parseInt(this.centerElement.style.borderRightWidth) || 1;
-                    this.rightLeft += tempNum;
-                    this.rightLeft += this.options.space;
-                }
-                this.rightElement.style.left = this.rightLeft + "px";
-            }
-            if (this.bottomElement)
-            {
-                this.bottomTop = this.layoutHeight - zane.HtmlUtl.height(this.bottomElement) - 2;
-                this.bottomElement.style.top = this.bottomTop + "px";
-            }
-            this._setDropHandlePosition();
-            this.isResize = false;
         }
     }
 }
