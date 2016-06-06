@@ -15,6 +15,7 @@ module zane.web.component
 
         /**
          * 菜单数量
+         * @type {HTMLElement}
          */
         public menuCount:number;
 
@@ -24,13 +25,19 @@ module zane.web.component
 
         /**
          * 菜单缓存池
+         * @type {Object}
          */
         private menuDict:any;
 
+        /**
+         *
+         * @type {boolean}
+         */
         private showMenu:boolean;
 
         /**
          * 当前显示的菜单
+         * @type {Menu}
          */
         private currentShowMenu:Menu;
 
@@ -95,9 +102,9 @@ module zane.web.component
                 itemBtnR.className = "menu-btn-r";
                 menuBarItem.appendChild(itemBtnR);
 
-                if (data.memu)
+                if (data.menu)
                 {
-                    this.menuDict[menuBarItem.getAttribute("menuBarId")] = new Menu(document.body, data.memu);
+                    this.menuDict[menuBarItem.getAttribute("menuBarId")] = new Menu(document.body, data.menu);
                 }
                 else
                 {

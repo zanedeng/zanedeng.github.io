@@ -1116,8 +1116,8 @@ var zane;
                         var itemBtnR = document.createElement("div");
                         itemBtnR.className = "menu-btn-r";
                         menuBarItem.appendChild(itemBtnR);
-                        if (data.memu) {
-                            this.menuDict[menuBarItem.getAttribute("menuBarId")] = new component.Menu(document.body, data.memu);
+                        if (data.menu) {
+                            this.menuDict[menuBarItem.getAttribute("menuBarId")] = new component.Menu(document.body, data.menu);
                         }
                         else {
                             var itemDown = document.createElement("div");
