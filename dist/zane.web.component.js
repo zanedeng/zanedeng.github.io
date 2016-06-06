@@ -192,6 +192,38 @@ var zane;
                     this.trigger('rightToggle', [isCollapse]);
                     return true;
                 };
+                Layout.prototype.destroy = function () {
+                    _super.prototype.destroy.call(this);
+                    if (this.element.parentElement)
+                        this.element.parentElement.removeChild(this.element);
+                    this.topElement = null;
+                    this.topContentElement = null;
+                    this.topDropElement = null;
+                    this.bottomElement = null;
+                    this.bottomContentElement = null;
+                    this.bottomDropElement = null;
+                    this.leftElement = null;
+                    this.leftContentElement = null;
+                    this.leftDropElement = null;
+                    this.leftCollapseElement = null;
+                    this.rightElement = null;
+                    this.rightContentElement = null;
+                    this.rightDropElement = null;
+                    this.rightCollapseElement = null;
+                    this.centerElement = null;
+                    this.centerContentElement = null;
+                    this.centerBottomElement = null;
+                    this.centerBottomContentElement = null;
+                    this.centerBottomDropElement = null;
+                    this.lockElement = null;
+                    this.draggingXLineElement = null;
+                    this.draggingYLineElement = null;
+                    this.draggingMaskElement = null;
+                    this.element = null;
+                    this.stopDragBindFun = null;
+                    this.dragBindFun = null;
+                    this.resizeBindFun = null;
+                };
                 Layout.prototype._init = function () {
                     if (!this.options)
                         this.options = new component.LayoutOptions();
@@ -928,6 +960,23 @@ var zane;
                         subMenu.hide();
                     }
                     this.showedSubMenu = false;
+                };
+                Menu.prototype.destroy = function () {
+                    _super.prototype.destroy.call(this);
+                    if (this.element.parentElement)
+                        this.element.parentElement.removeChild(this.element);
+                    this.menuYLineElement = null;
+                    this.menuOverElement = null;
+                    this.menuOverLElement = null;
+                    this.menuOverRElement = null;
+                    this.menuInnerElement = null;
+                    this.shadowElement = null;
+                    this.mouseleaveBindFun = null;
+                    this.itemMouseEnterBindFun = null;
+                    this.itemMouseLeaveBindFun = null;
+                    this.subMenuDict = null;
+                    this.menuItemDict = null;
+                    this.menuItemDictByCfgId = null;
                 };
                 Menu.prototype._init = function () {
                     if (!this.options)

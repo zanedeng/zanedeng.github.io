@@ -37,7 +37,7 @@ module zane.web.gt
                 { line: true },
                 { text: '查看', children:
                     [
-                        { text: '报表'},
+                        { text: '报表', disable:true},
                         { text: '导出', children: [{ text: 'Excel'}, { text: 'Word'}]
                         }
                     ] },

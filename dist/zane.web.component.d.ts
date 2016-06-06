@@ -81,6 +81,7 @@ declare module zane.web.component {
         constructor(parent: HTMLElement, options?: any);
         setLeftCollapse(isCollapse: boolean): boolean;
         setRightCollapse(isCollapse: boolean): boolean;
+        destroy(): void;
         protected _init(): void;
         protected _render(): void;
         private _addDropHandle();
@@ -121,6 +122,7 @@ declare module zane.web.component {
         isEnable(itemId: string): boolean;
         setDisabled(itemId: string): void;
         hideAllSubMenu(): void;
+        destroy(): void;
         protected _init(): void;
         protected _render(): void;
         private updateShadow();

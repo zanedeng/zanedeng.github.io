@@ -323,6 +323,26 @@ module zane.web.component
             this.showedSubMenu = false;
         }
 
+        
+        public destroy():void
+        {
+            super.destroy();
+            if (this.element.parentElement)
+                this.element.parentElement.removeChild(this.element);
+            this.menuYLineElement       = null;
+            this.menuOverElement        = null;
+            this.menuOverLElement       = null;
+            this.menuOverRElement       = null;
+            this.menuInnerElement       = null;
+            this.shadowElement          = null;
+            this.mouseleaveBindFun      = null;
+            this.itemMouseEnterBindFun  = null;
+            this.itemMouseLeaveBindFun  = null;
+            this.subMenuDict            = null;
+            this.menuItemDict           = null;
+            this.menuItemDictByCfgId    = null;
+        }
+
         // +----------------------------------------------------------------------
         // | protected method
         // +----------------------------------------------------------------------

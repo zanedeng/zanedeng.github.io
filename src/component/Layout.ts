@@ -211,6 +211,41 @@ module zane.web.component
             return true;
         }
 
+
+        public destroy():void
+        {
+            super.destroy();
+            if (this.element.parentElement)
+                this.element.parentElement.removeChild(this.element);
+            this.topElement                 = null;
+            this.topContentElement          = null;
+            this.topDropElement             = null;
+            this.bottomElement              = null;
+            this.bottomContentElement       = null;
+            this.bottomDropElement          = null;
+            this.leftElement                = null;
+            this.leftContentElement         = null;
+            this.leftDropElement            = null;
+            this.leftCollapseElement        = null;
+            this.rightElement               = null;
+            this.rightContentElement        = null;
+            this.rightDropElement           = null;
+            this.rightCollapseElement       = null;
+            this.centerElement              = null;
+            this.centerContentElement       = null;
+            this.centerBottomElement        = null;
+            this.centerBottomContentElement = null;
+            this.centerBottomDropElement    = null;
+            this.lockElement                = null;
+            this.draggingXLineElement       = null;
+            this.draggingYLineElement       = null;
+            this.draggingMaskElement        = null;
+            this.element                    = null;
+            this.stopDragBindFun            = null;
+            this.dragBindFun                = null;
+            this.resizeBindFun              = null;
+        }
+
         // +----------------------------------------------------------------------
         // | protected method
         // +----------------------------------------------------------------------
