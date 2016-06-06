@@ -161,7 +161,7 @@ module zane.web.component
 
             var self = this;
             document.addEventListener("click", function(e){
-                var clickElement = e.currentTarget;
+                var clickElement = e.target;
                 console.log(clickElement);
                 /*
                 if (self.showMenu) self.showMenu = false;

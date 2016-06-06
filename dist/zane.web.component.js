@@ -1152,7 +1152,7 @@ var zane;
                     }
                     var self = this;
                     document.addEventListener("click", function (e) {
-                        var clickElement = e.currentTarget;
+                        var clickElement = e.target;
                         console.log(clickElement);
                     }, false);
                 };
