@@ -297,6 +297,7 @@ var zane;
             var LayoutVc = (function () {
                 function LayoutVc() {
                     var layoutOptions = new LayoutOptions();
+                    layoutOptions.topHeight = 25;
                     layoutOptions.bottomHeight = 35;
                     layoutOptions.allowTopResize = false;
                     layoutOptions.allowBottomResize = false;
