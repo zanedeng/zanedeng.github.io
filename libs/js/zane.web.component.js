@@ -1194,8 +1194,7 @@ var zane;
                         zane.HtmlUtl.addClass(menuBarItem, "menu-btn-over");
                         zane.HtmlUtl.addClass(menuBarItem, "menu-btn-selected");
                         var offset = zane.HtmlUtl.getOffset(menuBarItem);
-                        console.log(offset);
-                        menu.show({ top: offset.y, left: offset.x });
+                        menu.show({ top: offset.y, left: offset.x + zane.HtmlUtl.outerHeight(menuBarItem) });
                         this.currentShowMenu = menu;
                     }
                 };

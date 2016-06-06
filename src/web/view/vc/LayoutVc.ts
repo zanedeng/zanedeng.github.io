@@ -36,7 +36,7 @@ module zane.web.gt
                 alert(item.text);
             }
 
-            var menu1 = { width: 120, items:
+            var menu1 = { width: 120, menuData:
                 [
                     { text: '保存', click: itemclick },
                     { text: '列存为', click: itemclick },
@@ -45,7 +45,7 @@ module zane.web.gt
                 ]
             };
 
-            var menu2 = { width: 120, items:
+            var menu2 = { width: 120, menuData:
                 [
                     {
                         text: '文件', children:

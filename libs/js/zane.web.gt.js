@@ -307,14 +307,14 @@ var zane;
                     function itemclick(item) {
                         alert(item.text);
                     }
-                    var menu1 = { width: 120, items: [
+                    var menu1 = { width: 120, menuData: [
                             { text: '保存', click: itemclick },
                             { text: '列存为', click: itemclick },
                             { line: true },
                             { text: '关闭', click: itemclick }
                         ]
                     };
-                    var menu2 = { width: 120, items: [
+                    var menu2 = { width: 120, menuData: [
                             {
                                 text: '文件', children: [
                                     { text: 'Excel', click: itemclick },
