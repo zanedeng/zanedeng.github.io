@@ -331,7 +331,7 @@ var zane;
                         { text: '文件', menu: menu1 },
                         { text: '导出', menu: menu2 }
                     ];
-                    this.menuBar = new MenuBar(document.body, menuBarOptions);
+                    this.menuBar = new MenuBar(this.layoutComp.topElement, menuBarOptions);
                 }
                 return LayoutVc;
             }());

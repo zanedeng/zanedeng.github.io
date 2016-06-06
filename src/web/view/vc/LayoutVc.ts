@@ -66,7 +66,7 @@ module zane.web.gt
                 { text: '导出', menu: menu2 }
             ];
 
-            this.menuBar = new MenuBar(document.body, menuBarOptions);
+            this.menuBar = new MenuBar(this.layoutComp.topElement, menuBarOptions);
 
         }
     }
