@@ -169,7 +169,7 @@ module zane.web.component
                     if (zane.HtmlUtl.hasClass(menuItem, "menu-item-disable")) return;
                     if (data.click)
                     {
-                        data.click(menuItem);
+                        data.click(data);
                     }
                 }, false);
 
@@ -323,7 +323,7 @@ module zane.web.component
             this.showedSubMenu = false;
         }
 
-        
+
         public destroy():void
         {
             super.destroy();

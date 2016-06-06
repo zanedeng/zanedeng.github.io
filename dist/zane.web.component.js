@@ -873,7 +873,7 @@ var zane;
                             if (zane.HtmlUtl.hasClass(menuItem, "menu-item-disable"))
                                 return;
                             if (data.click) {
-                                data.click(menuItem);
+                                data.click(data);
                             }
                         }, false);
                         menuItem.addEventListener("dblclick", function (e) {
@@ -1104,7 +1104,6 @@ var zane;
                         }
                         if (data.click) {
                             menuBarItem.addEventListener("mouseenter", function (e) {
-                                console.log(data);
                                 data.click(data);
                             }, false);
                         }
