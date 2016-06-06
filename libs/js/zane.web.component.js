@@ -1156,24 +1156,28 @@ var zane;
                     document.addEventListener("click", function (e) {
                         var clickElement = e.target;
                         var parent = clickElement.parentElement;
+                        var isMenuBarItem = false;
                         while (parent) {
-                            for (var i = 0, l = this.menuBarItems.length; i < l; ++i) {
-                                if (parent == this.menuBarItems[i]) {
-                                    if (self.showMenu)
-                                        self.showMenu = false;
-                                    if (self.currentShowMenu)
-                                        self.currentShowMenu.hide();
-                                    var selectItems = zane.HtmlUtl.find(self.element, ".menu-btn-selected");
-                                    if (selectItems) {
-                                        for (var i = 0, l = selectItems.length; i < l; ++i) {
-                                            zane.HtmlUtl.removeClass(selectItems[i], "menu-btn-selected");
-                                        }
-                                    }
+                            for (var i = 0, l = self.menuBarItems.length; i < l; ++i) {
+                                if (parent == self.menuBarItems[i]) {
+                                    isMenuBarItem = true;
                                     parent = null;
                                     break;
                                 }
                             }
                             parent = parent.parentElement;
+                        }
+                        if (!isMenuBarItem) {
+                            if (self.showMenu)
+                                self.showMenu = false;
+                            if (self.currentShowMenu)
+                                self.currentShowMenu.hide();
+                            var selectItems = zane.HtmlUtl.find(self.element, ".menu-btn-selected");
+                            if (selectItems) {
+                                for (var i = 0, l = selectItems.length; i < l; ++i) {
+                                    zane.HtmlUtl.removeClass(selectItems[i], "menu-btn-selected");
+                                }
+                            }
                         }
                     }, false);
                 };
