@@ -134,9 +134,18 @@ declare module zane.web.component {
 }
 declare module zane.web.component {
     class MenuBar extends Component {
+        private menuDict;
+        private currentShowMenu;
+        private mouseenterBindFun;
+        private mousedownBindFun;
+        private mouseleaveBindFun;
         constructor(parent: HTMLElement, options?: any);
+        addItem(data?: any): void;
         protected _init(): void;
         protected _render(): void;
+        private onMouseEnter(e);
+        private onMouseDown(e);
+        private onMouseLeave(e);
     }
 }
 declare module zane.web.component {
@@ -163,6 +172,11 @@ declare module zane.web.component {
         allowBottomResize: boolean;
         space: number;
         content: number;
+    }
+}
+declare module zane.web.component {
+    class MenuBarOptions {
+        menuBarData: Array<any>;
     }
 }
 declare module zane.web.component {

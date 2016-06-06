@@ -1088,11 +1088,76 @@ var zane;
                     if (options === void 0) { options = null; }
                     _super.call(this, parent, options);
                 }
+                MenuBar.prototype.addItem = function (data) {
+                    if (data === void 0) { data = null; }
+                    if (data) {
+                        var menuBarItem = document.createElement("div");
+                        menuBarItem.className = "menubar-item panel-btn";
+                        this.element.appendChild(menuBarItem);
+                        if (data.id) {
+                            menuBarItem.setAttribute("menuBarId", data.id);
+                        }
+                        if (data.disable || data.disabled) {
+                            zane.HtmlUtl.addClass(menuBarItem, "menubar-item-disable");
+                        }
+                        if (data.click) {
+                            menuBarItem.onclick = function (e) {
+                                data.click(menuBarItem);
+                            };
+                        }
+                        var itemText = document.createElement("span");
+                        if (data.text)
+                            itemText.innerText = data.text;
+                        menuBarItem.appendChild(itemText);
+                        var itemBtnL = document.createElement("div");
+                        itemBtnL.className = "panel-btn-l";
+                        menuBarItem.appendChild(itemBtnL);
+                        var itemBtnR = document.createElement("div");
+                        itemBtnR.className = "panel-btn-r";
+                        menuBarItem.appendChild(itemBtnR);
+                        if (data.memu) {
+                            this.menuDict[menuBarItem.getAttribute("menuBarId")] = new component.Menu(document.body, data.memu);
+                        }
+                        else {
+                            var itemDown = document.createElement("div");
+                            itemDown.className = "menubar-item-down";
+                            menuBarItem.appendChild(itemDown);
+                        }
+                        menuBarItem.addEventListener("mouseenter", this.mouseenterBindFun, false);
+                        menuBarItem.addEventListener("mouseleave", this.mouseleaveBindFun, false);
+                        menuBarItem.addEventListener("mousedown", this.mousedownBindFun, false);
+                    }
+                };
                 MenuBar.prototype._init = function () {
                     if (!this.options)
                         this.options = new component.LayoutOptions();
+                    this.menuDict = {};
+                    this.mouseenterBindFun = this.onMouseEnter.bind(this);
+                    this.mousedownBindFun = this.onMouseDown.bind(this);
+                    this.mouseleaveBindFun = this.onMouseLeave.bind(this);
                 };
                 MenuBar.prototype._render = function () {
+                    this.element = document.createElement("div");
+                    this.element.className = "menubar";
+                    if (this.parent) {
+                        this.parent.appendChild(this.element);
+                    }
+                    if (this.options.menuBarData) {
+                        for (var i = 0, l = this.options.menuBarData.length; i < l; ++i) {
+                            this.addItem(this.options.menuBarData[i]);
+                        }
+                    }
+                };
+                MenuBar.prototype.onMouseEnter = function (e) {
+                    var menuBarItem = e.currentTarget;
+                    zane.HtmlUtl.addClass(menuBarItem, "panel-btn-over");
+                };
+                MenuBar.prototype.onMouseDown = function (e) {
+                    var menuBarItem = e.currentTarget;
+                };
+                MenuBar.prototype.onMouseLeave = function (e) {
+                    var menuBarItem = e.currentTarget;
+                    zane.HtmlUtl.removeClass(menuBarItem, "panel-btn-over");
                 };
                 return MenuBar;
             }(component.Component));
@@ -1133,6 +1198,21 @@ var zane;
                 return LayoutOptions;
             }());
             component.LayoutOptions = LayoutOptions;
+        })(component = web.component || (web.component = {}));
+    })(web = zane.web || (zane.web = {}));
+})(zane || (zane = {}));
+var zane;
+(function (zane) {
+    var web;
+    (function (web) {
+        var component;
+        (function (component) {
+            var MenuBarOptions = (function () {
+                function MenuBarOptions() {
+                }
+                return MenuBarOptions;
+            }());
+            component.MenuBarOptions = MenuBarOptions;
         })(component = web.component || (web.component = {}));
     })(web = zane.web || (zane.web = {}));
 })(zane || (zane = {}));

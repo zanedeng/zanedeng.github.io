@@ -81,6 +81,7 @@ declare module zane.web.component {
         constructor(parent: HTMLElement, options?: any);
         setLeftCollapse(isCollapse: boolean): boolean;
         setRightCollapse(isCollapse: boolean): boolean;
+        destroy(): void;
         protected _init(): void;
         protected _render(): void;
         private _addDropHandle();
@@ -97,37 +98,54 @@ declare module zane.web.component {
 declare module zane.web.component {
     class Menu extends Component {
         menuItemCount: number;
-        subMenuDict: any;
         menuYLineElement: HTMLElement;
         menuOverElement: HTMLElement;
         menuOverLElement: HTMLElement;
         menuOverRElement: HTMLElement;
         menuInnerElement: HTMLElement;
         shadowElement: HTMLElement;
+        private subMenuDict;
+        private menuItemDict;
+        private menuItemDictByCfgId;
         private showedSubMenu;
         private mouseleaveBindFun;
         private itemMouseEnterBindFun;
         private itemMouseLeaveBindFun;
         constructor(parent: HTMLElement, options?: any);
         show(options?: any): void;
-        hide(menu?: HTMLElement): void;
+        hide(): void;
         toggle(): void;
         addItem(data: any, target?: HTMLElement): void;
-        removeItem(): void;
+        getMenuItem(itemId: string): HTMLElement;
+        removeItem(itemId: string): void;
+        setEnabled(itemId: string): void;
+        isEnable(itemId: string): boolean;
+        setDisabled(itemId: string): void;
         hideAllSubMenu(): void;
+        destroy(): void;
         protected _init(): void;
         protected _render(): void;
         private updateShadow();
         private onMouseLeave(e);
         private onItemMouseEnter(e);
         private onItemMouseLeave(e);
+        private onMouseClick(e);
     }
 }
 declare module zane.web.component {
     class MenuBar extends Component {
+        private menuDict;
+        private currentShowMenu;
+        private mouseenterBindFun;
+        private mousedownBindFun;
+        private mouseleaveBindFun;
         constructor(parent: HTMLElement, options?: any);
+        addItem(data?: any): void;
         protected _init(): void;
         protected _render(): void;
+        private onMouseEnter(e);
+        private onMouseDown(e);
+        private onMouseLeave(e);
     }
 }
 declare module zane.web.component {
@@ -154,6 +172,11 @@ declare module zane.web.component {
         allowBottomResize: boolean;
         space: number;
         content: number;
+    }
+}
+declare module zane.web.component {
+    class MenuBarOptions {
+        menuBarData: Array<any>;
     }
 }
 declare module zane.web.component {

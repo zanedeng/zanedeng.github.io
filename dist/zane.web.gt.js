@@ -292,8 +292,8 @@ var zane;
         (function (gt) {
             var Layout = zane.web.component.Layout;
             var LayoutOptions = zane.web.component.LayoutOptions;
-            var Menu = zane.web.component.Menu;
-            var MenuOptions = zane.web.component.MenuOptions;
+            var MenuBar = zane.web.component.MenuBar;
+            var MenuBarOptions = zane.web.component.MenuBarOptions;
             var LayoutVc = (function () {
                 function LayoutVc() {
                     var layoutOptions = new LayoutOptions();
@@ -303,24 +303,35 @@ var zane;
                     layoutOptions.content = Layout.CONTENT_TOP | Layout.CONTENT_LEFT |
                         Layout.CONTENT_RIGHT | Layout.CONTENT_CENTER | Layout.CONTENT_CENTER_BOTTOM | Layout.CONTENT_BOTTOM;
                     this.layoutComp = new Layout(document.body, layoutOptions);
-                    var menuOptions = new MenuOptions();
-                    menuOptions.menuData = [
-                        { text: '增加', icon: 'add' },
-                        { text: '修改' },
-                        { line: true },
-                        { text: '查看', children: [
-                                { text: '报表', disable: true },
-                                { text: '导出', children: [{ text: 'Excel' }, { text: 'Word' }]
-                                }
-                            ] },
-                        { text: '关闭' }
-                    ];
-                    this.menu = new Menu(document.body, menuOptions);
-                    var self = this;
-                    document.oncontextmenu = function (e) {
-                        self.menu.show({ top: e.pageY, left: e.pageX });
-                        return false;
+                    function itemclick(item) {
+                        alert(item.text);
+                    }
+                    var menu1 = { width: 120, items: [
+                            { text: '保存', click: itemclick },
+                            { text: '列存为', click: itemclick },
+                            { line: true },
+                            { text: '关闭', click: itemclick }
+                        ]
                     };
+                    var menu2 = { width: 120, items: [
+                            {
+                                text: '文件', children: [
+                                    { text: 'Excel', click: itemclick },
+                                    { text: 'Word', click: itemclick },
+                                    { text: 'PDF', click: itemclick },
+                                    { text: 'TXT', click: itemclick },
+                                    { line: true },
+                                    { text: 'XML', click: itemclick }
+                                ]
+                            },
+                        ]
+                    };
+                    var menuBarOptions = new MenuBarOptions();
+                    menuBarOptions.menuBarData = [
+                        { text: '文件', menu: menu1 },
+                        { text: '导出', menu: menu2 }
+                    ];
+                    this.menuBar = new MenuBar(document.body, menuBarOptions);
                 }
                 return LayoutVc;
             }());

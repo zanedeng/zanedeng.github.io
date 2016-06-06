@@ -5,8 +5,8 @@ module zane.web.gt
 {
     import Layout = zane.web.component.Layout;
     import LayoutOptions = zane.web.component.LayoutOptions;
-    import Menu = zane.web.component.Menu;
-    import MenuOptions = zane.web.component.MenuOptions;
+    import MenuBar = zane.web.component.MenuBar;
+    import MenuBarOptions = zane.web.component.MenuBarOptions;
     /**
      * @class zane.web.gt.LayoutVc
      */
@@ -18,7 +18,7 @@ module zane.web.gt
          */
         public layoutComp:Layout;
 
-        public menu:Menu;
+        public menuBar:MenuBar;
 
         constructor()
         {
@@ -30,26 +30,43 @@ module zane.web.gt
                 Layout.CONTENT_RIGHT|Layout.CONTENT_CENTER|Layout.CONTENT_CENTER_BOTTOM|Layout.CONTENT_BOTTOM;
             this.layoutComp = new Layout(document.body, layoutOptions);
 
-            var menuOptions = new MenuOptions();
-            menuOptions.menuData = [
-                { text: '增加', icon:'add' },
-                { text: '修改'},
-                { line: true },
-                { text: '查看', children:
-                    [
-                        { text: '报表', disable:true},
-                        { text: '导出', children: [{ text: 'Excel'}, { text: 'Word'}]
-                        }
-                    ] },
-                { text: '关闭'}
+            function itemclick(item)
+            {
+                alert(item.text);
+            }
+
+            var menu1 = { width: 120, items:
+                [
+                    { text: '保存', click: itemclick },
+                    { text: '列存为', click: itemclick },
+                    { line: true },
+                    { text: '关闭', click: itemclick }
+                ]
+            };
+
+            var menu2 = { width: 120, items:
+                [
+                    {
+                        text: '文件', children:
+                        [
+                            { text: 'Excel', click: itemclick },
+                            { text: 'Word', click: itemclick },
+                            { text: 'PDF', click: itemclick },
+                            { text: 'TXT', click: itemclick },
+                            { line: true },
+                            { text: 'XML', click: itemclick }
+                        ]
+                    },
+                ]
+            };
+
+            var menuBarOptions = new MenuBarOptions();
+            menuBarOptions.menuBarData = [
+                { text: '文件', menu: menu1 },
+                { text: '导出', menu: menu2 }
             ];
 
-            this.menu = new Menu(document.body, menuOptions);
-            var self = this;
-            document.oncontextmenu = function (e) {
-                self.menu.show({ top: e.pageY, left: e.pageX });
-                return false;
-            };
+            this.menuBar = new MenuBar(document.body, menuBarOptions);
 
         }
     }
