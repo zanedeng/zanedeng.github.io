@@ -1161,8 +1161,6 @@ var zane;
                     return this.menuDict[menuBarId];
                 };
                 MenuBar.prototype.showMenuBarItemMenu = function (menuBarItem) {
-                    console.log(this.menuDict);
-                    console.log(menuBarItem.getAttribute("menuBarId"));
                     if (this.currentShowMenu)
                         this.currentShowMenu.hide();
                     var menu = this.getMenu(menuBarItem);
@@ -1170,7 +1168,7 @@ var zane;
                         zane.HtmlUtl.addClass(menuBarItem, "menu-btn-over");
                         zane.HtmlUtl.addClass(menuBarItem, "menu-btn-selected");
                         var offset = zane.HtmlUtl.getOffset(menuBarItem);
-                        menu.show({ top: offset.y, left: offset.y });
+                        menu.show({ top: offset.y, left: offset.x });
                         this.currentShowMenu = menu;
                     }
                 };
