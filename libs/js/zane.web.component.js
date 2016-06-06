@@ -1150,6 +1150,7 @@ var zane;
                     }
                     var self = this;
                     document.addEventListener("click", function (e) {
+                        self.showMenu = false;
                         if (self.currentShowMenu) {
                             self.currentShowMenu.hide();
                         }
