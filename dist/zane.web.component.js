@@ -1093,9 +1093,10 @@ var zane;
                     if (data) {
                         var menuBarItem = document.createElement("div");
                         menuBarItem.className = "menubar-item menu-btn";
+                        menuBarItem.setAttribute("menuBarId", (this.menuCount++).toString());
                         this.element.appendChild(menuBarItem);
                         if (data.id) {
-                            menuBarItem.setAttribute("menuBarId", data.id);
+                            menuBarItem.id = data.id;
                         }
                         if (data.disable || data.disabled) {
                             zane.HtmlUtl.addClass(menuBarItem, "menubar-item-disable");
@@ -1132,6 +1133,7 @@ var zane;
                     if (!this.options)
                         this.options = new component.LayoutOptions();
                     this.menuDict = {};
+                    this.menuCount = 0;
                     this.showMenu = false;
                     this.mouseenterBindFun = this.onMouseEnter.bind(this);
                     this.mousedownBindFun = this.onMouseDown.bind(this);
@@ -1168,6 +1170,8 @@ var zane;
                     return this.menuDict[menuBarId];
                 };
                 MenuBar.prototype.showMenuBarItemMenu = function (menuBarItem) {
+                    console.log(this.menuDict);
+                    console.log(menuBarItem.getAttribute("menuBarId"));
                     if (this.currentShowMenu)
                         this.currentShowMenu.hide();
                     var menu = this.getMenu(menuBarItem);

@@ -9,6 +9,14 @@ module zane.web.component
      */
     export class MenuBar extends Component
     {
+        // +----------------------------------------------------------------------
+        // | public property
+        // +----------------------------------------------------------------------
+
+        /**
+         * 菜单数量
+         */
+        public menuCount:number;
 
         // +----------------------------------------------------------------------
         // | private property
@@ -55,11 +63,12 @@ module zane.web.component
             {
                 var menuBarItem = document.createElement("div");
                 menuBarItem.className = "menubar-item menu-btn";
+                menuBarItem.setAttribute("menuBarId", (this.menuCount++).toString());
                 this.element.appendChild(menuBarItem);
 
                 if (data.id)
                 {
-                    menuBarItem.setAttribute("menuBarId", data.id);
+                    menuBarItem.id = data.id;
                 }
 
                 if (data.disable || data.disabled)
@@ -115,6 +124,7 @@ module zane.web.component
         {
             if (!this.options) this.options = new LayoutOptions();
             this.menuDict = {};
+            this.menuCount = 0;
             this.showMenu = false;
             this.mouseenterBindFun = this.onMouseEnter.bind(this);
             this.mousedownBindFun = this.onMouseDown.bind(this);
@@ -181,6 +191,8 @@ module zane.web.component
          */
         private showMenuBarItemMenu(menuBarItem:HTMLElement):void
         {
+            console.log(this.menuDict);
+            console.log(menuBarItem.getAttribute("menuBarId"));
             if (this.currentShowMenu) this.currentShowMenu.hide();
             var menu:Menu = this.getMenu(menuBarItem);
             if (menu)

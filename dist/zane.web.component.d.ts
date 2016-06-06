@@ -134,6 +134,7 @@ declare module zane.web.component {
 }
 declare module zane.web.component {
     class MenuBar extends Component {
+        menuCount: number;
         private menuDict;
         private showMenu;
         private currentShowMenu;
