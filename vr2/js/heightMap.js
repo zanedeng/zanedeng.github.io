@@ -17,9 +17,9 @@
     skybox.material = skyboxMaterial;
     
     // Ground
-    var ground = BABYLON.Mesh.CreateGroundFromHeightMap("ground", "heightMap.png", 100, 100, 100, 0, 10, scene, false);
+    var ground = BABYLON.Mesh.CreateGroundFromHeightMap("ground", "img/heightMap.png", 100, 100, 100, 0, 10, scene, false);
     var groundMaterial = new BABYLON.StandardMaterial("ground", scene);
-    groundMaterial.diffuseTexture = new BABYLON.Texture("ground.jpg", scene);
+    groundMaterial.diffuseTexture = new BABYLON.Texture("img/ground.jpg", scene);
 
     groundMaterial.diffuseTexture.uScale = 6;
     groundMaterial.diffuseTexture.vScale = 6;
