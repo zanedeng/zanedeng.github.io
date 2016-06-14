@@ -1,5 +1,5 @@
 // 预加载的文件列表
-var preloadFile = ["jsx/babylon.2.2.jsx", "jsx/babylon.objFileLoader.jsx", "jsx/zane.utils.jsx", "jsx/zane.mvc.jsx", "jsx/zane.vr.jsx"];
+var preloadFile = ["jsx/cannon.jsx", "jsx/babylon.jsx", "jsx/zane.utils.jsx", "jsx/zane.mvc.jsx", "jsx/zane.vr.jsx"];
 
 // 预加载文件开始加载
 var onPreloadFileStart = function ()
