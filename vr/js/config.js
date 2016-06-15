@@ -8,22 +8,25 @@ var preloadFile = [
    "jsx/zane.vr.jsx"
 ];
 
+var loader = document.getElementById("loader");
+var loaderText = document.getElementsByClassName("loader_progress")[0];
+
 // 预加载文件开始加载
 var onPreloadFileStart = function ()
 {
-
+    loader.style.display = "block";
 };
 
 var onPreloadFileProgress = function (progress)
 {
-    document.getElementById("bar").style.width = (window.innerWidth * 0.8 - 4) * progress/100 + "px";
-    document.getElementById("perc").innerHTML = progress + "%";
+    loaderText.style.display = "block";
+    loaderText.innerText = progress + "%";
 };
 
 // 预加载文件加载完成后的处理函数
 var onPreloadFileComplete = function()
 {
-    var progressbar = document.getElementById("progressbar");
-    progressbar.parentNode.removeChild(progressbar);
+    loader.style.display = "none";
+    loaderText.style.display = "none";
     new zane.vr.Main();
 };
