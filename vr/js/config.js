@@ -1,12 +1,12 @@
 // 预加载的文件列表
 var preloadFile = [
-  "jsx/hand-1.3.7.jsx", 
-  "jsx/easeljs-0.8.2.jsx",
-  "jsx/cannon.jsx",
-  "jsx/babylon.jsx", 
-  "jsx/zane.utils.jsx", 
-  "jsx/zane.mvc.jsx",
-   "jsx/zane.vr.jsx"
+    "jsx/hand-1.3.7.jsx",
+    "jsx/easeljs-0.8.2.jsx",
+    "jsx/fpsmeter.jsx",
+    "jsx/babylon.jsx",
+    "jsx/zane.utils.jsx",
+    "jsx/zane.mvc.jsx",
+    "jsx/zane.vr.jsx"
 ];
 
 var loader = document.getElementById("loader");
