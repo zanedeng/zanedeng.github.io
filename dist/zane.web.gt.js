@@ -334,7 +334,7 @@ var zane;
                         },
                         {
                             text: '导入项目',
-                            childre: [
+                            children: [
                                 { text: '从 Dropbox 导入', command: "importFromDropbox", click: this.menuItemClick },
                                 { text: '从 Github 导入', command: "importFromGithub", click: this.menuItemClick },
                                 { text: '从 Google Drive 导入', command: "importFromGoogleDrive", click: this.menuItemClick },
@@ -343,7 +343,7 @@ var zane;
                         },
                         {
                             text: '删除项目',
-                            childre: [
+                            children: [
                                 { text: '从 Dropbox 删除', command: "deleteFromDropbox", click: this.menuItemClick },
                                 { text: '从 Github 删除', command: "deleteFromGithub", click: this.menuItemClick },
                                 { text: '从 Google Drive 删除', command: "deleteFromGoogleDrive", click: this.menuItemClick },
