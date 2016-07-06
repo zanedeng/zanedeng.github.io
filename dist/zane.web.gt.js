@@ -311,6 +311,7 @@ var zane;
                     this.addProjectMenuItem();
                     this.addFileMenuItem();
                     this.addEditMenuItem();
+                    this.addViewMenuItem();
                 };
                 TopMenuBarView.prototype.onRemove = function () {
                 };
@@ -393,6 +394,68 @@ var zane;
                         { text: '查找和替换', command: "findAndReplace", click: this.menuItemClick },
                     ];
                     vc.menuBarComp.addItem({ text: "编辑", menu: editMenuOptions });
+                };
+                TopMenuBarView.prototype.addViewMenuItem = function () {
+                    var vc = this.vc();
+                    var viewMenuOptions = new MenuOptions();
+                    viewMenuOptions.width = 150;
+                    viewMenuOptions.shadow = true;
+                    viewMenuOptions.menuData = [
+                        {
+                            text: '编辑样式',
+                            children: [
+                                { text: 'Chrome', command: "chrome", click: this.menuItemClick },
+                                { text: 'Crimson Editor', command: "crimson_editor", click: this.menuItemClick },
+                                { text: 'Dreamweaver', command: "dreamweaver", click: this.menuItemClick },
+                                { text: 'Eclipse', command: "eclipse", click: this.menuItemClick },
+                                { text: 'Github', command: "github", click: this.menuItemClick },
+                                { text: 'Kuroir', command: "kuroir", click: this.menuItemClick },
+                                { text: 'Solarized Light', command: "solarized_light", click: this.menuItemClick },
+                                { text: 'Solarized Dark', command: "solarized_dark", click: this.menuItemClick },
+                                { text: 'Xcode', command: "xcode", click: this.menuItemClick },
+                                { text: 'Ambiance', command: "ambiance", click: this.menuItemClick },
+                                { text: 'Cobalt', command: "cobalt", click: this.menuItemClick },
+                                { text: 'Idle Fingers', command: "idle_fingers", click: this.menuItemClick },
+                                { text: 'krTheme', command: "kr_theme", click: this.menuItemClick },
+                                { text: 'Mono Industrial', command: "mono_industrial", click: this.menuItemClick },
+                                { text: 'Monokai', command: "monokai", click: this.menuItemClick },
+                                { text: 'Terminal', command: "terminal", click: this.menuItemClick },
+                                { text: 'Textmate', command: "textmate", click: this.menuItemClick },
+                                { text: 'Tomorrow', command: "tomorrow", click: this.menuItemClick },
+                                { text: 'Twilight', command: "twilight", click: this.menuItemClick },
+                                { text: 'Vibrant Ink', command: "vibrant_ink", click: this.menuItemClick },
+                            ]
+                        },
+                        {
+                            text: '字体大小',
+                            children: [
+                                { text: '8px', command: "fontSize8", click: this.menuItemClick },
+                                { text: '9px', command: "fontSize9", click: this.menuItemClick },
+                                { text: '10px', command: "fontSize10", click: this.menuItemClick },
+                                { text: '11px', command: "fontSize11", click: this.menuItemClick },
+                                { text: '12px', command: "fontSize12", click: this.menuItemClick },
+                                { text: '13px', command: "fontSize13", click: this.menuItemClick },
+                                { text: '14px', command: "fontSize14", click: this.menuItemClick },
+                                { text: '15px', command: "fontSize15", click: this.menuItemClick },
+                                { text: '16px', command: "fontSize16", click: this.menuItemClick },
+                                { text: '17px', command: "fontSize17", click: this.menuItemClick },
+                                { text: '18px', command: "fontSize18", click: this.menuItemClick },
+                                { text: '19px', command: "fontSize19", click: this.menuItemClick },
+                                { text: '20px', command: "fontSize20", click: this.menuItemClick },
+                                { text: '21px', command: "fontSize21", click: this.menuItemClick },
+                                { text: '22px', command: "fontSize22", click: this.menuItemClick },
+                                { text: '23px', command: "fontSize23", click: this.menuItemClick },
+                                { text: '24px', command: "fontSize24", click: this.menuItemClick },
+                            ]
+                        },
+                        { line: true },
+                        { text: '显示隐藏字符', command: "show_invisible", click: this.menuItemClick },
+                        { text: '不显示隐藏字符', command: "hide_invisible", click: this.menuItemClick },
+                        { line: true },
+                        { text: '显示行号', command: "show_gutter", click: this.menuItemClick },
+                        { text: '隐藏行号', command: "hide_gutter", click: this.menuItemClick },
+                    ];
+                    vc.menuBarComp.addItem({ text: "视图", menu: viewMenuOptions });
                 };
                 TopMenuBarView.prototype.menuItemClick = function (menuItemData) {
                 };

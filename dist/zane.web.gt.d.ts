@@ -107,6 +107,7 @@ declare module zane.web.gt {
         private addProjectMenuItem();
         private addFileMenuItem();
         private addEditMenuItem();
+        private addViewMenuItem();
         private menuItemClick(menuItemData);
     }
 }
