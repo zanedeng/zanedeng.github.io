@@ -104,6 +104,9 @@ declare module zane.web.gt {
         layoutView(): LayoutView;
         onRegister(): void;
         onRemove(): void;
+        private addProjectMenuItem();
+        private addFileMenuItem();
+        private addEditMenuItem();
         private menuItemClick(menuItemData);
     }
 }
