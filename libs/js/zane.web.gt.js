@@ -477,6 +477,8 @@ var zane;
                 function LayoutVc() {
                     var layoutOptions = new LayoutOptions();
                     layoutOptions.topHeight = 25;
+                    layoutOptions.leftWidth = 300;
+                    layoutOptions.rightWidth = 250;
                     layoutOptions.bottomHeight = 35;
                     layoutOptions.allowTopResize = false;
                     layoutOptions.allowBottomResize = false;
