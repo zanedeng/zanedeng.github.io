@@ -1238,6 +1238,27 @@ var zane;
     (function (web) {
         var component;
         (function (component) {
+            var Tree = (function (_super) {
+                __extends(Tree, _super);
+                function Tree(options, parent) {
+                    if (options === void 0) { options = null; }
+                    if (parent === void 0) { parent = null; }
+                    _super.call(this, options, parent);
+                    if (this.options.single)
+                        this.options.autoCheckboxEven = false;
+                }
+                return Tree;
+            }(component.Component));
+            component.Tree = Tree;
+        })(component = web.component || (web.component = {}));
+    })(web = zane.web || (zane.web = {}));
+})(zane || (zane = {}));
+var zane;
+(function (zane) {
+    var web;
+    (function (web) {
+        var component;
+        (function (component) {
             var LayoutOptions = (function () {
                 function LayoutOptions() {
                     this.width = "100%";
@@ -1301,6 +1322,56 @@ var zane;
                 return MenuOptions;
             }());
             component.MenuOptions = MenuOptions;
+        })(component = web.component || (web.component = {}));
+    })(web = zane.web || (zane.web = {}));
+})(zane || (zane = {}));
+var zane;
+(function (zane) {
+    var web;
+    (function (web) {
+        var component;
+        (function (component) {
+            var TreeOptions = (function () {
+                function TreeOptions() {
+                    this.checkbox = true;
+                    this.autoCheckboxEven = true;
+                    this.enabledCompleteCheckbox = true;
+                    this.parentIcon = "folder";
+                    this.childIcon = "leaf";
+                    this.idFieldName = "id";
+                    this.textFieldName = "text";
+                    this.iconFieldName = "icon";
+                    this.topParentIDValue = 0;
+                    this.attribute = ['id', 'url'];
+                    this.treeLine = true;
+                    this.nodeWidth = 90;
+                    this.statusName = "__status";
+                    this.single = false;
+                    this.needCancel = true;
+                    this.slide = true;
+                    this.nodeDraggable = false;
+                    this.btnClickToToggleOnly = true;
+                    this.ajaxType = "post";
+                    this.onBeforeExpand = function () { };
+                    this.onContextmenu = function () { };
+                    this.onExpand = function () { };
+                    this.onBeforeCollapse = function () { };
+                    this.onCollapse = function () { };
+                    this.onBeforeSelect = function () { };
+                    this.onSelect = function () { };
+                    this.onBeforeCancelSelect = function () { };
+                    this.onCancelselect = function () { };
+                    this.onCheck = function () { };
+                    this.onSuccess = function () { };
+                    this.onError = function () { };
+                    this.onClick = function () { };
+                    this.onBeforeAppend = function () { };
+                    this.onAppend = function () { };
+                    this.onAfterAppend = function () { };
+                }
+                return TreeOptions;
+            }());
+            component.TreeOptions = TreeOptions;
         })(component = web.component || (web.component = {}));
     })(web = zane.web || (zane.web = {}));
 })(zane || (zane = {}));

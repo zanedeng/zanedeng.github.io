@@ -158,6 +158,11 @@ declare module zane.web.component {
     }
 }
 declare module zane.web.component {
+    class Tree extends Component {
+        constructor(options?: any, parent?: HTMLElement);
+    }
+}
+declare module zane.web.component {
     class LayoutOptions {
         id: string;
         width: string;
@@ -197,5 +202,58 @@ declare module zane.web.component {
         customClass: string;
         shadow: boolean;
         menuData: Array<any>;
+    }
+}
+declare module zane.web.component {
+    class TreeOptions {
+        url: string;
+        urlParms: string;
+        data: any;
+        checkbox: boolean;
+        autoCheckboxEven: boolean;
+        enabledCompleteCheckbox: boolean;
+        parentIcon: string;
+        childIcon: string;
+        idFieldName: string;
+        idField: any;
+        textFieldName: string;
+        iconFieldName: string;
+        iconClsFieldName: string;
+        parentIDField: any;
+        parentIDFieldName: string;
+        topParentIDValue: number;
+        attribute: string[];
+        treeLine: boolean;
+        nodeWidth: number;
+        statusName: string;
+        isLeaf: Function;
+        single: boolean;
+        needCancel: boolean;
+        slide: boolean;
+        nodeDraggable: boolean;
+        nodeDraggingRender: any;
+        btnClickToToggleOnly: boolean;
+        ajaxType: string;
+        ajaxContentType: string;
+        render: any;
+        selectable: any;
+        isExpand: any;
+        delay: any;
+        onBeforeExpand: Function;
+        onContextmenu: Function;
+        onExpand: Function;
+        onBeforeCollapse: Function;
+        onCollapse: Function;
+        onBeforeSelect: Function;
+        onSelect: Function;
+        onBeforeCancelSelect: Function;
+        onCancelselect: Function;
+        onCheck: Function;
+        onSuccess: Function;
+        onError: Function;
+        onClick: Function;
+        onBeforeAppend: Function;
+        onAppend: Function;
+        onAfterAppend: Function;
     }
 }
