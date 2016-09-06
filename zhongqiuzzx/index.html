@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>中秋画圆，比比谁画的圆</title>
+  <meta name="description" content="中秋画圆，比比谁画的圆" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+  <meta content="yes" name="apple-mobile-web-app-capable" />
+  <meta content="yes" name="apple-touch-fullscreen" />
+  <meta content="telephone=no,email=no" name="format-detection" />
+  <link rel="stylesheet" type="text/css" href="http://news.sohu.com/upload/commonzzx/normal.css">
+  <link rel="stylesheet" type="text/css" href="http://news.sohu.com/upload/zhongqiuzzx/css/test.css">
+  <script src="http://news.sohu.com/upload/commonzzx/jquery-2.1.1.min.js"></script>
+  <script src="http://news.sohu.com/upload/commonzzx/preload.js"></script>
+  <script src="http://news.sohu.com/upload/zhongqiuzzx/js/paper-full.min.js"></script>
+</head>
+<body ontouchmove="event.preventDefault();">
+  <div class="all">
+    <div class="loading">
+      <div class="pace">
+        <div class="pace-progress">
+          0
+        </div>
+      </div>
+    </div>
+    <script>
+    function initView() {
+      var windowRatio = $(window).width() / 320;
+      var windowRatio = windowRatio > 2 ? 2 : windowRatio;
+      $('body').css('font-size', (windowRatio * 62.5 + '%'));
+      $('.main').height(windowRatio * 420);
+    }
+    var loader = new resLoader({
+      resources: [
+        'http://news.sohu.com/upload/zhongqiuzzx/images/13.png',
+        'http://news.sohu.com/upload/zhongqiuzzx/images/1.jpg',
+        'http://news.sohu.com/upload/zhongqiuzzx/images/3.png',
+        'http://news.sohu.com/upload/zhongqiuzzx/images/18.png',
+        'http://news.sohu.com/upload/zhongqiuzzx/images/8.png',
+        'http://news.sohu.com/upload/zhongqiuzzx/images/10.png',
+        'http://news.sohu.com/upload/zhongqiuzzx/images/logo.png',
+        'http://news.sohu.com/upload/zhongqiuzzx/images/bg.jpg',
+        'http://news.sohu.com/upload/zhongqiuzzx/images/15.png',
+        'http://news.sohu.com/upload/zhongqiuzzx/images/5.png',
+        'http://news.sohu.com/upload/zhongqiuzzx/images/12.png',
+        'http://news.sohu.com/upload/zhongqiuzzx/images/2.png',
+        'http://news.sohu.com/upload/zhongqiuzzx/images/17.png',
+        'http://news.sohu.com/upload/zhongqiuzzx/images/7.png',
+        'http://news.sohu.com/upload/zhongqiuzzx/images/14.png',
+        'http://news.sohu.com/upload/zhongqiuzzx/images/share.jpg',
+        'http://news.sohu.com/upload/zhongqiuzzx/images/4.png',
+        'http://news.sohu.com/upload/zhongqiuzzx/images/19.png',
+        'http://news.sohu.com/upload/zhongqiuzzx/images/9.png',
+        'http://news.sohu.com/upload/zhongqiuzzx/images/11.png',
+        'http://news.sohu.com/upload/zhongqiuzzx/images/1.png',
+        'http://news.sohu.com/upload/zhongqiuzzx/images/16.png',
+        'http://news.sohu.com/upload/zhongqiuzzx/images/6.png',
+        'http://news.sohu.com/upload/zhongqiuzzx/images/20.png',
+        'http://news.sohu.com/upload/zhongqiuzzx/images/b1.jpg',
+        'http://news.sohu.com/upload/zhongqiuzzx/images/b2.jpg',
+        'http://news.sohu.com/upload/zhongqiuzzx/images/b3.jpg',
+        'http://news.sohu.com/upload/zhongqiuzzx/images/b4.jpg',
+        'http://news.sohu.com/upload/zhongqiuzzx/images/b5.jpg',
+        'http://news.sohu.com/upload/zhongqiuzzx/images/b6.jpg'
+      ],
+      onStart: function(total) {},
+      onProgress: function(current, total) {
+        var percent = parseInt(current / total * 100) + '%';
+        $('.pace-progress').text(percent);
+      },
+      onComplete: function(total) {
+        $('.loading').hide();
+        initView();
+      }
+    });
+    loader.start();
+    </script>
+    <div class="bg">
+      <img src="http://news.sohu.com/upload/zhongqiuzzx/images/bg.jpg" class="bg-img" />
+      <img src="http://news.sohu.com/upload/zhongqiuzzx/images/logo.png" class="logo" />
+      <img src="http://news.sohu.com/upload/zhongqiuzzx/images/1.png" class="b1">
+    </div>
+    <div class="wrap">
+      <div class="screen screen1">
+        <section class="step1">
+          <div class="moon start">
+            <img src="http://news.sohu.com/upload/zhongqiuzzx/images/2.png" class="b2" />
+            <img src="http://news.sohu.com/upload/zhongqiuzzx/images/4.png" width="115" class="b3" />
+            <img src="http://news.sohu.com/upload/zhongqiuzzx/images/5.png" width="88" class="b4" />
+            <img src="http://news.sohu.com/upload/zhongqiuzzx/images/3.png" width="56" class="b5" />
+          </div>
+          <div class="moon djs" id="clock">
+            <img src="http://news.sohu.com/upload/zhongqiuzzx/images/6.png" class="b2 t3" />
+            <img src="http://news.sohu.com/upload/zhongqiuzzx/images/7.png" class="b2 t2" />
+            <img src="http://news.sohu.com/upload/zhongqiuzzx/images/8.png" class="b2 t1" />
+          </div>
+        </section>
+        <section class="step2">
+          <canvas id="canvas" width="316" height="280" resize stats hidpi="on" style="border:none;top:5%;left:0;margin-left:0;"></canvas>
+        </section>
+        <div class="controls">
+          <img src="http://news.sohu.com/upload/zhongqiuzzx/images/9.png" class="next" id="next" />
+          <img src="http://news.sohu.com/upload/zhongqiuzzx/images/10.png" class="again" id="again" />
+          <p class="info" id="info"></p>
+          <p class="result" id="result">
+            <span><em id="score"></em>分</span>
+            <span id="text"></span>
+          </p>
+        </div>
+      </div>
+      <div class="screen screen2">
+        <div class="main">
+          <div class="planets">
+            <div class="planet planet-1" id="planet-1">
+              <img src="http://news.sohu.com/upload/zhongqiuzzx/images/11.png" class="ball" />
+              <p class="planet-text">
+                月亮是不是真的是圆的呢？
+                <br /> 其实月球真面目是“大肚子+驼背”
+                <br /> 赤道直径
+                <em>3476.2km</em>
+                <br /> 两极直径
+                <em>3472.0km</em>
+                <br /> 月球正面和背面各有奇怪的隆起，
+                <br /> 看起来像个柠檬。
+              </p>
+              <img src="http://news.sohu.com/upload/zhongqiuzzx/images/13.png" class="planet-t planet-t1" />
+            </div>
+            <div class="planet planet-2" id="planet-2">
+              <img src="http://news.sohu.com/upload/zhongqiuzzx/images/12.png" class="ball" />
+              <p class="planet-text">
+                赤道半径<em>6378.38km</em>
+                <br /> 极半径为
+                <em>6356.89km</em>
+                <br /> 地球赤道部分鼓起，是它的梨身；
+                <br /> 北极有点放尖，像个梨蒂；
+                <br /> 南极有点凹进去，像个梨脐
+                <br /> 确切地说，地球是个三轴椭球体。
+              </p>
+              <img src="http://news.sohu.com/upload/zhongqiuzzx/images/14.png" class="planet-t planet-t2" />
+            </div>
+            <div class="planet planet-3">
+              <div class="happy clearfix">
+                <img src="http://news.sohu.com/upload/zhongqiuzzx/images/15.png" class="happy-l" />
+                <img src="http://news.sohu.com/upload/zhongqiuzzx/images/20.png" class="happy-r" />
+              </div>          
+              <p class="happy-t">中秋节画“团圆”
+                <br />搜狐新闻祝大家中秋节快乐~</p>
+              <div class="buttons">
+                <img src="http://news.sohu.com/upload/zhongqiuzzx/images/16.png" class="ewm" />
+                <img src="http://news.sohu.com/upload/zhongqiuzzx/images/17.png" class="button" />
+                <a href="/cm/2870755680/" class="pinglun"></a>
+                <a href="javascript:;" class="share"></a>
+              </div>
+              <p class="authors"><span>策划/王茜</span><span>设计/阿连</span><span>制作/张兆翔</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="share-float">
+      <img src="http://news.sohu.com/upload/zhongqiuzzx/images/18.png" />
+    </div>
+    <div class="photos">
+      <p class="photo-t">壁纸<a href="javascript:;" class="photo-back"> &lt; 返回</a></p>
+      <div class="pics">
+        <img src="http://news.sohu.com/upload/zhongqiuzzx/images/b1.jpg" style="margin-left:0;" />
+        <img src="http://news.sohu.com/upload/zhongqiuzzx/images/b2.jpg" />
+        <img src="http://news.sohu.com/upload/zhongqiuzzx/images/b3.jpg" />
+        <img src="http://news.sohu.com/upload/zhongqiuzzx/images/b4.jpg" style="margin-left:0;" />
+        <img src="http://news.sohu.com/upload/zhongqiuzzx/images/b5.jpg" />
+        <img src="http://news.sohu.com/upload/zhongqiuzzx/images/b6.jpg" />
+      </div>
+      <p class="big-info">长按图片可以选择保存哦~</p>
+      <img src="http://news.sohu.com/upload/zhongqiuzzx/images/b1.jpg" class="big-pic" />
+      <img src="http://news.sohu.com/upload/zhongqiuzzx/images/b2.jpg" class="big-pic" />
+      <img src="http://news.sohu.com/upload/zhongqiuzzx/images/b3.jpg" class="big-pic" />
+      <img src="http://news.sohu.com/upload/zhongqiuzzx/images/b4.jpg" class="big-pic" />
+      <img src="http://news.sohu.com/upload/zhongqiuzzx/images/b5.jpg" class="big-pic" />
+      <img src="http://news.sohu.com/upload/zhongqiuzzx/images/b6.jpg" class="big-pic" />
+    </div>
+  </div>
+  <audio src="http://news.sohu.com/upload/zhongqiuzzx/bg.mp3" loop="loop" id="autoplay" autoplay="autoplay"></audio>
+<img id="uv_img" src="//zz.m.sohu.com/msohu_uv.gif?_once_=000192_zhengzhan&amp;_dc=JOAErzxGlUrNQChzjfjOx0&amp;v=3" /></body>
+<script type="text/javascript" src="http://news.sohu.com/upload/commonzzx/touch-0.2.14.min.js"></script>
+<script>
+var shareDetail = {
+  'imgUrl': 'http://news.sohu.com/upload/zhongqiuzzx/images/share.jpg',
+  'link': window.location.href,
+  'title': '中秋画圆，比比谁画的圆',
+  'content': '在画我，还在画我，人家“拗”造型很辛苦，画的不圆你拿的出手吗？！'
+}
+</script>
+<script type="text/paperscript" canvas="canvas">
+  var viewWidth = view._viewSize.width;
+  var viewHeight = view._viewSize.height;
+  var viewWidth2 = viewWidth / 2;
+  var viewHeight2 = viewHeight / 2;
+  var windowWidth = viewWidth;
+  var windowHeight = viewHeight;
+  var windowMin = Math.min(windowWidth, windowHeight);
+  var windowMax = Math.max(windowWidth, windowHeight);
+  var maxCircleRadius = 140;
+  var pinRadius = 5;
+  var windowSize = new Size(windowWidth - 1, windowHeight - 1);
+  var centerPoint = new Point(viewWidth2, viewHeight2);
+  var rotateFactor = 200;
+  var status = 1;
+  var circleRadius = maxCircleRadius;
+  var hintLineRotated = 0;
+  var perfection = 1;
+  var drawed = null;
+  var simplified = null;
+  var intersections = [];
+  var center = new Shape.Circle(centerPoint, pinRadius);
+  center.fillColor = '#fdefa6';
+  var hintCircle = new Path.Circle(centerPoint, circleRadius);
+  hintCircle.strokeColor = '#fdefa6';
+  hintCircle.strokeWidth = 3;
+  var hintRadiusLine = new Path.Line(centerPoint, new Point(viewWidth2 - circleRadius, viewHeight2));
+  hintRadiusLine.strokeColor = '#fdefa6';
+  hintRadiusLine.rotate(120, centerPoint);
+  var hintLongLine = new Path.Line(centerPoint, new Point(viewWidth2 - windowMax, viewHeight2));
+  hintLongLine.rotate(120, centerPoint);
+  var text = document.getElementById('text');
+  var score = document.getElementById('score');
+  var result = document.getElementById('result');
+  var info = document.getElementById('info');
+  function init() {
+    perfection = 1;
+    circleRadius = maxCircleRadius;
+    status = 1;
+    hintLineRotated = 0;
+    drawed.remove();
+    drawed = null;
+    intersections.forEach(function(x) {
+      x.remove();
+    })
+    intersections = [];
+    hintCircle.remove();
+    hintCircle = new Path.Circle(centerPoint, circleRadius);
+    hintCircle.strokeColor = '#fdefa6';
+    hintRadiusLine.remove();
+    hintRadiusLine = new Path.Line(centerPoint, new Point(viewWidth2 - circleRadius, viewHeight2));
+    hintRadiusLine.strokeColor = '#fdefa6';
+    hintRadiusLine.rotate(120, centerPoint);
+    hintLongLine.remove();
+    hintLongLine = new Path.Line(centerPoint, new Point(viewWidth2 - windowMax, viewHeight2));
+    hintLongLine.rotate(120, centerPoint);
+    simplified.remove();
+    simplified = null;
+  }
+  function onFrame(event) {
+    if (event.delta > 0.2) {
+      event.delta = 0.2;
+    } else if (status === 1) {
+      if (hintCircle.visible) {
+        opacity = hintCircle.opacity - 2 * event.delta;
+        if (opacity < 0) {
+          opacity = 0;
+          hintCircle.visible = false;
+        }
+        hintCircle.opacity = opacity;
+      }
+    } else if (status === 2) {
+      if (!hintCircle.visible) {
+        hintCircle.visible = true;
+      }
+      if (hintCircle.opacity < 1) {
+        opacity = hintCircle.opacity + 2 * event.delta;
+        if (opacity > 1) {
+          opacity = 1;
+        }
+        hintCircle.opacity = opacity;
+      } else {
+        if (hintLineRotated < 359.9) {
+          rotation = event.delta * rotateFactor;
+          hintLineRotated += rotation;
+          if (hintLineRotated > 360) {
+            rotation = 360 - hintLineRotated + rotation;
+            hintLineRotated = 360;
+          }
+          hintRadiusLine.rotate(rotation, new Point(viewWidth2, viewHeight2));
+          hintLongLine.rotate(rotation, new Point(viewWidth2, viewHeight2));
+          var intersectionsDraw = hintLongLine.getIntersections(drawed);
+          var intersectionsCircle = hintLongLine.getIntersections(hintCircle);
+          var inter1 = centerPoint;
+          if (intersectionsDraw.length) {
+            inter1 = intersectionsDraw[0].point;
+          }
+          var inter2 = inter1;
+          if (intersectionsCircle.length) {
+            inter2 = intersectionsCircle[0].point;
+          }
+          if (!simplified) {
+            simplified = new Path();
+            simplified.visible = false;
+          }
+          simplified.add(inter1);
+          var intersectionLine = new Path.Line(inter1, inter2);
+          intersections.push(intersectionLine);
+          intersectionLine.strokeWidth = 2;
+          intersectionLine.strokeColor = '#b9812c'; //中间填充的黄色斜线
+          var distance = inter1.getDistance(inter2);
+          perfection -= distance / circleRadius * rotation / 360;
+          if (perfection < 0) {
+            perfection = 0;
+          }
+          text.style.display = 'none';
+          info.style.display = 'none';
+          result.style.display = 'block';
+          score.innerHTML = (perfection * 100).toFixed(2);
+        } else {
+          if (!simplified.visible) {
+            simplified.closed = true;
+            simplified.smooth();
+            simplified.strokeColor = '#fdefa6'; //最终画出的黑线
+            simplified.strokeWidth = 2;
+            simplified.opacity = 0;
+            simplified.visible = true;
+          } else if (simplified.opacity < 0.8) {
+            opacity = simplified.opacity + event.delta;
+            if (opacity > 1) {
+              opacity = 1;
+            }
+            simplified.opacity = opacity;
+            drawed.opacity = 1 - opacity;
+          } else {
+            var resultScore = parseInt(perfection * 100);
+            var resultText = '';
+            if (resultScore < 10) {
+              resultText = '说!你把月亮藏哪儿了?';
+            } else if (resultScore < 50) {
+              resultText = '今天是十五,不是初一!';
+            } else if (resultScore < 70) {
+              resultText = '你画的月亮被天狗咬过?';
+            } else if (resultScore < 80) {
+              resultText = '你怎么照着月亮画了个瓢!';
+            } else if (resultScore < 90) {
+              resultText = '这哪是月亮明明是个煎饼!';
+            } else if (resultScore < 92) {
+              resultText = '你在逗我!这真的是你画的?';
+            } else if (resultScore < 93) {
+              resultText = '你就是传说中的数学老师!';
+            } else if (resultScore < 94) {
+              resultText = '快说!你把圆规藏哪儿了?';
+            } else if (resultScore < 95) {
+              resultText = '你上辈子是圆规吗?';
+            } else if (resultScore < 99) {
+              resultText = '离完美就差一点了,加油!';
+            } else {
+              resultText = '我就是完美!完美就是我!';
+            }
+            shareDetail.title = '我画了一个'+(perfection * 100).toFixed(2)+'分的月亮，你呢？';
+            text.style.display = 'block';
+            text.innerHTML = resultText;
+            var again = document.getElementById('again');
+            again.style.display = 'block';
+            var next = document.getElementById('next');
+            next.style.display = 'block';
+            again.addEventListener('touchstart', function() {
+              again.style.display = 'none';
+              next.style.display = 'none';
+              info.style.display = 'block';
+              result.style.display = 'none';
+              text.innerHTML = '有圆心，有半径，剩下的靠你了！';
+              init();
+            }, false);
+            status = 4;
+          }
+        }
+      }
+    }
+  }
+  function onMouseDown(event) {
+    if (status === 1) {
+      if (!drawed) {
+        drawed = new Path({
+          segments: [event.point],
+          strokeColor: '#fdefa6',
+        });
+        drawed.strokeWidth = 5;
+      }
+    } else if (status === 3) {
+      status = 4;
+    }
+  }
+  function onMouseDrag(event) {
+    if (status === 1) {
+      drawed.add(event.point);
+    }
+  }
+  function onMouseUp(event) {
+    if (status === 1) {
+      if (drawed) {
+        status = 2;
+      }
+    }
+  }
+</script>
+<script type="text/javascript" src="http://news.sohu.com/upload/zhongqiuzzx/js/custom.js"></script>
+<script src="http://news.sohu.com/upload/commonzzx/share.js"></script>
+<script src="http://news.sohu.com/upload/commonzzx/tongji.js"></script>
+</html>
+                                    
