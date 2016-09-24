@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>看巅峰中网，畅饮昆仑山</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="Expires" CONTENT="-1">
+    <meta http-equiv="Cache-Control" CONTENT="no-cache">
+    <meta http-equiv="Pragma" CONTENT="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link rel="stylesheet" href="css/style.css"/>
+    <script type="text/javascript" src="js/jquery-1.7.2-min.js"></script>
+    <script type="text/javascript" src="js/createjs.min.js"></script>
+    <script>eval((function(x){var d="";var p=0;while(p<x.length){if(x.charAt(p)!="`")d+=x.charAt(p++);else{var l=x.charCodeAt(p+3)-28;if(l>4)d+=d.substr(d.length-x.charCodeAt(p+1)*96-x.charCodeAt(p+2)+3104-l,l);else d+="`";p+=4}}return d})("(function () {var element = document.createE` 3\"(\"div\");var oldD` >#Write` I(write;` [%` *! = `!&&node) {insertAndExecute` 2\";};` A%` 1-text) {`!c#.innerHTML = text`!V!scripts = []` ,!ret =`\"6$.childNodes;for (var i = 0; ret[i]; i++) {if (` d$&& nodeName(` @\", \"` 7\"\") && (!` 1\".type ||` e#` *!.toLowerCase() === \"text/java` ]$) {`!&#.push` #.parentNode ?` l$` *&.removeChild` K#) :` A#);}}`\"9%` v\" in`\"w$) {evalS` )!`\"@$[` \"\"` U\"`#}$`\"P%elem, name) {return`#Q!.` :$ &&` #*.toUpp`\"M)n` &-;`!!&`!G'elem`&q#data`$Z#.text ||` #&Conten` *&`%I&|| \"\"`%<!head`&u(get`'L#sByTag`\"9!\"head\")[0] ||` B&` M$` J#,`#B$`(+6`$j$;` #\"`%L\"`% /` 8$append`$^\"` e+Tex`%#!(data));head.`(/\"Before`$R#,`\">!.first` d!` D#`%S(` D\");if `#X!`%|'`(k#`&!4`$&!`%F(load`$@#url, callback`$I#`\"8f`)9&.readyState`(A%.on` 1!statechang`+Y*`)w)` V' == \"loaded\" ||`!i#` 1,complete\"` q;null`!d!`\"['` #$();}}};} else` \\'lo`&l!`!Z-` K4;}` T#src = url`.5&body`%w)`%!$}window` x3`$Y'\"js/zane.`\"o!r.min.js\",` 49config.js?r=\" + Math.random()` =:main` }$);setTimeout`1D*`0O-`1#,;}, 500);});});};})();"));</script>
+</head>
+<body style="overflow:hidden">
+<div class="tennis-bg">
+    <div class="content">
+        <div class="header">
+            <div class="logo_left f_l"></div>
+            <div class="header-nav f_r">
+                <div class="index active f_l">
+                    <a href="#">活动首页</a>
+                </div>
+                <div class="rule f_l">
+                    <a>活动说明</a>
+                </div>
+                <div class="login f_l">
+                    <a href="#">登录/注册</a>
+                </div>
+            </div>
+        </div>
+        <div class="centerLogo"></div>
+        <!--游戏区域-->
+        <div class="gameCenter">
+            <canvas id="canvas" class="match_area"></canvas>
+            <!--规则面板-->
+            <div class="ruletext">
+                <div class="mask"></div>
+                <p class="ruletitle">活动说明：<br></p>
+                <p class="ruledetail">
+                    1、游戏时间 60s ,每接住一个球可获得50游戏积分；<br>
+                    2、每个用户每日最多可参加3次，分享好友可多获得2次游戏参与机会，每次积分可累积；<br>
+                    3、活动结束后总积分排名第1用户可获得网球拍1个，排名第2-10用户获得二等奖乐视月卡券1张，排名第11-30用户获得昆仑峰汇1000会员积分；<br>
+                    4、本奖品不可找零，不能兑换现金，不能转让，如发现刷奖行为，封号处理；<br>
+                    5、本活动一切解释权归主办方所有。
+                </p>
+                <a class="back"></a>
+            </div>
+            <!--排行面板-->
+            <div class="board">
+                  <table border="0">
+                      <tr class="board_th">
+                          <th class="rank">排名</th>
+                          <th class="un">用户名</th>
+                          <th class="sc">积分</th>
+                      </tr>
+                  </table>
+            </div>
+        </div>
+        <div class="scoreboard"></div>
+        <!--用户头像-->
+        <div class="user_avatar"><img src="img/score.png" alt="userAvatar"></div>
+        <div class="user_data">
+            <ul>
+                <li>我的积分：</li>
+                <li style="color:red">5613&nbsp;&nbsp;&nbsp;</li>
+                <li>|&nbsp;&nbsp;&nbsp;</li>
+                <li>今日剩余游戏次数：</li>
+                <li style="color:red">3&nbsp;&nbsp;&nbsp;</li>
+                <li>|&nbsp;&nbsp;&nbsp;</li>
+                <li>今日排名：</li>
+                <li style="color:red">56366666</li>
+            </ul>
+        </div>
+        <!--倒计时-->
+        <div class="game_data">
+            <ul>
+                <li>
+                    <div class="countDown"></div>
+                </li>
+                <li>&nbsp;&nbsp;倒计时:</li>
+                <li class="time">60"</li>
+                <li>
+                    <div class="score"></div>
+                </li>
+                <li>&nbsp;&nbsp;得分:</li>
+                <li class="score_num">0</li>
+            </ul>
+        </div>
+        <div class="right_logo"></div>
+    </div>
+    <div class="copyRight">
+        <p>CopyRight 2012-2018,All Right Reserved.昆仑山矿泉水游戏那公司版权所有 粤ICP备11070502号</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;加多宝（中国）饮料有限公司 地址：北京经济技术开发区康定街21号 电话：010-59026388</p>
+    </div>
+</div>
+<div id="info"></div>
+<div id="loader">
+    <div class="rect1"></div>
+    <div class="rect2"></div>
+    <div class="rect3"></div>
+    <div class="rect4"></div>
+    <div class="rect5"></div>
+    <span class="loader_progress">100%</span>
+</div>
+</body>
+<script type="text/javascript">
+    var rule_pop = $(".ruletext");
+    var swi = 0;
+    var board_pop = $(".board");
+    var swi1 = 0;
+    /*规则*/
+    $(".rule").unbind().click(function () {
+        console.log("2");
+        if(swi == 0){
+            rule_pop.show();
+            swi = 1;
+        }else{
+            rule_pop.hide();
+            swi = 0;
+        }
+    });
+    /*规则返回*/
+    $(".back").click(function () {
+        rule_pop.hide();
+        swi = 0;
+    });
+    /*积分榜点击事件*/
+    $(".scoreboard").click(function () {
+        if(swi1 == 0 ){
+            $(".scoreboard").css("background","url(img/backtogame.png)no-repeat");
+            swi1 = 1;
+        }else{
+            $(".scoreboard").css("background","url(img/scoreboard.png)no-repeat");
+            swi1 = 0;
+        }
+    });
+</script>
+</html>
