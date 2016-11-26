@@ -155,13 +155,14 @@
 }
 
 .menu-btn {
-    height: 100%;
+    height: 35px;
+    line-height: 35px;
     box-sizing: border-box;
     overflow: visible;
     cursor: default;
     position: relative;
     display: inline-block;
-    padding: 4px 7px 0 7px;
+    padding: 0 7px 0 7px;
 }
 
 .menu-btn span {
@@ -207,7 +208,8 @@
     position: relative;
     overflow: hidden;
     margin: 0;
-    height: 25px;
+    height: 35px;
+    line-height: 35px;
     background: #252525;
     box-shadow: 0 1px 0 0 #353535 inset;
     border-bottom: 1px solid #000000;
@@ -405,5 +407,192 @@
 
 
 /* +----------------------------------------------------------------------*/
-/* | layout
+/* | tree
 /* +----------------------------------------------------------------------*/
+
+.tree {
+    margin:0;
+    padding:0;
+    list-style:none;
+    overflow:hidden;
+    position:relative;
+    display:block;
+    background:white;
+}
+
+.tree-loading {
+    position: absolute;
+    z-index: 91000;
+    top:40%;
+    left:50%;
+    overflow:hidden;
+    background:url('../img/loading.gif') no-repeat 0 0;
+    width:24px;
+    height:24px;
+    display:none;
+}
+
+.tree a,.tree span {
+    color: #333;
+    height: 22px;
+    line-height: 22px;
+    text-decoration:none;
+}
+
+.tree .body span {
+    display: block;
+    float: left;
+    _display: inherit;
+    _float:none;
+    *display: inherit;
+    *float:none;
+}
+
+.tree ul,.tree li{
+    list-style:none;
+    margin:0;
+    padding:0;
+}
+
+.tree li {
+    clear: both;
+    display: block;
+    cursor: pointer;
+}
+
+.tree li .body{
+    width: 2000px;
+    height:22px;
+    line-height: 22px;
+    overflow:hidden;
+}
+
+.tree .box {
+    width:22px;
+    height:22px;
+    overflow:hidden;
+    float:left;
+    background:url('../img/tree.gif');
+    background-position:-22px -220px;
+}
+
+.tree li .body .box-loading {
+    background:url('../img/nodeloading4.gif') no-repeat 5px 5px; cursor:default;
+}
+
+.tree-noline .box {
+    background-image:url('../img/tree-noline.gif');
+}
+
+.tree .expandable-close {
+    background-position:0 -44px;
+}
+
+.tree .first .expandable-close {
+    background-position:0 -22px;
+}
+
+.tree .last .expandable-close {
+    background-position:0 -66px;
+}
+
+.tree .onlychild  .expandable-close {
+    background-position:0 0;
+}
+
+.tree .expandable-open {
+    background-position:0 -132px;
+}
+
+.tree .first .expandable-open {
+    background-position:0 -110px;
+}
+
+.tree .last .expandable-open {
+    background-position:0 -154px;
+}
+
+.tree .onlychild  .expandable-open {
+    background-position:0 -88px;
+}
+
+.tree .over {
+    background: none;
+}
+
+.tree .over span {
+    text-decoration:underline;
+}
+
+.tree .selected {
+    background: none;
+}
+
+.tree .selected span {
+    background: #D9E8FB;
+    border:1px solid #B5CBEC;
+    padding:0 2px;
+    height: 20px;
+    line-height: 20px;
+}
+
+.tree .line {
+    background-position:0 -176px;
+}
+
+.tree .note {
+    background-position:0 -198px;
+}
+
+.tree .note-last {
+    background-position:0 -220px;
+}
+
+.tree .checkbox-unchecked {
+    background-position:-22px 0;
+}
+
+.tree .checkbox-checked {
+    background-position:-22px -22px;
+}
+
+.tree .checkbox-incomplete {
+    background-position:-22px -44px;
+}
+
+.tree .over .checkbox-unchecked {
+    background-position:-44px 0;
+}
+
+.tree .over .checkbox-checked {
+    background-position:-44px -22px;
+}
+
+.tree .over .checkbox-incomplete {
+    background-position:-44px -44px;
+}
+
+.tree .tree-icon-folder {
+    background-position:-22px -88px;
+}
+
+.tree .tree-icon-none {
+    background:none;
+}
+
+.tree .tree-icon-none img {
+    border: 0;
+    height: 16px;
+    width: 16px;
+    top:2px;
+    margin-top:2px;
+    margin-left:2px;
+}
+
+.tree .tree-icon-folder-open {
+    background-position:-44px -88px;
+}
+
+.tree .tree-icon-leaf {
+    background-position:-22px -110px;
+}
