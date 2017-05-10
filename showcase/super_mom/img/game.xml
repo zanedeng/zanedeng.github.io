@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker http://www.codeandweb.com/texturepacker-->
+<!-- $TexturePacker:SmartUpdate:90d768c7b93ec034fb0a2275f487b446:1/1$ -->
+<TextureAtlas imagePath="game.png">
+    <SubTexture name="abacus" x="266" y="457" width="52" height="37"/>
+    <SubTexture name="book" x="1973" y="102" width="54" height="56"/>
+    <SubTexture name="bottle" x="123" y="457" width="45" height="45"/>
+    <SubTexture name="cloud0" x="2" y="254" width="228" height="113"/>
+    <SubTexture name="cloud1" x="614" y="428" width="153" height="81"/>
+    <SubTexture name="cloud2" x="2" y="457" width="119" height="48"/>
+    <SubTexture name="ground" x="2" y="2" width="1494" height="250"/>
+    <SubTexture name="hot_air_balloon0" x="769" y="428" width="52" height="81"/>
+    <SubTexture name="hot_air_balloon1" x="1976" y="2" width="60" height="98"/>
+    <SubTexture name="mom0001" x="1022" y="340" width="202" height="84" frameX="0" frameY="-2" frameWidth="202" frameHeight="86"/>
+    <SubTexture name="mom0002" x="823" y="426" width="202" height="84" frameX="0" frameY="-2" frameWidth="202" frameHeight="86"/>
+    <SubTexture name="mom0003" x="436" y="254" width="202" height="86"/>
+    <SubTexture name="mom0004" x="844" y="254" width="202" height="84" frameX="0" frameY="-2" frameWidth="202" frameHeight="86"/>
+    <SubTexture name="mom0005" x="410" y="342" width="202" height="86"/>
+    <SubTexture name="mom0006" x="232" y="254" width="202" height="86"/>
+    <SubTexture name="mom0007" x="206" y="369" width="202" height="86"/>
+    <SubTexture name="mom0008" x="2" y="369" width="202" height="86"/>
+    <SubTexture name="mom0009" x="818" y="340" width="202" height="84" frameX="0" frameY="-2" frameWidth="202" frameHeight="86"/>
+    <SubTexture name="mom0010" x="640" y="254" width="202" height="84" frameX="0" frameY="-2" frameWidth="202" frameHeight="86"/>
+    <SubTexture name="mom0011" x="614" y="342" width="202" height="84" frameX="0" frameY="-2" frameWidth="202" frameHeight="86"/>
+    <SubTexture name="mom0012" x="1022" y="340" width="202" height="84" frameX="0" frameY="-2" frameWidth="202" frameHeight="86"/>
+    <SubTexture name="mom0013" x="823" y="426" width="202" height="84" frameX="0" frameY="-2" frameWidth="202" frameHeight="86"/>
+    <SubTexture name="pen" x="170" y="457" width="45" height="43"/>
+    <SubTexture name="plane" x="217" y="457" width="47" height="42"/>
+    <SubTexture name="progress_bar" x="1498" y="30" width="476" height="26"/>
+    <SubTexture name="progress_bg" x="1498" y="2" width="476" height="26"/>
+    <SubTexture name="status_bar" x="1498" y="58" width="431" height="66"/>
+    <SubTexture name="word_num_0" x="2029" y="102" width="12" height="18" frameX="-2" frameY="-2" frameWidth="16" frameHeight="22"/>
+    <SubTexture name="word_num_1" x="2038" y="2" width="8" height="18" frameX="-3" frameY="-2" frameWidth="16" frameHeight="22"/>
+    <SubTexture name="word_num_2" x="1959" y="98" width="12" height="18" frameX="-2" frameY="-2" frameWidth="16" frameHeight="22"/>
+    <SubTexture name="word_num_3" x="1945" y="98" width="12" height="18" frameX="-2" frameY="-2" frameWidth="16" frameHeight="22"/>
+    <SubTexture name="word_num_4" x="1947" y="58" width="14" height="18" frameX="-1" frameY="-2" frameWidth="16" frameHeight="22"/>
+    <SubTexture name="word_num_5" x="1931" y="58" width="14" height="18" frameX="-1" frameY="-2" frameWidth="16" frameHeight="22"/>
+    <SubTexture name="word_num_6" x="1931" y="98" width="12" height="18" frameX="-2" frameY="-2" frameWidth="16" frameHeight="22"/>
+    <SubTexture name="word_num_7" x="1959" y="78" width="12" height="18" frameX="-2" frameY="-2" frameWidth="16" frameHeight="22"/>
+    <SubTexture name="word_num_8" x="1945" y="78" width="12" height="18" frameX="-2" frameY="-2" frameWidth="16" frameHeight="22"/>
+    <SubTexture name="word_num_9" x="1931" y="78" width="12" height="18" frameX="-2" frameY="-2" frameWidth="16" frameHeight="22"/>
+    <SubTexture name="word_s" x="2029" y="122" width="12" height="14" frameX="-2" frameY="-6" frameWidth="16" frameHeight="22"/>
+</TextureAtlas>

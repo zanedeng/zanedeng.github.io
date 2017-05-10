@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker http://www.codeandweb.com/texturepacker-->
+<!-- $TexturePacker:SmartUpdate:02bb0daa9eb51cb4284c3bdb80b172bd:1/1$ -->
+<TextureAtlas imagePath="home.png">
+    <SubTexture name="bird001" x="936" y="175" width="35" height="31"/>
+    <SubTexture name="cloud001" x="936" y="2" width="80" height="43"/>
+    <SubTexture name="cloud002" x="936" y="47" width="74" height="38"/>
+    <SubTexture name="cloud003" x="397" y="1226" width="97" height="57"/>
+    <SubTexture name="cloud004" x="2" y="858" width="513" height="306"/>
+    <SubTexture name="earth" x="2" y="2" width="932" height="854" frameX="0" frameY="-39" frameWidth="932" frameHeight="932"/>
+    <SubTexture name="home_cartoon" x="289" y="1226" width="106" height="105"/>
+    <SubTexture name="home_mom" x="517" y="1127" width="426" height="325"/>
+    <SubTexture name="home_title" x="517" y="858" width="485" height="267"/>
+    <SubTexture name="hot_air_balloon" x="936" y="87" width="55" height="86"/>
+    <SubTexture name="icon" x="289" y="1166" width="149" height="58"/>
+    <SubTexture name="rules_btn" x="2" y="1227" width="285" height="59"/>
+    <SubTexture name="start_btn" x="2" y="1166" width="285" height="59"/>
+</TextureAtlas>
