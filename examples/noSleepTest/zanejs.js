@@ -5585,6 +5585,9 @@ var com;
                     this.video.setAttribute('type', 'video/mp4');
                     this.video.setAttribute('x5-video-player-type', 'h5');
                     this.video.setAttribute('src', zanejs.emptyVideoData);
+                    this.video.style.width = window.innerWidth + 'px';
+                    this.video.style.height = window.innerHeight + 'px';
+                    this.video.style.display = 'block';
                     this.video.addEventListener('timeupdate', function () {
                         if (_this.video.currentTime > 0.5) {
                             _this.video.currentTime = Math.random();
