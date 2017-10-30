@@ -7,10 +7,11 @@
     <script src="zanejs.js"></script>
 </head>
 <body>
-
+001
 <script>
     window.onload = function () {
         setPageTitle('');
+        hideMenu();
     }
 
     function m() {
@@ -49,6 +50,34 @@
                 return !1
         }
         return !1
+    }
+    
+    function hideMenu() {
+        var e = this;
+        return window.WeixinJSBridge ? void window.WeixinJSBridge.invoke("hideOptionMenu") : void document.addEventListener("WeixinJSBridgeReady", function() {
+            e.hideMenu();
+        })
+    }
+
+    function _hideMenu(e, t) {
+        var n = [
+            "menuItem:share:weiboApp",
+            "menuItem:share:QZone",
+            "menuItem:share:qq",
+            "menuItem:share:facebook",
+            "menuItem:openWithQQBrowser",
+            "menuItem:openWithSafari",
+            "menuItem:copyUrl",
+            "menuItem:share:brand",
+            "menuItem:share:email"
+        ];
+        i = n.concat(t);
+        e.invoke("hideMenuItems", {
+            menuList: i
+        });
+        e.invoke("showMenuItems", {
+            menuList: ["menuItem:refresh"]
+        });
     }
 
     function setPageTitle(title) {
