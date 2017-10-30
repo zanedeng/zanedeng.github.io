@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1">
-    <script src="../../dist/zanejs.js"></script>
+    <script src="zanejs.js"></script>
 </head>
 <body>
 
@@ -34,32 +34,58 @@
         return /(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)
     }
 
+    function S(e) {
+        var t = (navigator.userAgent || navigator.wxuserAgent || str).match(/MicroMessenger\/([\d\.]+)/i)
+            , n = "";
+        if (!(t && t.length > 1))
+            return !1;
+        n = t[1],
+            n = n.split("."),
+            e = e.split(".");
+        for (var i = 0; i < n.length && i < e.length; i++) {
+            if ((+n[i] || 0) > (+e[i] || 0))
+                return !0;
+            if ((+n[i] || 0) < (+e[i] || 0))
+                return !1
+        }
+        return !1
+    }
+
     function setPageTitle(title) {
         function t() {
-            WeixinJSBridge.invoke("setPageTitle", {
-                title: title
-            }, function(e) {})
+            WeixinJSBridge.invoke(
+                "setPageTitle",
+                {
+                    title: title
+                },
+                function(e) {
+                    alert(e.toString());
+                })
         }
         var n = m();
         if (n.isIOS && n.isWechat) {
-            if (S("6.0.2") && ("yes" === window.__wxjs_is_wkwebview || window.__wxjs_is_wkwebview))
+            if (S("6.0.2") && ("yes" === window.__wxjs_is_wkwebview || window.__wxjs_is_wkwebview)) {
+                alert('--> 1');
                 return void (top.window.WeixinJSBridge ? t() : document.addEventListener("WeixinJSBridgeReady", function() {
                     t()
                 }));
+            }
+            alert('--> 2');
             document.title = title;
             var i = document.createElement("iframe");
-            i.style.cssText = "width:0px;height:0px;display:none;",
-                i.src = location.protocol + "//wximg.gtimg.com/tmt/game/dist/img/wgui/placeholder/1x1.png",
-                i.onload = function() {
-                    setTimeout(function() {
-                        i.onload = null,
-                            document.body.removeChild(i)
-                    }, 0)
-                }
-                ,
-                document.body.appendChild(i)
-        } else
+            i.style.cssText = "width:0px;height:0px;display:none;";
+            i.src = location.protocol + "//wximg.gtimg.com/tmt/game/dist/img/wgui/placeholder/1x1.png";
+            i.onload = function() {
+                setTimeout(function() {
+                    i.onload = null;
+                    document.body.removeChild(i);
+                }, 0)
+            };
+            document.body.appendChild(i)
+        } else {
+            alert('--> 0');
             document.title = title
+        }
     }
 </script>
 </body>
