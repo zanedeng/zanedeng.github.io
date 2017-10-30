@@ -7,7 +7,7 @@
     <script src="zanejs.js"></script>
 </head>
 <body>
-002
+003
 <script>
     window.onload = function () {
         setPageTitle(window.WeixinJSBridge, '');
@@ -44,18 +44,24 @@
     }
 
     function setPageTitle(e, t) {
-        if (S("6.0.2") && ("yes" === window.__wxjs_is_wkwebview || window.__wxjs_is_wkwebview))
+        if (S("6.0.2") && ("yes" === window.__wxjs_is_wkwebview || window.__wxjs_is_wkwebview)) {
             try {
                 e.invoke("setPageTitle", {
                     title: t
                 }, function(e) {
                     -1 === e.err_msg.indexOf(":ok") && _setPageTitle(t)
+                    alert('--> 2');
                 })
             } catch (n) {
                 _setPageTitle(t)
+                alert('--> 1');
             }
+        }
         else
+        {
+            alert('--> 0');
             _setPageTitle(t)
+        }
     }
 
     function _setPageTitle(e) {
