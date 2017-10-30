@@ -40,11 +40,14 @@
             document.body.style.backgroundColor = "";
         }
     }, false);
-    
-    document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+
+    function onBridgeReady() {
+        alert(typeof WeixinJSBridge)
         WeixinJSBridge.call('hideToolbar');
         WeixinJSBridge.call('hideOptionMenu');
-    });
+    }
+
+    document.addEventListener('WeixinJSBridgeReady', onBridgeReady);
 </script>
 </body>
 </html>
