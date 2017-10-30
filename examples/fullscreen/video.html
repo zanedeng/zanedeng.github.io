@@ -10,19 +10,20 @@
         id="video"
         webkit-playsinline="true"
         playsinline="true"
-       style="width: 1px; height: 1px"
+        style="width: 1px; height: 1px"
         type="video/mp4"
         preload x5-video-player-type="h5"
         x5-video-player-fullscreen="true">
 
 </video>
-
+001
 <script>
     window.onload = function () {
         var video = document.getElementById('video');
         video.src = './v0.mp4';
         document.addEventListener('click', function () {
             video.play();
+            video.style["object-position"] = "0px 0px";
             alert('play video...')
         })
     }
