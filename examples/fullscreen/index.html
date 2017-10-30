@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Fullscreen test</title>
+    <meta name="viewport" content="initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="full-screen" content="yes"/>
+    <meta name="screen-orientation" content="portrait"/>
+    <meta name="x5-fullscreen" content="true"/>
+    <meta name="360-fullscreen" content="true"/>
+    <meta name="browsermode" content="application">
+    <script src="zanejs.js"></script>
+    <style>
+        body, canvas, div {
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            -khtml-user-select: none;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        }
+    </style>
+</head>
+<body>
+<h1>Fullscreen</h1>
+<input type="button" id="toggle" value="requestFullscreen" />
+<script>
+    var toggleEl = document.querySelector("#toggle");
+    toggleEl.addEventListener('click', function() {
+        if (!com.zanejs.isFullscreen()) {
+            com.zanejs.requestFullscreen(document.body);
+            toggleEl.value = "exitFullscreen";
+            document.body.style.backgroundColor = "green";
+        } else {
+            com.zanejs.exitFullscreen();
+            toggleEl.value = "requestFullscreen";
+            document.body.style.backgroundColor = "";
+        }
+    }, false);
+</script>
+</body>
+</html>
