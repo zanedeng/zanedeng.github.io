@@ -7,12 +7,11 @@
     <title>Fullscreen test</title>
     <meta name="viewport" content="initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes"/>
-    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
     <meta name="full-screen" content="yes"/>
+    <meta name="screen-orientation" content="portrait"/>
     <meta name="x5-fullscreen" content="true"/>
     <meta name="360-fullscreen" content="true"/>
     <meta name="browsermode" content="application">
-    <meta name="format-detection" content="telephone=no" />
     <script src="zanejs.js"></script>
     <style>
         body, canvas, div {
@@ -27,7 +26,11 @@
 <body>
 <h1>Fullscreen</h1>
 <input type="button" id="toggle" value="requestFullscreen" />
+<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
 <script>
+    wx.ready(function(){
+        wx.hideOptionMenu();
+    });
     var toggleEl = document.querySelector("#toggle");
     toggleEl.addEventListener('click', function() {
         if (!com.zanejs.isFullscreen()) {
@@ -40,13 +43,6 @@
             document.body.style.backgroundColor = "";
         }
     }, false);
-
-    function onBridgeReady() {
-        alert(typeof WeixinJSBridge)
-        WeixinJSBridge.call('hideOptionMenu');
-    }
-
-    document.addEventListener('WeixinJSBridgeReady', onBridgeReady);
 </script>
 </body>
 </html>
