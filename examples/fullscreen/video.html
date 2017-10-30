@@ -7,51 +7,14 @@
     <script src="zanejs.js"></script>
 </head>
 <body>
-001
+002
 <script>
     window.onload = function () {
-        setPageTitle('');
+        setPageTitle(window.WeixinJSBridge, '');
         hideMenu();
     }
 
-    function m() {
-        var e = navigator.userAgent
-            , t = /(Android)/i.test(e)
-            , n = -1 !== e.indexOf("MicroMessenger")
-            , i = -1 !== location.search.indexOf("debug=1")
-            , r = (e || navigator.wxuserAgent).match(/MicroMessenger\/([\d\.]+)/i)
-            , o = "";
-        return r && r.length > 1 && (o = r[1]),
-            {
-                isIOS: h(),
-                isAndroid: t,
-                isWechat: n,
-                isDebug: i,
-                wxVersion: o + ""
-            }
-    }
 
-    function h() {
-        return /(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)
-    }
-
-    function S(e) {
-        var t = (navigator.userAgent || navigator.wxuserAgent || str).match(/MicroMessenger\/([\d\.]+)/i)
-            , n = "";
-        if (!(t && t.length > 1))
-            return !1;
-        n = t[1],
-            n = n.split("."),
-            e = e.split(".");
-        for (var i = 0; i < n.length && i < e.length; i++) {
-            if ((+n[i] || 0) > (+e[i] || 0))
-                return !0;
-            if ((+n[i] || 0) < (+e[i] || 0))
-                return !1
-        }
-        return !1
-    }
-    
     function hideMenu() {
         var e = this;
         return window.WeixinJSBridge ? void window.WeixinJSBridge.invoke("hideOptionMenu") : void document.addEventListener("WeixinJSBridgeReady", function() {
@@ -80,41 +43,53 @@
         });
     }
 
-    function setPageTitle(title) {
-        function t() {
-            WeixinJSBridge.invoke(
-                "setPageTitle",
-                {
-                    title: title
-                },
-                function(e) {
-                    alert(e.toString());
+    function setPageTitle(e, t) {
+        if (S("6.0.2") && ("yes" === window.__wxjs_is_wkwebview || window.__wxjs_is_wkwebview))
+            try {
+                e.invoke("setPageTitle", {
+                    title: t
+                }, function(e) {
+                    -1 === e.err_msg.indexOf(":ok") && _setPageTitle(t)
                 })
-        }
-        var n = m();
-        if (n.isIOS && n.isWechat) {
-            if (S("6.0.2") && ("yes" === window.__wxjs_is_wkwebview || window.__wxjs_is_wkwebview)) {
-                alert('--> 1');
-                return void (top.window.WeixinJSBridge ? t() : document.addEventListener("WeixinJSBridgeReady", function() {
-                    t()
-                }));
+            } catch (n) {
+                _setPageTitle(t)
             }
-            alert('--> 2');
-            document.title = title;
-            var i = document.createElement("iframe");
-            i.style.cssText = "width:0px;height:0px;display:none;";
-            i.src = location.protocol + "//wximg.gtimg.com/tmt/game/dist/img/wgui/placeholder/1x1.png";
-            i.onload = function() {
-                setTimeout(function() {
-                    i.onload = null;
-                    document.body.removeChild(i);
-                }, 0)
-            };
-            document.body.appendChild(i)
-        } else {
-            alert('--> 0');
-            document.title = title
+        else
+            _setPageTitle(t)
+    }
+
+    function _setPageTitle(e) {
+        document.title = e;
+        var t = document.createElement("iframe");
+        t.style.cssText = "width:0px;height:0px;display:none;";
+        t.src = location.protocol + "//wximg.gtimg.com/tmt/game/dist/img/wgui/placeholder/1x1.png";
+        t.onload = function() {
+            setTimeout(
+                function() {
+                    t.onload = null;
+                    document.body.removeChild(t)
+                },
+                0
+            )
+        };
+        document.body.appendChild(t)
+    }
+
+    function S(e) {
+        var t = (navigator.userAgent || navigator.wxuserAgent || str).match(/MicroMessenger\/([\d\.]+)/i)
+            , n = "";
+        if (!(t && t.length > 1))
+            return !1;
+        n = t[1],
+            n = n.split("."),
+            e = e.split(".");
+        for (var i = 0; i < n.length && i < e.length; i++) {
+            if ((+n[i] || 0) > (+e[i] || 0))
+                return !0;
+            if ((+n[i] || 0) < (+e[i] || 0))
+                return !1
         }
+        return !1
     }
 </script>
 </body>
