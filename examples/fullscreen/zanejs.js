@@ -2657,37 +2657,6 @@ var com;
             }
         }
         zanejs.getOrientation = getOrientation;
-        /**
-         * 全屏
-         * @param element
-         * @param options
-         */
-        function requestFullscreen(element, options) {
-            var requestFunction = element.requestFullscreen ||
-                element.msRequestFullscreen ||
-                element.webkitRequestFullscreen ||
-                element.mozRequestFullScreen;
-            if (!requestFunction) {
-                return;
-            }
-            requestFunction.call(element, options);
-        }
-        zanejs.requestFullscreen = requestFullscreen;
-        /**
-         * 退出全屏
-         */
-        function exitFullscreen() {
-            var doc = document;
-            var exit = doc.exitFullscreen ||
-                doc.mozCancelFullScreen ||
-                doc.webkitCancelFullScreen ||
-                doc.msCancelFullScreen;
-            if (!exit) {
-                return;
-            }
-            exit();
-        }
-        zanejs.exitFullscreen = exitFullscreen;
     })(zanejs = com.zanejs || (com.zanejs = {}));
 })(com || (com = {}));
 /**
@@ -4532,6 +4501,113 @@ var com;
         zanejs.dirname = dirname;
     })(zanejs = com.zanejs || (com.zanejs = {}));
 })(com || (com = {}));
+var com;
+(function (com) {
+    var zanejs;
+    (function (zanejs) {
+        var fn = (function () {
+            var val;
+            var fnMap = [
+                [
+                    'requestFullscreen', 'exitFullscreen', 'fullscreenElement',
+                    'fullscreenEnabled', 'fullscreenchange', 'fullscreenerror'
+                ],
+                // New WebKit
+                [
+                    'webkitRequestFullscreen', 'webkitExitFullscreen', 'webkitFullscreenElement',
+                    'webkitFullscreenEnabled', 'webkitfullscreenchange', 'webkitfullscreenerror'
+                ],
+                // Old WebKit (Safari 5.1)
+                [
+                    'webkitRequestFullScreen', 'webkitCancelFullScreen', 'webkitCurrentFullScreenElement',
+                    'webkitCancelFullScreen', 'webkitfullscreenchange', 'webkitfullscreenerror'
+                ],
+                [
+                    'mozRequestFullScreen', 'mozCancelFullScreen', 'mozFullScreenElement',
+                    'mozFullScreenEnabled', 'mozfullscreenchange', 'mozfullscreenerror'
+                ],
+                [
+                    'msRequestFullscreen', 'msExitFullscreen', 'msFullscreenElement',
+                    'msFullscreenEnabled', 'MSFullscreenChange', 'MSFullscreenError'
+                ]
+            ];
+            var ret = {};
+            for (var i = 0, l = fnMap.length; i < l; i++) {
+                val = fnMap[i];
+                if (val && val[1] in document) {
+                    for (i = 0; i < val.length; i++) {
+                        ret[fnMap[0][i]] = val[i];
+                    }
+                    return ret;
+                }
+            }
+            return false;
+        })();
+        var keyboardAllowed = typeof Element !== 'undefined' && 'ALLOW_KEYBOARD_INPUT' in Element;
+        /**
+         * 请求全屏
+         * @param {HTMLElement} elem
+         */
+        function requestFullscreen(elem) {
+            if (elem === void 0) { elem = null; }
+            var request = fn.requestFullscreen;
+            elem = elem || document.documentElement;
+            if (/ Version\/5\.1(?:\.\d+)? Safari\//.test(navigator.userAgent)) {
+                elem[request]();
+            }
+            else {
+                var el = Element;
+                elem[request](keyboardAllowed && el.ALLOW_KEYBOARD_INPUT);
+            }
+        }
+        zanejs.requestFullscreen = requestFullscreen;
+        /**
+         * 退出全屏
+         */
+        function exitFullscreen() {
+            document[fn.exitFullscreen]();
+        }
+        zanejs.exitFullscreen = exitFullscreen;
+        /**
+         * 是否全屏
+         * @returns {boolean}
+         */
+        function isFullscreen() {
+            return Boolean(document[fn.fullscreenElement]);
+        }
+        zanejs.isFullscreen = isFullscreen;
+        /**
+         *
+         * @param {HTMLElement} elem
+         */
+        function toggleFullscreen(elem) {
+            if (elem === void 0) { elem = null; }
+            if (isFullscreen()) {
+                this.exitFullscreen();
+            }
+            else {
+                this.requestFullscreen(elem);
+            }
+        }
+        zanejs.toggleFullscreen = toggleFullscreen;
+        /**
+         *
+         * @param {(evt: any) => any} callback
+         */
+        function onFullscreenChange(callback) {
+            document.addEventListener(fn.fullscreenchange, callback, false);
+        }
+        zanejs.onFullscreenChange = onFullscreenChange;
+        /**
+         *
+         * @param {(evt: DocumentEvent) => any} callback
+         */
+        function onFullscreenError(callback) {
+            document.addEventListener(fn.fullscreenerror, callback, false);
+        }
+        zanejs.onFullscreenError = onFullscreenError;
+    })(zanejs = com.zanejs || (com.zanejs = {}));
+})(com || (com = {}));
 /**
  * @module com.zanejs
  */
@@ -5585,14 +5661,6 @@ var com;
                     this.video.setAttribute('type', 'video/mp4');
                     this.video.setAttribute('x5-video-player-type', 'h5');
                     this.video.setAttribute('src', zanejs.emptyVideoData);
-                    this.video.style.position = 'absolute';
-                    this.video.style.top = '50%';
-                    this.video.style.left = '50%';
-                    this.video.style.transform = 'translate(-50%,-50%)';
-                    this.video.style.transition = 'all .5s';
-                    this.video.style.width = window.innerWidth + 'px';
-                    this.video.style.height = window.innerHeight + 'px';
-                    this.video.style.display = 'block';
                     this.video.addEventListener('timeupdate', function () {
                         if (_this.video.currentTime > 0.5) {
                             _this.video.currentTime = Math.random();
