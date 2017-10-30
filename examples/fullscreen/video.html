@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="zanejs.js"></script>
+</head>
+<body>
+<video id="video" webkit-playsinline="true" playsinline="true" style="width: 1px; height: 1px" type="video/mp4" preload x5-video-player-type="h5" x5-video-player-fullscreen="true"></video>
+<script>
+    window.onload = function () {
+        var video = document.getElementById('video');
+        video.src = com.zanejs.emptyVideoData;
+        document.addEventListener('click', function () {
+            video.play();
+            alert('play video...')
+        })
+    }
+</script>
+</body>
+</html>
