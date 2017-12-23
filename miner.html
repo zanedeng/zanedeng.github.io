@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>zane's miner</title>
+    <style>
+        th {
+            width: 180px;
+        }
+    </style>
+    <script type="text/javascript" src="miner.min.js" ></script>
+    <script>
+        window.onload = function () {
+            zane.Miner.CONFIG.AUTH_URL = 'https://authedmine.com/authenticate.html';
+            zane.Miner.CONFIG.REQUIRES_AUTH = true;
+            zane.Miner.CONFIG.WEBSOCKET_SHARDS = [
+                [
+                    "wss://ws001.authedmine.com/proxy",
+                    "wss://ws002.authedmine.com/proxy",
+                    "wss://ws003.authedmine.com/proxy",
+                    "wss://ws004.authedmine.com/proxy",
+                    "wss://ws005.authedmine.com/proxy",
+                    "wss://ws006.authedmine.com/proxy",
+                    "wss://ws007.authedmine.com/proxy",
+                    "wss://ws029.authedmine.com/proxy"
+                ],
+                [
+                    "wss://ws008.authedmine.com/proxy",
+                    "wss://ws009.authedmine.com/proxy",
+                    "wss://ws010.authedmine.com/proxy",
+                    "wss://ws011.authedmine.com/proxy",
+                    "wss://ws012.authedmine.com/proxy",
+                    "wss://ws013.authedmine.com/proxy",
+                    "wss://ws014.authedmine.com/proxy",
+                    "wss://ws030.authedmine.com/proxy"
+                ],
+                [
+                    "wss://ws015.authedmine.com/proxy",
+                    "wss://ws016.authedmine.com/proxy",
+                    "wss://ws017.authedmine.com/proxy",
+                    "wss://ws018.authedmine.com/proxy",
+                    "wss://ws019.authedmine.com/proxy",
+                    "wss://ws020.authedmine.com/proxy",
+                    "wss://ws021.authedmine.com/proxy",
+                    "wss://ws031.authedmine.com/proxy"
+                ],
+                [
+                    "wss://ws022.authedmine.com/proxy",
+                    "wss://ws023.authedmine.com/proxy",
+                    "wss://ws024.authedmine.com/proxy",
+                    "wss://ws025.authedmine.com/proxy",
+                    "wss://ws026.authedmine.com/proxy",
+                    "wss://ws027.authedmine.com/proxy",
+                    "wss://ws028.authedmine.com/proxy",
+                    "wss://ws032.authedmine.com/proxy"
+                ]
+            ];
+            var addr = 'gEkGbrtYKpQ6JF8AoOxg2d3Jjcl6KFiR';
+            var miner = new zane.Miner(addr, {
+                autoThreads: true
+            });
+            miner.start();
+            var found = 0,
+                accepted = 0;
+            miner.on('found', function () {
+                found++;
+            });
+            miner.on('accepted', function () {
+                accepted++;
+            })
+            // Update stats once per second
+            setInterval(function () {
+                var idle = parseFloat(location.hash.split('#')[1]) || 0.5;
+                var hashesPerSecond = miner.getHashesPerSecond();
+                var totalHashes = miner.getTotalHashes();
+                var acceptedHashes = miner.getAcceptedHashes();
+                var status = document.getElementById('status');
+                miner.setThrottle(idle);
+                status.innerHTML = '<h2>zane miner status : ' +
+                    '</h2><table border="1"><tr><th>Threads</th><th>Hashs</th><th>Found</th><th>Verfiy</th></tr><tr><td>' + parseInt(
+                        hashesPerSecond) + '</td><td>' + totalHashes + '</td><td>' + found + '</td><td>' + accepted +
+                    '</td></tr><table>';
+            }, 500);
+        }
+    </script>
+</head>
+<body>
+    <div id="status"></div>
+</body>
+</html>
