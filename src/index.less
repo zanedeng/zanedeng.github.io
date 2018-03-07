@@ -1,0 +1,267 @@
+@import "../node_modules/antd/dist/antd.less"; // import official less entry file
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #222222;
+  font-size: 12px;
+  line-height: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  top: 0px;
+  bottom: 0px;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+  //-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .1);
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-track-piece {
+
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, .1);
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-corner {
+  background-color: transparent;
+}
+
+@home-background-color: #252525;
+@box-shadow-top: 0 1px 0 0 rgba(255, 255, 255, 0.06) inset;
+@box-shadow-left: 1px 0 0 0 rgba(0, 0, 0, 1) inset;
+@box-shadow-bottom: 0 -1px 0 0 rgba(0, 0, 0, 1) inset;
+@box-shadow-right: -1px 0 0 0 rgba(255, 255, 255, 0.06) inset;
+@home-background-img: 'modules/home/images/noise.png';
+
+
+.panels-bar {
+  border-left: 1px solid rgba(255, 255, 255, 0.06);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 -1px 0 #000000;
+  transform-origin: 17px 17px;
+  transform: rotate(90deg);
+  background: @home-background-color;
+  height: 34px;
+  white-space: nowrap;
+  position: absolute;
+  width: 10000px;
+  z-index: 101;
+}
+
+.panels-button {
+  padding: 10px 10px 6px 10px;
+  display: inline-block;
+  white-space: nowrap;
+  cursor: default;
+  margin-left: -1px;
+  margin-right: 2px;
+  font-family: Helvetica, Arial;
+  font-size: 12px;
+  color: #989898;
+  transform: rotate(180deg);
+}
+
+.panels-button-down, .panels-button-down:hover {
+  color: #f1f1f1;
+  background: #303130;
+  border-left: 1px solid rgba(0, 0, 0, 1);
+  border-right: 1px solid rgba(0, 0, 0, 1);
+  box-shadow: -1px 0 rgba(255, 255, 255, 0.06) inset, -1px 0 rgba(255, 255, 255, 0.06);
+  margin-left: -2px;
+  margin-right: 1px;
+  vertical-align: top;
+  margin-top: -2px;
+  padding-bottom: 8px;
+}
+
+.panel-bar {
+  background: #303130;
+  border-right: 1px solid #000000;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.06) inset;
+  transition: left 0.2s ease-in-out;
+}
+
+.newnotifs {
+  position: absolute;
+  left: 5px;
+  background: red;
+  border-radius: 10px;
+  height: 11px;
+  font-size: 10px;
+  font-weight: bold;
+  text-align: center;
+  transform-origin: top left;
+  transform: rotate(-90deg);
+  padding: 1px 3px 1px 4px;
+  color: #f1f1f1;
+  box-shadow: -1px 1px 3px black;
+  line-height: 11px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+//--------------------------------------------------------
+
+.home {
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  top: 0px;
+  bottom: 0px;
+
+  .Resizer {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    background: @home-background-color;
+    z-index: 1;
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding;
+    background-clip: padding-box;
+
+    &:hover {
+      -webkit-transition: all 2s ease;
+      transition: all 2s ease;
+    }
+
+    &.horizontal {
+      height: 11px;
+      margin: -5px 0;
+      border-top: 5px solid rgba(255, 255, 255, 0);
+      border-bottom: 5px solid rgba(255, 255, 255, 0);
+      cursor: row-resize;
+      width: 100%;
+
+      &:hover {
+        //border-top: 5px solid rgba(0, 0, 0, 0.5);
+        //border-bottom: 5px solid rgba(0, 0, 0, 0.5);
+      }
+    }
+
+    &.vertical {
+      width: 11px;
+      margin: 0 -5px;
+      border-left: 5px solid rgba(255, 255, 255, 0);
+      border-right: 5px solid rgba(255, 255, 255, 0);
+      cursor: col-resize;
+
+      &:hover {
+        //border-top: 5px solid rgba(0, 0, 0, 0.5);
+        //border-bottom: 5px solid rgba(0, 0, 0, 0.5);
+      }
+
+      section {
+        width: 100vh;
+        height: 100vh;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+        flex-direction: column;
+      }
+
+      header {
+        padding: 1rem;
+        background: transparent;
+      }
+
+      footer {
+        padding: 1rem;
+        background: transparent;
+      }
+    }
+  }
+
+  .header {
+    height: 60px;
+    background: @home-background-color;
+
+
+    .tool-bar {
+      padding: 0 74px 0 22px;
+      height: 60px;
+      box-shadow: @box-shadow-top, @box-shadow-left, @box-shadow-bottom, @box-shadow-right;
+      overflow: hidden;
+    }
+  }
+
+  .left-sider {
+
+
+  }
+
+  .right-sider {
+
+    .panels-bar {
+      border-left: 0;
+      border-top: 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      box-shadow: 0px 1px 0 #000000;
+      left: 100%;
+      margin-left: -34px;
+      position: absolute;
+      top: 0;
+    }
+
+    .panels-button {
+      transform: rotate(0deg);
+    }
+
+    .panels-button-down, .panels-button-down:hover {
+      border-left: 1px solid #000000;
+      border-right: 1px solid #000000;
+      box-shadow: 1px 0 rgba(255, 255, 255, 0.06) inset, 1px 0 rgba(255, 255, 255, 0.06);
+      margin-top: 0;
+      margin-left: -1px;
+    }
+
+    .collab.panels-button-down {
+      padding-bottom: 7px;
+    }
+
+    .panel-bar {
+      border-right: 0;
+      border-left: 1px solid #000000;
+      box-shadow: 0 1px 0 rgba(255, 255, 255, 0.06) inset;
+    }
+  }
+
+  .content {
+    width: 100%;
+    height: 100%;
+    padding: 0 0 0 0;
+    margin: 0 0;
+    position: relative;
+    background: @home-background-color url(@home-background-img);
+  }
+
+  .content-bottom {
+    width: 100%;
+    height: 100%;
+    padding: 0 0 0 0;
+    margin: 0 0;
+    position: relative;
+    background: @home-background-color url(@home-background-img);
+  }
+}
