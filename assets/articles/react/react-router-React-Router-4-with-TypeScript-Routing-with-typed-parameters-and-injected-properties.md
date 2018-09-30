@@ -1,7 +1,7 @@
 #TypeScript开发React Router4(react-router)使用类型参数和注入属性的方式处理路由
 react-router
 
-_// Routed.ts — 自定义的路由处理器_
+// Routed.ts — 自定义的路由处理器_
 ```
 import { RouteComponentProps, match } from 'react-router';
 import { History, Location } from 'history';
@@ -106,7 +106,7 @@ export function RoutedHistory(proto: any, prop: string): any {
 }
 ```
 
-_// index.ts_
+// index.ts_
 
 ```
 import * as React from 'react';
