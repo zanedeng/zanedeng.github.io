@@ -18,6 +18,10 @@
       {
         "title": "编写灵活、稳定、高质量的HTML代码的规范",
         "url": "assets/articles/html-css/编写灵活、稳定、高质量的HTML代码的规范.md"
+      },
+      {
+        "title": "PHP模拟javascript的位移运算符",
+        "url": "assets/articles/html-css/PHP模拟javascript的位移运算符.md"
       }
     ]
   }
