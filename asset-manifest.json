@@ -1,21 +1,21 @@
 {
   "files": {
-    "static/js/0.46a17891.chunk.js": "/phaserEditor2D/static/js/0.46a17891.chunk.js",
-    "main.css": "/phaserEditor2D/static/css/main.3e5e48b0.chunk.css",
-    "main.js": "/phaserEditor2D/static/js/main.ba6088c1.chunk.js",
-    "runtime~main.js": "/phaserEditor2D/static/js/runtime~main.0c9e8f77.js",
-    "static/css/3.df20bbda.chunk.css": "/phaserEditor2D/static/css/3.df20bbda.chunk.css",
-    "static/js/3.1a1778e7.chunk.js": "/phaserEditor2D/static/js/3.1a1778e7.chunk.js",
-    "static/css/4.13251b93.chunk.css": "/phaserEditor2D/static/css/4.13251b93.chunk.css",
-    "static/js/4.4fdf7c36.chunk.js": "/phaserEditor2D/static/js/4.4fdf7c36.chunk.js",
-    "static/js/5.65de2693.chunk.js": "/phaserEditor2D/static/js/5.65de2693.chunk.js",
-    "static/js/6.681eedac.chunk.js": "/phaserEditor2D/static/js/6.681eedac.chunk.js",
-    "static/js/7.9fe02cfe.chunk.js": "/phaserEditor2D/static/js/7.9fe02cfe.chunk.js",
-    "static/js/8.e383da69.chunk.js": "/phaserEditor2D/static/js/8.e383da69.chunk.js",
-    "index.html": "/phaserEditor2D/index.html",
-    "precache-manifest.545f478e0cee0b1c4f42974e2e23cb70.js": "/phaserEditor2D/precache-manifest.545f478e0cee0b1c4f42974e2e23cb70.js",
-    "service-worker.js": "/phaserEditor2D/service-worker.js",
-    "static/media/blogger.befb4f00.svg": "/phaserEditor2D/static/media/blogger.befb4f00.svg",
-    "static/media/App.scss": "/phaserEditor2D/static/media/repeat-x@1x.1818e047.png"
+    "static/js/0.46a17891.chunk.js": "/static/js/0.46a17891.chunk.js",
+    "main.css": "/static/css/main.53e76c0b.chunk.css",
+    "main.js": "/static/js/main.8429507e.chunk.js",
+    "runtime~main.js": "/static/js/runtime~main.fe17d729.js",
+    "static/css/3.df20bbda.chunk.css": "/static/css/3.df20bbda.chunk.css",
+    "static/js/3.df5f16e9.chunk.js": "/static/js/3.df5f16e9.chunk.js",
+    "static/css/4.13251b93.chunk.css": "/static/css/4.13251b93.chunk.css",
+    "static/js/4.71c149d2.chunk.js": "/static/js/4.71c149d2.chunk.js",
+    "static/js/5.1581f5a3.chunk.js": "/static/js/5.1581f5a3.chunk.js",
+    "static/js/6.1037e8d2.chunk.js": "/static/js/6.1037e8d2.chunk.js",
+    "static/js/7.69217a37.chunk.js": "/static/js/7.69217a37.chunk.js",
+    "static/js/8.e383da69.chunk.js": "/static/js/8.e383da69.chunk.js",
+    "index.html": "/index.html",
+    "precache-manifest.5c63a55deba997307ca75c8bba32a6c0.js": "/precache-manifest.5c63a55deba997307ca75c8bba32a6c0.js",
+    "service-worker.js": "/service-worker.js",
+    "static/media/blogger.befb4f00.svg": "/static/media/blogger.befb4f00.svg",
+    "static/media/App.scss": "/static/media/repeat-x@1x.1818e047.png"
   }
 }
