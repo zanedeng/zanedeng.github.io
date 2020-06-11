@@ -1,0 +1,15 @@
+{
+    "title": "赞恩程序开发手札",
+    "langPacks": [
+        {"lang": "zh", "path": "assets/i18n/zh.json"},
+        {"lang": "en", "path": "assets/i18n/en.json"}
+    ],
+    "logo": "assets/img/logo.png", 
+    "theme": {
+        "filter": 20,
+        "opacity": 0.2,
+        "backgroundImage": "assets/img/bg.jpg",
+        "backgroundColor": "rgba(123, 123, 123, 0.35)",
+        "backgroundBlendMode": "hue"
+    }
+}

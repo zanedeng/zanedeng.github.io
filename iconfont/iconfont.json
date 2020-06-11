@@ -1,0 +1,191 @@
+{
+  "id": "1331934",
+  "name": "phaserEditor2D",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "12529940",
+      "name": "browser-vertical split",
+      "font_class": "browser-verticalsplit",
+      "unicode": "e619",
+      "unicode_decimal": 58905
+    },
+    {
+      "icon_id": "12529932",
+      "name": "browser-horizontal split",
+      "font_class": "browser-horizontalsplit1",
+      "unicode": "e61e",
+      "unicode_decimal": 58910
+    },
+    {
+      "icon_id": "12528741",
+      "name": "关闭",
+      "font_class": "guanbi",
+      "unicode": "e61b",
+      "unicode_decimal": 58907
+    },
+    {
+      "icon_id": "12508209",
+      "name": "redo",
+      "font_class": "redo",
+      "unicode": "e617",
+      "unicode_decimal": 58903
+    },
+    {
+      "icon_id": "12508210",
+      "name": "undo",
+      "font_class": "undo",
+      "unicode": "e618",
+      "unicode_decimal": 58904
+    },
+    {
+      "icon_id": "12508035",
+      "name": "导入",
+      "font_class": "daoru",
+      "unicode": "e615",
+      "unicode_decimal": 58901
+    },
+    {
+      "icon_id": "12508036",
+      "name": "导出",
+      "font_class": "daochu",
+      "unicode": "e616",
+      "unicode_decimal": 58902
+    },
+    {
+      "icon_id": "12507609",
+      "name": "76 open folder",
+      "font_class": "openfolder",
+      "unicode": "e612",
+      "unicode_decimal": 58898
+    },
+    {
+      "icon_id": "12507610",
+      "name": "create-new-folder",
+      "font_class": "create-new-folder",
+      "unicode": "e613",
+      "unicode_decimal": 58899
+    },
+    {
+      "icon_id": "12507611",
+      "name": "ios-save",
+      "font_class": "ios-save",
+      "unicode": "e614",
+      "unicode_decimal": 58900
+    },
+    {
+      "icon_id": "12463513",
+      "name": "openRightMini",
+      "font_class": "openRightMini",
+      "unicode": "e611",
+      "unicode_decimal": 58897
+    },
+    {
+      "icon_id": "10543538",
+      "name": "gitee",
+      "font_class": "gitee",
+      "unicode": "e60d",
+      "unicode_decimal": 58893
+    },
+    {
+      "icon_id": "10543539",
+      "name": "github",
+      "font_class": "github",
+      "unicode": "e60e",
+      "unicode_decimal": 58894
+    },
+    {
+      "icon_id": "10489799",
+      "name": "close",
+      "font_class": "close",
+      "unicode": "e60b",
+      "unicode_decimal": 58891
+    },
+    {
+      "icon_id": "10478495",
+      "name": "menu3",
+      "font_class": "menu1",
+      "unicode": "e60c",
+      "unicode_decimal": 58892
+    },
+    {
+      "icon_id": "10399913",
+      "name": "log-out",
+      "font_class": "log-out",
+      "unicode": "e609",
+      "unicode_decimal": 58889
+    },
+    {
+      "icon_id": "10399914",
+      "name": "login",
+      "font_class": "login",
+      "unicode": "e60a",
+      "unicode_decimal": 58890
+    },
+    {
+      "icon_id": "10195670",
+      "name": "more",
+      "font_class": "more",
+      "unicode": "e608",
+      "unicode_decimal": 58888
+    },
+    {
+      "icon_id": "10194488",
+      "name": "refresh",
+      "font_class": "refresh",
+      "unicode": "e607",
+      "unicode_decimal": 58887
+    },
+    {
+      "icon_id": "10194439",
+      "name": "link",
+      "font_class": "link",
+      "unicode": "e606",
+      "unicode_decimal": 58886
+    },
+    {
+      "icon_id": "10194287",
+      "name": "collapse",
+      "font_class": "collapse",
+      "unicode": "e605",
+      "unicode_decimal": 58885
+    },
+    {
+      "icon_id": "10194227",
+      "name": "设置",
+      "font_class": "shezhi",
+      "unicode": "e604",
+      "unicode_decimal": 58884
+    },
+    {
+      "icon_id": "10194047",
+      "name": "隐藏导航",
+      "font_class": "yincangdaohang",
+      "unicode": "e603",
+      "unicode_decimal": 58883
+    },
+    {
+      "icon_id": "10193978",
+      "name": "maximum",
+      "font_class": "maximum",
+      "unicode": "e602",
+      "unicode_decimal": 58882
+    },
+    {
+      "icon_id": "10171336",
+      "name": "events",
+      "font_class": "events",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "10171337",
+      "name": "debug",
+      "font_class": "debug",
+      "unicode": "e601",
+      "unicode_decimal": 58881
+    }
+  ]
+}

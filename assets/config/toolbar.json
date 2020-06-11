@@ -1,0 +1,49 @@
+[
+    {
+        "label": "app.file",
+        "icon": "assets/svg/toolbar-file.svg",
+        "hotKey": "",
+        "action": "",
+        "children": []
+    },
+    {
+        "label": "app.tools",
+        "icon": "assets/svg/toolbar-tool.svg",
+        "hotKey": "",
+        "action": "",
+        "children": [
+            {
+                "label": "app.audioConvert",
+                "icon": "assets/svg/soundtrack.svg",
+                "hotKey": "",
+                "action": "audioConvert"
+            },
+            {
+                "label": "app.videoConvert",
+                "icon": "assets/svg/video2.svg",
+                "hotKey": "",
+                "action": "videoConvert"
+            },
+            {
+                "label": "app.imagesToIco",
+                "icon": "assets/svg/png.svg",
+                "hotKey": "",
+                "action": "imagesToIco"
+            }
+        ]
+    },
+    {
+        "label": "app.settings",
+        "icon": "assets/svg/toolbar-theme.svg",
+        "hotKey": "",
+        "action": "siteSetting",
+        "children": []
+    },
+    {
+        "label": "app.about",
+        "icon": "assets/svg/toolbar-about.svg",
+        "hotKey": "",
+        "action": "about",
+        "children": []
+    }
+]
