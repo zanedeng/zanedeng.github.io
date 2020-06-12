@@ -1,5 +1,5 @@
 {
-    "title": "赞恩程序开发手札",
+    "title": "赞恩在线工具",
     "langPacks": [
         {"lang": "zh", "path": "assets/i18n/zh.json"},
         {"lang": "en", "path": "assets/i18n/en.json"}

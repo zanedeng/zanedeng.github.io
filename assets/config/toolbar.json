@@ -40,6 +40,13 @@
         "children": []
     },
     {
+        "label": "app.sitemap",
+        "icon": "assets/svg/sitemap.svg",
+        "hotKey": "",
+        "action": "sitemap",
+        "children": []
+    },
+    {
         "label": "app.about",
         "icon": "assets/svg/toolbar-about.svg",
         "hotKey": "",

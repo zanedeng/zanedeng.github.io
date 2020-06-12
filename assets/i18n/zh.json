@@ -80,5 +80,6 @@
 	"app.backgroundColor": "背景颜色",
 	"app.backgroundBlur": "背景模糊度",
 	"app.backgroundOpacity": "背景可见度",
-	"app.backgroundBlendMode": "混合模式"
+	"app.backgroundBlendMode": "混合模式",
+	"app.sitemap": "网站地图"
 }

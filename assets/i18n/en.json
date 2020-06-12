@@ -80,5 +80,6 @@
 	"app.backgroundColor": "Background Color",
 	"app.backgroundBlur": "Background Blur",
 	"app.backgroundOpacity": "Background Opacity",
-	"app.backgroundBlendMode": "Blend Mode"
+	"app.backgroundBlendMode": "Blend Mode",
+	"app.sitemap": "Sitemap"
 }
