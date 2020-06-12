@@ -1,4 +1,3 @@
-![网站头部截图](https://github.com/zanedeng/zanedeng.github.io/raw/master/assets/img/site_header.jpg)
 # 简介
 
 这是一款简洁美观的 `免费博客` 系统，聚合各种HTML5技术的 `在线工具` 以及 Github 项目管理功能，只需要你专为程序员设计。
