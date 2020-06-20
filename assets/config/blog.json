@@ -1,18 +1,1 @@
-[
-    {
-        "title": "HTML5相关文档",
-        "icon": "assets/svg/folder-markdown.svg",
-        "children": [
-            {
-                "title": "PHP模拟javascript的位移运算符",
-                "icon": "assets/svg/markdown.svg",
-                "path": "md/PHP模拟javascript的位移运算符.md"
-            },
-            {
-                "title": "标签云",
-                "icon": "assets/svg/markdown.svg",
-                "path": "md/标签云.md"
-            }
-        ]
-    }
-]
+%5B%7B%22title%22%3A%22HTML5%E7%9B%B8%E5%85%B3%E6%96%87%E6%A1%A3%22%2C%22children%22%3A%5B%7B%22title%22%3A%22PHP%E6%A8%A1%E6%8B%9Fjavascript%E7%9A%84%E4%BD%8D%E7%A7%BB%E8%BF%90%E7%AE%97%E7%AC%A6%22%2C%22path%22%3A%22md%2FPHP%E6%A8%A1%E6%8B%9Fjavascript%E7%9A%84%E4%BD%8D%E7%A7%BB%E8%BF%90%E7%AE%97%E7%AC%A6.md%22%7D%2C%7B%22title%22%3A%22%E6%A0%87%E7%AD%BE%E4%BA%91%22%2C%22path%22%3A%22md%2F%E6%A0%87%E7%AD%BE%E4%BA%91.md%22%7D%5D%7D%2C%7B%22title%22%3A%22%E6%B5%8B%E8%AF%95%22%2C%22children%22%3A%5B%5D%7D%5D
