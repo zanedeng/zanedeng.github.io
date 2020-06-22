@@ -6,6 +6,48 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "15456703",
+      "name": "delete",
+      "font_class": "delete",
+      "unicode": "e620",
+      "unicode_decimal": 58912
+    },
+    {
+      "icon_id": "15427734",
+      "name": "Edit text",
+      "font_class": "Edittext",
+      "unicode": "e61d",
+      "unicode_decimal": 58909
+    },
+    {
+      "icon_id": "15366042",
+      "name": "icon_add files",
+      "font_class": "icon_addfiles",
+      "unicode": "e61a",
+      "unicode_decimal": 58906
+    },
+    {
+      "icon_id": "15366043",
+      "name": "add_file,新建,新增,文件夹",
+      "font_class": "add_filexinjianxinzengwenjianjia",
+      "unicode": "e61c",
+      "unicode_decimal": 58908
+    },
+    {
+      "icon_id": "15346278",
+      "name": "sitemap",
+      "font_class": "sitemap",
+      "unicode": "e610",
+      "unicode_decimal": 58896
+    },
+    {
+      "icon_id": "15031781",
+      "name": "toolbar-about",
+      "font_class": "toolbar-about",
+      "unicode": "e60f",
+      "unicode_decimal": 58895
+    },
+    {
       "icon_id": "12529940",
       "name": "browser-vertical split",
       "font_class": "browser-verticalsplit",

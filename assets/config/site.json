@@ -1,5 +1,7 @@
 {
     "title": "赞恩在线工具",
+    "clientID": "",
+    "repo": "zanedeng.github.io",
     "langPacks": [
         {"lang": "zh", "path": "assets/i18n/zh.json"},
         {"lang": "en", "path": "assets/i18n/en.json"}

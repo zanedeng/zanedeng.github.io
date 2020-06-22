@@ -4,7 +4,9 @@
         "icon": "assets/svg/toolbar-file.svg",
         "hotKey": "",
         "action": "",
-        "children": []
+        "children": [
+            
+        ]
     },
     {
         "label": "app.tools",
@@ -37,13 +39,6 @@
         "icon": "assets/svg/toolbar-theme.svg",
         "hotKey": "",
         "action": "siteSetting",
-        "children": []
-    },
-    {
-        "label": "app.sitemap",
-        "icon": "assets/svg/sitemap.svg",
-        "hotKey": "",
-        "action": "sitemap",
         "children": []
     },
     {

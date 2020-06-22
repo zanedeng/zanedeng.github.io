@@ -1,21 +1,22 @@
 {
   "files": {
-    "static/js/0.46a17891.chunk.js": "/static/js/0.46a17891.chunk.js",
-    "main.css": "/static/css/main.a134feb2.chunk.css",
-    "main.js": "/static/js/main.8429507e.chunk.js",
-    "runtime~main.js": "/static/js/runtime~main.bfbccdc4.js",
-    "static/css/3.df20bbda.chunk.css": "/static/css/3.df20bbda.chunk.css",
-    "static/js/3.df5f16e9.chunk.js": "/static/js/3.df5f16e9.chunk.js",
+    "static/js/0.c198018c.chunk.js": "/static/js/0.c198018c.chunk.js",
+    "main.css": "/static/css/main.dad4fc41.chunk.css",
+    "main.js": "/static/js/main.48d91984.chunk.js",
+    "runtime~main.js": "/static/js/runtime~main.14f87fc1.js",
+    "static/js/3.f5a9bcc6.chunk.js": "/static/js/3.f5a9bcc6.chunk.js",
     "static/css/4.13251b93.chunk.css": "/static/css/4.13251b93.chunk.css",
-    "static/js/4.71c149d2.chunk.js": "/static/js/4.71c149d2.chunk.js",
-    "static/js/5.1581f5a3.chunk.js": "/static/js/5.1581f5a3.chunk.js",
-    "static/js/6.1037e8d2.chunk.js": "/static/js/6.1037e8d2.chunk.js",
-    "static/js/7.337513b3.chunk.js": "/static/js/7.337513b3.chunk.js",
-    "static/js/8.e383da69.chunk.js": "/static/js/8.e383da69.chunk.js",
+    "static/js/4.70e8b64e.chunk.js": "/static/js/4.70e8b64e.chunk.js",
+    "static/js/5.b336c366.chunk.js": "/static/js/5.b336c366.chunk.js",
+    "static/js/6.af4ec3c5.chunk.js": "/static/js/6.af4ec3c5.chunk.js",
+    "static/js/7.e3f93a7c.chunk.js": "/static/js/7.e3f93a7c.chunk.js",
+    "static/js/8.e593b6ad.chunk.js": "/static/js/8.e593b6ad.chunk.js",
     "index.html": "/index.html",
-    "precache-manifest.ac66a1970829dc59a8c850aa2b11f4da.js": "/precache-manifest.ac66a1970829dc59a8c850aa2b11f4da.js",
+    "precache-manifest.d7d961acd6b32b4683082b94f328cf19.js": "/precache-manifest.d7d961acd6b32b4683082b94f328cf19.js",
     "service-worker.js": "/service-worker.js",
     "static/media/blogger.befb4f00.svg": "/static/media/blogger.befb4f00.svg",
-    "static/media/App.scss": "/static/media/repeat-x@1x.1818e047.png"
+    "static/media/codeOptimization.2aac9eba.svg": "/static/media/codeOptimization.2aac9eba.svg",
+    "static/media/App.scss": "/static/media/repeat-x@1x.1818e047.png",
+    "static/media/property.d9623ab2.svg": "/static/media/property.d9623ab2.svg"
   }
 }
