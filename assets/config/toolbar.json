@@ -5,7 +5,33 @@
         "hotKey": "",
         "action": "",
         "children": [
-            
+            {
+                "label": "app.newFile",
+                "icon": "assets/svg/toolbar-new-file.svg",
+                "hotKey": "",
+                "action": "newFile"
+            },
+            {
+                "label": "app.newFolder",
+                "icon": "assets/svg/toolbar-new-folder.svg",
+                "hotKey": "",
+                "action": "newFolder"
+            },
+            {
+                "divider": "true"
+            },
+            {
+                "label": "app.save",
+                "icon": "assets/svg/toolbar-save.svg",
+                "hotKey": "",
+                "action": "save"
+            },
+            {
+                "label": "app.saveAll",
+                "icon": "assets/svg/toolbar-save-all.svg",
+                "hotKey": "",
+                "action": "saveAll"
+            }
         ]
     },
     {
@@ -16,19 +42,19 @@
         "children": [
             {
                 "label": "app.audioConvert",
-                "icon": "assets/svg/soundtrack.svg",
+                "icon": "assets/svg/toolbar-sound.svg",
                 "hotKey": "",
                 "action": "audioConvert"
             },
             {
                 "label": "app.videoConvert",
-                "icon": "assets/svg/video2.svg",
+                "icon": "assets/svg/toolbar-video.svg",
                 "hotKey": "",
                 "action": "videoConvert"
             },
             {
                 "label": "app.imagesToIco",
-                "icon": "assets/svg/png.svg",
+                "icon": "assets/svg/toolbar-to-ico.svg",
                 "hotKey": "",
                 "action": "imagesToIco"
             }

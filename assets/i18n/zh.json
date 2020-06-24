@@ -36,6 +36,7 @@
 	"app.tools": "工具",
 	"app.convert": "转换",
 	"app.save": "保存",
+	"app.saveAll": "保存所有",
 	"app.delete": "删除",
 	"app.readingFile": "正在读取文件",
 	"app.converting": "正在转换",
@@ -88,5 +89,7 @@
 	"app.backgroundBlendMode": "混合模式",
 	"app.generateSitemap": "生成网站地图",
 	"app.deleteConfirmTitle": "您确定要删除这个吗？",
-	"app.deleteConfirmContent": "当你点击确定按钮后，您选定的目录或目录下的所有内容将被删除。 "
+	"app.deleteConfirmContent": "当你点击确定按钮后，您选定的目录或目录下的所有内容将被删除。 ",
+	"app.closeFileConfirmTitle": "是否保存您所做的更改？",
+	"app.closeFileConfirmContent": "如果不保存更改，您的更改将丢失。"
 }
