@@ -9,5 +9,14 @@
 * 使用 GitHub 的 `免费主机`，只需要 `fork` [该项目](https://github.com/zanedeng/zanedeng.github.io.git) 到自己的项目仓库，开通 GitHub Pages 功能即可。[（进一步了解 GitHub Pages →）](http://pages.github.com/)
 * 支持 `在线代码编辑`，这样你就可以随时随地的修改你寄托再 GitHub 上的代码了。
 
-# 未登录状态页面截图
-![网站头部截图](https://github.com/zanedeng/zanedeng.github.io/raw/master/assets/img/site_header.jpg)
+# 未登录页面截图
+![未登录页面截图](https://github.com/zanedeng/zanedeng.github.io/raw/master/assets/img/screenshot01.png)
+
+# 登录页面截图
+![登录页面截图](https://github.com/zanedeng/zanedeng.github.io/raw/master/assets/img/screenshot02.png)
+
+# Markdown编辑页面截图
+![Markdown编辑页面截图](https://github.com/zanedeng/zanedeng.github.io/raw/master/assets/img/screenshot03.png)
+
+# githun项目编辑页面截图
+![githun项目编辑页面截图](https://github.com/zanedeng/zanedeng.github.io/raw/master/assets/img/screenshot04.png)
