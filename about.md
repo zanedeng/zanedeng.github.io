@@ -13,4 +13,4 @@
 
 ---------------
 
-Copyright © 2019 Zane. All rights reserved.
+Copyright © 2019 [zanejs.com](https://www.zanejs.com). All rights reserved.
