@@ -5,6 +5,7 @@
 	"app.yes": "Yes",
 	"app.ok": "Ok",
 	"app.cancel": "Cancel",
+	"app.loading": "Loading",
 	"app.search": "Search",
 	"app.signIn": "sign In",
 	"app.signOut": "sign Out",

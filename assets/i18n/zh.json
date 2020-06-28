@@ -5,6 +5,7 @@
 	"app.yes": "是",
 	"app.ok": "确认",
 	"app.cancel": "取消",
+	"app.loading": "加载中",
 	"app.search": "搜索",
 	"app.signIn": "登入",
 	"app.signOut": "登出",
