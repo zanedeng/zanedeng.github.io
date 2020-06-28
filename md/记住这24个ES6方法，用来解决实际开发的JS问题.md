@@ -385,5 +385,6 @@ const createDirIfNotExists = dir => (!fs.existsSync(dir) ? fs.mkdirSync(dir) : u
 // 事例
 createDirIfNotExists('test');
 ```
-0000
-11111
+---
+
+Copyright © 2019 [zanejs.com](https://www.zanejs.com). All rights reserved.
