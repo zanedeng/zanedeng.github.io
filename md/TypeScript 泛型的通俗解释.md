@@ -181,3 +181,5 @@ function createInstance<A extends Animal>(c: new () => A): A {
 　　Typescript 中的泛型，实际上就是类型的生成函数的参数。本文的内容全部为凭空想象，仅适用于对 ts 进行理解时的思路开拓，不适用于真实编程，特此声明。
 
 ---
+
+Copyright © 2019 [zanejs.com](https://www.zanejs.com). All rights reserved.
