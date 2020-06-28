@@ -385,3 +385,4 @@ const createDirIfNotExists = dir => (!fs.existsSync(dir) ? fs.mkdirSync(dir) : u
 // 事例
 createDirIfNotExists('test');
 ```
+0000
