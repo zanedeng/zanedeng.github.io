@@ -13,4 +13,13 @@
 
 ---------------
 
+## 免费使用教程
+
+-  `fork` [该项目](https://github.com/zanedeng/zanedeng.github.io.git) 到自己的项目仓库。
+- 为该项目仓库开通 GitHub Pages 功能[（进一步了解 GitHub Pages →）](http://pages.github.com/)。
+- 修改根目录下 CNAME 文件中的域名为自己的域名（设置之前先新增一条域名的cname指向 ***.github.io）。
+- 接下来需要修改 `assets/config/site.json`文件中的站点配置。
+
+---
+
 Copyright © 2019 [zanejs.com](https://www.zanejs.com). All rights reserved.
