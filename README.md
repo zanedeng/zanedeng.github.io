@@ -18,6 +18,39 @@
 - 接下来需要修改 `assets/config/site.json`文件中的站点配置。
 
 
+## 站点配置说明
+
+```json
+
+{
+    // 网站名称
+    "title": "赞恩在线工具",
+    // 如果你想通过github授权登录，就需要去申请 OAuth App，然后把 appid 填写在此处，具体对接API请查阅 github api 文档
+    "clientID": "", 
+    // 这里是你的站点仓库名
+    "repo": "zanedeng.github.io", 
+    // cnzz 站点统计的网站id
+    "cnzzSiteId": "1278996152", 
+    // 语言包，如果需要支持其它语言，可以在这里新增语言包配置
+    "langPacks": [ 
+        {"lang": "zh", "path": "assets/i18n/zh.json"},
+        {"lang": "en", "path": "assets/i18n/en.json"}
+    ],
+    // 站点logo地址
+    "logo": "assets/img/logo.png", 
+    // 网站主题设置
+    "theme": {
+        "filter": 20,
+        "opacity": 0.2,
+        "backgroundImage": "assets/img/bg.jpg",
+        "backgroundColor": "rgba(123, 123, 123, 0.35)",
+        "backgroundBlendMode": "hue"
+    }
+}
+
+```
+
+
 # 未登录页面截图
 ![未登录页面截图](https://github.com/zanedeng/zanedeng.github.io/raw/master/assets/img/screenshot01.png)
 
