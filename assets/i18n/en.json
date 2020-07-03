@@ -93,5 +93,7 @@
 	"app.deleteConfirmContent": "When clicked the OK button, ",
 	"app.closeFileConfirmTitle": "Do you want to save the changes you made?",
 	"app.closeFileConfirmContent": "Your changes will be lost if you don't save them.",
-	"app.page404Title": "404 error, the file is not found, please try again later"
+	"app.page404Title": "404 error, the file is not found, please try again later",
+	"app.saveSuccess": "It is successfully saved",
+	"app.saveFail": "It is fail saved"
 }

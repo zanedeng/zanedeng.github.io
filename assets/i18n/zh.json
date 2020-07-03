@@ -93,5 +93,7 @@
 	"app.deleteConfirmContent": "当你点击确定按钮后，您选定的目录或目录下的所有内容将被删除。 ",
 	"app.closeFileConfirmTitle": "是否保存您所做的更改？",
 	"app.closeFileConfirmContent": "如果不保存更改，您的更改将丢失。",
-	"app.page404Title": "404错误, 暂时未发现该文件，请稍候再重试"
+	"app.page404Title": "404错误, 暂时未发现该文件，请稍候再重试",
+	"app.saveSuccess": "保存成功",
+	"app.saveFail": "保存失败"
 }
