@@ -1,0 +1,44 @@
+{
+  "name": "@zanejs/lint-staged-config",
+  "version": "0.0.0",
+  "private": true,
+  "description": "🚀 The package offer lint-staged for @zanejs!",
+  "keywords": [
+    "zanejs",
+    "Vue3",
+    "Vue2",
+    "Vue",
+    "vue zanejs",
+    "react",
+    "react zanejs",
+    "monorepo",
+    "pnpm",
+    "turborepo",
+    "changesets",
+    "lint-staged",
+    "lint-staged-config"
+  ],
+  "homepage": "https://github.com/zanedeng/zanedeng.github.io/blob/master/internals/eslint-config#readme",
+  "bugs": {
+    "url": "https://github.com/zanedeng/zanedeng.github.io/issues"
+  },
+  "license": "MIT",
+  "author": "zanedeng <zane.deng@live.com> (https://github.com/zanedeng)",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zanedeng/zanedeng.github.io.git",
+    "directory": "internals/lint-staged-config"
+  },
+  "scripts": {
+    "clean": "run-p clean:**",
+    "clean:cache": "rimraf .turbo && rimraf dist",
+    "clean:deps": "rimraf node_modules"
+  },
+  "dependencies": {
+    "lint-staged": "^13.0.3"
+  },
+  "engines": {
+    "node": ">=16"
+  }
+}

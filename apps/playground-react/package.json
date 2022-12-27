@@ -1,0 +1,54 @@
+{
+  "name": "@zanejs/playground-react",
+  "version": "0.0.0",
+  "private": true,
+  "description": "🚀 The package offer react playground for @zanejs!",
+  "keywords": [
+    "zanejs",
+    "react",
+    "React",
+    "react google translate",
+    "react google translate select",
+    "monorepo",
+    "pnpm",
+    "turborepo",
+    "changesets",
+    "vite",
+    "playground"
+  ],
+  "homepage": "https://github.com/zanedeng/zanedeng.github.io/blob/master/internals/commitlint-config#readme",
+  "bugs": {
+    "url": "https://github.com/zanedeng/zanedeng.github.io/issues"
+  },
+  "license": "MIT",
+  "author": "zanedeng <zane.deng@live.com> (https://github.com/zanedeng)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zanedeng/zanedeng.github.io.git",
+    "directory": "apps/playground/react"
+  },
+  "scripts": {
+    "lint": "run-s lint:**",
+    "lint:eslint": "TIMING=1 eslint \"*.{js,jsx,ts,tsx,md,json}\" --fix",
+    "lint:prettier": "prettier --write \"*.{js,ts,jsx,tsx,md,json}\"",
+    "clean": "run-p clean:**",
+    "clean:cache": "rimraf .turbo && rimraf dist",
+    "clean:deps": "rimraf node_modules",
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@zanejs/react": "workspace:*",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.24",
+    "@types/react-dom": "^18.0.8",
+    "@vitejs/plugin-react": "^3.0.0",
+    "sass": "^1.56.1",
+    "typescript": "^4.8.4",
+    "vite": "^4.0.1"
+  }
+}

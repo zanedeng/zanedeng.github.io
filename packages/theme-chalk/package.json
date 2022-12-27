@@ -1,0 +1,63 @@
+{
+  "name": "@zanejs/theme-chalk",
+  "version": "0.0.4",
+  "description": "🚀 The package offer theme-chalk for @zanejs!",
+  "type": "module",
+  "keywords": [
+    "zanejs",
+    "Vue3",
+    "Vue2",
+    "Vue",
+    "vue zanejs",
+    "react",
+    "react zanejs",
+    "monorepo",
+    "pnpm",
+    "turborepo",
+    "changesets",
+    "theme-chalk"
+  ],
+  "homepage": "https://github.com/zanedeng/zanedeng.github.io/blob/master/internals/commitlint-config#readme",
+  "bugs": {
+    "url": "https://github.com/zanedeng/zanedeng.github.io/issues"
+  },
+  "license": "MIT",
+  "author": "zanedeng <zane.deng@live.com> (https://github.com/zanedeng)",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zanedeng/zanedeng.github.io.git",
+    "directory": "packages/theme-chalk"
+  },
+  "scripts": {
+    "build": "rimraf dist && tsup --config ./build.config.ts",
+    "lint": "run-s lint:**",
+    "lint:eslint": "TIMING=1 eslint \"*.{js,jsx,ts,tsx,md,json}\" --fix",
+    "lint:prettier": "prettier --write \"*.{js,ts,jsx,tsx,md,json}\"",
+    "clean": "run-p clean:**",
+    "clean:cache": "rimraf .turbo && rimraf dist",
+    "clean:deps": "rimraf node_modules"
+  },
+  "devDependencies": {
+    "@types/clean-css": "^4.2.6",
+    "@types/gulp": "4.0.10",
+    "@types/postcss-preset-env": "^7.7.0",
+    "autoprefixer": "^10.4.13",
+    "chalk": "^5.1.2",
+    "clean-css": "^5.3.1",
+    "consola": "^2.15.3",
+    "esbuild": "0.15.13",
+    "esbuild-plugin-copy": "1.6.0",
+    "esbuild-sass-plugin": "^2.4.0",
+    "postcss": "^8.4.19",
+    "postcss-preset-env": "^7.8.2",
+    "sass": "^1.56.1",
+    "tsup": "^6.4.0"
+  },
+  "engines": {
+    "node": ">=16"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "$schema": "https://unpkg.com/@changesets/config@2.1.1/schema.json",
+  "changelog": [
+    "@changesets/changelog-github",
+    {
+      "repo": "i7eo/google-translate-select"
+    }
+  ],
+  "commit": false,
+  "fixed": [],
+  "linked": [],
+  "ignore": [
+    "@google-translate-select/docs",
+    "@google-translate-select/playground-react",
+    "@google-translate-select/playground-vue2",
+    "@google-translate-select/playground-vue3"
+  ],
+  "access": "public",
+  "baseBranch": "master",
+  "updateInternalDependencies": "patch",
+  "___experimentalUnsafeOptions_WILL_CHANGE_IN_PATCH": {
+    "onlyUpdatePeerDependentsWhenOutOfRange": true
+  }
+}

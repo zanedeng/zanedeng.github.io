@@ -1,0 +1,56 @@
+{
+  "name": "@zanejs/playground-vue2",
+  "version": "0.0.0",
+  "private": true,
+  "description": "🚀 The package offer vue2 playground for @zanejs!",
+  "keywords": [
+    "zanejs",
+    "Vue2",
+    "Vue",
+    "vue2 vite",
+    "vue zanejs",
+    "monorepo",
+    "pnpm",
+    "turborepo",
+    "changesets",
+    "vite",
+    "playground"
+  ],
+  "homepage": "https://github.com/zanedeng/zanedeng.github.io/blob/master/internals/commitlint-config#readme",
+  "bugs": {
+    "url": "https://github.com/zanedeng/zanedeng.github.io/issues"
+  },
+  "license": "MIT",
+  "author": "zanedeng <zane.deng@live.com> (https://github.com/zanedeng)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zanedeng/zanedeng.github.io.git",
+    "directory": "apps/playground/vue2"
+  },
+  "scripts": {
+    "lint": "run-s lint:**",
+    "lint:eslint": "TIMING=1 eslint \"*.{js,jsx,ts,tsx,md,json}\" --fix",
+    "lint:prettier": "prettier --write \"*.{js,ts,jsx,tsx,md,json}\"",
+    "clean": "run-p clean:**",
+    "clean:cache": "rimraf .turbo && rimraf dist",
+    "clean:deps": "rimraf node_modules",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@zanejs/vue2": "workspace:*",
+    "vue": "2.6.11"
+  },
+  "devDependencies": {
+    "sass": "^1.56.1",
+    "terser": "5.4.0",
+    "typescript": "^4.8.4",
+    "vite": "^3.0.0",
+    "vite-plugin-vue2": "^2.0.2",
+    "vue-template-compiler": "2.6.11"
+  },
+  "engines": {
+    "node": ">=16"
+  }
+}

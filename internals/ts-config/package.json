@@ -1,0 +1,44 @@
+{
+  "name": "@zanejs/ts-config",
+  "version": "0.0.0",
+  "private": true,
+  "description": "🚀 The package offer tsconfig for @zanejs!",
+  "keywords": [
+    "zanejs",
+    "Vue3",
+    "Vue2",
+    "Vue",
+    "vue zanejs",
+    "react",
+    "react zanejs",
+    "monorepo",
+    "pnpm",
+    "turborepo",
+    "changesets",
+    "typescript",
+    "ts-config"
+  ],
+  "homepage": "https://github.com/zanedeng/zanedeng.github.io/blob/master/internals/eslint-config#readme",
+  "bugs": {
+    "url": "https://github.com/zanedeng/zanedeng.github.io/issues"
+  },
+  "license": "MIT",
+  "author": "zanedeng <zane.deng@live.com> (https://github.com/zanedeng)",
+  "files": [
+    "base.json",
+    "docs.json",
+    "node.common.json",
+    "node.module.json",
+    "vite.json",
+    "vitest.json",
+    "web.json"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zanedeng/zanedeng.github.io.git",
+    "directory": "internals/ts-config"
+  },
+  "engines": {
+    "node": ">=16"
+  }
+}
