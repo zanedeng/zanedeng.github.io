@@ -3,17 +3,17 @@
   "changelog": [
     "@changesets/changelog-github",
     {
-      "repo": "i7eo/google-translate-select"
+      "repo": "zanedeng/zanedeng.github.io"
     }
   ],
   "commit": false,
   "fixed": [],
   "linked": [],
   "ignore": [
-    "@google-translate-select/docs",
-    "@google-translate-select/playground-react",
-    "@google-translate-select/playground-vue2",
-    "@google-translate-select/playground-vue3"
+    "@zanejs/docs",
+    "@zanejs/playground-react",
+    "@zanejs/playground-vue2",
+    "@zanejs/playground-vue3"
   ],
   "access": "public",
   "baseBranch": "master",
