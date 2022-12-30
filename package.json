@@ -77,7 +77,7 @@
     "@types/inquirer": "9.0.3",
     "@types/jsdom": "20.0.1",
     "@types/node": "*",
-    "@types/prettier": "2.7.1",
+    "@types/prettier": "2.7.2",
     "@types/semver": "7.3.13",
     "@vitest/ui": "^0.25.1",
     "inquirer": "^9.1.4",
