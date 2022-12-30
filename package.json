@@ -64,7 +64,7 @@
     "@changesets/config": "2.2.0",
     "@changesets/pre": "1.0.13",
     "@changesets/read": "0.5.8",
-    "@changesets/types": "5.2.0",
+    "@changesets/types": "5.2.1",
     "@zanejs/commitlint-config": "workspace:*",
     "@zanejs/constants": "workspace:*",
     "@zanejs/eslint-config": "workspace:*",
