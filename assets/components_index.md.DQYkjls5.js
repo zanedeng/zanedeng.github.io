@@ -1,1 +1,0 @@
-import{x as e,b as n,o as t}from"./chunks/framework.Dx8Iuwnd.js";const o=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"components/index.md","filePath":"components/index.md"}');const r=e({name:"components/index.md"},[["render",function(e,o,r,a,s,d){return t(),n("div")}]]);export{o as __pageData,r as default};
