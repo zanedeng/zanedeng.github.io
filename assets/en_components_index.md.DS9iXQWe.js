@@ -1,0 +1,1 @@
+import{x as e,b as n,o as t}from"./chunks/framework.C_ynyGQp.js";import"@vueuse/shared";const o=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"en/components/index.md","filePath":"en/components/index.md"}');const r=e({name:"en/components/index.md"},[["render",function(e,o,r,s,a,d){return t(),n("div")}]]);export{o as __pageData,r as default};
