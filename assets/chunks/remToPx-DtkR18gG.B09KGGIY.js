@@ -1,0 +1,1 @@
+function e(e){const t=Number.parseFloat(getComputedStyle(document.documentElement).fontSize);return"number"==typeof e?e*t:"string"==typeof e&&e.endsWith("rem")?Number.parseFloat(e)*t:void 0}export{e as r};

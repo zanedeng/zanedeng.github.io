@@ -1,0 +1,1 @@
+function t(t){if(!t||!t.getBoundingClientRect)return!1;const n=t.getBoundingClientRect(),e=window.innerHeight||document.documentElement.clientHeight,i=window.innerWidth||document.documentElement.clientWidth;return n.top<e&&n.bottom>0&&n.left<i&&n.right>0}export{t as i};
