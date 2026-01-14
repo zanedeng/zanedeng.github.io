@@ -1,0 +1,1 @@
+import{i as r}from"./isString-DaEH0FEg.BuzQwn6C.js";class n extends Error{constructor(r){super(r),this.name="ZaneJsError"}}function s(r,s){throw new n(`[${r}] ${s}`)}function o(s,o){const t=r(s)?new n(`[${s}] ${o}`):s;console.warn(t)}export{o as d,s as t};

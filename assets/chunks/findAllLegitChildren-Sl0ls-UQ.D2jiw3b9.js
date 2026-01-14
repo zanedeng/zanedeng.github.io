@@ -1,0 +1,1 @@
+function e(e){return Array.from(e.childNodes).filter(e=>{var o;return e.nodeType===Node.ELEMENT_NODE||(e.nodeType===Node.TEXT_NODE?(null===(o=e.textContent)||void 0===o?void 0:o.trim().length)>0:e.nodeType===Node.CDATA_SECTION_NODE||e.nodeType===Node.DOCUMENT_FRAGMENT_NODE)})}export{e as f};

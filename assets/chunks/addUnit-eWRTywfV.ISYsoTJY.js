@@ -1,0 +1,1 @@
+import{i as r}from"./isNumber-Bq5rOKx7.D44lQlv1.js";import{i}from"./isString-DaEH0FEg.BuzQwn6C.js";function t(t,e="px"){return t?r(t)||(r=>{if(!i(r))return!1;if(0===r.trim().length)return!1;const t=Number(r);return!Number.isNaN(t)})(t)?`${t}${e}`:i(t)?t:void 0:""}export{t as a};
