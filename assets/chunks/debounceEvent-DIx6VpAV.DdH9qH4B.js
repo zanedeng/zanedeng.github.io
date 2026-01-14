@@ -1,1 +1,0 @@
-import{l as n}from"./lodash-BTbln26t.B60hk6q5.js";function t(t,e,o){const i=t._original||t,r=n.debounce(i.emit.bind(i),e,o),c=new Proxy(i,{get(n,t){if("emit"===t)return r;const e=Reflect.get(n,t);return"function"==typeof e?e.bind(n):e}});return c._original=i,c}export{t as d};

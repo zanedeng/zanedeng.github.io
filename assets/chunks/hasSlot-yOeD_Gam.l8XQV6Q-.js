@@ -1,1 +1,0 @@
-const e=(e,r)=>{if(r)return null!==e.querySelector(`:scope > [slot="${r}"]`);return Array.from(e.childNodes).some(e=>{var r;if(e.nodeType===Node.TEXT_NODE)return""!==(null===(r=e.textContent)||void 0===r?void 0:r.trim());if(e.nodeType===Node.ELEMENT_NODE){return!e.hasAttribute("slot")}return!1})};export{e as h};
